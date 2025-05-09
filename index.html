@@ -3,20 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Troop 234 - Chesapeake, VA</title>
+  <title>Troop 234 Navigation</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-    }
-
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
     }
 
     nav {
@@ -55,7 +46,7 @@
 
     iframe {
       width: 100%;
-      height: calc(100vh - 130px);
+      height: calc(100vh - 72px);
       border: none;
     }
 
@@ -76,21 +67,22 @@
   </style>
 </head>
 <body>
-  <header>Troop 234 - Chesapeake, VA</header>
 
   <nav>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
     <div class="nav-links" id="navLinks">
-      <a href="Home.html" target="contentFrame" onclick="closeMenu()">Home</a>
+      <a href="home.html" target="contentFrame" onclick="closeMenu()">Home</a>
       <a href="About.html" target="contentFrame" onclick="closeMenu()">About Us</a>
-      <a href="Welcome.html" target="contentFrame" onclick="closeMenu()">Welcome Information</a>
+      <a href="Welcome.html" target="contentFrame" onclick="closeMenu()">Welcome</a>
       <a href="Calendar.html" target="contentFrame" onclick="closeMenu()">Calendar</a>
       <a href="Committee.html" target="contentFrame" onclick="closeMenu()">Committee Corner</a>
-      <a href="Links.html" target="contentFrame" onclick="closeMenu()">Helpful Links</a>
+      <a href="Events.html" target="contentFrame" onclick="closeMenu()">Events</a>
+      <a href="Documents.html" target="contentFrame" onclick="closeMenu()">Documents</a>
+      <a href="Links.html" target="contentFrame" onclick="closeMenu()">Links</a>
     </div>
   </nav>
 
-  <iframe src="About.html" name="contentFrame"></iframe>
+  <iframe src="home.html" name="contentFrame"></iframe>
 
   <script>
     function toggleMenu() {
@@ -106,4 +98,3 @@
   </script>
 </body>
 </html>
-
