@@ -1,100 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Troop 234 Navigation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troop 234 Member Area</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      font-family: Arial, sans-serif;
+      background-color: #f5f9f5;
     }
-
-    nav {
-      background-color: #004080;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+    .content-wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
+    details {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      padding: 15px;
     }
-
-    .nav-links a {
-      color: white;
-      padding: 1rem;
-      text-decoration: none;
+    summary {
+      font-size: 1.2rem;
       font-weight: bold;
-    }
-
-    .nav-links a:hover {
-      background-color: #00264d;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 2rem;
       cursor: pointer;
-      padding: 1rem;
-      color: white;
     }
-
-    iframe {
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #226644;
+      text-decoration: underline;
+    }
+    table {
       width: 100%;
-      height: calc(100vh - 72px);
-      border: none;
+      border-collapse: collapse;
+      margin-top: 10px;
     }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        flex-direction: column;
-        display: none;
-      }
-
-      .nav-links.show {
-        display: flex;
-      }
-
-      .hamburger {
-        display: block;
-      }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #e3efe3;
     }
   </style>
 </head>
 <body>
+  <div class="content-wrapper">
+    <h1>Troop 234 Member Area</h1>
 
-  <nav>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="navLinks">
-      <a href="Home.html" target="contentFrame" onclick="closeMenu()">Home</a>
-      <a href="Welcome.html" target="contentFrame" onclick="closeMenu()">Welcome</a>
-      <a href="News.html" target="contentFrame" onclick="closeMenu()">News & Events</a>
-      <a href="Calendar.html" target="contentFrame" onclick="closeMenu()">Calendar</a>
-      <a href="Committee.html" target="contentFrame" onclick="closeMenu()">Committee Corner</a>
-      <a href="Links.html" target="contentFrame" onclick="closeMenu()">Links</a>
-      <a href="Contact.html" target="contentFrame" onclick="closeMenu()">Contact</a>
-      <a href="Member.html" target="contentFrame" onclick="closeMenu()">Members Only</a>
-    </div>
-  </nav>
+    <details>
+      <summary>📋 PLC Section</summary>
+      <ul>
+        <li><a href="https://docs.google.com/document/d/PLC-April2025" target="_blank">April 2025 PLC Notes</a></li>
+        <li><a href="https://docs.google.com/document/d/PLC-March2025" target="_blank">March 2025 PLC Notes</a></li>
+        <li><a href="https://docs.google.com/document/d/PLC-Feb2025" target="_blank">February 2025 PLC Notes</a></li>
+      </ul>
+    </details>
 
-  <iframe src="Home.html" name="contentFrame"></iframe>
+    <details>
+      <summary>🧑‍💼 Committee Section</summary>
+      <h3>Meeting Notes</h3>
+      <ul>
+        <li><a href="https://docs.google.com/document/d/Committee-April2025" target="_blank">April 2025 Committee Minutes</a></li>
+        <li><a href="https://docs.google.com/document/d/Committee-March2025" target="_blank">March 2025 Committee Minutes</a></li>
+      </ul>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('show');
-    }
+      <h3>Training Status</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>YPT %</th>
+            <th>YPT Expiration</th>
+            <th>Position Trained</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Smith</td>
+            <td>100%</td>
+            <td>2026-01-15</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Jane Doe</td>
+            <td>67%</td>
+            <td>2025-07-01</td>
+            <td><span style="color:red">No</span></td>
+          </tr>
+          <tr>
+            <td>Alex Brown</td>
+            <td>100%</td>
+            <td>2027-03-21</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
 
-    function closeMenu() {
-      const nav = document.getElementById('navLinks');
-      if (window.innerWidth <= 768 && nav.classList.contains('show')) {
-        nav.classList.remove('show');
-      }
-    }
-  </script>
+    <details>
+      <summary>🎖️ Advancement Section</summary>
+      <ul>
+        <li>Aiden L. – First Class</li>
+        <li>Andrew L. – Star</li>
+        <li>Jackson R. – Life</li>
+        <li>Tyler M. – Tenderfoot</li>
+        <li>Elijah T. – Second Class</li>
+      </ul>
+    </details>
+  </div>
 </body>
 </html>
