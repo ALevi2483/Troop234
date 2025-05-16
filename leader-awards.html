@@ -30,6 +30,8 @@
       border-collapse: collapse;
       margin-top: 2rem;
       font-size: 0.95rem;
+      overflow-x: auto;
+      display: block;
     }
 
     th, td {
@@ -42,6 +44,22 @@
     th {
       background-color: #003366;
       color: white;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background-color: #003366;
+      color: white;
+      z-index: 2;
+    }
+
+    td:first-child,
+    th:first-child {
+      position: sticky;
+      left: 0;
+      background-color: #f4f4f4;
+      z-index: 1;
     }
 
     tr:nth-child(even) {
@@ -90,7 +108,7 @@
         <tr><td>Lawrence Yavoski</td><td>Committee Member</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>Logan Bluemel</td><td>Assistant Scoutmaster</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>Loren Lichty</td><td>Scoutmaster</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>Loren Lichty Jr.</td><td>Assistant Scoutmaster</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Loren Lichty Jr.</td><td>Assistant Scoutmaster</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>Michael Zemienieuski</td><td>Chartered Organization Rep.</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>Monte Crowl</td><td>Committee Member</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>Nancy Lichty</td><td>Committee Member</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
