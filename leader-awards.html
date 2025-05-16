@@ -13,11 +13,10 @@
     }
 
     main {
-      max-width: 1200px;
-      margin: 2rem auto;
+      max-width: 100%;
+      overflow-x: auto;
       background: #fff;
       padding: 2rem;
-      border-radius: 8px;
     }
 
     h2 {
@@ -28,7 +27,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1.5rem;
+      min-width: 1000px;
     }
 
     th, td {
@@ -36,11 +35,23 @@
       padding: 10px;
       text-align: left;
       vertical-align: middle;
+      background: #fff;
     }
 
     th {
       background-color: #003366;
       color: white;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    td:first-child,
+    th:first-child {
+      position: sticky;
+      left: 0;
+      background: #f9f9f9;
+      z-index: 1;
     }
 
     td img {
@@ -99,7 +110,7 @@
   <td>Adam Levine</td>
   <td>New Member Coord. / Pack Committee</td>
   <td></td>
-  <td></td>
+  <td style="text-align: center; vertical-align: middle;">WB</td>
   <td></td>
   <td></td>
   <td></td>
@@ -114,7 +125,7 @@
   <td>Barry Anderson</td>
   <td>Asst. Scoutmaster</td>
   <td></td>
-  <td></td>
+  <td style="text-align: center; vertical-align: middle;">WB</td>
   <td></td>
   <td></td>
   <td></td>
@@ -200,7 +211,7 @@
   <td></td>
   <td></td>
   <td></td>
-  <td>SB</td>
+  <td></td>
   <td></td>
 </tr>
 
@@ -208,7 +219,7 @@
   <td>Katie Anderson</td>
   <td>Committee Chair / Pack Committee</td>
   <td></td>
-  <td></td>
+  <td style="text-align: center; vertical-align: middle;">WB</td>
   <td></td>
   <td></td>
   <td></td>
@@ -404,9 +415,7 @@
   <td></td>
   <td></td>
   <td></td>
-</tr>
-
-<tr>
+</tr><tr>
   <td>SuAnne Bryant</td>
   <td>Advancement Chair / Pack Committee</td>
   <td></td>
@@ -420,9 +429,12 @@
   <td></td>
   <td></td>
 </tr>
+
       </tbody>
     </table>
   </main>
 </body>
 </html>
 
+
+      
