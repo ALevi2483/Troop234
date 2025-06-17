@@ -6,255 +6,167 @@
   <title>Adult Leader Awards - Troop 234</title>
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 40px;
+      background-color: #f5f9f5;
       color: #333;
     }
-
-    main {
-      max-width: 100%;
-      max-height: 90vh;
-      overflow: auto;
-      background: #fff;
-      padding: 2rem;
-    }
-
-    h2 {
+    h1 {
       text-align: center;
       color: #003366;
+      font-size: 2em;
     }
-
+    p.intro {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1em;
+      color: #444;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 1000px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-
     th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-      vertical-align: middle;
-      background: #fff;
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
     }
-
     th {
-      background-color: #003366;
+      background-color: #005a9c;
       color: white;
-      position: sticky;
-      top: 0;
-      z-index: 2;
+      font-weight: 600;
     }
-
-    td:first-child,
-    th:first-child {
-      position: sticky;
-      left: 0;
-      background: #f9f9f9;
-      z-index: 1;
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
     }
-
     td img {
-      display: block;
-      margin: 0 auto;
-      height: 70px;
+      max-height: 40px;
     }
-
-    @media (max-width: 768px) {
-      table {
-        font-size: 0.9rem;
-      }
-      td img {
-        height: 60px;
-      }
+    .name-col {
+      text-align: left;
+      font-weight: bold;
     }
-
-    @media (max-width: 480px) {
-      table {
-        font-size: 0.85rem;
+    .role-col {
+      text-align: left;
+      font-style: italic;
+    }
+    @media screen and (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
       }
-      td img {
-        height: 50px;
+      th {
+        display: none;
       }
+      td {
+        text-align: left;
+        padding-left: 50%;
+        position: relative;
+      }
+      td::before {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #005a9c;
+      }
+      td:nth-of-type(1)::before { content: "Name"; }
+      td:nth-of-type(2)::before { content: "Role(s)"; }
+      td:nth-of-type(3)::before { content: "Eagle Scout"; }
+      td:nth-of-type(4)::before { content: "Wood Badge"; }
+      td:nth-of-type(5)::before { content: "Scouter's Training"; }
+      td:nth-of-type(6)::before { content: "Den Leader"; }
+      td:nth-of-type(7)::before { content: "Silver Beaver"; }
     }
   </style>
-  <!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MFBKQTV3K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0MFBKQTV3K');
-  </script>
-
 </head>
 <body>
-  <main>
-    <h2>Adult Leader Awards</h2>
-    <p>
-      At Troop 234, we proudly recognize the service and accomplishments of our adult leaders.
-      Their commitment to Scouting, training, and youth development is reflected in the progress
-      and awards noted below.
-    </p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Role(s)</th>
-          <th>Eagle Scout</th>
-          <th>Wood Badge</th>
-          <th>Scouter’s Training</th>
-          <th>Den Leader</th>
-          <th>Silver Beaver</th>
-        </tr>
-      </thead>
-      <tbody>
-<tr>
-  <td>Adam Levine</td>
-  <td>New Member Coord.</td>
-  <td></td>
-    <td style="text-align: center; vertical-align: middle;">
-    <img src="images/woodbadge.png" alt="Wood Badge Logo">
-  </td>
-  <td style="text-align: center; vertical-align: middle;">
-    <img src="images/Scouters Training.png" alt="Scouter's Training Award" style="height: 40px;">
-  </td>  
-  <td style="text-align: center; vertical-align: middle;">
-    <img src="images/Den Leader.png" alt="Den Leader Award" style="height: 40px;">
-  </td>
-  <td></td>
-</tr>
+  <h1>Adult Leader Awards</h1>
+  <p class="intro">
+    At Troop 234, we proudly recognize the service and accomplishments of our adult leaders. Their commitment to Scouting, training, and youth development is reflected in the progress and awards noted below.
+  </p>
 
-<tr>
-  <td>Barry Anderson</td>
-  <td>Asst. Scoutmaster</td>
-  <td></td>
-  <td style="text-align: center; vertical-align: middle;">
-    <img src="images/woodbadge.png" alt="Wood Badge Logo">
-  </td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role(s)</th>
+        <th>Eagle Scout</th>
+        <th>Wood Badge</th>
+        <th>Scouter’s Training</th>
+        <th>Den Leader</th>
+        <th>Silver Beaver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name-col">Adam Levine</td>
+        <td class="role-col">New Member Coord.</td>
+        <td></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td><img src="images/scouterstraining.png" alt="Scouter’s Training"></td>
+        <td><img src="images/denleader.png" alt="Den Leader Award"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="name-col">Barry Anderson</td>
+        <td class="role-col">Asst. Scoutmaster</td>
+        <td></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="name-col">Charlie Tate</td>
+        <td class="role-col">Asst. Scoutmaster</td>
+        <td><img src="images/eagle.png" alt="Eagle Scout"></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="name-col">James Waszak</td>
+        <td class="role-col">Pack Committee</td>
+        <td><img src="images/eagle.png" alt="Eagle Scout"></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="name-col">Jeffrey Stobie</td>
+        <td class="role-col">Pack Committee</td>
+        <td></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="name-col">Kate Sklat</td>
+        <td class="role-col">Secretary</td>
+        <td></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td><img src="images/silverbeaver.png" alt="Silver Beaver"></td>
+      </tr>
+      <tr>
+        <td class="name-col">Katie Anderson</td>
+        <td class="role-col">Committee Chair</td>
+        <td></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
-<tr>
-  <td>Charlie Tate</td>
-  <td>Asst. Scoutmaster</td>
-  <td style="text-align: center; vertical-align: middle; height: 80px;">
-    <img src="images/eagle.png" alt="Eagle Scout Badge">
-  </td>
-  <td style="text-align: center; vertical-align: middle;">
-    <img src="images/woodbadge.png" alt="Wood Badge Logo">
-  </td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td>James Waszak</td>
-  <td>Pack Committee</td>
-  <td style="text-align: center; vertical-align: middle; height: 80px;">
-    <img src="images/eagle.png" alt="Eagle Scout Badge">
-  </td>
-  <td style="text-align: center; vertical-align: middle;">
-    <img src="images/woodbadge.png" alt="Wood Badge Logo">
-  </td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td>Jeffrey Stobie</td>
-  <td>Pack Committee</td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td>Kate Sklat</td>
-  <td>Secretary</td>
-  <td></td>
-  <td style="text-align: center; vertical-align: middle;">
-    <img src="images/woodbadge.png" alt="Wood Badge Logo">
-  </td>
-  <td></td>
-  <td></td>
-  <td style="text-align: center; vertical-align: middle; height: 60px;">
-    <img src="images/sb pix.jpg" alt="Silver Beaver Badge" style="height: 40px;">
-  </td>
-</tr>
-
-<tr>
-  <td>Katie Anderson</td>
-  <td>Committee Chair</td>
-  <td></td>
-    <td style="text-align: center; vertical-align: middle;">
-    <img src="images/woodbadge.png" alt="Wood Badge Logo">
-  </td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td>Lauren Lichty Sr.</td>
-  <td>Scoutmaster</td>
-  <td style="text-align: center; vertical-align: middle; height: 80px;">
-    <img src="images/eagle.png" alt="Eagle Scout Badge">
-  </td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td>Loren Lichty Jr.</td>
-  <td>Asst. Scoutmaster</td>
-  <td style="text-align: center; vertical-align: middle; height: 80px;">
-    <img src="images/eagle.png" alt="Eagle Scout Badge">
-  </td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td>Mike Zemnenieuski</td>
-  <td>Chartered Org Rep</td>
-  <td style="text-align: center; vertical-align: middle; height: 80px;">
-    <img src="images/eagle.png" alt="Eagle Scout Badge">
-  </td>
-  <td style="text-align: center; vertical-align: middle;">
-    <img src="images/woodbadge.png" alt="Wood Badge Logo">
-  </td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td>RJ Sklat</td>
-  <td>Asst. Scoutmaster</td>
-  <td style="text-align: center; vertical-align: middle; height: 80px;">
-    <img src="images/eagle.png" alt="Eagle Scout Badge">
-  </td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-      </tbody>
-    </table>
-  </main>
 </body>
 </html>
