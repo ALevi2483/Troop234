@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Adult Leader Awards</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adult Leader Awards - Troop 234</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      margin: 40px;
-      background: #f4f9f9;
+      margin: 20px;
+      background-color: #f5f9f5;
       color: #333;
     }
     h1 {
@@ -16,101 +17,173 @@
     }
     p.intro {
       text-align: center;
-      margin-bottom: 40px;
-      color: #555;
+      margin-bottom: 30px;
+      color: #444;
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+    /* Desktop Table */
+    table.leader-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
     }
+    table.leader-table th, table.leader-table td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+    table.leader-table th {
+      background-color: #005a9c;
+      color: white;
+    }
+    table.leader-table td img {
+      height: 40px;
+    }
+    .name-col { font-weight: bold; text-align: left; }
+    .role-col { text-align: left; font-style: italic; }
 
+    /* Mobile Card View */
     .leader-card {
-      background: white;
+      display: none;
+      background-color: #fff;
       border-radius: 10px;
+      margin: 15px 0;
+      padding: 15px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: 0.3s;
     }
-
-    .leader-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .leader-name {
-      font-weight: bold;
+    .leader-card h3 {
+      margin: 0 0 5px;
       font-size: 1.2em;
       color: #003366;
-      margin-bottom: 5px;
     }
-
-    .leader-role {
+    .leader-card p {
+      margin: 2px 0 8px;
       font-style: italic;
-      margin-bottom: 10px;
-      color: #555;
+      color: #444;
     }
-
-    .awards {
+    .badges {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
-
-    .award {
+    .badges div {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 6px;
-      font-size: 0.9em;
-      background: #eef4fa;
-      padding: 5px 8px;
-      border-radius: 6px;
+      font-size: 0.8em;
+    }
+    .badges img {
+      height: 40px;
+      max-width: 60px;
     }
 
-    .award img {
-      height: 20px;
+    /* Responsive Switch */
+    @media screen and (max-width: 768px) {
+      table.leader-table {
+        display: none;
+      }
+      .leader-card {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
 
   <h1>Adult Leader Awards</h1>
-  <p class="intro">
-    At Troop 234, we proudly recognize the service and accomplishments of our adult leaders. Their dedication is shown below.
-  </p>
+  <p class="intro">At Troop 234, we proudly recognize the service and accomplishments of our adult leaders.</p>
 
-  <div class="card-grid">
-    <!-- Leader Card -->
-    <div class="leader-card">
-      <div class="leader-name">Adam Levine</div>
-      <div class="leader-role">New Member Coord.</div>
-      <div class="awards">
-        <div class="award"><img src="images/woodbadge.png" alt="Wood Badge">Wood Badge</div>
-        <div class="award"><img src="images/scouterstraining.png" alt="Scouter’s Training">Scouter's Training</div>
-        <div class="award"><img src="images/denleader.png" alt="Den Leader">Den Leader</div>
-      </div>
+  <!-- DESKTOP TABLE -->
+  <table class="leader-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role(s)</th>
+        <th>Eagle Scout</th>
+        <th>Wood Badge</th>
+        <th>Scouter’s Training</th>
+        <th>Den Leader</th>
+        <th>Silver Beaver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name-col">Adam Levine</td>
+        <td class="role-col">New Member Coord.</td>
+        <td></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td><img src="images/scouterstraining.png" alt="Scouter’s Training"></td>
+        <td><img src="images/denleader.png" alt="Den Leader"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="name-col">Barry Anderson</td>
+        <td class="role-col">Asst. Scoutmaster</td>
+        <td><img src="images/eagle.png" alt="Eagle Scout"></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="name-col">Charlie Tate</td>
+        <td class="role-col">Asst. Scoutmaster</td>
+        <td><img src="images/eagle.png" alt="Eagle Scout"></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="name-col">James Waszak</td>
+        <td class="role-col">Pack Committee</td>
+        <td><img src="images/eagle.png" alt="Eagle Scout"></td>
+        <td><img src="images/woodbadge.png" alt="Wood Badge"></td>
+        <td></td>
+        <td></td>
+        <td><img src="images/silverbeaver.png" alt="Silver Beaver"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- MOBILE CARD VIEW -->
+  <div class="leader-card">
+    <h3>Adam Levine</h3>
+    <p>New Member Coord.</p>
+    <div class="badges">
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+      <div><img src="images/scouterstraining.png" alt="Scouter’s Training"><span>Scouter's Training</span></div>
+      <div><img src="images/denleader.png" alt="Den Leader"><span>Den Leader</span></div>
     </div>
+  </div>
 
-    <!-- Leader Card -->
-    <div class="leader-card">
-      <div class="leader-name">Barry Anderson</div>
-      <div class="leader-role">Asst. Scoutmaster</div>
-      <div class="awards">
-        <div class="award"><img src="images/woodbadge.png" alt="Wood Badge">Wood Badge</div>
-      </div>
+  <div class="leader-card">
+    <h3>Barry Anderson</h3>
+    <p>Asst. Scoutmaster</p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
     </div>
+  </div>
 
-    <!-- Leader Card -->
-    <div class="leader-card">
-      <div class="leader-name">Charlie Tate</div>
-      <div class="leader-role">Asst. Scoutmaster</div>
-      <div class="awards">
-        <div class="award"><img src="images/eagle.png" alt="Eagle Scout">Eagle Scout</div>
-        <div class="award"><img src="images/woodbadge.png" alt="Wood Badge">Wood Badge</div>
-      </div>
+  <div class="leader-card">
+    <h3>Charlie Tate</h3>
+    <p>Asst. Scoutmaster</p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
     </div>
+  </div>
 
-    <!-- Add more cards here -->
+  <div class="leader-card">
+    <h3>James Waszak</h3>
+    <p>Pack Committee</p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+      <div><img src="images/silverbeaver.png" alt="Silver Beaver"><span>Silver Beaver</span></div>
+    </div>
   </div>
 
 </body>
