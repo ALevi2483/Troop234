@@ -1,4 +1,3 @@
-<!-- BEGIN HTML -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,45 +20,27 @@
       margin-bottom: 30px;
       color: #444;
     }
-
-    table.leader-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
-    table.leader-table th, table.leader-table td {
-      padding: 12px;
-      text-align: center;
-      border: 1px solid #ccc;
-    }
-    table.leader-table th {
-      background-color: #005a9c;
-      color: white;
-    }
-    table.leader-table td img {
-      height: 40px;
-    }
-    .name-col { font-weight: bold; text-align: left; }
-    .role-col { text-align: left; font-style: italic; }
-
     .leader-card {
-      display: none;
       background-color: #fff;
       border-radius: 10px;
-      margin: 15px 0;
-      padding: 15px;
+      padding: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 300px;
     }
     .leader-card h3 {
-      margin: 0 0 5px;
-      font-size: 1.2em;
+      margin-top: 0;
       color: #003366;
     }
     .leader-card p {
-      margin: 2px 0 8px;
       font-style: italic;
-      color: #444;
+      margin: 4px 0 12px;
+      color: #666;
     }
     .badges {
       display: flex;
@@ -71,19 +52,12 @@
       flex-direction: column;
       align-items: center;
       font-size: 0.8em;
+      text-align: center;
+      width: 80px;
     }
     .badges img {
       height: 40px;
       max-width: 60px;
-    }
-
-    @media screen and (max-width: 768px) {
-      table.leader-table {
-        display: none;
-      }
-      .leader-card {
-        display: block;
-      }
     }
   </style>
 </head>
@@ -92,45 +66,99 @@
 <h1>Adult Leader Awards</h1>
 <p class="intro">At Troop 234, we proudly recognize the service and accomplishments of our adult leaders.</p>
 
-<table class="leader-table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Role(s)</th>
-      <th>Eagle Scout</th>
-      <th>Wood Badge</th>
-      <th>Scouter’s Training</th>
-      <th>Den Leader</th>
-      <th>Silver Beaver</th>
-      <th>District Award of Merit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td class="name-col">Adam Levine</td><td class="role-col">New Member Coord.</td><td></td><td><img src="images/woodbadge.png"></td><td><img src="images/Scouters Training.png"></td><td><img src="images/Den Leader.png"></td><td></td><td></td></tr>
-    <tr><td class="name-col">Barry Anderson</td><td class="role-col">Asst. Scoutmaster</td><td><img src="images/eagle.png"></td><td><img src="images/woodbadge.png"></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="name-col">Charlie Tate</td><td class="role-col">Asst. Scoutmaster</td><td><img src="images/eagle.png"></td><td><img src="images/woodbadge.png"></td><td></td><td></td><td></td><td><img src="images/district merit.png"></td></tr>
-    <tr><td class="name-col">James Waszak</td><td class="role-col">Pack Committee</td><td><img src="images/eagle.png"></td><td><img src="images/woodbadge.png"></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="name-col">Jeffrey Stobie</td><td class="role-col">Pack Committee</td><td></td><td><img src="images/woodbadge.png"></td><td></td><td></td><td></td><td><img src="images/district merit.png"></td></tr>
-    <tr><td class="name-col">Kate Sklat</td><td class="role-col">Secretary</td><td></td><td><img src="images/woodbadge.png"></td><td></td><td></td><td><img src="images/sb pix.jpg"></td><td><img src="images/district merit.png"></td></tr>
-    <tr><td class="name-col">Katie Anderson</td><td class="role-col">Committee Chair</td><td></td><td><img src="images/woodbadge.png"></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="name-col">Loren Lichty</td><td class="role-col">Scoutmaster</td><td><img src="images/eagle.png"></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="name-col">Loren Lichty Jr.</td><td class="role-col">Asst. Scoutmaster</td><td><img src="images/eagle.png"></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td class="name-col">RJ Sklat</td><td class="role-col">Asst. Scoutmaster</td><td><img src="images/eagle.png"></td><td></td><td></td><td></td><td></td><td></td></tr>
-  </tbody>
-</table>
+<div class="cards">
 
-<!-- MOBILE CARDS -->
-<div class="leader-card"><h3>Adam Levine</h3><p>New Member Coord.</p><div class="badges"><div><img src="images/woodbadge.png"><span>Wood Badge</span></div><div><img src="images/Scouters Training.png"><span>Scouter's Training</span></div><div><img src="images/Den Leader.png"><span>Den Leader</span></div></div></div>
-<div class="leader-card"><h3>Barry Anderson</h3><p>Asst. Scoutmaster</p><div class="badges"><div><img src="images/eagle.png"><span>Eagle Scout</span></div><div><img src="images/woodbadge.png"><span>Wood Badge</span></div></div></div>
-<div class="leader-card"><h3>Charlie Tate</h3><p>Asst. Scoutmaster</p><div class="badges"><div><img src="images/eagle.png"><span>Eagle Scout</span></div><div><img src="images/woodbadge.png"><span>Wood Badge</span></div><div><img src="images/district merit.png"><span>District Award</span></div></div></div>
-<div class="leader-card"><h3>James Waszak</h3><p>Pack Committee</p><div class="badges"><div><img src="images/eagle.png"><span>Eagle Scout</span></div><div><img src="images/woodbadge.png"><span>Wood Badge</span></div></div></div>
-<div class="leader-card"><h3>Jeffrey Stobie</h3><p>Pack Committee</p><div class="badges"><div><img src="images/woodbadge.png"><span>Wood Badge</span></div><div><img src="images/district merit.png"><span>District Award</span></div></div></div>
-<div class="leader-card"><h3>Kate Sklat</h3><p>Secretary</p><div class="badges"><div><img src="images/woodbadge.png"><span>Wood Badge</span></div><div><img src="images/district merit.png"><span>District Award</span></div><div><img src="images/sb pix.jpg"><span>Silver Beaver</span></div></div></div>
-<div class="leader-card"><h3>Katie Anderson</h3><p>Committee Chair</p><div class="badges"><div><img src="images/woodbadge.png"><span>Wood Badge</span></div></div></div>
-<div class="leader-card"><h3>Loren Lichty</h3><p>Scoutmaster</p><div class="badges"><div><img src="images/eagle.png"><span>Eagle Scout</span></div></div></div>
-<div class="leader-card"><h3>Loren Lichty Jr.</h3><p>Asst. Scoutmaster</p><div class="badges"><div><img src="images/eagle.png"><span>Eagle Scout</span></div></div></div>
-<div class="leader-card"><h3>RJ Sklat</h3><p>Asst. Scoutmaster</p><div class="badges"><div><img src="images/eagle.png"><span>Eagle Scout</span></div></div></div>
+  <div class="leader-card">
+    <h3>Adam Levine</h3>
+    <p>New Member Coord.</p>
+    <div class="badges">
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+      <div><img src="images/Scouters Training.png" alt="Scouter’s Training"><span>Scouter's Training</span></div>
+      <div><img src="images/Den Leader.png" alt="Den Leader"><span>Den Leader</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>Barry Anderson</h3>
+    <p>Asst. Scoutmaster</p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>Charlie Tate</h3>
+    <p>Asst. Scoutmaster</p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+      <div><img src="images/district merit.png" alt="District Award"><span>District Award</span></div>
+      <div><img src="images/trainers award.png" alt="Trainer’s Award"><span>Trainer’s Award</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>James Waszak</h3>
+    <p>Pack Committee</p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>Jeffrey Stobie</h3>
+    <p>Pack Committee</p>
+    <div class="badges">
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+      <div><img src="images/district merit.png" alt="District Award"><span>District Award</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>Kate Sklat</h3>
+    <p>Secretary</p>
+    <div class="badges">
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+      <div><img src="images/district merit.png" alt="District Award"><span>District Award</span></div>
+      <div><img src="images/sb pix.jpg" alt="Silver Beaver"><span>Silver Beaver</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>Katie Anderson</h3>
+    <p>Committee Chair</p>
+    <div class="badges">
+      <div><img src="images/woodbadge.png" alt="Wood Badge"><span>Wood Badge</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>Loren Lichty</h3>
+    <p>Scoutmaster</p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>Loren Lichty Jr.</h3>
+    <p>Asst. Scoutmaster</p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+    </div>
+  </div>
+
+  <div class="leader-card">
+    <h3>RJ Sklat</h3>
+    <p></p>
+    <div class="badges">
+      <div><img src="images/eagle.png" alt="Eagle Scout"><span>Eagle Scout</span></div>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>
-<!-- END HTML -->
