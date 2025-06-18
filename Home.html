@@ -29,6 +29,15 @@
       margin: 0.3rem 0;
     }
 
+    header a {
+      color: #cce6ff;
+      text-decoration: none;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
     main {
       padding: 2rem;
       max-width: 1000px;
@@ -89,12 +98,9 @@
       color: #003366;
       margin-top: 0;
       font-size: 1.2rem;
-    }
-
-    .highlight-box::before {
-      content: "⭐";
-      font-size: 1.2rem;
-      margin-right: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     @media (max-width: 600px) {
@@ -104,6 +110,10 @@
 
       .welcome-image {
         max-height: 300px;
+      }
+
+      .highlight-box h3 {
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -123,7 +133,11 @@
     <h1>Troop 234 - Chesapeake, VA</h1>
     <p>We meet Mondays from 7:00–8:30 PM</p>
     <p>Covenant United Methodist Church</p>
-    <p>2004 Dock Landing Blvd, Chesapeake, VA</p>
+    <p>
+      <a href="https://www.google.com/maps?q=2004+Dock+Landing+Blvd,+Chesapeake,+VA" target="_blank">
+        2004 Dock Landing Blvd, Chesapeake, VA
+      </a>
+    </p>
   </header>
 
   <main>
@@ -137,15 +151,15 @@
 
     <div class="highlights">
       <div class="highlight-box">
-        <h3>Scout-Led Values</h3>
+        <h3>🧭 Scout-Led Values</h3>
         <p>Troop 234 is youth-led, empowering Scouts to plan adventures, meetings, and community service with trusted adult mentors.</p>
       </div>
       <div class="highlight-box">
-        <h3>Family Involvement</h3>
+        <h3>👪 Family Involvement</h3>
         <p>We believe in strong family partnerships. Parents serve as volunteers, committee members, and supporters every step of the way.</p>
       </div>
       <div class="highlight-box">
-        <h3>Service & Community</h3>
+        <h3>❤️ Service & Community</h3>
         <p>Giving back is part of our DNA. Our Scouts engage in service activities that make a difference locally and beyond.</p>
       </div>
     </div>
