@@ -13,6 +13,8 @@
       --brand: #003366;
       --accent: #2d593f;
       --border: #e4eae4;
+      --thead: #eef6ee;
+      --rowhover: #f8fff8;
     }
     * { box-sizing: border-box; }
     body {
@@ -21,19 +23,11 @@
       background: var(--bg);
       color: var(--text);
     }
-    header {
-      padding: 28px 16px 12px;
-      text-align: center;
-    }
+    header { padding: 28px 16px 12px; text-align: center; }
     h1 { margin: 0 0 8px; color: var(--brand); font-size: clamp(1.4rem, 2.5vw, 2rem); }
     p.sub { margin: 0; color: var(--muted); }
 
-    .wrap {
-      max-width: 1000px;
-      margin: 16px auto 40px;
-      padding: 0 16px 24px;
-    }
-
+    .wrap { max-width: 1000px; margin: 16px auto 40px; padding: 0 16px 24px; }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -50,37 +44,66 @@
       margin-bottom: 12px;
     }
     .toolbar .stat { color: var(--muted); font-size: .95rem; }
-    .search {
-      display: flex; gap: 8px; align-items: center; justify-content: end;
-      flex-wrap: wrap;
-    }
+    .search { display: flex; gap: 8px; align-items: center; justify-content: end; flex-wrap: wrap; }
     input[type="search"] {
       padding: 10px 12px;
       border: 1px solid var(--border);
       border-radius: 10px;
       width: min(360px, 100%);
+      font-size: 16px; /* avoids iOS zoom */
     }
     button {
-      padding: 10px 14px; border: 1px solid var(--border); background: #fff;
-      border-radius: 10px; cursor: pointer;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      cursor: pointer;
     }
 
-    .table-wrap { overflow-x: auto; }
+    .table-wrap { overflow-x: auto; border-radius: 10px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.98rem; }
     thead th {
       position: sticky; top: 0; z-index: 1;
-      background: #f7fbf7; color: #0b2a10; text-align: left; font-weight: 600;
+      background: var(--thead);
+      color: #0b2a10;
+      text-align: left; font-weight: 600;
       border-bottom: 2px solid var(--border);
-      padding: 10px 12px; white-space: nowrap; cursor: pointer;
+      padding: 12px;
+      white-space: nowrap;
+      cursor: pointer;
     }
-    tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
-    tbody tr:hover { background: #f8fff8; }
+    tbody td { padding: 12px; border-bottom: 1px solid var(--border); }
+    tbody tr:hover { background: var(--rowhover); }
 
     .num { width: 80px; }
-    .name { min-width: 240px; }
-    .date { min-width: 160px; }
+    .name { min-width: 260px; }
+    .date { min-width: 180px; }
 
     footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size: .9rem; }
+
+    /* Mobile polish without changing desktop */
+    @media (max-width: 640px) {
+      header { padding: 20px 14px 8px; }
+      h1 { font-size: 1.4rem; line-height: 1.2; }
+      .wrap { margin: 8px auto 28px; padding: 0 12px 16px; }
+      .card { padding: 12px; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+
+      .toolbar { grid-template-columns: 1fr; gap: 10px; }
+      .toolbar .stat { order: 2; font-size: .9rem; }
+      .search { order: 1; justify-content: stretch; }
+      .search input[type="search"] { width: 100%; padding: 12px; }
+      .search button { padding: 10px 12px; border-radius: 12px; }
+
+      table { font-size: .95rem; }
+      thead th { padding: 12px 10px; box-shadow: 0 2px 0 rgba(0,0,0,.03); }
+      tbody td { padding: 12px 10px; }
+      tbody tr:nth-child(even) { background: #fbfefb; }
+      .num { width: 56px; }
+      .name { min-width: 220px; word-break: break-word; }
+      .date { min-width: 170px; }
+
+      footer { padding: 18px 12px; font-size: .85rem; }
+    }
   </style>
 </head>
 <body>
@@ -123,52 +146,52 @@
   <script>
     // Data: earliest to latest. "no" is sequential order within Troop 234 history.
     const EAGLES = [
-      { no: 1,  name: 'Joseph D. Klos',                      date: 'August 11, 1994' },
-      { no: 2,  name: 'Robert Alan Small',                   date: 'July 31, 1996' },
-      { no: 3,  name: 'Andrew Justin Tempel',                date: 'February 16, 1998' },
-      { no: 4,  name: 'Thomas William Roisen',               date: 'February 3, 1999' },
-      { no: 5,  name: 'David Scott Small',                   date: 'May 11, 2000' },
-      { no: 6,  name: 'Andrew Otto Linke',                   date: 'January 10, 2002' },
-      { no: 7,  name: 'Sean Alan Fenton',                    date: 'March 14, 2002' },
-      { no: 8,  name: 'Sean Michael Peacock',                date: 'August 29, 2002' },
-      { no: 9,  name: 'David Lee Friisch',                   date: 'September 5, 2002' },
-      { no: 10, name: 'Rex Thomas Rader',                    date: 'December 29, 2002' },
-      { no: 11, name: 'Timothy John Saeger',                 date: 'December 29, 2002' },
-      { no: 12, name: 'George T. Haithcock',                 date: 'January 9, 2003' },
-      { no: 13, name: 'Stephen Michael Gulick',              date: 'June 16, 2004' },
-      { no: 14, name: 'Joseph Karl Doherty',                 date: 'March 17, 2005' },
-      { no: 15, name: 'Nicholas Anthony Stobie',             date: 'March 17, 2005' },
-      { no: 16, name: 'Matthew Michael Spaulding',           date: 'October 6, 2005' },
-      { no: 17, name: 'Bryan Jerome Boomer',                 date: 'May 23, 2006' },
-      { no: 18, name: 'Zachary Levious Bradshaw',            date: 'July 23, 2007' },
-      { no: 19, name: 'Stephen Lewis Oliver',                date: 'August 3, 2007' },
-      { no: 20, name: 'Chase A. Melius',                     date: 'February 5, 2008' },
-      { no: 21, name: 'Matthew Kyle Dennison',               date: 'September 15, 2009' },
-      { no: 22, name: 'Stephen Earl Pedersen',               date: 'June 6, 2011' },
-      { no: 23, name: 'Kenneth Wayne Hodgins',               date: 'December 9, 2013' },
-      { no: 24, name: 'Connor Patrick Munn',                 date: 'February 23, 2015' },
-      { no: 25, name: 'George Montgomery DeBoer',            date: 'May 11, 2015' },
-      { no: 26, name: 'Christopher David Hahn',              date: 'August 10, 2015' },
-      { no: 27, name: 'Aden Christopher Merkel',             date: 'October 15, 2018' },
-      { no: 28, name: 'Joseph Michael Jones',                date: 'January 14, 2019' },
-      { no: 29, name: 'Justice Sutton Walter',               date: 'April 26, 2019' },
-      { no: 30, name: 'Timothy Matthew Zemienieuski',        date: 'June 3, 2019' },
-      { no: 31, name: 'Robert Reid Stambaugh',               date: 'December 9, 2019' },
-      { no: 32, name: 'Patrick Fitzgerald Smith',            date: 'February 3, 2020' },
-      { no: 33, name: 'Ian Jameson Bean',                    date: 'May 5, 2020' },
-      { no: 34, name: 'Devin Edward Cordell',                date: 'May 18, 2020' },
-      { no: 35, name: 'Richard Aaron Eure',                  date: 'July 14, 2020' },
-      { no: 36, name: 'Ross Aiden Roberts',                  date: 'December 15, 2021' },
-      { no: 37, name: 'Dameer Marense Carter',               date: 'December 30, 2021' },
-      { no: 38, name: 'Adam Constantine Russell',            date: 'March 23, 2022' },
-      { no: 39, name: 'Carson Wyatt Heffernan',              date: 'May 23, 2022' },
-      { no: 40, name: 'Evan Scott Lawson',                   date: 'September 22, 2022' },
-      { no: 41, name: 'Matthew Aaron Rollings',              date: 'October 24, 2022' },
-      { no: 42, name: 'Zachary Arman Zaman',                 date: 'December 16, 2022' },
-      { no: 43, name: 'Logan Wilford Dietrich Bluemel',      date: 'February 6, 2023' },
-      { no: 44, name: 'Jacob Bryan Aldridge',                date: 'June 12, 2023' },
-      { no: 45, name: 'Dylan Thomas Leonard',                date: 'October 2, 2023' },
-      { no: 46, name: 'Richard Michael Sklat, Jr.',          date: 'July 13, 2024' }
+      { no: 1,  name: 'Joseph D. Klos',                 date: 'August 11, 1994' },
+      { no: 2,  name: 'Robert Alan Small',              date: 'July 31, 1996' },
+      { no: 3,  name: 'Andrew Justin Tempel',           date: 'February 16, 1998' },
+      { no: 4,  name: 'Thomas William Roisen',          date: 'February 3, 1999' },
+      { no: 5,  name: 'David Scott Small',              date: 'May 11, 2000' },
+      { no: 6,  name: 'Andrew Otto Linke',              date: 'January 10, 2002' },
+      { no: 7,  name: 'Sean Alan Fenton',               date: 'March 14, 2002' },
+      { no: 8,  name: 'Sean Michael Peacock',           date: 'August 29, 2002' },
+      { no: 9,  name: 'David Lee Friisch',              date: 'September 5, 2002' },
+      { no: 10, name: 'Rex Thomas Rader',               date: 'December 29, 2002' },
+      { no: 11, name: 'Timothy John Saeger',            date: 'December 29, 2002' },
+      { no: 12, name: 'George T. Haithcock',            date: 'January 9, 2003' },
+      { no: 13, name: 'Stephen Michael Gulick',         date: 'June 16, 2004' },
+      { no: 14, name: 'Joseph Karl Doherty',            date: 'March 17, 2005' },
+      { no: 15, name: 'Nicholas Anthony Stobie',        date: 'March 17, 2005' },
+      { no: 16, name: 'Matthew Michael Spaulding',      date: 'October 6, 2005' },
+      { no: 17, name: 'Bryan Jerome Boomer',            date: 'May 23, 2006' },
+      { no: 18, name: 'Zachary Levious Bradshaw',       date: 'July 23, 2007' },
+      { no: 19, name: 'Stephen Lewis Oliver',           date: 'August 3, 2007' },
+      { no: 20, name: 'Chase A. Melius',                date: 'February 5, 2008' },
+      { no: 21, name: 'Matthew Kyle Dennison',          date: 'September 15, 2009' },
+      { no: 22, name: 'Stephen Earl Pedersen',          date: 'June 6, 2011' },
+      { no: 23, name: 'Kenneth Wayne Hodgins',          date: 'December 9, 2013' },
+      { no: 24, name: 'Connor Patrick Munn',            date: 'February 23, 2015' },
+      { no: 25, name: 'George Montgomery DeBoer',       date: 'May 11, 2015' },
+      { no: 26, name: 'Christopher David Hahn',         date: 'August 10, 2015' },
+      { no: 27, name: 'Aden Christopher Merkel',        date: 'October 15, 2018' },
+      { no: 28, name: 'Joseph Michael Jones',           date: 'January 14, 2019' },
+      { no: 29, name: 'Justice Sutton Walter',          date: 'April 26, 2019' },
+      { no: 30, name: 'Timothy Matthew Zemienieuski',   date: 'June 3, 2019' },
+      { no: 31, name: 'Robert Reid Stambaugh',          date: 'December 9, 2019' },
+      { no: 32, name: 'Patrick Fitzgerald Smith',       date: 'February 3, 2020' },
+      { no: 33, name: 'Ian Jameson Bean',               date: 'May 5, 2020' },
+      { no: 34, name: 'Devin Edward Cordell',           date: 'May 18, 2020' },
+      { no: 35, name: 'Richard Aaron Eure',             date: 'July 14, 2020' },
+      { no: 36, name: 'Ross Aiden Roberts',             date: 'December 15, 2021' },
+      { no: 37, name: 'Dameer Marense Carter',          date: 'December 30, 2021' },
+      { no: 38, name: 'Adam Constantine Russell',       date: 'March 23, 2022' },
+      { no: 39, name: 'Carson Wyatt Heffernan',         date: 'May 23, 2022' },
+      { no: 40, name: 'Evan Scott Lawson',              date: 'September 22, 2022' },
+      { no: 41, name: 'Matthew Aaron Rollings',         date: 'October 24, 2022' },
+      { no: 42, name: 'Zachary Arman Zaman',            date: 'December 16, 2022' },
+      { no: 43, name: 'Logan Wilford Dietrich Bluemel', date: 'February 6, 2023' },
+      { no: 44, name: 'Jacob Bryan Aldridge',           date: 'June 12, 2023' },
+      { no: 45, name: 'Dylan Thomas Leonard',           date: 'October 2, 2023' },
+      { no: 46, name: 'Richard Michael Sklat, Jr.',     date: 'July 13, 2024' }
     ];
 
     const tbody = document.querySelector('#eagleTable tbody');
@@ -206,9 +229,10 @@
     ths.forEach(th => th.addEventListener('click', () => {
       const key = th.dataset.sort;
       if (!key) return;
-      if (sortState.key === key) sortState.asc = !sortState.asc; else { sortState.key = key; sortState.asc = true; }
+      if (sortState.key === key) sortState.asc = !sortState.asc;
+      else { sortState.key = key; sortState.asc = true; }
 
-      const sorted = [...EAGLES].sort((a,b) => {
+      const sorted = [...EAGLES].sort((a, b) => {
         let av, bv;
         if (key === 'name') { av = a.name.toLowerCase(); bv = b.name.toLowerCase(); }
         else if (key === 'date') { av = new Date(a.date); bv = new Date(b.date); }
