@@ -15,107 +15,120 @@
     header {
       background-color: #003366;
       color: white;
-      padding: 1rem;
+      padding: 1.5rem 1rem;
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
+      border-bottom: 4px solid #001f4d;
     }
 
     main {
       padding: 2rem;
       max-width: 900px;
-      margin: auto;
+      margin: 2rem auto;
       background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     h2 {
       color: #003366;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    .events {
+      display: grid;
+      gap: 1rem;
     }
 
     .event {
-      margin-bottom: 1.5rem;
       padding: 1rem;
       border-left: 5px solid #003366;
-      background-color: #f0f0f0;
+      background-color: #eaf4ff;
+      border-radius: 6px;
     }
 
     .event h3 {
-      margin: 0;
+      margin: 0 0 .25rem;
       font-size: 1.2rem;
+      color: #003366;
     }
 
     .event p {
-      margin: 0.5rem 0 0;
+      margin: 0.25rem 0 0;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 1.5rem; }
+      header { font-size: 1.7rem; padding: 1rem; }
+      h2 { font-size: 1.5rem; }
     }
   </style>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MFBKQTV3K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0MFBKQTV3K');
-  </script>
 </head>
 <body>
   <header>Troop 234 Events</header>
+
   <main>
     <h2>Upcoming Popcorn Sales</h2>
 
-    <div class="event">
-      <h3>August 8, 2–8 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
-    </div>
+    <div class="events" aria-live="polite">
+      <div class="event">
+        <h3>August 8, 2–8 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
 
-    <div class="event">
-      <h3>August 15, 5–8 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
-    </div>
+      <div class="event">
+        <h3>August 15, 5–8 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
 
-    <div class="event">
-      <h3>August 23, 8 AM–2 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
-    </div>
+      <div class="event">
+        <h3>August 23, 8 AM–2 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
 
-    <div class="event">
-      <h3>August 24, 8 AM–2 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
-    </div>
+      <div class="event">
+        <h3>August 24, 8 AM–2 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
 
-    <div class="event">
-      <h3>August 30, 2–8 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
-    </div>
+      <div class="event">
+        <h3>August 30, 2–8 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
 
-    <div class="event">
-      <h3>September 13, 8 AM–2 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
-    </div>
+      <div class="event">
+        <h3>September 13, 8 AM–2 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
 
-    <div class="event">
-      <h3>October 4, 8 AM–2 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
-    </div>
+      <div class="event">
+        <h3>October 4, 8 AM–2 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
 
-    <div class="event">
-      <h3>October 11, 2–6 PM</h3>
-      <p><strong>Location:</strong> Food Lion Store #1476 – 2409 Taylor Rd</p>
-    </div>
+      <div class="event">
+        <h3>October 11, 2–6 PM</h3>
+        <p><strong>Location:</strong> Food Lion Store #1476 – 2409 Taylor Rd</p>
+      </div>
 
-    <div class="event">
-      <h3>October 18, 10 AM–6 PM</h3>
-      <p><strong>Location:</strong> Food Lion Store #1476 – 2409 Taylor Rd</p>
-    </div>
+      <div class="event">
+        <h3>October 18, 10 AM–6 PM</h3>
+        <p><strong>Location:</strong> Food Lion Store #1476 – 2409 Taylor Rd</p>
+      </div>
 
-    <div class="event">
-      <h3>October 19, 8 AM–2 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
-    </div>
+      <div class="event">
+        <h3>October 19, 8 AM–2 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
 
-    <div class="event">
-      <h3>November 2, 8 AM–2 PM</h3>
-      <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      <div class="event">
+        <h3>November 2, 8 AM–2 PM</h3>
+        <p><strong>Location:</strong> Lowe’s – 4708 Portsmouth Blvd</p>
+      </div>
     </div>
   </main>
 </body>
