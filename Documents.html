@@ -11,62 +11,94 @@
       background-color: #f5f5f5;
       color: #333;
     }
+
     header {
       background-color: #003366;
       color: white;
-      padding: 1rem;
+      padding: 1.5rem 1rem;
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
+      border-bottom: 4px solid #001f4d;
     }
+
     main {
       padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      max-width: 900px;
+      margin: 2rem auto;
       background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
+
     h2 {
       color: #003366;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 1.8rem;
     }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
     ul {
       list-style-type: none;
       padding: 0;
+      margin: 0 auto 2rem;
+      max-width: 600px;
     }
+
     li {
       margin-bottom: 1rem;
+      background-color: #eaf4ff;
+      border-left: 5px solid #003366;
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      transition: background 0.2s ease-in-out;
     }
+
+    li:hover {
+      background-color: #d8eaff;
+    }
+
     a {
-      color: #0066cc;
+      color: #003366;
       text-decoration: none;
+      font-weight: bold;
     }
+
     a:hover {
       text-decoration: underline;
     }
-  </style>
-<!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MFBKQTV3K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0MFBKQTV3K');
-  </script>
 
+    @media (max-width: 600px) {
+      main { padding: 1.5rem; }
+      header { font-size: 1.6rem; padding: 1rem; }
+      h2 { font-size: 1.5rem; }
+    }
+  </style>
 </head>
+
 <body>
   <header>Documents & Forms</header>
+
   <main>
     <h2>Essential Forms for Troop 234 Members</h2>
-    <p>Below are important documents and forms for Scouts and parents. Please download and complete the necessary forms as required.</p>
+    <p>Below are important documents and forms for Scouts and parents. Please download and complete the required forms as needed.</p>
+
     <ul>
-      <li><a href="documents/Medical_Form_Part_A_and_B.pdf" target="_blank">BSA Medical Form (Parts A & B)</a></li>
-      <li><a href="documents/Permission_Slip.pdf" target="_blank">Troop 234 Permission Slip</a></li>
-      <li><a href="documents/Code_of_Conduct.pdf" target="_blank">Scout Code of Conduct</a></li>
-      <li><a href="documents/Parent_Handbook.pdf" target="_blank">Parent Handbook</a></li>
-      <li><a href="documents/Uniform_Guide.pdf" target="_blank">Uniform Guide</a></li>
+      <li><a href="documents/Medical_Form_Part_A_and_B.pdf" target="_blank" rel="noopener">BSA Medical Form (Parts A & B)</a></li>
+      <li><a href="documents/Permission_Slip.pdf" target="_blank" rel="noopener">Troop 234 Permission Slip</a></li>
+      <li><a href="documents/Code_of_Conduct.pdf" target="_blank" rel="noopener">Scout Code of Conduct</a></li>
+      <li><a href="documents/Parent_Handbook.pdf" target="_blank" rel="noopener">Parent Handbook</a></li>
+      <li><a href="documents/Uniform_Guide.pdf" target="_blank" rel="noopener">Uniform Guide</a></li>
     </ul>
+
     <p>If you have any questions about these forms or need assistance, please contact the Troop Committee.</p>
   </main>
 </body>
 </html>
-
