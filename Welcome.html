@@ -11,63 +11,94 @@
       background-color: #f5f5f5;
       color: #333;
     }
+
     main {
       padding: 2rem;
       max-width: 1000px;
-      margin: auto;
+      margin: 2rem auto;
       background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 1.5rem;
+      font-size: 1.9rem;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
     details {
       margin-bottom: 1rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
       background-color: #f9f9f9;
+      overflow: hidden;
+      transition: box-shadow 0.2s ease-in-out;
     }
+
     summary {
       font-weight: bold;
       padding: 1rem;
       background-color: #e6f0fa;
       cursor: pointer;
       border-bottom: 1px solid #ccc;
+      list-style: none;
     }
+
+    summary:hover {
+      background-color: #d9eaff;
+    }
+
     details[open] summary {
       background-color: #d9eaff;
     }
+
     details div {
-      padding: 1rem;
+      padding: 1rem 1.2rem;
       line-height: 1.6;
     }
+
+    ul, ol {
+      padding-left: 1.4rem;
+      margin: 0.5rem 0 1rem;
+    }
+
     a {
       color: #0066cc;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
-  </style>
-<!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MFBKQTV3K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0MFBKQTV3K');
-  </script>
 
+    @media (max-width: 600px) {
+      main { padding: 1.5rem; margin: 1rem; }
+      h1 { font-size: 1.6rem; }
+      summary { font-size: 1rem; }
+    }
+  </style>
 </head>
+
 <body>
   <main>
-    <p>Welcome to Troop 234! Please explore the topics below to learn more about how our troop works and how your family can get involved.</p>
+    <h1>Welcome to Troop 234</h1>
+    <p>Welcome to Troop 234! Please explore the topics below to learn how our troop operates and how your family can get involved.</p>
 
     <details>
       <summary>How Scouting America Works</summary>
       <div>
-        <p>Scouting is a youth-led program that encourages leadership, outdoor skills, and community service. While Cub Scouting is a family-oriented program, Scouting America shifts responsibility to the youth, empowering them to take charge of their advancement, activities, and troop operations under adult guidance.</p>
-        <p>In Scouting America, youth:</p>
+        <p>Scouting is a youth-led program that builds leadership, outdoor skills, and community service. While Cub Scouting is family-oriented, Scouting America shifts responsibility to the youth, empowering them to plan, lead, and achieve under adult guidance.</p>
         <ul>
           <li>Work on advancement at their own pace.</li>
-          <li>Participate in patrols, small groups that work together within the troop.</li>
-          <li>Plan and lead outdoor adventures and community service projects.</li>
+          <li>Participate in patrols, small groups within the troop.</li>
+          <li>Plan and lead outdoor adventures and service projects.</li>
         </ul>
       </div>
     </details>
@@ -75,7 +106,7 @@
     <details>
       <summary>Troop Organization</summary>
       <div>
-        <p>Troop 234 is organized into patrols, which are small groups of Scouts that work together under the leadership of a Patrol Leader. The Troop is youth-led, with guidance from adult leaders and a Troop Committee.</p>
+        <p>Troop 234 is organized into patrols—small groups of Scouts led by a Patrol Leader. The troop is youth-led, with adult leaders and a Troop Committee offering guidance and support.</p>
         <p>Key leadership roles include:</p>
         <ul>
           <li>Chartered Organization Representative</li>
@@ -91,14 +122,14 @@
     <details>
       <summary>Advancement and Ranks</summary>
       <div>
-        <p>Scouts progress through the following ranks, each requiring specific skills, leadership, and service:</p>
+        <p>Scouts progress through ranks as they gain skills, leadership, and service experience:</p>
         <ul>
-          <li><strong>Scout:</strong> Intro to basics including Scout Oath, Law, salute, handshake, and badge meaning.</li>
-          <li><strong>Tenderfoot:</strong> Camping, hiking, cooking, knots, and personal fitness.</li>
-          <li><strong>Second Class:</strong> Navigation, swimming, fire safety, first aid, and service.</li>
-          <li><strong>First Class:</strong> Advanced outdoor skills, orienteering, and patrol leadership.</li>
-          <li><strong>Star & Life:</strong> Leadership positions, service projects, and merit badges (6+).</li>
-          <li><strong>Eagle Scout:</strong> Final rank requiring leadership, 21 merit badges, and a major community project.</li>
+          <li><strong>Scout:</strong> Learn Oath, Law, salute, handshake, and badge meaning.</li>
+          <li><strong>Tenderfoot:</strong> Camping, hiking, knots, cooking, and fitness basics.</li>
+          <li><strong>Second Class:</strong> Navigation, swimming, fire safety, and first aid.</li>
+          <li><strong>First Class:</strong> Advanced outdoor skills and patrol leadership.</li>
+          <li><strong>Star & Life:</strong> Leadership roles, service projects, and merit badges.</li>
+          <li><strong>Eagle Scout:</strong> The highest rank, requiring 21 merit badges and a community service project.</li>
         </ul>
       </div>
     </details>
@@ -106,20 +137,20 @@
     <details>
       <summary>Uniforms</summary>
       <div>
-        <p><strong>Class A Uniform:</strong> Official khaki shirt, pants, belt, socks (optional), neckerchief and slide.</p>
-        <p><strong>Class B Uniform:</strong> Troop t-shirt and solid color pants or shorts (clean and untorn).</p>
+        <p><strong>Class A:</strong> Official khaki shirt, pants, belt, neckerchief, and slide.</p>
+        <p><strong>Class B:</strong> Troop t-shirt with clean pants or shorts.</p>
       </div>
     </details>
 
     <details>
       <summary>Meetings and Events</summary>
       <div>
-        <p>Troop 234 meets weekly on Mondays from 7:00 – 8:30 PM at Covenant United Methodist Church (2004 Dock Landing Rd, Chesapeake, VA 23321). Class A uniform is required unless otherwise directed.</p>
-        <p>Annual highlights:</p>
+        <p>Troop 234 meets Mondays from 7:00–8:30 PM at Covenant United Methodist Church (2004 Dock Landing Blvd, Chesapeake, VA). Class A uniforms are required unless otherwise noted.</p>
+        <p>Annual highlights include:</p>
         <ul>
           <li>Monthly campouts</li>
           <li>Summer camp</li>
-          <li>Service projects</li>
+          <li>Community service projects</li>
           <li>High-adventure trips</li>
         </ul>
       </div>
@@ -138,7 +169,7 @@
     <details>
       <summary>Contact Information</summary>
       <div>
-        <p>Looking to get in touch with Troop 234? Visit our <a href="Contact.html">Contact Page</a> for key leadership emails and more.</p>
+        <p>Looking to get in touch? Visit our <a href="Contact.html">Contact Page</a> for key leadership emails and details.</p>
       </div>
     </details>
 
@@ -146,8 +177,8 @@
       <summary>Additional Guidance for Parents</summary>
       <div>
         <ul>
-          <li>Stay connected through our website, meetings, and events.</li>
-          <li>Help your Scout remain prepared, and engaged.</li>
+          <li>Stay engaged through meetings, events, and our troop website.</li>
+          <li>Encourage your Scout to remain prepared and active.</li>
           <li>Volunteer for troop events or join the Committee.</li>
         </ul>
       </div>
@@ -160,7 +191,7 @@
           <li>Opening Ceremony (Flag, Oath, Law, Outdoor Code)</li>
           <li>Skills Instruction</li>
           <li>Patrol Meetings</li>
-          <li>Inter-Patrol Game/Activity</li>
+          <li>Inter-Patrol Game or Activity</li>
           <li>Closing Announcements</li>
         </ol>
       </div>
@@ -173,7 +204,7 @@
           <li>Youth Membership: $85/year</li>
           <li>Adult Volunteers: $65/year</li>
           <li>Charter Fee: $100/year per unit</li>
-          <li>Merit Badge Counselors (not registered as leaders): $25/year</li>
+          <li>Merit Badge Counselors (not registered leaders): $25/year</li>
           <li>Troop 234 Dues: $15/month per Scout</li>
         </ul>
       </div>
