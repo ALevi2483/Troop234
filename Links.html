@@ -15,88 +15,110 @@
     main {
       padding: 2rem;
       max-width: 900px;
-      margin: auto;
-      background-color: white;
+      margin: 2rem auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     h2 {
       color: #003366;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
     }
 
     ul {
-      list-style-type: none;
+      list-style: none;
       padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 1.2rem;
     }
 
     li {
       display: flex;
       align-items: center;
-      margin-bottom: 1.2rem;
+      background-color: #eaf4ff;
+      border-left: 5px solid #003366;
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      transition: background 0.2s ease-in-out;
+    }
+
+    li:hover {
+      background-color: #d8eaff;
     }
 
     li img {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       margin-right: 10px;
+      flex-shrink: 0;
     }
 
     a {
-      color: #0066cc;
+      color: #003366;
       text-decoration: none;
       font-weight: bold;
+      line-height: 1.4;
     }
 
     a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 600px) {
+      main { padding: 1.5rem; }
+      h2 { font-size: 1.5rem; }
+      li img { width: 24px; height: 24px; }
+    }
   </style>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MFBKQTV3K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0MFBKQTV3K');
-  </script>
 </head>
+
 <body>
   <main>
     <h2>Resources for Scouts and Families</h2>
     <ul>
       <li>
-        <img src="https://img.icons8.com/color/48/google-drive--v1.png" alt="Drive">
-        <a href="https://drive.google.com/drive/folders/1J6hHo71Y51Rmq20yhTTKFfsNPS0ZLe2L" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.icons8.com/color/48/google-drive--v1.png" alt="Google Drive">
+        <a href="https://drive.google.com/drive/folders/1J6hHo71Y51Rmq20yhTTKFfsNPS0ZLe2L" target="_blank" rel="noopener">
           Troop 234 Shared Photos
         </a>
       </li>
+
       <li>
-        <img src="https://img.icons8.com/color/48/google-forms-new-logo.png" alt="Forms">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYxQkcTpoo75xtTeMBiiflaLrljtE5US8l7qAncM65Uxl_jw/viewform" target="_blank">
+        <img src="https://img.icons8.com/color/48/google-forms-new-logo.png" alt="Google Forms">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYxQkcTpoo75xtTeMBiiflaLrljtE5US8l7qAncM65Uxl_jw/viewform" target="_blank" rel="noopener">
           Family Talent Survey
         </a>
       </li>
+
       <li>
         <img src="https://img.icons8.com/color/48/calendar--v1.png" alt="Calendar">
-        <a href="https://tidewaterbsa.com/calendar/" target="_blank">
+        <a href="https://tidewaterbsa.com/calendar/" target="_blank" rel="noopener">
           Tidewater Council BSA Calendar
         </a>
       </li>
+
       <li>
         <img src="https://img.icons8.com/color/48/shopping-cart--v1.png" alt="Scout Shop">
-        <a href="https://www.google.com/aclk?sa=l&ai=DChcSEwiwt9OB9M-LAxVsAq0GHWiQFaMYABAFGgJwdg&ae=2&aspm=1&co=1&ase=5&gclid=CjwKCAiAn9a9BhBtEiwAbKg6foZACGCE7_26DdN7bmwcV3OzLRMldeIikER2R2mjTMx-4nn_e6v2hxoCkDgQAvD_BwE&sig=AOD64_2UTrVNbDWz4EV2lUABoGiz2G0YLQ&q&adurl&ved=2ahUKEwiw-MuB9M-LAxXQIDQIHTlzEnMQ0Qx6BAgKEAE" target="_blank">
+        <a href="https://www.scoutshop.org" target="_blank" rel="noopener">
           ScoutShop – Uniforms & Gear
         </a>
       </li>
+
       <li>
         <img src="https://img.icons8.com/color/48/certificate--v1.png" alt="Merit Badge">
-        <a href="http://usscouts.org/mb/worksheets/list.asp" target="_blank">
+        <a href="http://usscouts.org/mb/worksheets/list.asp" target="_blank" rel="noopener">
           Merit Badge Worksheets (USScouts.org)
         </a>
       </li>
+
       <li>
         <img src="https://img.icons8.com/color/48/compass--v1.png" alt="Join Scouting">
-        <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank">
-          Join Scouting Today – Click Here to Find a Local Troop
+        <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank" rel="noopener">
+          Join Scouting Today – Find a Local Troop
         </a>
       </li>
     </ul>
