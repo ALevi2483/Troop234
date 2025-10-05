@@ -71,17 +71,22 @@
       padding: 12px;
       white-space: nowrap;
       cursor: pointer;
+      user-select: none;
     }
+    thead th:focus { outline: 2px solid #8ab4ff; outline-offset: 2px; }
+    thead th.sort-asc::after   { content: " ▲"; font-size: .9em; }
+    thead th.sort-desc::after  { content: " ▼"; font-size: .9em; }
+
     tbody td { padding: 12px; border-bottom: 1px solid var(--border); }
     tbody tr:hover { background: var(--rowhover); }
 
-    .num { width: 80px; }
+    .num  { width: 80px; }
     .name { min-width: 260px; }
     .date { min-width: 180px; }
 
     footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size: .9rem; }
 
-    /* Mobile polish without changing desktop */
+    /* Mobile polish */
     @media (max-width: 640px) {
       header { padding: 20px 14px 8px; }
       h1 { font-size: 1.4rem; line-height: 1.2; }
@@ -115,7 +120,7 @@
   <main class="wrap">
     <section class="card">
       <div class="toolbar">
-        <div class="stat"><span id="count"></span> total Eagles</div>
+        <div class="stat"><span id="showing"></span></div>
         <div class="search">
           <input id="q" type="search" placeholder="Search by name or year" aria-label="Search" />
           <button id="clearBtn" type="button">Clear</button>
@@ -126,9 +131,9 @@
         <table id="eagleTable" aria-label="Troop 234 Eagle roster">
           <thead>
             <tr>
-              <th data-sort="number" class="num">No.</th>
-              <th data-sort="name" class="name">Name</th>
-              <th data-sort="date" class="date">Date made Eagle</th>
+              <th data-sort="number" class="num"  role="columnheader" tabindex="0" aria-sort="none">No.</th>
+              <th data-sort="name"   class="name" role="columnheader" tabindex="0" aria-sort="none">Name</th>
+              <th data-sort="date"   class="date" role="columnheader" tabindex="0" aria-sort="none">Date Made Eagle</th>
             </tr>
           </thead>
           <tbody>
@@ -195,9 +200,11 @@
     ];
 
     const tbody = document.querySelector('#eagleTable tbody');
-    const countEl = document.getElementById('count');
+    const showingEl = document.getElementById('showing');
     const q = document.getElementById('q');
     const clearBtn = document.getElementById('clearBtn');
+
+    const TOTAL = EAGLES.length;
 
     function render(rows) {
       tbody.innerHTML = rows.map(r => `
@@ -206,43 +213,83 @@
           <td class="name">${r.name}</td>
           <td class="date">${r.date}</td>
         </tr>`).join('');
-      countEl.textContent = `${rows.length}`;
+      showingEl.textContent = `Showing ${rows.length} of ${TOTAL} total Eagles`;
     }
 
     // Initial render
     render(EAGLES);
 
-    // Search
+    // Search (matches name or year)
     q.addEventListener('input', () => {
       const term = q.value.trim().toLowerCase();
-      const filtered = !term ? EAGLES : EAGLES.filter(r =>
-        r.name.toLowerCase().includes(term) || r.date.toLowerCase().includes(term)
-      );
+      const filtered = !term
+        ? EAGLES
+        : EAGLES.filter(r => {
+            const year = new Date(r.date).getFullYear().toString();
+            return r.name.toLowerCase().includes(term) ||
+                   r.date.toLowerCase().includes(term) ||
+                   year.includes(term);
+          });
       render(filtered);
+      resetSortIndicators();
     });
-    clearBtn.addEventListener('click', () => { q.value = ''; render(EAGLES); q.focus(); });
 
-    // Sorting
+    clearBtn.addEventListener('click', () => { q.value = ''; render(EAGLES); q.focus(); resetSortIndicators(); });
+
+    // Sorting with aria + visual indicators
     const ths = document.querySelectorAll('thead th');
     let sortState = { key: 'number', asc: true };
 
-    ths.forEach(th => th.addEventListener('click', () => {
-      const key = th.dataset.sort;
-      if (!key) return;
-      if (sortState.key === key) sortState.asc = !sortState.asc;
-      else { sortState.key = key; sortState.asc = true; }
+    function resetSortIndicators() {
+      ths.forEach(th => {
+        th.classList.remove('sort-asc', 'sort-desc');
+        th.setAttribute('aria-sort', 'none');
+      });
+    }
 
-      const sorted = [...EAGLES].sort((a, b) => {
+    function applySortIndicator(th, asc) {
+      resetSortIndicators();
+      th.classList.add(asc ? 'sort-asc' : 'sort-desc');
+      th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+    }
+
+    function sortData(key, asc) {
+      const rows = Array.from(tbody.querySelectorAll('tr')).map(tr => {
+        const [no, name, date] = Array.from(tr.children).map(td => td.textContent);
+        return { no: Number(no), name, date };
+      });
+
+      rows.sort((a, b) => {
         let av, bv;
         if (key === 'name') { av = a.name.toLowerCase(); bv = b.name.toLowerCase(); }
         else if (key === 'date') { av = new Date(a.date); bv = new Date(b.date); }
         else { av = a.no; bv = b.no; }
-        if (av < bv) return sortState.asc ? -1 : 1;
-        if (av > bv) return sortState.asc ? 1 : -1;
+        if (av < bv) return asc ? -1 : 1;
+        if (av > bv) return asc ? 1 : -1;
         return 0;
       });
-      render(sorted);
-    }));
+
+      render(rows);
+    }
+
+    function handleSort(th) {
+      const key = th.dataset.sort;
+      if (!key) return;
+      if (sortState.key === key) sortState.asc = !sortState.asc;
+      else { sortState.key = key; sortState.asc = true; }
+      sortData(sortState.key, sortState.asc);
+      applySortIndicator(th, sortState.asc);
+    }
+
+    ths.forEach(th => {
+      th.addEventListener('click', () => handleSort(th));
+      th.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleSort(th);
+        }
+      });
+    });
   </script>
 </body>
 </html>
