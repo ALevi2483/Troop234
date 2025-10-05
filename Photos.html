@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,63 +15,68 @@
     header {
       background-color: #003366;
       color: white;
-      padding: 1rem;
+      padding: 1.5rem 1rem;
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
+      border-bottom: 4px solid #001f4d;
     }
 
     main {
       padding: 2rem;
       max-width: 1000px;
-      margin: auto;
-      background-color: white;
+      margin: 2rem auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     h2 {
       color: #003366;
       text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
+      gap: 1rem;
     }
 
     .gallery img {
       width: 100%;
       height: auto;
-      border: 4px solid #ddd;
-      border-radius: 8px;
-      transition: transform 0.2s;
+      border: 4px solid #d9e3ee;
+      border-radius: 10px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
       border-color: #003366;
     }
+
+    @media (max-width: 600px) {
+      main { padding: 1.5rem; margin: 1rem; }
+      header { font-size: 1.6rem; padding: 1rem; }
+      h2 { font-size: 1.4rem; }
+    }
   </style>
- <!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MFBKQTV3K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0MFBKQTV3K');
-  </script>
 </head>
+
 <body>
   <header>Troop 234 Photo Gallery</header>
+
   <main>
     <h2>Memories from Our Scouting Adventures</h2>
     <div class="gallery">
-      <img src="images/troop-camp1.jpg" alt="Campout 1">
-      <img src="images/troop-service.jpg" alt="Community Service">
-      <img src="images/troop-hike.jpg" alt="Hiking Event">
-      <img src="images/troop-court-of-honor.jpg" alt="Court of Honor">
-      <img src="images/troop-meeting.jpg" alt="Troop Meeting">
-      <img src="images/troop-campfire.jpg" alt="Campfire Night">
+      <img src="images/troop-camp1.jpg" alt="Troop 234 Campout" loading="lazy">
+      <img src="images/troop-service.jpg" alt="Troop 234 Community Service Project" loading="lazy">
+      <img src="images/troop-hike.jpg" alt="Troop 234 Hiking Trip" loading="lazy">
+      <img src="images/troop-court-of-honor.jpg" alt="Troop 234 Court of Honor Ceremony" loading="lazy">
+      <img src="images/troop-meeting.jpg" alt="Troop 234 Weekly Meeting" loading="lazy">
+      <img src="images/troop-campfire.jpg" alt="Troop 234 Campfire Night" loading="lazy">
     </div>
   </main>
 </body>
