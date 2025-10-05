@@ -4,45 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Troop 234 Member Area</title>
-  <link rel="stylesheet" href="style.css">
   <style>
+    :root {
+      --bg: #f5f9f5;
+      --card: #ffffff;
+      --ink: #223;
+      --brand: #003366;
+      --accent: #eaf4ff;
+      --border: #cfd8cf;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f5f9f5;
+      background-color: var(--bg);
+      color: var(--ink);
     }
     .content-wrapper {
       max-width: 900px;
-      margin: 40px auto;
+      margin: 2.5rem auto;
       padding: 0 20px;
     }
+    h1 {
+      margin: 0 0 1rem;
+      text-align: center;
+      color: var(--brand);
+      font-size: 1.9rem;
+    }
     details {
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-bottom: 15px;
-      padding: 15px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     summary {
-      font-size: 1.2rem;
-      font-weight: bold;
+      font-size: 1.1rem;
+      font-weight: 700;
       cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      outline: none;
     }
-    ul {
-      padding-left: 20px;
+    summary::marker { display: none; }
+    details[open] summary { margin-bottom: .75rem; }
+    details[open] { background: #fff; }
+    .panel {
+      background: var(--accent);
+      border-left: 5px solid var(--brand);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin: 10px 0 14px;
     }
+    h3 {
+      margin: 0 0 .35rem;
+      color: var(--brand);
+      font-size: 1.05rem;
+    }
+    ul { padding-left: 1.2rem; margin: .25rem 0 1rem; }
+    li { margin: .35rem 0; }
     a {
       color: #226644;
       text-decoration: underline;
     }
+    a:hover { text-decoration: none; }
+    @media (max-width: 600px) {
+      .content-wrapper { margin: 1.5rem auto; }
+      h1 { font-size: 1.6rem; }
+    }
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MFBKQTV3K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0MFBKQTV3K');
-  </script>
 </head>
 <body>
   <div class="content-wrapper">
@@ -50,37 +83,54 @@
 
     <details>
       <summary>🧑‍💼 Committee Section</summary>
-      <h3>Meeting Notes</h3>
-      <ul>
-        <li><a href="https://drive.google.com/file/d/1iL9x08BRpbHIcObRoiwe50HPq2HEnR_x/view?usp=drivesdk" target="_blank">May 2025 Committee Minutes</a></li>
-        <li><a href="https://drive.google.com/file/d/1zFW_FPfGRaBA51xCodfP9XtQQfDphuy1/view?usp=drivesdk" target="_blank">June 2025 Committee Minutes</a></li>
-        <li><a href="https://docs.google.com/document/d/1-htOWJHaosfJ9uguRuegyqERwG7fdo9p/edit?usp=drive_link&ouid=118197901770331788195&rtpof=true&sd=true" target="_blank">July 2025 Committee Minutes</a></li>
-      </ul>
-      <h3>Contact Information Form</h3>
-      <p>All adults should complete the form below to ensure we have accurate contact and role details on file:</p>
-      <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdiZzrcdY8oB858dYUYgrGpLR54p5i8Kt3UGFWaNAa_fpkP9g/viewform?usp=header">Complete the Adult Contact Form</a></p>
-      <h3>Adult & Scout Recall Information</h3>
-      <p>This spreadsheet contains submitted recall information for adults and scouts:</p>
-      <p><a href="https://docs.google.com/spreadsheets/d/1R-NDxk7_kqFn1kNb58bv-7eo_Sd9HJcjDc_uoJAwii8/edit?usp=sharing">View Recall Information</a></p>
-      <h3>Training Status</h3>
-      <p>This content is restricted. Click below to view the YPT training tracker (Google login required):</p>
-      <p><a href="https://docs.google.com/spreadsheets/d/1jnJdyRFraPLJBBoADGenI8RkzQAq6VJXF9abZZurMsA/edit?usp=sharing">Open YPT Training Tracker</a></p>
-      <p><a href="https://docs.google.com/spreadsheets/d/16vmeMCrWnxft9szYGADmufTIqcuXUuPUFIDNUl-g51g/edit?usp=sharing">Open Position-Specific Training Tracker</a></p>
+
+      <div class="panel">
+        <h3>Meeting Notes</h3>
+        <ul>
+          <li><a href="https://drive.google.com/file/d/1iL9x08BRpbHIcObRoiwe50HPq2HEnR_x/view?usp=drivesdk" target="_blank" rel="noopener">May 2025 Committee Minutes</a></li>
+          <li><a href="https://drive.google.com/file/d/1zFW_FPfGRaBA51xCodfP9XtQQfDphuy1/view?usp=drivesdk" target="_blank" rel="noopener">June 2025 Committee Minutes</a></li>
+          <li><a href="https://docs.google.com/document/d/1-htOWJHaosfJ9uguRuegyqERwG7fdo9p/edit?usp=drive_link&ouid=118197901770331788195&rtpof=true&sd=true" target="_blank" rel="noopener">July 2025 Committee Minutes</a></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Contact Information Form</h3>
+        <p>All adults should complete the form below to ensure we have accurate contact and role details on file.</p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdiZzrcdY8oB858dYUYgrGpLR54p5i8Kt3UGFWaNAa_fpkP9g/viewform?usp=header" target="_blank" rel="noopener">Complete the Adult Contact Form</a></p>
+      </div>
+
+      <div class="panel">
+        <h3>Adult & Scout Recall Information</h3>
+        <p>This spreadsheet contains submitted recall information for adults and scouts.</p>
+        <p><a href="https://docs.google.com/spreadsheets/d/1R-NDxk7_kqFn1kNb58bv-7eo_Sd9HJcjDc_uoJAwii8/edit?usp=sharing" target="_blank" rel="noopener">View Recall Information</a></p>
+      </div>
+
+      <div class="panel">
+        <h3>Training Status</h3>
+        <p>Restricted content. Google login required.</p>
+        <ul>
+          <li><a href="https://docs.google.com/spreadsheets/d/1jnJdyRFraPLJBBoADGenI8RkzQAq6VJXF9abZZurMsA/edit?usp=sharing" target="_blank" rel="noopener">Open YPT Training Tracker</a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/16vmeMCrWnxft9szYGADmufTIqcuXUuPUFIDNUl-g51g/edit?usp=sharing" target="_blank" rel="noopener">Open Position-Specific Training Tracker</a></li>
+        </ul>
+      </div>
     </details>
+
     <details>
       <summary>📨 Troop Forms & Submissions</summary>
 
-      <h3>Troop Member Ride Request</h3>
-      <p>Need a ride to an upcoming event?<br>
-      Use this form to let us know your availability and location, and we’ll help connect you with someone attending the same event:</p>
-      <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc3BcAdcX5GsTW38OJ5zxfUkxkU53dDAYXgW2BSELcF39daFw/viewform?usp=header">Click here if you need a ride</a></p>
-      <p><a href="https://docs.google.com/spreadsheets/d/1VprvWsrZPPmYvwihXd-CgpYrf6Bc-JweJr5UUq73bs0/edit?usp=sharing">View current ride requests</a></p>
+      <div class="panel">
+        <h3>Troop Member Ride Request</h3>
+        <p>Need a ride to an upcoming event? Use this form to share your availability and location. We’ll help connect you with someone attending the same event.</p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc3BcAdcX5GsTW38OJ5zxfUkxkU53dDAYXgW2BSELcF39daFw/viewform?usp=header" target="_blank" rel="noopener">Click here if you need a ride</a></p>
+        <p><a href="https://docs.google.com/spreadsheets/d/1VprvWsrZPPmYvwihXd-CgpYrf6Bc-JweJr5UUq73bs0/edit?usp=sharing" target="_blank" rel="noopener">View current ride requests</a></p>
+      </div>
 
-      <h3>Ride Volunteers</h3>
-      <p>Willing to offer a ride to another Scout?<br>
-      Let us know how many seats you have and when you're leaving, and we’ll help pair you with a Scout in need:</p>
-      <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfNLPjRWF7Us60SQbKDsLOTHkFUGlmTZ6OyTHTdTZD45-IOvw/viewform?usp=header">Click here if you can give a ride</a></p>
-      <p><a href="https://docs.google.com/spreadsheets/d/16XQkdExMHOhGF3Tx2q7O2ZWtopz9NHfwIVgbJPLFcjc/edit?usp=sharing">View available drivers and seats</a></p>
+      <div class="panel">
+        <h3>Ride Volunteers</h3>
+        <p>Willing to offer a ride to another Scout? Share how many seats you have and when you’re leaving. We’ll help pair you with a Scout in need.</p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfNLPjRWF7Us60SQbKDsLOTHkFUGlmTZ6OyTHTdTZD45-IOvw/viewform?usp=header" target="_blank" rel="noopener">Click here if you can give a ride</a></p>
+        <p><a href="https://docs.google.com/spreadsheets/d/16XQkdExMHOhGF3Tx2q7O2ZWtopz9NHfwIVgbJPLFcjc/edit?usp=sharing" target="_blank" rel="noopener">View available drivers and seats</a></p>
+      </div>
     </details>
   </div>
 </body>
