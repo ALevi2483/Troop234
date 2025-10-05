@@ -17,30 +17,39 @@
       margin: 2rem auto;
       background: white;
       padding: 2rem;
-      border-radius: 8px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     h1 {
       text-align: center;
       color: #003366;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.9rem;
     }
 
     .contact-box {
       background-color: #eaf4ff;
       border-left: 5px solid #003366;
       padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 4px;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+      transition: background 0.2s ease-in-out;
+    }
+
+    .contact-box:hover {
+      background-color: #d8eaff;
     }
 
     .contact-box h3 {
       margin: 0;
       color: #003366;
+      font-size: 1.2rem;
     }
 
     .contact-box p {
-      margin: 0.2rem 0 0;
+      margin: 0.3rem 0 0;
+      font-size: 1.05rem;
     }
 
     a {
@@ -51,16 +60,14 @@
     a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 600px) {
+      main { padding: 1.5rem; }
+      h1 { font-size: 1.6rem; }
+    }
   </style>
-<!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MFBKQTV3K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0MFBKQTV3K');
-  </script>
 </head>
+
 <body>
   <main>
     <h1>Contact Troop 234</h1>
