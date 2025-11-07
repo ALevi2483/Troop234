@@ -63,22 +63,13 @@
   <div class="content-wrapper">
     <h1>Troop 234 Member Area</h1>
 
-    <!-- Committee Section -->
-    <details>
-      <summary>🧑‍💼 Committee Section</summary>
-
-      <div class="panel">
-        <h3>Meeting Notes</h3>
-        <ul>
-          <li><a href="https://drive.google.com/file/d/1iL9x08BRpbHIcObRoiwe50HPq2HEnR_x/view?usp=drivesdk" target="_blank" rel="noopener">May 2025 Committee Minutes</a></li>
-          <li><a href="https://drive.google.com/file/d/1zFW_FPfGRaBA51xCodfP9XtQQfDphuy1/view?usp=drivesdk" target="_blank" rel="noopener">June 2025 Committee Minutes</a></li>
-          <li><a href="https://docs.google.com/document/d/1-htOWJHaosfJ9uguRuegyqERwG7fdo9p/edit?usp=drive_link&ouid=118197901770331788195&rtpof=true&sd=true" target="_blank" rel="noopener">July 2025 Committee Minutes</a></li>
-        </ul>
-      </div>
+    <!-- Troop Contact Roster (keep only these two panels) -->
+    <details open>
+      <summary>📇 Troop Contact Roster</summary>
 
       <div class="panel">
         <h3>Contact Information Form</h3>
-        <p>All adults should complete the form below to ensure we have accurate contact and role details on file.</p>
+        <p>All adults should complete this form so we have accurate contact and role details on file.</p>
         <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdiZzrcdY8oB858dYUYgrGpLR54p5i8Kt3UGFWaNAa_fpkP9g/viewform?usp=header" target="_blank" rel="noopener">Complete the Adult Contact Form</a></p>
       </div>
 
@@ -86,25 +77,6 @@
         <h3>Adult & Scout Recall Information</h3>
         <p>This spreadsheet contains submitted recall information for adults and scouts.</p>
         <p><a href="https://docs.google.com/spreadsheets/d/1R-NDxk7_kqFn1kNb58bv-7eo_Sd9HJcjDc_uoJAwii8/edit?usp=sharing" target="_blank" rel="noopener">View Recall Information</a></p>
-      </div>
-    </details>
-
-    <!-- Troop Forms & Submissions -->
-    <details>
-      <summary>📨 Troop Forms & Submissions</summary>
-
-      <div class="panel">
-        <h3>Troop Member Ride Request</h3>
-        <p>Need a ride to an upcoming event? Use this form to share your availability and location. We will help connect you with someone attending the same event.</p>
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc3BcAdcX5GsTW38OJ5zxfUkxkU53dDAYXgW2BSELcF39daFw/viewform?usp=header" target="_blank" rel="noopener">Click here if you need a ride</a></p>
-        <p><a href="https://docs.google.com/spreadsheets/d/1VprvWsrZPPmYvwihXd-CgpYrf6Bc-JweJr5UUq73bs0/edit?usp=sharing" target="_blank" rel="noopener">View current ride requests</a></p>
-      </div>
-
-      <div class="panel">
-        <h3>Ride Volunteers</h3>
-        <p>Willing to offer a ride to another Scout? Share how many seats you have and when you are leaving. We will help pair you with a Scout in need.</p>
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfNLPjRWF7Us60SQbKDsLOTHkFUGlmTZ6OyTHTdTZD45-IOvw/viewform?usp=header" target="_blank" rel="noopener">Click here if you can give a ride</a></p>
-        <p><a href="https://docs.google.com/spreadsheets/d/16XQkdExMHOhGF3Tx2q7O2ZWtopz9NHfwIVgbJPLFcjc/edit?usp=sharing" target="_blank" rel="noopener">View available drivers and seats</a></p>
       </div>
     </details>
 
@@ -141,14 +113,13 @@
   </div>
 
   <script>
-    // All youth content removed. Adults only.
+    // Adults only. Committee roles, committee members, and ASMs are alphabetized for display.
     const adultData = {
       top: [
         { title: "Chartered Org Rep", name: "Mike Ziemienieuski" },
         { title: "Troop Committee Chair", name: "Katie Anderson" },
         { title: "Scoutmaster", name: "Lauren Lichty Sr." }
       ],
-      // Committee Roles will be sorted by position title
       roles: [
         { title: "Advancement Chair", name: "SuAnne Bryant" },
         { title: "Camping Coord.", name: "Lance Poulter" },
@@ -163,7 +134,6 @@
         { title: "Luigi’s Linguine Patrol Admin", name: "Loren Lichty Jr." },
         { title: "Johnny Bravo’s Ring of Fire Patrol Admin", name: "Karl Doherty" }
       ],
-      // These two lists will be alphabetized by name for display
       committeeMembers: [
         "Adam Levine","Ed Campbell","James Waszak","James Willis","Jeffrey Stobie","Jeremy Long",
         "Katie Anderson","Kate Sklat","Lance Poulter","Larry Yavoski","Monte Crowl","Nancy Lichty",
@@ -175,29 +145,28 @@
     };
 
     const $ = s => document.querySelector(s);
-    const nameSort = (a, b) => a.localeCompare(b); // simple alpha by displayed string
 
     function adultCard(t, n) {
       return `<div class="adult-card"><div class="org-role">${t}</div><div class="org-name">${n}</div></div>`;
     }
 
     function renderAdult() {
-      // Top leaders (as given)
+      // Top leaders (as provided)
       $('#adultTop').innerHTML = adultData.top.map(a => adultCard(a.title, a.name)).join('');
 
-      // Committee Roles sorted by title
+      // Committee Roles (alphabetized by title)
       const sortedRoles = [...adultData.roles].sort((a, b) => a.title.localeCompare(b.title));
       $('#adultRoles').innerHTML = sortedRoles.map(a => adultCard(a.title, a.name)).join('');
 
-      // Patrol Admins kept as-is
+      // Patrol Admins (as provided)
       $('#adultPatrolAdmins').innerHTML = adultData.patrolAdmins.map(a => adultCard(a.title, a.name)).join('');
 
-      // Committee Members sorted A to Z
-      const sortedCommittee = [...adultData.committeeMembers].sort(nameSort);
+      // Committee Members (alphabetized by display string)
+      const sortedCommittee = [...adultData.committeeMembers].sort((a, b) => a.localeCompare(b));
       $('#adultCommittee').innerHTML = sortedCommittee.map(n => `<li>${n}</li>`).join('');
 
-      // Assistant Scoutmasters sorted A to Z
-      const sortedASMs = [...adultData.assistantScoutmasters].sort(nameSort);
+      // Assistant Scoutmasters (alphabetized by display string)
+      const sortedASMs = [...adultData.assistantScoutmasters].sort((a, b) => a.localeCompare(b));
       $('#adultASMs').innerHTML = sortedASMs.map(n => `<li>${n}</li>`).join('');
     }
 
