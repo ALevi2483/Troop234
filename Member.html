@@ -3,23 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Troop 234 Member Area</title>
+  <title>Troop 234 Adult Leadership</title>
   <style>
     :root {
       --bg: #f5f9f5;
       --card: #ffffff;
       --ink: #223;
       --brand: #003366;
-      --accent: #eaf4ff;
       --border: #cfd8cf;
-
-      /* Troop Structure palette */
-      --patrol-blue: #e6f0ff;
-      --patrol-green: #e7f7ef;
-      --patrol-orange: #fff1e6;
+      --accent: #eaf4ff;
       --muted: #4a5568;
-
-      /* Adult leaders accents */
       --adult: #fce8d8;
     }
     * { box-sizing: border-box; }
@@ -35,9 +28,9 @@
       padding: 0 20px;
     }
     h1 {
-      margin: 0 0 1rem;
       text-align: center;
       color: var(--brand);
+      margin-bottom: 1rem;
       font-size: 1.9rem;
     }
     details {
@@ -52,208 +45,59 @@
       font-size: 1.1rem;
       font-weight: 700;
       cursor: pointer;
-      list-style: none;
       display: flex;
       align-items: center;
       gap: .5rem;
-      outline: none;
     }
-    summary::marker { display: none; }
     details[open] summary { margin-bottom: .75rem; }
-    details[open] { background: #fff; }
-    .panel {
-      background: var(--accent);
-      border-left: 5px solid var(--brand);
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin: 10px 0 14px;
-    }
-    h3 {
-      margin: 0 0 .35rem;
-      color: var(--brand);
-      font-size: 1.05rem;
-    }
-    ul { padding-left: 1.2rem; margin: .25rem 0 1rem; }
-    li { margin: .35rem 0; }
-    a {
-      color: #226644;
-      text-decoration: underline;
-    }
-    a:hover { text-decoration: none; }
-    @media (max-width: 600px) {
-      .content-wrapper { margin: 1.5rem auto; }
-      h1 { font-size: 1.6rem; }
-    }
-
-    /* Troop Structure layout */
-    .org-wrap { display: grid; gap: 12px; }
-    .org-legend {
-      display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 10px;
-      color: var(--muted); font-size: .9rem;
-    }
-    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: #f8fafc; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .org-top { display: grid; gap: 12px; }
-    .org-top-cols { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 720px) {
-      .org-top { grid-template-columns: 2fr 1fr; }
-      .org-top-cols { grid-template-columns: 1fr 1fr; }
-    }
-    .org-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-    }
-    .org-role { font-size: .85rem; color: var(--muted); margin-bottom: 2px; }
-    .org-name { font-weight: 700; }
-
-    .org-aside .pill { display: inline-block; font-size: .8rem; border: 1px solid var(--border); border-radius: 999px; padding: 2px 8px; margin-bottom: 8px; }
-    .org-list { display: grid; gap: 6px; }
-    .org-list .item { background: #f8fafc; border: 1px dashed var(--border); border-radius: 10px; padding: 8px 10px; }
-
-    .org-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 860px) { .org-grid { grid-template-columns: repeat(3, 1fr); } }
-    .org-col { display: grid; gap: 12px; }
-
-    .patrol {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-    }
-    .patrol h4 { margin: 0 0 6px; font-size: 1rem; color: var(--brand); }
-    .members { display: grid; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
-    .members li { background: rgba(255,255,255,.6); border: 1px dashed var(--border); border-radius: 10px; padding: 7px 9px; }
-
-    .tone-blue { background: var(--patrol-blue); }
-    .tone-green { background: var(--patrol-green); }
-    .tone-orange { background: var(--patrol-orange); }
-
-    /* Duties section */
-    .duties-wrap { display: grid; gap: 12px; }
-    .duties-grid {
-      display: grid; gap: 12px;
-      grid-template-columns: 1fr 1fr;
-    }
-    @media (min-width: 700px) {
-      .duties-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (min-width: 1000px) {
-      .duties-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    .duty-card { border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; background: var(--card); }
-    .duty-role { font-weight: 700; color: var(--brand); }
-    .duty-name { margin-top: 4px; }
-    .duty-note { margin-top: 6px; font-size: .85rem; color: var(--muted); }
+    h3 { color: var(--brand); margin-top: 0; }
 
     /* Adult leaders */
-    .adult-wrap { display: grid; gap: 12px; }
+    .adult-wrap { display: grid; gap: 16px; }
+    .adult-top { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 720px){ .adult-top { grid-template-columns: 2fr 1fr; } }
+
     .adult-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 700px){ .adult-grid { grid-template-columns: repeat(3, 1fr); } }
+
     .adult-row { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 760px) { .adult-row { grid-template-columns: repeat(3, 1fr); } }
-    .adult-card { background: var(--adult); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
-    .adult-aside {
-      display: grid; gap: 12px;
-      grid-template-columns: 1fr;
+    @media (min-width: 760px){ .adult-row { grid-template-columns: repeat(3, 1fr); } }
+
+    .adult-card {
+      background: var(--adult);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
     }
-    @media (min-width: 760px) {
-      .adult-top { display: grid; gap: 12px; grid-template-columns: 2fr 1fr; }
+    .org-role { font-size: .85rem; color: var(--muted); margin-bottom: 3px; }
+    .org-name { font-weight: 700; }
+
+    .adult-panel {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f7fbff;
+      padding: 12px 14px;
     }
-    .adult-panel { border: 1px solid var(--border); border-radius: 12px; background: #f7fbff; padding: 12px 14px; }
     .adult-panel h4 { margin: 0 0 6px; color: var(--brand); }
     .bullet { margin: 0; padding-left: 1.1rem; }
   </style>
 </head>
 <body>
   <div class="content-wrapper">
-    <h1>Troop 234 Member Area</h1>
+    <h1>Troop 234 Adult Leadership</h1>
 
-    <details>
-      <summary>🧑‍💼 Committee Section</summary>
-
-      <div class="panel">
-        <h3>Meeting Notes</h3>
-        <ul>
-          <li><a href="https://drive.google.com/file/d/1iL9x08BRpbHIcObRoiwe50HPq2HEnR_x/view?usp=drivesdk" target="_blank" rel="noopener">May 2025 Committee Minutes</a></li>
-          <li><a href="https://drive.google.com/file/d/1zFW_FPfGRaBA51xCodfP9XtQQfDphuy1/view?usp=drivesdk" target="_blank" rel="noopener">June 2025 Committee Minutes</a></li>
-          <li><a href="https://docs.google.com/document/d/1-htOWJHaosfJ9uguRuegyqERwG7fdo9p/edit?usp=drive_link&ouid=118197901770331788195&rtpof=true&sd=true" target="_blank" rel="noopener">July 2025 Committee Minutes</a></li>
-        </ul>
-      </div>
-
-      <div class="panel">
-        <h3>Contact Information Form</h3>
-        <p>All adults should complete the form below to ensure we have accurate contact and role details on file.</p>
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdiZzrcdY8oB858dYUYgrGpLR54p5i8Kt3UGFWaNAa_fpkP9g/viewform?usp=header" target="_blank" rel="noopener">Complete the Adult Contact Form</a></p>
-      </div>
-
-      <div class="panel">
-        <h3>Adult & Scout Recall Information</h3>
-        <p>This spreadsheet contains submitted recall information for adults and scouts.</p>
-        <p><a href="https://docs.google.com/spreadsheets/d/1R-NDxk7_kqFn1kNb58bv-7eo_Sd9HJcjDc_uoJAwii8/edit?usp=sharing" target="_blank" rel="noopener">View Recall Information</a></p>
-      </div>
-    </details>
-
-    <details>
-      <summary>📨 Troop Forms & Submissions</summary>
-
-      <div class="panel">
-        <h3>Troop Member Ride Request</h3>
-        <p>Need a ride to an upcoming event? Use this form to share your availability and location. We will help connect you with someone attending the same event.</p>
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc3BcAdcX5GsTW38OJ5zxfUkxkU53dDAYXgW2BSELcF39daFw/viewform?usp=header" target="_blank" rel="noopener">Click here if you need a ride</a></p>
-        <p><a href="https://docs.google.com/spreadsheets/d/1VprvWsrZPPmYvwihXd-CgpYrf6Bc-JweJr5UUq73bs0/edit?usp=sharing" target="_blank" rel="noopener">View current ride requests</a></p>
-      </div>
-
-      <div class="panel">
-        <h3>Ride Volunteers</h3>
-        <p>Willing to offer a ride to another Scout? Share how many seats you have and when you are leaving. We will help pair you with a Scout in need.</p>
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfNLPjRWF7Us60SQbKDsLOTHkFUGlmTZ6OyTHTdTZD45-IOvw/viewform?usp=header" target="_blank" rel="noopener">Click here if you can give a ride</a></p>
-        <p><a href="https://docs.google.com/spreadsheets/d/16XQkdExMHOhGF3Tx2q7O2ZWtopz9NHfwIVgbJPLFcjc/edit?usp=sharing" target="_blank" rel="noopener">View available drivers and seats</a></p>
-      </div>
-    </details>
-
-    <!-- Troop Structure -->
-    <details open>
-      <summary>🧭 Troop Structure</summary>
-
-      <div class="org-wrap">
-        <div class="org-legend">
-          <span class="chip"><span class="dot" style="background:#9ec1ff"></span> Liberty Patrol</span>
-          <span class="chip"><span class="dot" style="background:#6fcf97"></span> Phoenix Patrol</span>
-          <span class="chip"><span class="dot" style="background:#f2b38f"></span> Dragon Patrol</span>
-        </div>
-
-        <div class="org-top">
-          <div class="org-top-cols" id="orgLeaders"></div>
-          <aside class="org-aside org-card" id="orgUnassigned"></aside>
-        </div>
-
-        <div class="org-grid" id="orgGrid"></div>
-      </div>
-    </details>
-
-    <!-- Troop Positions & Duties -->
-    <details open>
-      <summary>🧰 Troop Positions & Duties</summary>
-
-      <div class="duties-wrap">
-        <div class="duties-grid" id="dutiesGrid"></div>
-      </div>
-    </details>
-
-    <!-- Adult Leaders -->
     <details open>
       <summary>👥 Adult Leaders</summary>
-
       <div class="adult-wrap">
         <div class="adult-top">
           <div class="adult-grid" id="adultTop"></div>
-          <div class="adult-aside">
+          <div>
             <div class="adult-panel">
               <h4>Troop Committee Members</h4>
               <ul class="bullet" id="adultCommittee"></ul>
             </div>
             <div class="adult-panel">
-              <h4>Asst. Scoutmasters</h4>
+              <h4>Assistant Scoutmasters</h4>
               <ul class="bullet" id="adultASMs"></ul>
             </div>
           </div>
@@ -273,59 +117,6 @@
   </div>
 
   <script>
-    /* Troop Structure data */
-    const orgData = {
-      leaders: [
-        { title: "Senior Patrol Leader", name: "Travers T." },
-        { title: "Asst. Senior Patrol Leader", name: "Aiden S." }
-      ],
-      unassigned: ["Louis T."],
-      patrols: [
-        {
-          name: "Liberty Patrol",
-          tone: "tone-blue",
-          roles: [
-            { role: "Patrol Leader", name: "Lawrence Y." },
-            { role: "Asst. Patrol Leader", name: "Grayson H." },
-            { role: "Instructor", name: "Ronnie W." }
-          ],
-          members: ["Joshua H.", "Walter E."]
-        },
-        {
-          name: "Phoenix Patrol",
-          tone: "tone-green",
-          roles: [
-            { role: "Patrol Leader", name: "Connor G." },
-            { role: "Asst. Patrol Leader", name: "Joseph W." },
-            { role: "Instructor", name: "Instructor (vacant)" }
-          ],
-          members: ["Draven L.", "Hugh B.", "Keagan P.", "Scot M."]
-        },
-        {
-          name: "Dragon Patrol",
-          tone: "tone-orange",
-          roles: [
-            { role: "Patrol Leader", name: "Bryson P." },
-            { role: "Asst. Patrol Leader", name: "Aiden Levine" },
-            { role: "Instructor", name: "Jackson C." }
-          ],
-          members: ["Connor P.", "Hayden H.", "Jordan A.", "Kyle S."]
-        }
-      ]
-    };
-
-    /* Troop Positions & Duties data */
-    const dutiesData = [
-      { role: "Scribe",         name: "Jordan A.",  note: "Meeting minutes and records." },
-      { role: "OA Unit Rep.",   name: "Ronnie W.",  note: "Links Troop and OA lodge." },
-      { role: "Webmaster",      name: "Grayson H.", note: "Troop site and updates." },
-      { role: "Chaplain Aide",  name: "Jackson C.", note: "Promotes reverence and services." },
-      { role: "Quartermaster",  name: "Aiden L.",   note: "Manages gear and inventory." },
-      { role: "Historian",      name: "Walter E.",  note: "Captures Troop photos and stories." },
-      { role: "Librarian",      name: "Draven L.",  note: "Maintains merit badge pamphlets." }
-    ];
-
-    /* Adult Leaders data */
     const adultData = {
       top: [
         { title: "Chartered Org Rep", name: "Mike Ziemienieuski" },
@@ -347,83 +138,30 @@
         { title: "Johnny Bravo’s Ring of Fire Patrol Admin", name: "Karl Doherty" }
       ],
       committeeMembers: [
-        "Katie Anderson","SuAnne Bryant","Ed Campbell","James Willis","Jeffrey Stobie","Kate Sklat","Lance Poulter",
-        "Larry Yavoski","Monte Crowl","Nancy Lichty","Adam Levine","James Waszak","Jeremy Long","Shannon Waszak"
+        "Katie Anderson","SuAnne Bryant","Ed Campbell","James Willis","Jeffrey Stobie",
+        "Kate Sklat","Lance Poulter","Larry Yavoski","Monte Crowl","Nancy Lichty",
+        "Adam Levine","James Waszak","Jeremy Long","Shannon Waszak"
       ],
       assistantScoutmasters: [
-        "Barry Anderson","Charlie Tate","Loren Lichty Jr.","RJ Sklat","Nicholas Dembicki","Doug Dyer","Karl Doherty"
+        "Barry Anderson","Charlie Tate","Loren Lichty Jr.","RJ Sklat",
+        "Nicholas Dembicki","Doug Dyer","Karl Doherty"
       ]
     };
 
     const $ = s => document.querySelector(s);
 
-    /* Render: Troop Structure */
-    function card(title, name) {
-      return `<div class="org-card"><div class="org-role">${title}</div><div class="org-name">${name}</div></div>`;
-    }
-    function renderLeaders() {
-      $('#orgLeaders').innerHTML = orgData.leaders.map(l => card(l.title, l.name)).join('');
-    }
-    function renderUnassigned() {
-      const list = orgData.unassigned?.length
-        ? orgData.unassigned.map(n => `<div class="item">${n}</div>`).join('')
-        : '<div class="item">None</div>';
-      $('#orgUnassigned').innerHTML = `<div class="pill">Not Assigned</div><div class="org-list">${list}</div>`;
-    }
-    function renderPatrols() {
-      const cols = orgData.patrols.map(p => {
-        const roles = p.roles.map(r => card(r.role, r.name)).join('');
-        const members = p.members.map(m => `<li>${m}</li>`).join('');
-        return `
-          <div class="org-col">
-            <div class="patrol ${p.tone}">
-              <h4>${p.name}</h4>
-              <div class="org-role">Members</div>
-              <ul class="members">${members}</ul>
-            </div>
-            ${roles}
-          </div>
-        `;
-      }).join('');
-      $('#orgGrid').innerHTML = cols;
-    }
-
-    /* Render: Duties */
-    function renderDuties() {
-      const grid = dutiesData.map(d => `
-        <div class="duty-card">
-          <div class="duty-role">${d.role}</div>
-          <div class="duty-name">${d.name || "Vacant"}</div>
-          ${d.note ? `<div class="duty-note">${d.note}</div>` : ""}
-        </div>
-      `).join('');
-      $('#dutiesGrid').innerHTML = grid;
-    }
-
-    /* Render: Adult Leaders */
     function adultCard(t, n) {
       return `<div class="adult-card"><div class="org-role">${t}</div><div class="org-name">${n}</div></div>`;
     }
+
     function renderAdult() {
-      // Top trio
       $('#adultTop').innerHTML = adultData.top.map(a => adultCard(a.title, a.name)).join('');
-
-      // Roles
       $('#adultRoles').innerHTML = adultData.roles.map(a => adultCard(a.title, a.name)).join('');
-
-      // Patrol Admins
       $('#adultPatrolAdmins').innerHTML = adultData.patrolAdmins.map(a => adultCard(a.title, a.name)).join('');
-
-      // Lists
       $('#adultCommittee').innerHTML = adultData.committeeMembers.map(n => `<li>${n}</li>`).join('');
       $('#adultASMs').innerHTML = adultData.assistantScoutmasters.map(n => `<li>${n}</li>`).join('');
     }
 
-    /* Init */
-    renderLeaders();
-    renderUnassigned();
-    renderPatrols();
-    renderDuties();
     renderAdult();
   </script>
 </body>
