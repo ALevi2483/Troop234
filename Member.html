@@ -3,36 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Troop 234 Adult Leadership</title>
+  <title>Troop 234 Member Area</title>
   <style>
     :root {
       --bg: #f5f9f5;
       --card: #ffffff;
       --ink: #223;
       --brand: #003366;
-      --border: #cfd8cf;
       --accent: #eaf4ff;
+      --border: #cfd8cf;
       --muted: #4a5568;
       --adult: #fce8d8;
     }
     * { box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: var(--bg);
-      color: var(--ink);
-    }
-    .content-wrapper {
-      max-width: 900px;
-      margin: 2.5rem auto;
-      padding: 0 20px;
-    }
-    h1 {
-      text-align: center;
-      color: var(--brand);
-      margin-bottom: 1rem;
-      font-size: 1.9rem;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; background: var(--bg); color: var(--ink); }
+    .content-wrapper { max-width: 900px; margin: 2.5rem auto; padding: 0 20px; }
+    h1 { margin: 0 0 1rem; text-align: center; color: var(--brand); font-size: 1.9rem; }
+
     details {
       background: var(--card);
       border: 1px solid var(--border);
@@ -41,16 +28,16 @@
       padding: 14px 16px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-    summary {
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-    }
+    summary { font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: .5rem; }
+    summary::marker { display: none; }
     details[open] summary { margin-bottom: .75rem; }
-    h3 { color: var(--brand); margin-top: 0; }
+    .panel { background: var(--accent); border-left: 5px solid var(--brand); border-radius: 8px; padding: 12px 14px; margin: 10px 0 14px; }
+    h3 { margin: 0 0 .35rem; color: var(--brand); font-size: 1.05rem; }
+    ul { padding-left: 1.2rem; margin: .25rem 0 1rem; }
+    li { margin: .35rem 0; }
+    a { color: #226644; text-decoration: underline; }
+    a:hover { text-decoration: none; }
+    @media (max-width: 600px) { .content-wrapper { margin: 1.5rem auto; } h1 { font-size: 1.6rem; } }
 
     /* Adult leaders */
     .adult-wrap { display: grid; gap: 16px; }
@@ -63,31 +50,68 @@
     .adult-row { display: grid; gap: 12px; grid-template-columns: 1fr; }
     @media (min-width: 760px){ .adult-row { grid-template-columns: repeat(3, 1fr); } }
 
-    .adult-card {
-      background: var(--adult);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 14px;
-    }
+    .adult-card { background: var(--adult); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
     .org-role { font-size: .85rem; color: var(--muted); margin-bottom: 3px; }
     .org-name { font-weight: 700; }
 
-    .adult-panel {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: #f7fbff;
-      padding: 12px 14px;
-    }
+    .adult-panel { border: 1px solid var(--border); border-radius: 12px; background: #f7fbff; padding: 12px 14px; }
     .adult-panel h4 { margin: 0 0 6px; color: var(--brand); }
     .bullet { margin: 0; padding-left: 1.1rem; }
   </style>
 </head>
 <body>
   <div class="content-wrapper">
-    <h1>Troop 234 Adult Leadership</h1>
+    <h1>Troop 234 Member Area</h1>
 
+    <!-- Committee Section -->
+    <details>
+      <summary>🧑‍💼 Committee Section</summary>
+
+      <div class="panel">
+        <h3>Meeting Notes</h3>
+        <ul>
+          <li><a href="https://drive.google.com/file/d/1iL9x08BRpbHIcObRoiwe50HPq2HEnR_x/view?usp=drivesdk" target="_blank" rel="noopener">May 2025 Committee Minutes</a></li>
+          <li><a href="https://drive.google.com/file/d/1zFW_FPfGRaBA51xCodfP9XtQQfDphuy1/view?usp=drivesdk" target="_blank" rel="noopener">June 2025 Committee Minutes</a></li>
+          <li><a href="https://docs.google.com/document/d/1-htOWJHaosfJ9uguRuegyqERwG7fdo9p/edit?usp=drive_link&ouid=118197901770331788195&rtpof=true&sd=true" target="_blank" rel="noopener">July 2025 Committee Minutes</a></li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Contact Information Form</h3>
+        <p>All adults should complete the form below to ensure we have accurate contact and role details on file.</p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdiZzrcdY8oB858dYUYgrGpLR54p5i8Kt3UGFWaNAa_fpkP9g/viewform?usp=header" target="_blank" rel="noopener">Complete the Adult Contact Form</a></p>
+      </div>
+
+      <div class="panel">
+        <h3>Adult & Scout Recall Information</h3>
+        <p>This spreadsheet contains submitted recall information for adults and scouts.</p>
+        <p><a href="https://docs.google.com/spreadsheets/d/1R-NDxk7_kqFn1kNb58bv-7eo_Sd9HJcjDc_uoJAwii8/edit?usp=sharing" target="_blank" rel="noopener">View Recall Information</a></p>
+      </div>
+    </details>
+
+    <!-- Troop Forms & Submissions -->
+    <details>
+      <summary>📨 Troop Forms & Submissions</summary>
+
+      <div class="panel">
+        <h3>Troop Member Ride Request</h3>
+        <p>Need a ride to an upcoming event? Use this form to share your availability and location. We will help connect you with someone attending the same event.</p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSc3BcAdcX5GsTW38OJ5zxfUkxkU53dDAYXgW2BSELcF39daFw/viewform?usp=header" target="_blank" rel="noopener">Click here if you need a ride</a></p>
+        <p><a href="https://docs.google.com/spreadsheets/d/1VprvWsrZPPmYvwihXd-CgpYrf6Bc-JweJr5UUq73bs0/edit?usp=sharing" target="_blank" rel="noopener">View current ride requests</a></p>
+      </div>
+
+      <div class="panel">
+        <h3>Ride Volunteers</h3>
+        <p>Willing to offer a ride to another Scout? Share how many seats you have and when you are leaving. We will help pair you with a Scout in need.</p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfNLPjRWF7Us60SQbKDsLOTHkFUGlmTZ6OyTHTdTZD45-IOvw/viewform?usp=header" target="_blank" rel="noopener">Click here if you can give a ride</a></p>
+        <p><a href="https://docs.google.com/spreadsheets/d/16XQkdExMHOhGF3Tx2q7O2ZWtopz9NHfwIVgbJPLFcjc/edit?usp=sharing" target="_blank" rel="noopener">View available drivers and seats</a></p>
+      </div>
+    </details>
+
+    <!-- Adult Leaders only -->
     <details open>
       <summary>👥 Adult Leaders</summary>
+
       <div class="adult-wrap">
         <div class="adult-top">
           <div class="adult-grid" id="adultTop"></div>
@@ -117,19 +141,21 @@
   </div>
 
   <script>
+    // All youth content removed. Adults only.
     const adultData = {
       top: [
         { title: "Chartered Org Rep", name: "Mike Ziemienieuski" },
         { title: "Troop Committee Chair", name: "Katie Anderson" },
         { title: "Scoutmaster", name: "Lauren Lichty Sr." }
       ],
+      // Committee Roles will be sorted by position title
       roles: [
-        { title: "Secretary", name: "Kate Sklat" },
-        { title: "Treasurer", name: "Monte Crowl" },
-        { title: "Spirit Wear", name: "Shannon Waszak" },
         { title: "Advancement Chair", name: "SuAnne Bryant" },
         { title: "Camping Coord.", name: "Lance Poulter" },
         { title: "New Member Coord.", name: "Adam Levine" },
+        { title: "Secretary", name: "Kate Sklat" },
+        { title: "Spirit Wear", name: "Shannon Waszak" },
+        { title: "Treasurer", name: "Monte Crowl" },
         { title: "Troop Training Chair", name: "Charlie Tate" }
       ],
       patrolAdmins: [
@@ -137,29 +163,42 @@
         { title: "Luigi’s Linguine Patrol Admin", name: "Loren Lichty Jr." },
         { title: "Johnny Bravo’s Ring of Fire Patrol Admin", name: "Karl Doherty" }
       ],
+      // These two lists will be alphabetized by name for display
       committeeMembers: [
-        "Katie Anderson","SuAnne Bryant","Ed Campbell","James Willis","Jeffrey Stobie",
-        "Kate Sklat","Lance Poulter","Larry Yavoski","Monte Crowl","Nancy Lichty",
-        "Adam Levine","James Waszak","Jeremy Long","Shannon Waszak"
+        "Adam Levine","Ed Campbell","James Waszak","James Willis","Jeffrey Stobie","Jeremy Long",
+        "Katie Anderson","Kate Sklat","Lance Poulter","Larry Yavoski","Monte Crowl","Nancy Lichty",
+        "Shannon Waszak","SuAnne Bryant"
       ],
       assistantScoutmasters: [
-        "Barry Anderson","Charlie Tate","Loren Lichty Jr.","RJ Sklat",
-        "Nicholas Dembicki","Doug Dyer","Karl Doherty"
+        "Barry Anderson","Charlie Tate","Doug Dyer","Karl Doherty","Loren Lichty Jr.","Nicholas Dembicki","RJ Sklat"
       ]
     };
 
     const $ = s => document.querySelector(s);
+    const nameSort = (a, b) => a.localeCompare(b); // simple alpha by displayed string
 
     function adultCard(t, n) {
       return `<div class="adult-card"><div class="org-role">${t}</div><div class="org-name">${n}</div></div>`;
     }
 
     function renderAdult() {
+      // Top leaders (as given)
       $('#adultTop').innerHTML = adultData.top.map(a => adultCard(a.title, a.name)).join('');
-      $('#adultRoles').innerHTML = adultData.roles.map(a => adultCard(a.title, a.name)).join('');
+
+      // Committee Roles sorted by title
+      const sortedRoles = [...adultData.roles].sort((a, b) => a.title.localeCompare(b.title));
+      $('#adultRoles').innerHTML = sortedRoles.map(a => adultCard(a.title, a.name)).join('');
+
+      // Patrol Admins kept as-is
       $('#adultPatrolAdmins').innerHTML = adultData.patrolAdmins.map(a => adultCard(a.title, a.name)).join('');
-      $('#adultCommittee').innerHTML = adultData.committeeMembers.map(n => `<li>${n}</li>`).join('');
-      $('#adultASMs').innerHTML = adultData.assistantScoutmasters.map(n => `<li>${n}</li>`).join('');
+
+      // Committee Members sorted A to Z
+      const sortedCommittee = [...adultData.committeeMembers].sort(nameSort);
+      $('#adultCommittee').innerHTML = sortedCommittee.map(n => `<li>${n}</li>`).join('');
+
+      // Assistant Scoutmasters sorted A to Z
+      const sortedASMs = [...adultData.assistantScoutmasters].sort(nameSort);
+      $('#adultASMs').innerHTML = sortedASMs.map(n => `<li>${n}</li>`).join('');
     }
 
     renderAdult();
