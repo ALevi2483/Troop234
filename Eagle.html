@@ -196,7 +196,7 @@
       { no: 43, name: 'Logan Wilford Dietrich Bluemel', date: 'February 6, 2023' },
       { no: 44, name: 'Jacob Bryan Aldridge',           date: 'June 12, 2023' },
       { no: 45, name: 'Dylan Thomas Leonard',           date: 'October 2, 2023' },
-      { no: 46, name: 'Richard Michael Sklat, Jr.',     date: 'July 13, 2024' }
+      { no: 46, name: 'Richard Michael Sklat, Jr.',     date: 'July 13, 2024' },
       { no: 47, name: 'Brandon Bryant',                 date: 'September 23, 2025' }
     ];
 
@@ -235,7 +235,12 @@
       resetSortIndicators();
     });
 
-    clearBtn.addEventListener('click', () => { q.value = ''; render(EAGLES); q.focus(); resetSortIndicators(); });
+    clearBtn.addEventListener('click', () => {
+      q.value = '';
+      render(EAGLES);
+      q.focus();
+      resetSortIndicators();
+    });
 
     // Sorting with aria + visual indicators
     const ths = document.querySelectorAll('thead th');
@@ -262,9 +267,16 @@
 
       rows.sort((a, b) => {
         let av, bv;
-        if (key === 'name') { av = a.name.toLowerCase(); bv = b.name.toLowerCase(); }
-        else if (key === 'date') { av = new Date(a.date); bv = new Date(b.date); }
-        else { av = a.no; bv = b.no; }
+        if (key === 'name') {
+          av = a.name.toLowerCase();
+          bv = b.name.toLowerCase();
+        } else if (key === 'date') {
+          av = new Date(a.date);
+          bv = new Date(b.date);
+        } else {
+          av = a.no;
+          bv = b.no;
+        }
         if (av < bv) return asc ? -1 : 1;
         if (av > bv) return asc ? 1 : -1;
         return 0;
@@ -276,8 +288,12 @@
     function handleSort(th) {
       const key = th.dataset.sort;
       if (!key) return;
-      if (sortState.key === key) sortState.asc = !sortState.asc;
-      else { sortState.key = key; sortState.asc = true; }
+      if (sortState.key === key) {
+        sortState.asc = !sortState.asc;
+      } else {
+        sortState.key = key;
+        sortState.asc = true;
+      }
       sortData(sortState.key, sortState.asc);
       applySortIndicator(th, sortState.asc);
     }
