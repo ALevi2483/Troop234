@@ -109,7 +109,6 @@
       border-radius: 8px;
       background-color: #f9f9f9;
       overflow: hidden;
-      transition: box-shadow 0.2s ease-in-out;
     }
 
     summary {
@@ -119,15 +118,10 @@
       cursor: pointer;
       border-bottom: 1px solid #ccc;
       list-style: none;
-      outline: none;
     }
 
     summary:hover {
       background-color: #d9eaff;
-    }
-
-    summary:focus {
-      box-shadow: 0 0 0 3px rgba(0,102,204,0.25);
     }
 
     details[open] summary {
@@ -162,9 +156,7 @@
     @media (max-width: 600px) {
       main { padding: 1.5rem; margin: 1rem; }
       h1 { font-size: 1.6rem; }
-      summary { font-size: 1rem; }
       .button { width: 100%; text-align: center; }
-      .tools { justify-content: stretch; }
       .linkbtn { width: 100%; }
     }
   </style>
@@ -180,7 +172,6 @@
       <ul>
         <li><strong>Meetings:</strong> Mondays, 7:00 PM to 8:30 PM</li>
         <li><strong>Location:</strong> Covenant United Methodist Church, 2004 Dock Landing Blvd, Chesapeake, VA</li>
-        <li><strong>What to bring:</strong> Water bottle, a small notebook, and a parent or guardian for the first few minutes</li>
         <li><strong>Uniform:</strong> Class A if you have it. If not, come anyway.</li>
       </ul>
 
@@ -189,8 +180,6 @@
         <a class="button secondary" href="Calendar.html">View Calendar</a>
         <a class="button secondary" href="Contact.html">Contact Us</a>
       </div>
-
-      <p class="note">Tip: If you are not sure what page to start with, click Join Troop 234 and send a message. We will reply with the next meeting details.</p>
     </div>
 
     <div class="tools">
@@ -199,27 +188,55 @@
     </div>
 
     <details>
+      <summary>What the Scout provides vs what the troop provides</summary>
+      <div>
+        <p><strong>The Scout and family are responsible for:</strong></p>
+        <ul>
+          <li>Scout uniform (Class A shirt, pants or shorts, belt, socks)</li>
+          <li>Personal camping gear as Scouts progress</li>
+          <li>Monthly troop dues</li>
+          <li>Participation in activities and events</li>
+        </ul>
+
+        <p><strong>The troop provides:</strong></p>
+        <ul>
+          <li>Program planning and trained adult leadership</li>
+          <li>Advancement guidance and Boards of Review</li>
+          <li>Troop equipment for campouts and activities</li>
+          <li>Leadership development opportunities</li>
+        </ul>
+
+        <p><strong>Arrow of Light bridgeover Scouts:</strong></p>
+        <ul>
+          <li>New shoulder loops</li>
+          <li>Troop bolo tie</li>
+          <li>Scouts BSA Handbook</li>
+        </ul>
+
+        <p class="note">For Scouts bridging over from Arrow of Light, these items are provided by Troop 234 at no cost to the Scout.</p>
+      </div>
+    </details>
+
+    <details>
       <summary>Your first meeting</summary>
       <div>
-        <p>This is what to expect when you show up for the first time.</p>
         <ul>
-          <li><strong>Arrive:</strong> 10 minutes early if you can</li>
-          <li><strong>Scout:</strong> Will join a patrol or a new Scout group for activities</li>
-          <li><strong>Parent:</strong> Plan to stay for the first 10 to 15 minutes for quick questions</li>
-          <li><strong>Bring:</strong> Water bottle, notebook, and any paperwork you already have</li>
-          <li><strong>Uniform:</strong> Class A if you have it, otherwise regular clothes is fine</li>
+          <li>Arrive 10 minutes early if possible</li>
+          <li>Parents stay for the first 10 to 15 minutes</li>
+          <li>Scout will join a patrol or new Scout group</li>
+          <li>Bring a water bottle and notebook</li>
         </ul>
       </div>
     </details>
 
     <details>
-      <summary>How Scouting America Works</summary>
+      <summary>A typical month in Troop 234</summary>
       <div>
-        <p>Scouting is a youth-led program that builds leadership, outdoor skills, and community service. Cub Scouting is family-oriented. Scouts BSA shifts responsibility to youth, empowering them to plan and lead with adult guidance.</p>
         <ul>
-          <li>Scouts work on advancement at their own pace.</li>
-          <li>Scouts operate in patrols, which are small teams within the troop.</li>
-          <li>Scouts plan and lead activities, campouts, and service projects.</li>
+          <li>Weekly Monday meetings</li>
+          <li>One campout or outdoor activity</li>
+          <li>Advancement coaching built into meetings</li>
+          <li>Service projects throughout the year</li>
         </ul>
       </div>
     </details>
@@ -227,89 +244,50 @@
     <details>
       <summary>Troop Organization</summary>
       <div>
-        <p>Troop 234 runs as a youth-led troop. Adult leaders coach and support.</p>
-
-        <p><strong>Youth leadership</strong></p>
-        <ul>
-          <li>Senior Patrol Leader (SPL) and Assistant Senior Patrol Leader (ASPL)</li>
-          <li>Patrol Leaders (PL) and Assistant Patrol Leaders (APL)</li>
-          <li>Other leadership roles as needed (Instructor, Quartermaster, Chaplain Aide, Webmaster, Historian, Librarian, OA Unit Rep)</li>
-        </ul>
-
-        <p><strong>Adult support</strong></p>
-        <ul>
-          <li>Scoutmaster and Assistant Scoutmasters</li>
-          <li>Troop Committee (Committee Chair, Treasurer, Secretary, Advancement, Fundraising, and more)</li>
-          <li>Chartered Organization Representative</li>
-        </ul>
-
-        <p class="note">If you want to help, we can match you with a small, clear role. You do not need prior Scouting experience.</p>
+        <p>Troop 234 is youth-led with adult coaching and support.</p>
+        <p><strong>Youth leadership:</strong> Senior Patrol Leader, Patrol Leaders</p>
+        <p><strong>Adult support:</strong> Scoutmaster, Assistant Scoutmasters, Troop Committee</p>
       </div>
     </details>
 
     <details>
       <summary>Advancement and Ranks</summary>
       <div>
-        <p>Scouts advance by learning skills, participating, serving, and leading. Most new Scouts focus on Scout through First Class early on.</p>
         <ul>
-          <li><strong>Scout</strong></li>
-          <li><strong>Tenderfoot</strong></li>
-          <li><strong>Second Class</strong></li>
-          <li><strong>First Class</strong></li>
-          <li><strong>Star</strong></li>
-          <li><strong>Life</strong></li>
-          <li><strong>Eagle Scout</strong></li>
+          <li>Scout</li>
+          <li>Tenderfoot</li>
+          <li>Second Class</li>
+          <li>First Class</li>
+          <li>Star</li>
+          <li>Life</li>
+          <li>Eagle Scout</li>
         </ul>
-        <p class="note">Eagle Scout requires merit badges, leadership, service, and an Eagle service project.</p>
       </div>
     </details>
 
     <details>
       <summary>Uniforms</summary>
       <div>
-        <p><strong>Class A:</strong> Official khaki shirt with patches, pants or shorts, belt, and socks. Bolo tie.</p>
-        <p><strong>Class B:</strong> Troop t-shirt with clean pants or shorts.</p>
+        <p><strong>Class A:</strong> Official khaki shirt with patches and proper bottoms</p>
+        <p><strong>Class B:</strong> Troop t-shirt with clean pants or shorts</p>
       </div>
     </details>
 
     <details>
       <summary>Meetings and Events</summary>
       <div>
-        <p>Troop 234 meets Mondays from 7:00 PM to 8:30 PM at Covenant United Methodist Church (2004 Dock Landing Blvd, Chesapeake, VA). Class A uniforms are expected unless the troop says otherwise.</p>
-        <p>Annual highlights often include:</p>
-        <ul>
-          <li>Monthly campouts</li>
-          <li>Summer camp</li>
-          <li>Community service projects</li>
-          <li>High-adventure opportunities</li>
-        </ul>
-        <p class="note">For the latest schedule, use the <a href="Calendar.html">Calendar</a> page.</p>
+        <p>Troop 234 meets Mondays from 7:00 PM to 8:30 PM at Covenant United Methodist Church.</p>
       </div>
     </details>
 
     <details>
-  <summary>Forms and documents</summary>
-  <div>
-    <ul>
-      <li>BSA Youth Application (ask us for the current link)</li>
-      <li>Annual Health and Medical Record (Parts A and B)</li>
-      <li><a href="Troop_234_Photo_Release_Form.pdf" target="_blank" rel="noopener">Troop 234 Photo and Media Release Form (PDF)</a></li>
-    </ul>
-    <p class="note">We do not post a Scout’s full name with photos. You can opt out of photo use at any time.</p>
-  </div>
-</details>
-
-
-    <details>
-      <summary>Structure of Weekly Troop Meetings</summary>
+      <summary>Forms and documents</summary>
       <div>
-        <ol>
-          <li>Opening (flag, Scout Oath, Scout Law, Outdoor Code, announcements)</li>
-          <li>Scoutmaster Announcements</li>
-          <li>Patrol time</li>
-          <li>Game or activity</li>
-          <li>Closing and reminders</li>
-        </ol>
+        <ul>
+          <li>BSA Youth Application</li>
+          <li>Annual Health and Medical Record (Parts A and B)</li>
+          <li><a href="Troop_234_Photo_Release_Form.pdf" target="_blank" rel="noopener">Troop 234 Photo and Media Release Form (PDF)</a></li>
+        </ul>
       </div>
     </details>
 
@@ -319,40 +297,26 @@
         <ul>
           <li>Youth Membership: $85 per year</li>
           <li>Adult Volunteers: $65 per year</li>
-          <li>Charter Fee: $100 per year per unit</li>
-          <li>Merit Badge Counselors (not registered leaders): $25 per year</li>
           <li>Troop 234 Dues: $15 per month per Scout</li>
         </ul>
-        <p class="note">Fees can change and some council costs vary. We confirm current totals and what they cover when you visit.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Additional Guidance for Parents</summary>
-      <div>
-        <ul>
-          <li>Use the website and calendar to stay in the loop.</li>
-          <li>Encourage your Scout to show up prepared and participate.</li>
-          <li>Volunteer when you can. Small jobs keep the program strong.</li>
-        </ul>
+        <p class="note">Fees may change. Current totals are confirmed when you visit.</p>
       </div>
     </details>
 
     <details>
       <summary>Contact Information</summary>
       <div>
-        <p>Need to reach us? Use our <a href="Contact.html">Contact Page</a> for key leadership emails and details.</p>
+        <p>Visit our <a href="Contact.html">Contact Page</a> to reach troop leadership.</p>
       </div>
     </details>
   </main>
 
   <script>
     function openAll() {
-      document.querySelectorAll("details").forEach(function(d) { d.open = true; });
+      document.querySelectorAll("details").forEach(d => d.open = true);
     }
-
     function closeAll() {
-      document.querySelectorAll("details").forEach(function(d) { d.open = false; });
+      document.querySelectorAll("details").forEach(d => d.open = false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   </script>
