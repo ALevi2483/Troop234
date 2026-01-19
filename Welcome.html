@@ -24,15 +24,85 @@
     h1 {
       text-align: center;
       color: #003366;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       font-size: 1.9rem;
     }
 
     p {
       line-height: 1.6;
       font-size: 1.05rem;
+      margin-top: 0.75rem;
     }
 
+    /* Quick Start / CTA */
+    .quickstart {
+      margin: 1.25rem 0 1.5rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 10px;
+      background-color: #f7fafc;
+    }
+
+    .quickstart h2 {
+      margin: 0 0 0.75rem;
+      color: #003366;
+      font-size: 1.25rem;
+    }
+
+    .quickstart ul {
+      margin: 0.25rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .actions {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #003366;
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .button:hover {
+      opacity: 0.92;
+    }
+
+    .button.secondary {
+      background-color: #1f5a96;
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 0 0 1rem;
+      justify-content: center;
+    }
+
+    .linkbtn {
+      background: none;
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    .linkbtn:hover {
+      background-color: #f2f6fb;
+    }
+
+    /* Accordion */
     details {
       margin-bottom: 1rem;
       border: 1px solid #ccc;
@@ -49,10 +119,15 @@
       cursor: pointer;
       border-bottom: 1px solid #ccc;
       list-style: none;
+      outline: none;
     }
 
     summary:hover {
       background-color: #d9eaff;
+    }
+
+    summary:focus {
+      box-shadow: 0 0 0 3px rgba(0,102,204,0.25);
     }
 
     details[open] summary {
@@ -78,10 +153,19 @@
       text-decoration: underline;
     }
 
+    .note {
+      font-size: 0.98rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
     @media (max-width: 600px) {
       main { padding: 1.5rem; margin: 1rem; }
       h1 { font-size: 1.6rem; }
       summary { font-size: 1rem; }
+      .button { width: 100%; text-align: center; }
+      .tools { justify-content: stretch; }
+      .linkbtn { width: 100%; }
     }
   </style>
 </head>
@@ -89,16 +173,53 @@
 <body>
   <main>
     <h1>Welcome to Troop 234</h1>
-    <p>Welcome to Troop 234! Please explore the topics below to learn how our troop operates and how your family can get involved.</p>
+    <p>Welcome to Troop 234! Use the quick info below, then expand the sections to learn how our troop operates and how your family can get involved.</p>
+
+    <div class="quickstart">
+      <h2>Quick Start</h2>
+      <ul>
+        <li><strong>Meetings:</strong> Mondays, 7:00 PM to 8:30 PM</li>
+        <li><strong>Location:</strong> Covenant United Methodist Church, 2004 Dock Landing Blvd, Chesapeake, VA</li>
+        <li><strong>What to bring:</strong> Water bottle, a small notebook, and a parent or guardian for the first few minutes</li>
+        <li><strong>Uniform:</strong> Class A if you have it. If not, come anyway.</li>
+      </ul>
+
+      <div class="actions">
+        <a class="button" href="join.html">Join Troop 234</a>
+        <a class="button secondary" href="Calendar.html">View Calendar</a>
+        <a class="button secondary" href="Contact.html">Contact Us</a>
+      </div>
+
+      <p class="note">Tip: If you are not sure what page to start with, click Join Troop 234 and send a message. We will reply with the next meeting details.</p>
+    </div>
+
+    <div class="tools">
+      <button class="linkbtn" type="button" onclick="openAll()">Expand all</button>
+      <button class="linkbtn" type="button" onclick="closeAll()">Collapse all</button>
+    </div>
+
+    <details>
+      <summary>Your first meeting</summary>
+      <div>
+        <p>This is what to expect when you show up for the first time.</p>
+        <ul>
+          <li><strong>Arrive:</strong> 10 minutes early if you can</li>
+          <li><strong>Scout:</strong> Will join a patrol or a new Scout group for activities</li>
+          <li><strong>Parent:</strong> Plan to stay for the first 10 to 15 minutes for quick questions</li>
+          <li><strong>Bring:</strong> Water bottle, notebook, and any paperwork you already have</li>
+          <li><strong>Uniform:</strong> Class A if you have it, otherwise regular clothes is fine</li>
+        </ul>
+      </div>
+    </details>
 
     <details>
       <summary>How Scouting America Works</summary>
       <div>
-        <p>Scouting is a youth-led program that builds leadership, outdoor skills, and community service. While Cub Scouting is family-oriented, Scouting America shifts responsibility to the youth, empowering them to plan, lead, and achieve under adult guidance.</p>
+        <p>Scouting is a youth-led program that builds leadership, outdoor skills, and community service. Cub Scouting is family-oriented. Scouts BSA shifts responsibility to youth, empowering them to plan and lead with adult guidance.</p>
         <ul>
-          <li>Work on advancement at their own pace.</li>
-          <li>Participate in patrols, small groups within the troop.</li>
-          <li>Plan and lead outdoor adventures and service projects.</li>
+          <li>Scouts work on advancement at their own pace.</li>
+          <li>Scouts operate in patrols, which are small teams within the troop.</li>
+          <li>Scouts plan and lead activities, campouts, and service projects.</li>
         </ul>
       </div>
     </details>
@@ -106,38 +227,47 @@
     <details>
       <summary>Troop Organization</summary>
       <div>
-        <p>Troop 234 is organized into patrols—small groups of Scouts led by a Patrol Leader. The troop is youth-led, with adult leaders and a Troop Committee offering guidance and support.</p>
-        <p>Key leadership roles include:</p>
+        <p>Troop 234 runs as a youth-led troop. Adult leaders coach and support.</p>
+
+        <p><strong>Youth leadership</strong></p>
         <ul>
-          <li>Chartered Organization Representative</li>
-          <li>Committee Chair</li>
-          <li>Scoutmaster & Assistant Scoutmasters</li>
-          <li>Senior Patrol Leader, ASPL, Patrol Leaders, APLs</li>
-          <li>Advancement Chair, Treasurer, Secretary, Fundraising Coordinator</li>
-          <li>Instructors, Quartermaster, Chaplain Aide, Webmaster, Historian, Librarian, OA Unit Rep</li>
+          <li>Senior Patrol Leader (SPL) and Assistant Senior Patrol Leader (ASPL)</li>
+          <li>Patrol Leaders (PL) and Assistant Patrol Leaders (APL)</li>
+          <li>Other leadership roles as needed (Instructor, Quartermaster, Chaplain Aide, Webmaster, Historian, Librarian, OA Unit Rep)</li>
         </ul>
+
+        <p><strong>Adult support</strong></p>
+        <ul>
+          <li>Scoutmaster and Assistant Scoutmasters</li>
+          <li>Troop Committee (Committee Chair, Treasurer, Secretary, Advancement, Fundraising, and more)</li>
+          <li>Chartered Organization Representative</li>
+        </ul>
+
+        <p class="note">If you want to help, we can match you with a small, clear role. You do not need prior Scouting experience.</p>
       </div>
     </details>
 
     <details>
       <summary>Advancement and Ranks</summary>
       <div>
-        <p>Scouts progress through ranks as they gain skills, leadership, and service experience:</p>
+        <p>Scouts advance by learning skills, participating, serving, and leading. Most new Scouts focus on Scout through First Class early on.</p>
         <ul>
-          <li><strong>Scout:</strong> Learn Oath, Law, salute, handshake, and badge meaning.</li>
-          <li><strong>Tenderfoot:</strong> Camping, hiking, knots, cooking, and fitness basics.</li>
-          <li><strong>Second Class:</strong> Navigation, swimming, fire safety, and first aid.</li>
-          <li><strong>First Class:</strong> Advanced outdoor skills and patrol leadership.</li>
-          <li><strong>Star & Life:</strong> Leadership roles, service projects, and merit badges.</li>
-          <li><strong>Eagle Scout:</strong> The highest rank, requiring 21 merit badges and a community service project.</li>
+          <li><strong>Scout</strong></li>
+          <li><strong>Tenderfoot</strong></li>
+          <li><strong>Second Class</strong></li>
+          <li><strong>First Class</strong></li>
+          <li><strong>Star</strong></li>
+          <li><strong>Life</strong></li>
+          <li><strong>Eagle Scout</strong></li>
         </ul>
+        <p class="note">Eagle Scout requires merit badges, leadership, service, and an Eagle service project.</p>
       </div>
     </details>
 
     <details>
       <summary>Uniforms</summary>
       <div>
-        <p><strong>Class A:</strong> Official khaki shirt, pants, belt, neckerchief, and slide.</p>
+        <p><strong>Class A:</strong> Official khaki shirt with patches, pants or shorts, belt, and socks. Neckerchief and slide if used by the troop.</p>
         <p><strong>Class B:</strong> Troop t-shirt with clean pants or shorts.</p>
       </div>
     </details>
@@ -145,14 +275,15 @@
     <details>
       <summary>Meetings and Events</summary>
       <div>
-        <p>Troop 234 meets Mondays from 7:00–8:30 PM at Covenant United Methodist Church (2004 Dock Landing Blvd, Chesapeake, VA). Class A uniforms are required unless otherwise noted.</p>
-        <p>Annual highlights include:</p>
+        <p>Troop 234 meets Mondays from 7:00 PM to 8:30 PM at Covenant United Methodist Church (2004 Dock Landing Blvd, Chesapeake, VA). Class A uniforms are expected unless the troop says otherwise.</p>
+        <p>Annual highlights often include:</p>
         <ul>
           <li>Monthly campouts</li>
           <li>Summer camp</li>
           <li>Community service projects</li>
-          <li>High-adventure trips</li>
+          <li>High-adventure opportunities</li>
         </ul>
+        <p class="note">For the latest schedule, use the <a href="Calendar.html">Calendar</a> page.</p>
       </div>
     </details>
 
@@ -161,26 +292,9 @@
       <div>
         <ul>
           <li>BSA Youth Application</li>
-          <li>Annual Health and Medical Record (Parts A & B)</li>
+          <li>Annual Health and Medical Record (Parts A and B)</li>
         </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>Contact Information</summary>
-      <div>
-        <p>Looking to get in touch? Visit our <a href="Contact.html">Contact Page</a> for key leadership emails and details.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Additional Guidance for Parents</summary>
-      <div>
-        <ul>
-          <li>Stay engaged through meetings, events, and our troop website.</li>
-          <li>Encourage your Scout to remain prepared and active.</li>
-          <li>Volunteer for troop events or join the Committee.</li>
-        </ul>
+        <p class="note">If you do not have the forms yet, contact us and we will send the latest links and instructions.</p>
       </div>
     </details>
 
@@ -188,11 +302,11 @@
       <summary>Structure of Weekly Troop Meetings</summary>
       <div>
         <ol>
-          <li>Opening Ceremony (Flag, Oath, Law, Outdoor Code)</li>
-          <li>Skills Instruction</li>
-          <li>Patrol Meetings</li>
-          <li>Inter-Patrol Game or Activity</li>
-          <li>Closing Announcements</li>
+          <li>Opening (flag, Scout Oath, Scout Law, announcements)</li>
+          <li>Skills instruction</li>
+          <li>Patrol time</li>
+          <li>Game or activity</li>
+          <li>Closing and reminders</li>
         </ol>
       </div>
     </details>
@@ -201,14 +315,44 @@
       <summary>Registration Fees and Monthly Dues</summary>
       <div>
         <ul>
-          <li>Youth Membership: $85/year</li>
-          <li>Adult Volunteers: $65/year</li>
-          <li>Charter Fee: $100/year per unit</li>
-          <li>Merit Badge Counselors (not registered leaders): $25/year</li>
-          <li>Troop 234 Dues: $15/month per Scout</li>
+          <li>Youth Membership: $85 per year</li>
+          <li>Adult Volunteers: $65 per year</li>
+          <li>Charter Fee: $100 per year per unit</li>
+          <li>Merit Badge Counselors (not registered leaders): $25 per year</li>
+          <li>Troop 234 Dues: $15 per month per Scout</li>
+        </ul>
+        <p class="note">Fees can change and some council costs vary. We confirm current totals and what they cover when you visit.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Additional Guidance for Parents</summary>
+      <div>
+        <ul>
+          <li>Use the website and calendar to stay in the loop.</li>
+          <li>Encourage your Scout to show up prepared and participate.</li>
+          <li>Volunteer when you can. Small jobs keep the program strong.</li>
         </ul>
       </div>
     </details>
+
+    <details>
+      <summary>Contact Information</summary>
+      <div>
+        <p>Need to reach us? Use our <a href="Contact.html">Contact Page</a> for key leadership emails and details.</p>
+      </div>
+    </details>
   </main>
+
+  <script>
+    function openAll() {
+      document.querySelectorAll("details").forEach(function(d) { d.open = true; });
+    }
+
+    function closeAll() {
+      document.querySelectorAll("details").forEach(function(d) { d.open = false; });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
 </body>
 </html>
