@@ -2,137 +2,312 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7FY6X24EQ6');
+  </script>
 
-  gtag('config', 'G-7FY6X24EQ6');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Helpful Links - Troop 234</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
+    :root{
+      --scout-blue:#003366;
+      --light-bg:#f5f5f5;
+      --card-bg:#ffffff;
+      --row-bg:#eaf4ff;
+      --row-bg-hover:#d8eaff;
+      --border:#dbe7f5;
+      --text:#333;
+      --muted:#556;
     }
 
-    main {
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text);
+    }
+
+    main{
       padding: 2rem;
-      max-width: 900px;
+      max-width: 980px;
       margin: 2rem auto;
-      background-color: #fff;
+      background-color: var(--card-bg);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    h2 {
-      color: #003366;
-      text-align: center;
+    header{
+      text-align:center;
       margin-bottom: 1.5rem;
-      font-size: 1.8rem;
     }
 
-    ul {
+    h1{
+      color: var(--scout-blue);
+      margin: 0 0 0.5rem;
+      font-size: 1.9rem;
+    }
+
+    .subtitle{
+      margin: 0;
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .section{
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section:first-of-type{
+      margin-top: 1.25rem;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    h2{
+      color: var(--scout-blue);
+      margin: 0 0 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    ul{
       list-style: none;
       padding: 0;
       margin: 0;
       display: grid;
-      gap: 1.2rem;
+      gap: 0.9rem;
     }
 
-    li {
+    li{
       display: flex;
-      align-items: center;
-      background-color: #eaf4ff;
-      border-left: 5px solid #003366;
-      border-radius: 6px;
-      padding: 0.8rem 1rem;
+      align-items: flex-start;
+      gap: 12px;
+      background-color: var(--row-bg);
+      border-left: 5px solid var(--scout-blue);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
       transition: background 0.2s ease-in-out;
     }
 
-    li:hover {
-      background-color: #d8eaff;
+    li:hover{
+      background-color: var(--row-bg-hover);
     }
 
-    li img {
+    li img{
       width: 28px;
       height: 28px;
-      margin-right: 10px;
+      margin-top: 2px;
       flex-shrink: 0;
     }
 
-    a {
-      color: #003366;
-      text-decoration: none;
-      font-weight: bold;
-      line-height: 1.4;
+    .linkblock{
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
     }
 
-    a:hover {
+    a{
+      color: var(--scout-blue);
+      text-decoration: none;
+      font-weight: bold;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+
+    a:hover{
       text-decoration: underline;
     }
 
-    @media (max-width: 600px) {
-      main { padding: 1.5rem; }
-      h2 { font-size: 1.5rem; }
-      li img { width: 24px; height: 24px; }
+    .desc{
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+
+    .hint{
+      margin: 0.85rem 0 0;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: #444;
+      line-height: 1.4;
+      font-size: 0.95rem;
+    }
+
+    .hint strong{ color: var(--scout-blue); }
+
+    @media (max-width: 600px){
+      main{ padding: 1.4rem; margin: 1rem; }
+      h1{ font-size: 1.6rem; }
+      li img{ width: 24px; height: 24px; }
+      .desc{ font-size: 0.92rem; }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <h2>Links</h2>
-    <ul>
+    <header>
+      <h1>Helpful Links for Troop 234</h1>
+      <p class="subtitle">
+        Use these resources for forms, photos, calendars, uniforms, and merit badges.
+      </p>
+    </header>
 
-      <li>
-        <img src="https://img.icons8.com/color/48/google-forms-new-logo.png" alt="Google Forms">
-        <a href="https://forms.gle/5A8Etp6E6UfVcdzv5" target="_blank" rel="noopener">
-          Photo Submission Form
-        </a>
-      </li>
+    <section class="section">
+      <h2>Troop forms and files</h2>
+      <ul>
+        <li>
+          <img src="https://img.icons8.com/color/48/health-book.png" alt="Medical forms icon">
+          <div class="linkblock">
+            <a href="images/ABC%20Medical%20Forms.pdf" target="_blank" rel="noopener" aria-label="Open ABC Medical Forms PDF">
+              ABC Medical Forms (Parts A, B1, B2, C)
+            </a>
+            <p class="desc">
+              Parts A and B are needed for most activities. Part C is required for 72+ hour events.
+            </p>
+          </div>
+        </li>
 
-      <li>
-        <img src="https://img.icons8.com/color/48/google-drive--v1.png" alt="Google Drive">
-        <a href="https://drive.google.com/drive/folders/1J6hHo71Y51Rmq20yhTTKFfsNPS0ZLe2L" target="_blank" rel="noopener">
-          Troop 234 Shared Photos
-        </a>
-      </li>
+        <li>
+          <img src="https://img.icons8.com/color/48/camera.png" alt="Photo release icon">
+          <div class="linkblock">
+            <a href="images/Troop_234_Photo_Release_Form.pdf" target="_blank" rel="noopener" aria-label="Open Troop 234 Photo Release Form PDF">
+              Troop 234 Photo and Media Release Form
+            </a>
+            <p class="desc">
+              Allows the troop to share photos on troop channels without using a Scout’s full name.
+            </p>
+          </div>
+        </li>
+      </ul>
 
-      <li>
-        <img src="https://img.icons8.com/color/48/calendar--v1.png" alt="Calendar">
-        <a href="https://tidewaterbsa.com/calendar/" target="_blank" rel="noopener">
-          Tidewater Council BSA Calendar
-        </a>
-      </li>
+      <p class="hint">
+        <strong>Quick rule:</strong> If your event lasts <strong>72 hours or more</strong> (summer camp, jamboree, Wood Badge, multi-day trek),
+        you need <strong>Part C</strong> signed by a licensed medical provider.
+      </p>
+    </section>
 
-      <li>
-        <img src="https://img.icons8.com/color/48/shopping-cart--v1.png" alt="Scout Shop">
-        <a href="https://www.scoutshop.org" target="_blank" rel="noopener">
-          ScoutShop Uniforms and Gear
-        </a>
-      </li>
+    <section class="section">
+      <h2>Troop photos</h2>
+      <ul>
+        <li>
+          <img src="https://img.icons8.com/color/48/google-forms-new-logo.png" alt="Google Forms">
+          <div class="linkblock">
+            <a href="https://forms.gle/5A8Etp6E6UfVcdzv5" target="_blank" rel="noopener" aria-label="Open Photo Submission Form">
+              Photo Submission Form
+            </a>
+            <p class="desc">
+              Upload photos for the troop site and troop channels. Use this instead of texting photos to leaders.
+            </p>
+          </div>
+        </li>
 
-      <li>
-        <img src="https://img.icons8.com/color/48/certificate--v1.png" alt="Merit Badge">
-        <a href="http://usscouts.org/mb/worksheets/list.asp" target="_blank" rel="noopener">
-          Merit Badge Worksheets USScouts.org
-        </a>
-      </li>
+        <li>
+          <img src="https://img.icons8.com/color/48/google-drive--v1.png" alt="Google Drive">
+          <div class="linkblock">
+            <a href="https://drive.google.com/drive/folders/1J6hHo71Y51Rmq20yhTTKFfsNPS0ZLe2L" target="_blank" rel="noopener" aria-label="Open Troop 234 Shared Photos folder">
+              Troop 234 Photo Library
+            </a>
+            <p class="desc">
+              View troop photos that have been organized in the shared drive.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-      <li>
-        <img src="https://img.icons8.com/color/48/compass--v1.png" alt="Join Scouting">
-        <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank" rel="noopener">
-          Join Scouting Today Find a Local Troop
-        </a>
-      </li>
+    <section class="section">
+      <h2>Council and events</h2>
+      <ul>
+        <li>
+          <img src="https://img.icons8.com/color/48/calendar--v1.png" alt="Calendar">
+          <div class="linkblock">
+            <a href="https://tidewaterbsa.com/calendar/" target="_blank" rel="noopener" aria-label="Open Tidewater Council calendar">
+              Tidewater Council BSA Calendar
+            </a>
+            <p class="desc">
+              Council events, training, and district activities.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-    </ul>
+    <section class="section">
+      <h2>Uniforms and gear</h2>
+      <ul>
+        <li>
+          <img src="https://img.icons8.com/color/48/shopping-cart--v1.png" alt="Scout Shop">
+          <div class="linkblock">
+            <a href="https://www.scoutshop.org" target="_blank" rel="noopener" aria-label="Open Scout Shop website">
+              Scout Shop (Uniforms and Gear)
+            </a>
+            <p class="desc">
+              Official uniforms, handbooks, patches, and camping gear basics.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Merit badges and advancement</h2>
+      <ul>
+        <li>
+          <img src="https://img.icons8.com/color/48/certificate--v1.png" alt="Merit Badge requirements icon">
+          <div class="linkblock">
+            <a href="https://www.scouting.org/skills/merit-badges/" target="_blank" rel="noopener" aria-label="Open official merit badge page">
+              Official Merit Badge Information (Scouting America)
+            </a>
+            <p class="desc">
+              Use this as your official source for merit badge info and updates.
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <img src="https://img.icons8.com/color/48/documents.png" alt="Worksheets icon">
+          <div class="linkblock">
+            <a href="http://usscouts.org/mb/worksheets/list.asp" target="_blank" rel="noopener" aria-label="Open USScouts merit badge worksheets">
+              Merit Badge Worksheets (Helper Resource)
+            </a>
+            <p class="desc">
+              Helpful worksheets for staying organized. Not an official replacement for requirements.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>New to Scouting</h2>
+      <ul>
+        <li>
+          <img src="https://img.icons8.com/color/48/compass--v1.png" alt="Join Scouting">
+          <div class="linkblock">
+            <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank" rel="noopener" aria-label="Open BeAScout troop finder">
+              BeAScout Troop Finder
+            </a>
+            <p class="desc">
+              Find a local unit and basic membership info.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
   </main>
 </body>
 </html>
