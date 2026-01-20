@@ -67,7 +67,7 @@
     /* Question Cards */
     .card-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       margin: 2rem 0;
     }
@@ -77,14 +77,38 @@
       padding: 1.5rem;
       border-radius: 12px;
       border: 1px solid #e2e8f0;
-      text-align: center;
+      text-align: left; /* Changed to left for better list readability */
       transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
     }
 
     .info-card:hover { transform: translateY(-5px); }
-    .info-card h3 { color: var(--scout-blue); margin-top: 0.5rem; font-size: 1.1rem; }
-    .info-card p { font-size: 0.95rem; line-height: 1.5; color: #4a5568; }
-    .icon { font-size: 2rem; }
+    
+    .info-card .card-header {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .info-card h3 { color: var(--scout-blue); margin: 0.5rem 0; font-size: 1.2rem; }
+    
+    .info-card p, .info-card li { 
+        font-size: 0.95rem; 
+        line-height: 1.5; 
+        color: #4a5568; 
+        margin-bottom: 0.75rem;
+    }
+
+    .info-card ul {
+        padding-left: 1.2rem;
+        margin: 0;
+    }
+
+    .info-card li {
+        margin-bottom: 0.4rem;
+    }
+
+    .icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
 
     /* Why Section */
     .why-section {
@@ -142,6 +166,7 @@
       .photo-grid { grid-template-columns: repeat(2, 1fr); }
       .content-padding { padding: 1.5rem; }
       .benefit-list { grid-template-columns: 1fr; }
+      .card-container { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -161,23 +186,50 @@
     </div>
 
     <div class="content-padding">
-      <h2>Your Top Questions, Answered</h2>
+      <h2 style="text-align: center;">Your Top Questions, Answered</h2>
       <div class="card-container">
+        
         <div class="info-card">
-          <div class="icon">💰</div>
-          <h3>What does it cost?</h3>
-          <p>Annual dues, uniform, and campout fees. We keep costs low through fundraisers and offer gear swaps to help families get started affordably.</p>
+          <div class="card-header">
+            <div class="icon">💰</div>
+            <h3>What does it cost?</h3>
+          </div>
+          <p>We believe in being upfront about the investment so there are no surprises:</p>
+          <ul>
+            <li><strong>National Registration:</strong> Youth ~$85/yr | Adult ~$65/yr</li>
+            <li><strong>One-Time Join Fee:</strong> $25 (New Youth)</li>
+            <li><strong>Troop Dues:</strong> $15/month (Covers badges & gear)</li>
+            <li><strong>Camping:</strong> ~$20–$30 per weekend for food/fees</li>
+          </ul>
+          <p style="margin-top:10px; font-style: italic;">*We hold several fundraisers to help Scouts "earn their own way" and offset these costs.</p>
         </div>
+
         <div class="info-card">
-          <div class="icon">🕒</div>
-          <h3>The Time Commitment?</h3>
-          <p>We meet Mondays at 7:00 PM. We typically have one weekend campout per month. It's flexible—attendance is encouraged but not mandatory for every single event.</p>
+          <div class="card-header">
+            <div class="icon">🕒</div>
+            <h3>The Time Commitment?</h3>
+          </div>
+          <p>Scouting fits into a busy schedule more easily than most think:</p>
+          <ul>
+            <li><strong>Weekly Meetings:</strong> Mondays at 7:00 PM</li>
+            <li><strong>Monthly Outings:</strong> One weekend campout per month</li>
+            <li><strong>Flexibility:</strong> School and sports come first—attendance is encouraged but not mandatory for every event.</li>
+          </ul>
         </div>
+
         <div class="info-card">
-          <div class="icon">🎒</div>
-          <h3>What gear do I need?</h3>
-          <p>To start: just a uniform shirt! As we go, your Scout will need a sleeping bag and a backpack. Don't buy everything at once—we’ll guide you on the best values.</p>
+          <div class="card-header">
+            <div class="icon">🛡️</div>
+            <h3>Safety & Supervision?</h3>
+          </div>
+          <p>Your child's safety is our absolute priority. We follow strict BSA protocols:</p>
+          <ul>
+            <li><strong>Two-Deep Leadership:</strong> Minimum of two registered adults at every activity.</li>
+            <li><strong>No One-on-One Contact:</strong> Strictly prohibited in person, via text, or online.</li>
+            <li><strong>Background Checks:</strong> Every adult leader undergoes comprehensive background checks and YPT training.</li>
+          </ul>
         </div>
+
       </div>
 
       <div class="why-section">
