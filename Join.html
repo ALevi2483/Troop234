@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7FY6X24EQ6');
+  </script>
 
-  gtag('config', 'G-7FY6X24EQ6');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join Troop 234 - Troop 234</title>
+
   <style>
     body {
       margin: 0;
@@ -68,19 +69,31 @@
       margin: 0.5rem 0;
     }
 
+    .cta-actions {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
     .button {
       display: inline-block;
-      margin-top: 0.75rem;
       background-color: #003366;
       color: white;
       text-decoration: none;
       padding: 0.75rem 1rem;
       border-radius: 8px;
       font-weight: bold;
+      border: none;
+      cursor: pointer;
     }
 
     .button:hover {
       opacity: 0.92;
+    }
+
+    .button.secondary {
+      background-color: #1f5a96;
     }
 
     .note {
@@ -91,6 +104,7 @@
     @media (max-width: 600px) {
       main { padding: 1.5rem; }
       h2 { font-size: 1.5rem; }
+      .button { width: 100%; text-align: center; }
     }
   </style>
 </head>
@@ -134,8 +148,8 @@
     </ul>
 
     <div class="cta">
-      <p><strong>Ready to visit?</strong></p>
-      <p>Send us a message and we will get you the next meeting date, time, and location.</p>
+      <p><strong>Ready to visit or join?</strong></p>
+      <p>Contact us for the next meeting details, or use BeAScout to start the join process.</p>
 
       <p class="note">
         Contact: <strong>Adam Levine</strong> (New Member Coordinator)
@@ -143,8 +157,18 @@
         Use the troop contact page to reach us.
       </p>
 
-      <a class="button" href="Contact.html">Contact Troop 234</a>
-      <a class="button" style="margin-left: 0.5rem;" href="Calendar.html">View Calendar</a>
+      <div class="cta-actions">
+        <a class="button secondary" href="Contact.html">Contact Troop 234</a>
+        <a class="button secondary" href="Calendar.html">View Calendar</a>
+
+        <!-- BeAScout blocks iframes. This forces top-level open in a new tab. -->
+        <a class="button"
+           href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
+           onclick="window.top.open(this.href,'_blank'); return false;"
+           rel="noopener">
+          Join Troop 234
+        </a>
+      </div>
     </div>
 
     <h3>About Troop 234</h3>
