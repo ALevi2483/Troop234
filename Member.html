@@ -2,105 +2,233 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7FY6X24EQ6');
+  </script>
 
-  gtag('config', 'G-7FY6X24EQ6');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Troop 234 Member Area</title>
-  <style>
-    :root {
-      --bg: #f5f9f5;
-      --card: #ffffff;
-      --ink: #223;
-      --brand: #003366;
-      --accent: #eaf4ff;
-      --border: #cfd8cf;
-      --muted: #4a5568;
-      --adult: #fce8d8;
-    }
-    * { box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; margin: 0; background: var(--bg); color: var(--ink); }
-    .content-wrapper { max-width: 900px; margin: 2.5rem auto; padding: 0 20px; }
-    h1 { margin: 0 0 1rem; text-align: center; color: var(--brand); font-size: 1.9rem; }
 
-    details {
+  <style>
+    :root{
+      --bg:#f5f9f5;
+      --card:#ffffff;
+      --ink:#223;
+      --brand:#003366;
+      --accent:#eaf4ff;
+      --border:#cfd8cf;
+      --muted:#4a5568;
+      --adult:#fce8d8;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+      --radius: 12px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* Wider on desktop, still comfortable */
+    .content-wrapper{
+      max-width: 1200px;
+      margin: 2.25rem auto;
+      padding: 0 18px;
+    }
+
+    h1{
+      margin: 0 0 1rem;
+      text-align:center;
+      color: var(--brand);
+      font-size: clamp(1.6rem, 1.1rem + 1vw, 2.1rem);
+      letter-spacing: .2px;
+    }
+
+    /* Sections */
+    details{
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: var(--radius);
       margin-bottom: 16px;
       padding: 14px 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: var(--shadow);
     }
-    summary { font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: .5rem; }
-    summary::marker { display: none; }
-    details[open] summary { margin-bottom: .75rem; }
-    .panel { background: var(--accent); border-left: 5px solid var(--brand); border-radius: 8px; padding: 12px 14px; margin: 10px 0 14px; }
-    h3 { margin: 0 0 .35rem; color: var(--brand); font-size: 1.05rem; }
-    ul { padding-left: 1.2rem; margin: .25rem 0 1rem; }
-    li { margin: .35rem 0; }
-    a { color: #226644; text-decoration: underline; }
-    a:hover { text-decoration: none; }
-    @media (max-width: 600px) { .content-wrapper { margin: 1.5rem auto; } h1 { font-size: 1.6rem; } }
 
-    /* Adult leaders */
-    .adult-wrap { display: grid; gap: 16px; }
-    .adult-top { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 720px){ .adult-top { grid-template-columns: 2fr 1fr; } }
+    summary{
+      font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem);
+      font-weight: 700;
+      cursor: pointer;
+      display:flex;
+      align-items:center;
+      gap: .5rem;
+      list-style: none;
+      user-select: none;
+    }
 
-    .adult-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 700px){ .adult-grid { grid-template-columns: repeat(3, 1fr); } }
+    summary::-webkit-details-marker{ display:none; }
+    details[open] summary{ margin-bottom: .85rem; }
 
-    .adult-row { display: grid; gap: 12px; grid-template-columns: 1fr; }
-    @media (min-width: 760px){ .adult-row { grid-template-columns: repeat(3, 1fr); } }
+    .panel{
+      background: var(--accent);
+      border-left: 5px solid var(--brand);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 10px 0 14px;
+    }
 
-    .adult-card { background: var(--adult); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
-    .org-role { font-size: .85rem; color: var(--muted); margin-bottom: 3px; }
-    .org-name { font-weight: 700; }
+    .panel p{ margin: .4rem 0; }
 
-    .adult-panel { border: 1px solid var(--border); border-radius: 12px; background: #f7fbff; padding: 12px 14px; }
-    .adult-panel h4 { margin: 0 0 6px; color: var(--brand); }
-    .bullet { margin: 0; padding-left: 1.1rem; }
+    h3{
+      margin: 0 0 .35rem;
+      color: var(--brand);
+      font-size: 1.1rem;
+    }
+
+    a{
+      color: #226644;
+      text-decoration: underline;
+    }
+    a:hover{ text-decoration: none; }
+
+    /* Adult Leaders layout */
+    .adult-wrap{
+      display: grid;
+      gap: 18px;
+    }
+
+    /* Two-column area on desktop, stacked on mobile */
+    .adult-top{
+      display:grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+      align-items:start;
+    }
+    @media (min-width: 900px){
+      .adult-top{
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    /* Cards should fill space cleanly at any width */
+    .cards-grid{
+      display:grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .adult-card{
+      background: var(--adult);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+    }
+    .org-role{
+      font-size: .9rem;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .org-name{
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .adult-panel{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #f7fbff;
+      padding: 12px 14px;
+      box-shadow: none;
+    }
+    .adult-panel h4{
+      margin: 0 0 8px;
+      color: var(--brand);
+      font-size: 1.05rem;
+    }
+
+    /* Make long lists look good on desktop */
+    .bullet{
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .bullet li{ margin: .35rem 0; }
+
+    @media (min-width: 900px){
+      .bullet{
+        column-count: 2;
+        column-gap: 28px;
+      }
+      .bullet li{
+        break-inside: avoid;
+      }
+    }
+
+    /* Mobile comfort */
+    @media (max-width: 600px){
+      .content-wrapper{ margin: 1.4rem auto; }
+      details{ padding: 12px 12px; }
+      .panel{ padding: 11px 12px; }
+    }
+
+    /* Optional: tighter headings spacing */
+    .section-title{
+      margin: 0 0 8px;
+    }
   </style>
 </head>
+
 <body>
   <div class="content-wrapper">
     <h1>Troop 234 Member Area</h1>
 
-    <!-- Troop Contact Roster (keep only these two panels) -->
     <details open>
       <summary>📇 Troop Contact Roster</summary>
 
       <div class="panel">
         <h3>Contact Information Form</h3>
         <p>All adults should complete this form so we have accurate contact and role details on file.</p>
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdiZzrcdY8oB858dYUYgrGpLR54p5i8Kt3UGFWaNAa_fpkP9g/viewform?usp=header" target="_blank" rel="noopener">Complete the Adult Contact Form</a></p>
+        <p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiZzrcdY8oB858dYUYgrGpLR54p5i8Kt3UGFWaNAa_fpkP9g/viewform?usp=header"
+             target="_blank" rel="noopener">
+            Complete the Adult Contact Form
+          </a>
+        </p>
       </div>
 
       <div class="panel">
         <h3>Adult & Scout Recall Information</h3>
         <p>This spreadsheet contains submitted recall information for adults and scouts.</p>
-        <p><a href="https://docs.google.com/spreadsheets/d/1R-NDxk7_kqFn1kNb58bv-7eo_Sd9HJcjDc_uoJAwii8/edit?usp=sharing" target="_blank" rel="noopener">View Recall Information</a></p>
+        <p>
+          <a href="https://docs.google.com/spreadsheets/d/1R-NDxk7_kqFn1kNb58bv-7eo_Sd9HJcjDc_uoJAwii8/edit?usp=sharing"
+             target="_blank" rel="noopener">
+            View Recall Information
+          </a>
+        </p>
       </div>
     </details>
 
-    <!-- Adult Leaders only -->
     <details open>
       <summary>👥 Adult Leaders</summary>
 
       <div class="adult-wrap">
         <div class="adult-top">
-          <div class="adult-grid" id="adultTop"></div>
-          <div>
+          <!-- Top leadership cards -->
+          <div class="cards-grid" id="adultTop"></div>
+
+          <!-- Name lists -->
+          <div class="adult-wrap" style="gap:12px;">
             <div class="adult-panel">
               <h4>Troop Committee Members</h4>
               <ul class="bullet" id="adultCommittee"></ul>
             </div>
+
             <div class="adult-panel">
               <h4>Assistant Scoutmasters</h4>
               <ul class="bullet" id="adultASMs"></ul>
@@ -109,20 +237,19 @@
         </div>
 
         <div>
-          <h3>Committee Roles</h3>
-          <div class="adult-row" id="adultRoles"></div>
+          <h3 class="section-title">Committee Roles</h3>
+          <div class="cards-grid" id="adultRoles"></div>
         </div>
 
         <div>
-          <h3>Patrol Admins</h3>
-          <div class="adult-row" id="adultPatrolAdmins"></div>
+          <h3 class="section-title">Patrol Admins</h3>
+          <div class="cards-grid" id="adultPatrolAdmins"></div>
         </div>
       </div>
     </details>
   </div>
 
   <script>
-    // Adults only. Committee roles, committee members, and ASMs are alphabetized for display.
     const adultData = {
       top: [
         { title: "Chartered Org Rep", name: "Suanne Bryant" },
@@ -156,31 +283,35 @@
 
     const $ = s => document.querySelector(s);
 
-    function adultCard(t, n) {
-      return `<div class="adult-card"><div class="org-role">${t}</div><div class="org-name">${n}</div></div>`;
+    function card(t, n){
+      return `
+        <div class="adult-card">
+          <div class="org-role">${t}</div>
+          <div class="org-name">${n}</div>
+        </div>`;
     }
 
-    function renderAdult() {
+    function render(){
       // Top leaders (as provided)
-      $('#adultTop').innerHTML = adultData.top.map(a => adultCard(a.title, a.name)).join('');
+      $('#adultTop').innerHTML = adultData.top.map(x => card(x.title, x.name)).join('');
 
       // Committee Roles (alphabetized by title)
-      const sortedRoles = [...adultData.roles].sort((a, b) => a.title.localeCompare(b.title));
-      $('#adultRoles').innerHTML = sortedRoles.map(a => adultCard(a.title, a.name)).join('');
+      const sortedRoles = [...adultData.roles].sort((a,b) => a.title.localeCompare(b.title));
+      $('#adultRoles').innerHTML = sortedRoles.map(x => card(x.title, x.name)).join('');
 
       // Patrol Admins (as provided)
-      $('#adultPatrolAdmins').innerHTML = adultData.patrolAdmins.map(a => adultCard(a.title, a.name)).join('');
+      $('#adultPatrolAdmins').innerHTML = adultData.patrolAdmins.map(x => card(x.title, x.name)).join('');
 
-      // Committee Members (alphabetized by display string)
-      const sortedCommittee = [...adultData.committeeMembers].sort((a, b) => a.localeCompare(b));
+      // Committee Members (alphabetized)
+      const sortedCommittee = [...adultData.committeeMembers].sort((a,b) => a.localeCompare(b));
       $('#adultCommittee').innerHTML = sortedCommittee.map(n => `<li>${n}</li>`).join('');
 
-      // Assistant Scoutmasters (alphabetized by display string)
-      const sortedASMs = [...adultData.assistantScoutmasters].sort((a, b) => a.localeCompare(b));
+      // ASMs (alphabetized)
+      const sortedASMs = [...adultData.assistantScoutmasters].sort((a,b) => a.localeCompare(b));
       $('#adultASMs').innerHTML = sortedASMs.map(n => `<li>${n}</li>`).join('');
     }
 
-    renderAdult();
+    render();
   </script>
 </body>
 </html>
