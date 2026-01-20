@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,169 +11,210 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Troop 234 - Troop 234</title>
+  <title>Join the Adventure - Troop 234 Chesapeake</title>
 
   <style>
+    :root {
+      --scout-blue: #003366;
+      --scout-gold: #f1c40f;
+      --light-bg: #f7fafc;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #e9ecef;
       color: #333;
     }
 
+    /* Hero Image Grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      background-color: #fff;
+      padding: 5px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
     main {
-      padding: 2rem;
-      max-width: 900px;
-      margin: 2rem auto;
+      max-width: 1000px;
+      margin: 0 auto;
       background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
     }
 
-    h2 {
-      color: #003366;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+    .content-padding {
+      padding: 2.5rem;
+    }
+
+    .hero-text {
       text-align: center;
+      padding: 2rem 1rem;
+      background-color: var(--scout-blue);
+      color: white;
     }
 
-    h3 {
-      color: #003366;
-      font-size: 1.25rem;
-      margin: 2rem 0 0.75rem;
+    .hero-text h1 { margin: 0; font-size: 2.2rem; }
+    .hero-text p { font-size: 1.2rem; opacity: 0.9; margin-top: 0.5rem; }
+
+    /* Question Cards */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
     }
 
-    p {
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      font-size: 1.05rem;
+    .info-card {
+      background: var(--light-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      transition: transform 0.2s;
     }
 
-    ul {
-      line-height: 1.6;
-      margin: 0 0 1.25rem 1.25rem;
+    .info-card:hover { transform: translateY(-5px); }
+    .info-card h3 { color: var(--scout-blue); margin-top: 0.5rem; font-size: 1.1rem; }
+    .info-card p { font-size: 0.95rem; line-height: 1.5; color: #4a5568; }
+    .icon { font-size: 2rem; }
+
+    /* Why Section */
+    .why-section {
+      background-color: #f0f4f8;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 3rem;
+    }
+
+    .why-section h2 { color: var(--scout-blue); text-align: center; margin-bottom: 1.5rem; }
+
+    .benefit-list {
+      list-style: none;
       padding: 0;
-      font-size: 1.05rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 1rem;
     }
 
-    .cta {
-      margin-top: 2rem;
-      padding: 1.25rem;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 10px;
-      background-color: #f7fafc;
-    }
-
-    .cta p {
-      margin: 0.5rem 0;
-    }
-
-    .cta-actions {
-      margin-top: 0.75rem;
+    .benefit-item {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .benefit-item strong { color: var(--scout-blue); display: block; }
+
+    /* Action Section */
+    .join-footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #fff;
     }
 
     .button {
       display: inline-block;
-      background-color: #003366;
+      background-color: var(--scout-blue);
       color: white;
       text-decoration: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
+      padding: 1rem 2rem;
+      border-radius: 50px;
       font-weight: bold;
-      border: none;
-      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(0,51,102,0.3);
+      transition: all 0.3s;
     }
 
-    .button:hover {
-      opacity: 0.92;
-    }
+    .button:hover { background-color: #1f5a96; transform: scale(1.05); }
 
-    .button.secondary {
-      background-color: #1f5a96;
-    }
+    .secondary-links { margin-top: 1.5rem; }
+    .secondary-links a { color: var(--scout-blue); margin: 0 10px; text-decoration: none; font-weight: 500; }
 
-    .note {
-      font-size: 0.98rem;
-      color: #555;
-    }
-
-    @media (max-width: 600px) {
-      main { padding: 1.5rem; }
-      h2 { font-size: 1.5rem; }
-      .button { width: 100%; text-align: center; }
+    @media (max-width: 768px) {
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .content-padding { padding: 1.5rem; }
+      .benefit-list { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <h2>Join Troop 234</h2>
-
-    <p>If you are looking for a troop where Scouts camp, learn real skills, and grow into leaders, Troop 234 is a solid fit. We are a Boy Scouts of America troop in Chesapeake, Virginia. We focus on outdoor adventure, leadership, and character.</p>
-
-    <h3>Who can join</h3>
-    <ul>
-      <li>Scouts ages 11 to 17</li>
-      <li>Or Scouts who have completed 5th grade and are at least 10 years old</li>
-      <li>New Scouts are welcome any time of year</li>
-    </ul>
-
-    <h3>What Scouts do in Troop 234</h3>
-    <ul>
-      <li>Campouts and outdoor activities</li>
-      <li>Hiking and basic outdoor skills</li>
-      <li>Cooking and teamwork in patrols</li>
-      <li>Service projects in the community</li>
-      <li>Leadership opportunities that are Scout led</li>
-      <li>Advancement support from trained adult leaders</li>
-    </ul>
-
-    <h3>What parents should know</h3>
-    <ul>
-      <li>You do not need Scouting experience to join</li>
-      <li>Adults support the program, but Scouts lead the troop</li>
-      <li>We keep safety and youth protection as a priority</li>
-      <li>Costs vary by registration, uniform, and campouts. We will explain it clearly when you visit.</li>
-    </ul>
-
-    <h3>How to get started</h3>
-    <ul>
-      <li>Step 1: Come visit a meeting</li>
-      <li>Step 2: Meet the Scoutmaster and our adult leaders</li>
-      <li>Step 3: We will walk you through joining, uniforms, and the calendar</li>
-    </ul>
-
-    <div class="cta">
-      <p><strong>Ready to visit or join?</strong></p>
-      <p>Contact us for the next meeting details, or use BeAScout to start the join process.</p>
-
-      <p class="note">
-        Contact: <strong>Adam Levine</strong> (New Member Coordinator)
-        <br />
-        Use the troop contact page to reach us.
-      </p>
-
-      <div class="cta-actions">
-        <a class="button secondary" href="Contact.html">Contact Troop 234</a>
-        <a class="button secondary" href="Calendar.html">View Calendar</a>
-
-        <!-- BeAScout blocks iframes. This forces top-level open in a new tab. -->
-        <a class="button"
-           href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
-           onclick="window.top.open(this.href,'_blank'); return false;"
-           rel="noopener">
-          Join Troop 234
-        </a>
-      </div>
+    <div class="photo-grid">
+      <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=400" alt="Scouts around campfire">
+      <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=400" alt="Cooking outdoors">
+      <img src="https://images.unsplash.com/photo-1620120966883-d977b57a96ec?auto=format&fit=crop&q=80&w=400" alt="Scout on a trail">
+      <img src="https://images.unsplash.com/photo-1544365313-9993309a43a0?auto=format&fit=crop&q=80&w=400" alt="Canoeing">
     </div>
 
-    <h3>About Troop 234</h3>
-    <p>Troop 234 in Chesapeake, Virginia has proudly served the community for more than 35 years, offering youth opportunities to explore the outdoors, develop leadership skills, and grow in character.</p>
+    <div class="hero-text">
+      <h1>New to Scouting? Start Your Adventure Here!</h1>
+      <p>Everything Chesapeake families need to know about Troop 234</p>
+    </div>
 
-    <p>Founded on the core principles of Scouting, Troop 234 is chartered by the Rotary Club Of Chesapeake welcomes Scouts from all faith backgrounds.</p>
+    <div class="content-padding">
+      <h2>Your Top Questions, Answered</h2>
+      <div class="card-container">
+        <div class="info-card">
+          <div class="icon">💰</div>
+          <h3>What does it cost?</h3>
+          <p>Annual dues, uniform, and campout fees. We keep costs low through fundraisers and offer gear swaps to help families get started affordably.</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">🕒</div>
+          <h3>The Time Commitment?</h3>
+          <p>We meet Mondays at 7:00 PM. We typically have one weekend campout per month. It's flexible—attendance is encouraged but not mandatory for every single event.</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">🎒</div>
+          <h3>What gear do I need?</h3>
+          <p>To start: just a uniform shirt! As we go, your Scout will need a sleeping bag and a backpack. Don't buy everything at once—we’ll guide you on the best values.</p>
+        </div>
+      </div>
+
+      <div class="why-section">
+        <h2>Why Troop 234?</h2>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <span>🚀</span>
+            <div><strong>High-Adventure Focus</strong> Annual trips to world-class locations like Philmont, Northern Tier, and Sea Base for older Scouts.</div>
+          </div>
+          <div class="benefit-item">
+            <span>🤝</span>
+            <div><strong>Scout-Led Tradition</strong> We empower youth to lead. They plan the meetings and menus, developing real-world confidence.</div>
+          </div>
+          <div class="benefit-item">
+            <span>🦅</span>
+            <div><strong>Proven Leadership</strong> Proudly fostering over 50 Eagle Scouts in our 35-year history in Chesapeake.</div>
+          </div>
+          <div class="benefit-item">
+            <span>❤️</span>
+            <div><strong>Service Oriented</strong> Deeply involved with Covenant United Methodist and the local community through regular service projects.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="join-footer">
+        <h3>Ready to visit or join the family?</h3>
+        <p>Come see us in action! No pressure, just a chance to see how we operate.</p>
+        <br>
+        <a class="button" href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank">Join Troop 234 Now</a>
+        
+        <div class="secondary-links">
+          <a href="Contact.html">Contact New Member Coordinator</a> | 
+          <a href="Calendar.html">View Our Calendar</a>
+        </div>
+        <p style="font-size: 0.8rem; color: #999; margin-top: 2rem;">Chartered by the Rotary Club Of Chesapeake • Open to all backgrounds</p>
+      </div>
+    </div>
   </main>
 </body>
 </html>
