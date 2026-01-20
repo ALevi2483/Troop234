@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7FY6X24EQ6');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7FY6X24EQ6');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Troop 234 Calendar</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f5f5f5;
       color: #333;
     }
@@ -33,36 +31,93 @@
     h2 {
       color: #003366;
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       font-size: 1.8rem;
     }
 
-    p {
+    .subtitle {
       text-align: center;
       font-size: 1.05rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       line-height: 1.6;
+      color: #666;
     }
+
+    /* Subscribe Section Styles */
+    .subscribe-box {
+      background-color: #eef4f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      text-align: center;
+      border: 1px solid #d1e3f0;
+    }
+
+    .subscribe-box h3 {
+      margin-top: 0;
+      color: #003366;
+      font-size: 1.2rem;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .btn-google { background-color: #4285F4; color: white; }
+    .btn-apple { background-color: #333; color: white; }
+    .btn:hover { opacity: 0.85; }
 
     iframe {
       width: 100%;
-      height: 800px;
-      border: none;
+      height: 700px;
+      border: 1px solid #ddd;
       border-radius: 8px;
     }
 
+    .calendar-footer {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+
     @media (max-width: 768px) {
-      main { padding: 1.5rem; }
-      iframe { height: 600px; }
-      h2 { font-size: 1.5rem; }
+      main { padding: 1rem; margin: 1rem auto; }
+      iframe { height: 500px; }
+      h2 { font-size: 1.4rem; }
+      .btn { width: 100%; text-align: center; }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <h2>Stay Connected with Our Upcoming Events</h2>
-    <p>Below is our troop's live Google Calendar, featuring meetings, campouts, and special events. Check back often for updates!</p>
+    <h2>Troop 234 Activity Calendar</h2>
+    <p class="subtitle">Never miss a meeting or a campout. Our live calendar is the "source of truth" for all Troop 234 events.</p>
+
+    <div class="subscribe-box">
+      <h3>Sync to Your Phone</h3>
+      <p>Add the Troop 234 calendar to your personal device to get automatic updates.</p>
+      <div class="btn-container">
+        <a href="https://calendar.google.com/calendar/render?cid=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com" target="_blank" class="btn btn-google">Add to Google Calendar</a>
+        
+        <a href="https://calendar.google.com/calendar/ical/acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com/public/basic.ics" class="btn btn-apple">Download for Apple/Outlook</a>
+      </div>
+    </div>
 
     <iframe 
       src="https://calendar.google.com/calendar/embed?src=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com&ctz=America/New_York"
@@ -70,6 +125,10 @@
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
+
+    <div class="calendar-footer">
+      <strong>Note for Parents:</strong> Regular Troop meetings are held every Monday from 7:00–8:30 PM at Covenant United Methodist Church unless otherwise noted on the calendar above.
+    </div>
   </main>
 </body>
 </html>
