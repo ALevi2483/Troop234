@@ -86,10 +86,12 @@
       font-size: 1.1rem;
       border-radius: 6px;
       text-decoration: none;
-      margin: 1.5rem 0 2rem;
+      margin: 1.25rem 0;
     }
 
-    .cta-button:hover { opacity: 0.92; }
+    .cta-button:hover {
+      opacity: 0.92;
+    }
 
     /* Podcast section */
     .podcast {
@@ -106,50 +108,11 @@
       margin-top: 0;
       color: #003366;
       font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .podcast p {
       margin-bottom: 1rem;
       font-size: 1.02rem;
-    }
-
-    .podcast audio {
-      width: 100%;
-    }
-
-    .podcast-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: #003366;
-      color: #fff;
-      padding: 0.6rem 0.9rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.98rem;
-      border: 0;
-      cursor: pointer;
-    }
-
-    .btn:hover { opacity: 0.92; }
-
-    .btn.secondary {
-      background-color: #1f5a96;
-    }
-
-    .podcast-meta {
-      margin-top: 0.75rem;
-      font-size: 0.95rem;
-      color: #555;
     }
 
     .highlights {
@@ -181,9 +144,6 @@
       .welcome-image { max-height: 300px; }
       .highlight-box h3 { font-size: 1.05rem; }
       main { margin: 1rem; padding: 1.5rem; }
-      .podcast { padding: 1.1rem; }
-      .btn { width: 100%; text-align: center; }
-      .podcast-actions { flex-direction: column; }
     }
   </style>
 </head>
@@ -215,35 +175,24 @@
       We’re more than a group. We’re a family.
     </p>
 
-    <!-- Podcast -->
+    <!-- Podcast Link -->
     <div class="podcast">
-      <h3>🎧 Listen: Discover Troop 234</h3>
+      <h3>🎧 Discover Troop 234 Podcast</h3>
       <p>
-        A short audio overview of what makes Troop 234 youth-led, welcoming, and different from the start.
+        Curious what makes Troop 234 different? This short podcast shares what families notice right away,
+        how our troop stays youth-led, and why Scouts feel welcome from day one.
       </p>
 
-      <!-- Keep your local MP3 for the most reliable playback -->
-      <audio id="troopPodcast" controls preload="metadata">
-        <source src="images/NoteGPT_AI_Podcast_Discover Troop 2 3 4_ Youth-Led Scouting Adventures.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-
-      <div class="podcast-actions">
-        <button class="btn secondary" type="button" id="resumeBtn">Resume where I left off</button>
-
-        <a class="btn"
-           href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
-           onclick="window.top.open(this.href,'_blank'); return false;"
-           rel="noopener">
-          Listen on Audio.com
-        </a>
-      </div>
-
-      <div class="podcast-meta" id="podcastMeta"></div>
+      <a class="cta-button"
+         href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
+         target="_blank"
+         rel="noopener">
+        Listen to the Troop 234 Podcast
+      </a>
     </div>
 
     <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
-       onclick="window.top.open(this.href,'_blank'); return false;"
+       target="_blank"
        rel="noopener"
        class="cta-button">
       Join Now
@@ -272,75 +221,5 @@
       </div>
     </div>
   </main>
-
-  <script>
-    (function () {
-      const audio = document.getElementById('troopPodcast');
-      const resumeBtn = document.getElementById('resumeBtn');
-      const meta = document.getElementById('podcastMeta');
-
-      const KEY_TIME = 'troop234_podcast_time_v1';
-
-      function formatTime(seconds) {
-        seconds = Math.max(0, Math.floor(seconds || 0));
-        const m = Math.floor(seconds / 60);
-        const s = seconds % 60;
-        return `${m}:${String(s).padStart(2, '0')}`;
-      }
-
-      function updateMeta() {
-        const saved = parseFloat(localStorage.getItem(KEY_TIME) || '0');
-        if (saved > 1) {
-          meta.textContent = `Saved position: ${formatTime(saved)}.`;
-        } else {
-          meta.textContent = '';
-        }
-      }
-
-      // Restore position once metadata loads (duration known)
-      audio.addEventListener('loadedmetadata', () => {
-        const saved = parseFloat(localStorage.getItem(KEY_TIME) || '0');
-        if (saved > 0 && saved < audio.duration - 1) {
-          audio.currentTime = saved;
-        }
-        updateMeta();
-      });
-
-      // Save position during playback
-      let lastSave = 0;
-      audio.addEventListener('timeupdate', () => {
-        const now = Date.now();
-        if (now - lastSave < 1500) return;
-        lastSave = now;
-        localStorage.setItem(KEY_TIME, String(audio.currentTime || 0));
-        updateMeta();
-      });
-
-      audio.addEventListener('pause', () => {
-        localStorage.setItem(KEY_TIME, String(audio.currentTime || 0));
-        updateMeta();
-      });
-
-      audio.addEventListener('ended', () => {
-        localStorage.setItem(KEY_TIME, '0');
-        updateMeta();
-      });
-
-      // Resume button: seek to saved time and play (autoplay rules still apply)
-      resumeBtn.addEventListener('click', async () => {
-        const saved = parseFloat(localStorage.getItem(KEY_TIME) || '0');
-        if (saved > 0 && (!isNaN(saved))) {
-          audio.currentTime = saved;
-        }
-        try {
-          await audio.play();
-        } catch (e) {
-          // If the browser blocks it, user can press play normally
-        }
-      });
-
-      updateMeta();
-    })();
-  </script>
 </body>
 </html>
