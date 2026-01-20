@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7FY6X24EQ6');
+  </script>
 
-  gtag('config', 'G-7FY6X24EQ6');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home - Troop 234</title>
+
   <style>
     body {
       margin: 0;
@@ -20,16 +21,32 @@
       background-color: #f5f5f5;
       color: #333;
     }
+
     header {
       background-color: #003366;
       color: white;
       padding: 2rem 1rem;
       text-align: center;
     }
-    header h1 { font-size: 2.3rem; margin: 0.5rem 0; }
-    header p { font-size: 1.05rem; margin: 0.3rem 0; }
-    header a { color: #cce6ff; text-decoration: none; }
-    header a:hover { text-decoration: underline; }
+
+    header h1 {
+      font-size: 2.3rem;
+      margin: 0.5rem 0;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      margin: 0.3rem 0;
+    }
+
+    header a {
+      color: #cce6ff;
+      text-decoration: none;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
 
     main {
       padding: 2rem;
@@ -49,8 +66,17 @@
       margin: 1.5rem 0;
     }
 
-    h2 { color: #225577; font-size: 1.8rem; margin-bottom: 1rem; }
-    p { line-height: 1.6; margin-bottom: 1.5rem; font-size: 1.05rem; }
+    h2 {
+      color: #225577;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
 
     .cta-button {
       display: inline-block;
@@ -60,7 +86,33 @@
       font-size: 1.1rem;
       border-radius: 6px;
       text-decoration: none;
-      margin-bottom: 2rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    /* Podcast section */
+    .podcast {
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background-color: #f7fafc;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.08);
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .podcast h3 {
+      margin-top: 0;
+      color: #003366;
+      font-size: 1.3rem;
+    }
+
+    .podcast p {
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .podcast audio {
+      width: 100%;
     }
 
     .highlights {
@@ -70,12 +122,14 @@
       margin-top: 2rem;
       text-align: left;
     }
+
     .highlight-box {
       background-color: #eaf4ff;
       padding: 1.2rem;
       border-radius: 8px;
       border-left: 5px solid #003366;
     }
+
     .highlight-box h3 {
       color: #003366;
       margin-top: 0;
@@ -110,25 +164,57 @@
     <img src="ai pic.png" loading="lazy" alt="Scouts around a campfire" class="welcome-image" />
 
     <h2>Adventure. Leadership. Service.</h2>
-    <p>We’re so glad you’re here! Troop 234 has proudly served the Chesapeake community for over 35 years, helping Scouts become leaders, adventurers, and citizens of character. Our program is designed to build confidence, foster friendships, and create lifelong memories—one campfire at a time.</p>
-    <p>Whether you're new to Scouting or continuing your journey, we invite you to explore what makes our troop special. We're more than a group—we're a family.</p>
 
-    <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank" rel="noopener" class="cta-button">
+    <p>
+      We’re so glad you’re here. Troop 234 has proudly served the Chesapeake community for over 35 years,
+      helping Scouts become leaders, adventurers, and citizens of character.
+    </p>
+
+    <p>
+      Whether you're new to Scouting or continuing your journey, we invite you to explore what makes our troop different.
+      We’re more than a group. We’re a family.
+    </p>
+
+    <!-- Podcast Embed -->
+    <div class="podcast">
+      <h3>🎧 Listen: Discover Troop 234</h3>
+      <p>
+        A short audio overview of what makes Troop 234 youth-led, welcoming, and different from the start.
+      </p>
+
+      <audio controls preload="none">
+        <source src="images/NoteGPT_AI_Podcast_Discover_Troop_2_3_4_Youth-Led_Scouting_Adventures.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
+       onclick="window.top.open(this.href,'_blank'); return false;"
+       rel="noopener"
+       class="cta-button">
       Join Now
     </a>
 
     <div class="highlights">
       <div class="highlight-box">
         <h3>🧭 Scout-Led Values</h3>
-        <p>Troop 234 is youth-led, empowering Scouts to plan adventures, meetings, and community service with trusted adult mentors.</p>
+        <p>
+          Troop 234 is youth-led. Scouts plan meetings, adventures, and service projects with guidance from trained adults.
+        </p>
       </div>
+
       <div class="highlight-box">
         <h3>👪 Family Involvement</h3>
-        <p>We believe in strong family partnerships. Parents serve as volunteers, committee members, and supporters every step of the way.</p>
+        <p>
+          We believe Scouting works best with strong family support and clear communication.
+        </p>
       </div>
+
       <div class="highlight-box">
         <h3>❤️ Service & Community</h3>
-        <p>Giving back is part of our DNA. Our Scouts engage in service activities that make a difference locally and beyond.</p>
+        <p>
+          Our Scouts give back through meaningful service projects that benefit the Chesapeake community.
+        </p>
       </div>
     </div>
   </main>
