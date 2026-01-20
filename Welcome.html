@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7FY6X24EQ6');
+  </script>
 
-  gtag('config', 'G-7FY6X24EQ6');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome to Troop 234</title>
+
   <style>
     body {
       margin: 0;
@@ -185,10 +186,13 @@
       </ul>
 
       <div class="actions">
-         <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank" rel="noopener" class="cta-button">
-      Join Now
-    </a>
-
+        <!-- Join Now: forces top-level (breaks out of iframe) and opens in a new tab -->
+        <a class="button"
+           href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
+           onclick="window.top.open(this.href,'_blank'); return false;"
+           rel="noopener">
+          Join Now
+        </a>
 
         <a class="button secondary" href="Calendar.html">View Calendar</a>
         <a class="button secondary" href="Contact.html">Contact Us</a>
