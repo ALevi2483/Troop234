@@ -27,22 +27,6 @@
       color: #333;
     }
 
-    /* Consistent Hero Grid */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-      background-color: #fff;
-      padding: 5px;
-    }
-
-    .photo-grid img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      display: block;
-    }
-
     main {
       max-width: 1000px;
       margin: 0 auto;
@@ -69,7 +53,6 @@
       font-size: 1.1rem;
     }
 
-    /* Quick Start Box */
     .quickstart {
       margin-bottom: 2.5rem;
       padding: 1.5rem;
@@ -93,9 +76,13 @@
       gap: 1.5rem;
     }
 
-    .qs-item strong { display: block; color: var(--scout-blue); font-size: 0.9rem; text-transform: uppercase; }
+    .qs-item strong {
+      display: block;
+      color: var(--scout-blue);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
 
-    /* Controls */
     .tools {
       display: flex;
       gap: 0.5rem;
@@ -115,7 +102,6 @@
 
     .linkbtn:hover { background: #eee; }
 
-    /* Modernized Accordion */
     details {
       margin-bottom: 0.75rem;
       border: 1px solid #e1e4e8;
@@ -150,7 +136,6 @@
       color: #4a5568;
     }
 
-    /* Lists */
     ul { padding-left: 1.2rem; }
     li { margin-bottom: 0.5rem; }
 
@@ -158,6 +143,7 @@
       margin-top: 1.5rem;
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .button {
@@ -168,10 +154,71 @@
       border-radius: 6px;
       font-weight: bold;
       font-size: 0.95rem;
+      display: inline-block;
     }
 
+    .button.secondary {
+      background: #ddd;
+      color: #333;
+    }
+
+    /* Forms section helpers */
+    .note {
+      background: #fff;
+      border: 1px solid #e6e9ee;
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      margin: 0.9rem 0 1.1rem;
+      color: #3b4653;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin: 0.8rem 0 1.1rem;
+    }
+
+    .form-card {
+      border: 1px solid #e6e9ee;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      background: #fff;
+    }
+
+    .form-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+      color: var(--scout-blue);
+    }
+
+    .form-card p {
+      margin: 0 0 0.7rem;
+      font-size: 0.95rem;
+      color: #4a5568;
+    }
+
+    .form-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid #d7dde5;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      background: #f8fafc;
+    }
+
+    .pill:hover { background: #eef4ff; }
+
     @media (max-width: 768px) {
-      .photo-grid img { height: 100px; }
       .qs-grid { grid-template-columns: 1fr; }
       .content-padding { padding: 1.5rem; }
     }
@@ -189,7 +236,7 @@
         <div class="qs-grid">
           <div class="qs-item">
             <strong>When</strong>
-            Mondays, 7:00 PM – 8:30 PM
+            Mondays, 7:00 PM to 8:30 PM
           </div>
           <div class="qs-item">
             <strong>Where</strong>
@@ -201,8 +248,8 @@
           </div>
         </div>
         <div class="btn-group">
-            <a href="Calendar.html" class="button">View Troop Calendar</a>
-            <a href="Contact.html" class="button" style="background:#ddd; color:#333;">Contact Leadership</a>
+          <a href="Calendar.html" class="button">View Troop Calendar</a>
+          <a href="Contact.html" class="button secondary">Contact Leadership</a>
         </div>
       </div>
 
@@ -217,8 +264,8 @@
           <ul>
             <li><strong>Arrival:</strong> Try to arrive 10 minutes early to meet the Senior Patrol Leader.</li>
             <li><strong>Parents:</strong> Plan to stay for the first 15 minutes for a quick "New Parent" brief.</li>
-            <li><strong>Buddy System:</strong> Your Scout will be introduced to a "Troop Guide" or Patrol Leader immediately.</li>
-            <li><strong>What to bring:</strong> A water bottle and a notebook/pen.</li>
+            <li><strong>Buddy System:</strong> Your Scout will be introduced to a Troop Guide or Patrol Leader immediately.</li>
+            <li><strong>What to bring:</strong> A water bottle and a notebook or pen.</li>
           </ul>
         </div>
       </details>
@@ -228,7 +275,7 @@
         <div>
           <p><strong>You provide:</strong></p>
           <ul>
-            <li><strong>The Uniform:</strong> The "Class A" khaki shirt, scout pants/shorts, and belt. (We have a gear swap for used items!)</li>
+            <li><strong>The Uniform:</strong> The "Class A" khaki shirt, scout pants or shorts, and belt. (We have a gear swap for used items!)</li>
             <li><strong>The Handbook:</strong> The Scouts BSA Handbook (spiral bound is best).</li>
             <li><strong>Personal Gear:</strong> Sleeping bag, mess kit, and water bottle.</li>
           </ul>
@@ -257,12 +304,67 @@
       <details>
         <summary>Required Forms & Paperwork</summary>
         <div>
-          <p>Before our first campout, we need these on file:</p>
+          <p>Before our first campout, we need these on file for every participant (Scouts and adults).</p>
+
+          <div class="note">
+            <strong>Quick rule:</strong>
+            <ul>
+              <li><strong>Parts A and B</strong> are needed for all activities.</li>
+              <li><strong>Part C</strong> is needed for any event that lasts <strong>72+ hours</strong> (example: summer camp, Wood Badge, jamborees, multi-day treks).</li>
+            </ul>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-card">
+              <h3>Part A (Consent and Emergency Care)</h3>
+              <p>Permission to participate, emergency treatment authorization, and key consent items.</p>
+              <div class="form-links">
+                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=1">Open Part A</a>
+                <a class="pill" href="images/ABC%20Medical%20Forms.pdf">Open full ABC packet</a>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <h3>Part B (Health History)</h3>
+              <p>This is the medical history and meds section. In the packet, it is split into <strong>B1</strong> and <strong>B2</strong>.</p>
+              <div class="form-links">
+                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=2">Open Part B1</a>
+                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=3">Open Part B2</a>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <h3>Part B1 (General Info and Health History)</h3>
+              <p>Contact info, insurance info, and the main health history checklist.</p>
+              <div class="form-links">
+                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=2">Open Part B1</a>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <h3>Part C (Physical Exam)</h3>
+              <p>Completed by a licensed medical provider. Required for <strong>72+ hour</strong> events and strongly recommended annually.</p>
+              <div class="form-links">
+                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=4">Open Part C</a>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <h3>Troop 234 Photo and Media Release</h3>
+              <p>Lets the troop share photos on troop channels without using a Scout’s full name.</p>
+              <div class="form-links">
+                <a class="pill" href="images/Troop_234_Photo_Release_Form.pdf">Open Photo Release</a>
+              </div>
+            </div>
+          </div>
+
+          <p><strong>Also needed:</strong></p>
           <ul>
-            <li><strong>BSA Youth Application:</strong> (Completed online via BeAScout).</li>
-            <li><strong>Health Forms (Parts A & B):</strong> Required for all participants.</li>
-            <li><strong><a href="Troop_234_Photo_Release_Form.pdf">Photo Release Form</a>:</strong> So we can share the fun on our private troop channels.</li>
+            <li><strong>BSA Youth Application:</strong> Completed online via BeAScout or your troop registrar.</li>
+            <li><strong>Insurance card copy:</strong> Attach a copy of both sides if you have insurance.</li>
           </ul>
+
+          <p><em>Heads up:</em> Keep forms current through the end date of the event. Bring updated meds in original containers.</p>
         </div>
       </details>
 
