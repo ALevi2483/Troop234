@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,330 +11,286 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to Troop 234</title>
+  <title>Welcome to the Family - Troop 234</title>
 
   <style>
+    :root {
+      --scout-blue: #003366;
+      --light-bg: #f7fafc;
+      --accent-blue: #1f5a96;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background-color: #e9ecef;
       color: #333;
     }
 
+    /* Consistent Hero Grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      background-color: #fff;
+      padding: 5px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
     main {
-      padding: 2rem;
       max-width: 1000px;
-      margin: 2rem auto;
+      margin: 0 auto;
       background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .content-padding {
+      padding: 2.5rem;
     }
 
     h1 {
       text-align: center;
-      color: #003366;
-      margin-bottom: 1rem;
-      font-size: 1.9rem;
+      color: var(--scout-blue);
+      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
     }
 
-    p {
-      line-height: 1.6;
-      font-size: 1.05rem;
-      margin-top: 0.75rem;
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
     }
 
-    /* Quick Start / CTA */
+    /* Quick Start Box */
     .quickstart {
-      margin: 1.25rem 0 1.5rem;
-      padding: 1.25rem;
-      border: 1px solid rgba(0,0,0,0.10);
-      border-radius: 10px;
-      background-color: #f7fafc;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border-left: 5px solid var(--scout-blue);
+      border-radius: 8px;
+      background-color: var(--light-bg);
     }
 
     .quickstart h2 {
-      margin: 0 0 0.75rem;
-      color: #003366;
-      font-size: 1.25rem;
-    }
-
-    .quickstart ul {
-      margin: 0.25rem 0 0;
-      padding-left: 1.25rem;
-    }
-
-    .actions {
-      margin-top: 1rem;
+      margin: 0 0 1rem;
+      color: var(--scout-blue);
+      font-size: 1.3rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      align-items: center;
+      gap: 10px;
     }
 
-    .button {
-      display: inline-block;
-      background-color: #003366;
-      color: white;
-      text-decoration: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 1rem;
+    .qs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
     }
 
-    .button:hover {
-      opacity: 0.92;
-    }
+    .qs-item strong { display: block; color: var(--scout-blue); font-size: 0.9rem; text-transform: uppercase; }
 
-    .button.secondary {
-      background-color: #1f5a96;
-    }
-
+    /* Controls */
     .tools {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin: 0 0 1rem;
-      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .linkbtn {
-      background: none;
-      border: 1px solid rgba(0,0,0,0.15);
-      border-radius: 8px;
-      padding: 0.5rem 0.75rem;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
       cursor: pointer;
-      font-weight: bold;
-      color: #003366;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--scout-blue);
     }
 
-    .linkbtn:hover {
-      background-color: #f2f6fb;
-    }
+    .linkbtn:hover { background: #eee; }
 
-    /* Accordion */
+    /* Modernized Accordion */
     details {
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
+      margin-bottom: 0.75rem;
+      border: 1px solid #e1e4e8;
       border-radius: 8px;
-      background-color: #f9f9f9;
-      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    details[open] {
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
 
     summary {
-      font-weight: bold;
-      padding: 1rem;
-      background-color: #e6f0fa;
+      font-weight: 600;
+      padding: 1.2rem;
+      background-color: #fff;
       cursor: pointer;
-      border-bottom: 1px solid #ccc;
       list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    summary:hover {
-      background-color: #d9eaff;
-    }
+    summary::after { content: '＋'; color: var(--accent-blue); }
+    details[open] summary::after { content: '－'; }
 
-    details[open] summary {
-      background-color: #d9eaff;
-    }
+    summary:hover { background-color: #fcfcfc; }
 
     details div {
-      padding: 1rem 1.2rem;
+      padding: 0 1.2rem 1.2rem;
       line-height: 1.6;
+      color: #4a5568;
     }
 
-    ul, ol {
-      padding-left: 1.4rem;
-      margin: 0.5rem 0 1rem;
+    /* Lists */
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .btn-group {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 10px;
     }
 
-    a {
-      color: #0066cc;
+    .button {
+      background: var(--scout-blue);
+      color: white;
       text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.95rem;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .note {
-      font-size: 0.98rem;
-      color: #555;
-      margin-top: 0.5rem;
-    }
-
-    @media (max-width: 600px) {
-      main { padding: 1.5rem; margin: 1rem; }
-      h1 { font-size: 1.6rem; }
-      .button { width: 100%; text-align: center; }
-      .linkbtn { width: 100%; }
+    @media (max-width: 768px) {
+      .photo-grid img { height: 100px; }
+      .qs-grid { grid-template-columns: 1fr; }
+      .content-padding { padding: 1.5rem; }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <h1>Welcome to Troop 234</h1>
-    <p>Welcome to Troop 234! Use the quick info below, then expand the sections to learn how our troop operates and how your family can get involved.</p>
-
-    <div class="quickstart">
-      <h2>Quick Start</h2>
-      <ul>
-        <li><strong>Meetings:</strong> Mondays, 7:00 PM to 8:30 PM</li>
-        <li><strong>Location:</strong> Covenant United Methodist Church, 2004 Dock Landing Blvd, Chesapeake, VA</li>
-        <li><strong>Uniform:</strong> Class A if you have it. If not, come anyway.</li>
-      </ul>
-
-      <div class="actions">
-        <!-- Join Now: forces top-level (breaks out of iframe) and opens in a new tab -->
-        <a class="button"
-   href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
-   onclick="window.top.open(this.href,'_blank'); return false;"
-   rel="noopener">
-  Join Troop 234
-</a>
-
-        <a class="button secondary" href="Calendar.html">View Calendar</a>
-        <a class="button secondary" href="Contact.html">Contact Us</a>
-      </div>
+    <div class="photo-grid">
+      <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=400" alt="Scouts">
+      <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=400" alt="Scouts">
+      <img src="https://images.unsplash.com/photo-1620120966883-d977b57a96ec?auto=format&fit=crop&q=80&w=400" alt="Scouts">
+      <img src="https://images.unsplash.com/photo-1544365313-9993309a43a0?auto=format&fit=crop&q=80&w=400" alt="Scouts">
     </div>
 
-    <div class="tools">
-      <button class="linkbtn" type="button" onclick="openAll()">Expand all</button>
-      <button class="linkbtn" type="button" onclick="closeAll()">Collapse all</button>
+    <div class="content-padding">
+      <h1>Welcome to the Family!</h1>
+      <p class="subtitle">We’re thrilled to have you join Troop 234. Here is everything you need to hit the ground running.</p>
+
+      <div class="quickstart">
+        <h2>🚀 Quick Start Info</h2>
+        <div class="qs-grid">
+          <div class="qs-item">
+            <strong>When</strong>
+            Mondays, 7:00 PM – 8:30 PM
+          </div>
+          <div class="qs-item">
+            <strong>Where</strong>
+            Covenant UMC, 2004 Dock Landing Blvd
+          </div>
+          <div class="qs-item">
+            <strong>Uniform</strong>
+            "Class A" (Khaki) if you have it!
+          </div>
+        </div>
+        <div class="btn-group">
+            <a href="Calendar.html" class="button">View Troop Calendar</a>
+            <a href="Contact.html" class="button" style="background:#ddd; color:#333;">Contact Leadership</a>
+        </div>
+      </div>
+
+      <div class="tools">
+        <button class="linkbtn" onclick="openAll()">Expand All</button>
+        <button class="linkbtn" onclick="closeAll()">Collapse All</button>
+      </div>
+
+      <details open>
+        <summary>Your First Meeting Checklist</summary>
+        <div>
+          <ul>
+            <li><strong>Arrival:</strong> Try to arrive 10 minutes early to meet the Senior Patrol Leader.</li>
+            <li><strong>Parents:</strong> Plan to stay for the first 15 minutes for a quick "New Parent" brief.</li>
+            <li><strong>Buddy System:</strong> Your Scout will be introduced to a "Troop Guide" or Patrol Leader immediately.</li>
+            <li><strong>What to bring:</strong> A water bottle and a notebook/pen.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>The Gear: What you need vs. What we provide</summary>
+        <div>
+          <p><strong>You provide:</strong></p>
+          <ul>
+            <li><strong>The Uniform:</strong> The "Class A" khaki shirt, scout pants/shorts, and belt. (We have a gear swap for used items!)</li>
+            <li><strong>The Handbook:</strong> The Scouts BSA Handbook (spiral bound is best).</li>
+            <li><strong>Personal Gear:</strong> Sleeping bag, mess kit, and water bottle.</li>
+          </ul>
+          <p><strong>The Troop provides:</strong></p>
+          <ul>
+            <li><strong>Group Gear:</strong> Tents, stoves, lanterns, and trailers.</li>
+            <li><strong>Specialty Items:</strong> Shoulder loops, bolo ties, and handbooks are provided to <strong>Arrow of Light bridgeover Scouts</strong> at no cost.</li>
+            <li><strong>Training:</strong> Adult mentorship and leadership coaching for all Scouts.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Registration & Dues (Transparent Breakdown)</summary>
+        <div>
+          <p>To keep the program running, we have three primary costs:</p>
+          <ul>
+            <li><strong>National BSA Fee:</strong> Youth (~$85/yr) | Adult (~$65/yr).</li>
+            <li><strong>Troop 234 Dues:</strong> $15/month (Supports local gear and advancement).</li>
+            <li><strong>One-Time Join Fee:</strong> $25 for brand-new youth members.</li>
+          </ul>
+          <p><em>Note: We never want cost to be a barrier. We offer multiple fundraisers (Popcorn, Wreaths, etc.) to help Scouts earn their own way.</em></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Required Forms & Paperwork</summary>
+        <div>
+          <p>Before our first campout, we need these on file:</p>
+          <ul>
+            <li><strong>BSA Youth Application:</strong> (Completed online via BeAScout).</li>
+            <li><strong>Health Forms (Parts A & B):</strong> Required for all participants.</li>
+            <li><strong><a href="Troop_234_Photo_Release_Form.pdf">Photo Release Form</a>:</strong> So we can share the fun on our private troop channels.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>The Advancement Path (Scout to Eagle)</summary>
+        <div>
+          <p>Scouts work at their own pace. The journey follows these ranks:</p>
+          <ol>
+            <li><strong>Early Ranks:</strong> Scout, Tenderfoot, 2nd Class, 1st Class (Focus on outdoor skills).</li>
+            <li><strong>Leadership Ranks:</strong> Star, Life, Eagle (Focus on service and leading others).</li>
+          </ol>
+          <p>Our Scoutmasters hold "conferences" to help Scouts set goals for their next rank.</p>
+        </div>
+      </details>
+
     </div>
-
-    <details>
-      <summary>What the Scout provides vs what the troop provides</summary>
-      <div>
-        <p><strong>The Scout and family are responsible for:</strong></p>
-        <ul>
-          <li>Scout uniform (Class A shirt, pants or shorts, belt)</li>
-          <li>Personal camping gear as Scouts progress</li>
-          <li>Monthly troop dues</li>
-          <li>Participation in activities and events</li>
-        </ul>
-
-        <p><strong>The troop provides:</strong></p>
-        <ul>
-          <li>Program planning and trained adult leadership</li>
-          <li>Advancement guidance and Boards of Review</li>
-          <li>Troop equipment for campouts and activities</li>
-          <li>Leadership development opportunities</li>
-        </ul>
-
-        <p><strong>Arrow of Light bridgeover Scouts:</strong></p>
-        <ul>
-          <li>New shoulder loops</li>
-          <li>Troop bolo tie</li>
-          <li>Scouts BSA Handbook</li>
-        </ul>
-
-        <p class="note">For Scouts bridging over from Arrow of Light, these items are provided by Troop 234 at no cost to the Scout.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Your first meeting</summary>
-      <div>
-        <ul>
-          <li>Arrive 10 minutes early if possible</li>
-          <li>Parents stay for the first 10 to 15 minutes</li>
-          <li>Scout will join a patrol or new Scout group</li>
-          <li>Bring a water bottle and notebook</li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>A typical month in Troop 234</summary>
-      <div>
-        <ul>
-          <li>Weekly Monday meetings</li>
-          <li>One campout or outdoor activity</li>
-          <li>Advancement coaching built into meetings</li>
-          <li>Service projects throughout the year</li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>Troop Organization</summary>
-      <div>
-        <p>Troop 234 is youth-led with adult coaching and support.</p>
-        <p><strong>Youth leadership:</strong> Senior Patrol Leader, Patrol Leaders</p>
-        <p><strong>Adult support:</strong> Scoutmaster, Assistant Scoutmasters, Troop Committee</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Advancement and Ranks</summary>
-      <div>
-        <ul>
-          <li>Scout</li>
-          <li>Tenderfoot</li>
-          <li>Second Class</li>
-          <li>First Class</li>
-          <li>Star</li>
-          <li>Life</li>
-          <li>Eagle Scout</li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>Uniforms</summary>
-      <div>
-        <p><strong>Class A:</strong> Official khaki shirt with patches and proper bottoms</p>
-        <p><strong>Class B:</strong> Troop t-shirt with clean pants or shorts</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Meetings and Events</summary>
-      <div>
-        <p>Troop 234 meets Mondays from 7:00 PM to 8:30 PM at Covenant United Methodist Church.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Forms and documents</summary>
-      <div>
-        <ul>
-          <li>BSA Youth Application</li>
-          <li>Annual Health and Medical Record (Parts A and B)</li>
-          <li><a href="Troop_234_Photo_Release_Form.pdf" target="_blank" rel="noopener">Troop 234 Photo and Media Release Form (PDF)</a></li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>Registration Fees and Monthly Dues</summary>
-      <div>
-        <ul>
-          <li>Youth Membership: $85 per year</li>
-          <li>Adult Volunteers: $65 per year</li>
-          <li>Troop 234 Dues: $15 per month per Scout</li>
-        </ul>
-        <p class="note">Fees may change. Current totals are confirmed when you visit.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Contact Information</summary>
-      <div>
-        <p>Visit our <a href="Contact.html">Contact Page</a> to reach troop leadership.</p>
-      </div>
-    </details>
   </main>
 
   <script>
-    function openAll() {
-      document.querySelectorAll("details").forEach(d => d.open = true);
-    }
-    function closeAll() {
-      document.querySelectorAll("details").forEach(d => d.open = false);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    function openAll() { document.querySelectorAll("details").forEach(d => d.open = true); }
+    function closeAll() { document.querySelectorAll("details").forEach(d => d.open = false); }
   </script>
 </body>
 </html>
