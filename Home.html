@@ -85,6 +85,10 @@
       margin: 1rem 0;
     }
 
+    .cta-button:hover {
+      opacity: 0.92;
+    }
+
     .podcast {
       margin: 2.5rem auto;
       padding: 1.5rem;
@@ -104,6 +108,13 @@
     audio {
       width: 100%;
       margin-top: 1rem;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
     }
 
     .highlights {
@@ -172,15 +183,25 @@
     </audio>
 
     <p style="margin-top: 1rem;">
-      Prefer listening on Audio.com?
+      Want the background on how this podcast was made?
+      The NoteGPT page shows the AI podcast generator link used for it.
     </p>
 
-    <a class="cta-button"
-       href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
-       target="_blank"
-       rel="noopener">
-      Listen on Audio.com
-    </a>
+    <div class="button-row">
+      <a class="cta-button"
+         href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
+         target="_blank"
+         rel="noopener">
+        Listen on Audio.com
+      </a>
+
+      <a class="cta-button"
+         href="https://notegpt.io/ai-podcast-generator?share=67bf03df"
+         target="_blank"
+         rel="noopener">
+        View the NoteGPT Podcast Link
+      </a>
+    </div>
   </div>
 
   <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
