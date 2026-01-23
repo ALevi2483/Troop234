@@ -44,6 +44,10 @@
       text-decoration: none;
     }
 
+    header a:hover {
+      text-decoration: underline;
+    }
+
     main {
       padding: 2rem;
       max-width: 1000px;
@@ -82,9 +86,14 @@
       font-size: 1.05rem;
       border-radius: 6px;
       text-decoration: none;
-      margin: 0.4rem 0;
+      margin: 1rem 0;
     }
 
+    .cta-button:hover {
+      opacity: 0.92;
+    }
+
+    /* Podcast section */
     .podcast {
       margin: 2.5rem auto;
       padding: 1.5rem;
@@ -102,27 +111,30 @@
     }
 
     .episode {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(0,0,0,0.1);
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(0,0,0,0.10);
+    }
+
+    .episode:first-of-type {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0.75rem;
     }
 
     .episode h4 {
       margin: 0 0 0.5rem 0;
       color: #003366;
-      font-size: 1.1rem;
+      font-size: 1.12rem;
     }
 
-    audio {
-      width: 100%;
-      margin-top: 0.75rem;
+    .episode p {
+      margin: 0 0 0.9rem 0;
+      font-size: 1.02rem;
     }
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+    .episode .cta-button {
+      margin: 0;
     }
 
     .highlights {
@@ -144,114 +156,105 @@
       color: #003366;
       margin-top: 0;
       font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     @media (max-width: 600px) {
       header h1 { font-size: 1.8rem; }
+      .welcome-image { max-height: 300px; }
+      .highlight-box h3 { font-size: 1.05rem; }
       main { margin: 1rem; padding: 1.5rem; }
     }
   </style>
 </head>
 
 <body>
-<header>
-  <h1>Troop 234 - Chesapeake, VA</h1>
-  <p>We meet Mondays from 7:00–8:30 PM</p>
-  <p>Covenant United Methodist Church</p>
-  <p>
-    <a href="https://www.google.com/maps?q=2004+Dock+Landing+Blvd,+Chesapeake,+VA" target="_blank" rel="noopener">
-      2004 Dock Landing Blvd, Chesapeake, VA
+  <header>
+    <h1>Troop 234 - Chesapeake, VA</h1>
+    <p>We meet Mondays from 7:00–8:30 PM</p>
+    <p>Covenant United Methodist Church</p>
+    <p>
+      <a href="https://www.google.com/maps?q=2004+Dock+Landing+Blvd,+Chesapeake,+VA" target="_blank" rel="noopener">
+        2004 Dock Landing Blvd, Chesapeake, VA
+      </a>
+    </p>
+  </header>
+
+  <main>
+    <img src="ai pic.png" loading="lazy" alt="Scouts around a campfire" class="welcome-image" />
+
+    <h2>Adventure. Leadership. Service.</h2>
+
+    <p>
+      Troop 234 has proudly served the Chesapeake community for over 35 years,
+      helping Scouts become leaders through adventure, service, and responsibility.
+    </p>
+
+    <p>
+      New family or returning family, you are welcome here.
+      Check out our short podcast episodes below to get oriented fast.
+    </p>
+
+    <!-- Podcast Series (consistent links) -->
+    <div class="podcast">
+      <h3>🎧 Troop 234 Podcast Series</h3>
+
+      <div class="episode">
+        <h4>Episode 1: Cracking the Code (Parents Guide)</h4>
+        <p>
+          A plain language walkthrough of common Scouting terms, uniforms, conferences,
+          boards of review, and how Troop 234 communicates.
+        </p>
+
+        <a class="cta-button"
+           href="https://notegpt.io/ai-podcast-generator?share=aecc0d10"
+           target="_blank"
+           rel="noopener">
+          Listen to Episode 1
+        </a>
+      </div>
+
+      <div class="episode">
+        <h4>Episode 2: Troop Life and What to Expect</h4>
+        <p>
+          A deeper look at troop life, youth leadership, and what families can expect
+          as Scouts grow.
+        </p>
+
+        <a class="cta-button"
+           href="https://notegpt.io/ai-podcast-generator?share=0f424492"
+           target="_blank"
+           rel="noopener">
+          Listen to Episode 2
+        </a>
+      </div>
+    </div>
+
+    <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
+       target="_blank"
+       rel="noopener"
+       class="cta-button">
+      Join Now
     </a>
-  </p>
-</header>
 
-<main>
-  <img src="ai pic.png" loading="lazy" alt="Scouts around a campfire" class="welcome-image" />
+    <div class="highlights">
+      <div class="highlight-box">
+        <h3>🧭 Scout Led</h3>
+        <p>Scouts plan meetings, campouts, and service projects with guidance from trained adults.</p>
+      </div>
 
-  <h2>Adventure. Leadership. Service.</h2>
+      <div class="highlight-box">
+        <h3>👪 Family Supported</h3>
+        <p>Clear communication and strong family involvement make the program work.</p>
+      </div>
 
-  <p>
-    Troop 234 has served the Chesapeake community for over 35 years.
-    We help Scouts grow into confident leaders through adventure, service, and responsibility.
-  </p>
-
-  <!-- Podcast Section -->
-  <div class="podcast">
-    <h3>🎧 Troop 234 Podcast Series</h3>
-
-    <!-- Episode 1 -->
-    <div class="episode">
-      <h4>Episode 1: Cracking the Code – A Parent’s Guide to Troop 234</h4>
-
-      <p>
-        An introduction for new families covering common Scouting terms, expectations,
-        uniforms, conferences, boards of review, and how Troop 234 communicates.
-      </p>
-
-      <audio controls>
-        <source src="images/NoteGPT_AI_Podcast_Cracking the Code_ A Parent's Guide to Troop 2 3 4.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-
-      <div class="button-row">
-        <a class="cta-button"
-           href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
-           target="_blank"
-           rel="noopener">
-          Episode 1 on Audio.com
-        </a>
-
-        <a class="cta-button"
-           href="https://notegpt.io/ai-podcast-generator?share=67bf03df"
-           target="_blank"
-           rel="noopener">
-          Episode 1 on NoteGPT
-        </a>
+      <div class="highlight-box">
+        <h3>❤️ Service Focused</h3>
+        <p>Our Scouts give back through meaningful service projects in the Chesapeake community.</p>
       </div>
     </div>
-
-    <!-- Episode 2 -->
-    <div class="episode">
-      <h4>Episode 2: Coming Soon</h4>
-
-      <p>
-        Episode 2 will continue the series with deeper insight into troop life,
-        leadership development, and what families can expect as Scouts grow.
-      </p>
-
-      <div class="button-row">
-        <a class="cta-button"
-           href="#"
-           title="Replace this link with Episode 2 URL">
-          Episode 2 Link (to be added)
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
-     target="_blank"
-     rel="noopener"
-     class="cta-button">
-    Join Now
-  </a>
-
-  <div class="highlights">
-    <div class="highlight-box">
-      <h3>🧭 Scout Led</h3>
-      <p>Scouts plan meetings, campouts, and service projects with adult guidance.</p>
-    </div>
-
-    <div class="highlight-box">
-      <h3>👪 Family Supported</h3>
-      <p>Clear communication and strong family involvement make the program work.</p>
-    </div>
-
-    <div class="highlight-box">
-      <h3>❤️ Service Focused</h3>
-      <p>Scouts give back through meaningful projects in the Chesapeake community.</p>
-    </div>
-  </div>
-</main>
+  </main>
 </body>
 </html>
