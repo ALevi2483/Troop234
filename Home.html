@@ -44,10 +44,6 @@
       text-decoration: none;
     }
 
-    header a:hover {
-      text-decoration: underline;
-    }
-
     main {
       padding: 2rem;
       max-width: 1000px;
@@ -74,7 +70,7 @@
 
     p {
       line-height: 1.6;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       font-size: 1.05rem;
     }
 
@@ -86,33 +82,28 @@
       font-size: 1.1rem;
       border-radius: 6px;
       text-decoration: none;
-      margin: 1.25rem 0;
+      margin: 1rem 0;
     }
 
-    .cta-button:hover {
-      opacity: 0.92;
-    }
-
-    /* Podcast section */
     .podcast {
-      margin: 2rem auto;
+      margin: 2.5rem auto;
       padding: 1.5rem;
       background-color: #f7fafc;
       border-radius: 10px;
       border: 1px solid rgba(0,0,0,0.08);
-      max-width: 800px;
+      max-width: 850px;
       text-align: left;
     }
 
     .podcast h3 {
       margin-top: 0;
       color: #003366;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
     }
 
-    .podcast p {
-      margin-bottom: 1rem;
-      font-size: 1.02rem;
+    audio {
+      width: 100%;
+      margin-top: 1rem;
     }
 
     .highlights {
@@ -134,92 +125,87 @@
       color: #003366;
       margin-top: 0;
       font-size: 1.15rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     @media (max-width: 600px) {
       header h1 { font-size: 1.8rem; }
-      .welcome-image { max-height: 300px; }
-      .highlight-box h3 { font-size: 1.05rem; }
       main { margin: 1rem; padding: 1.5rem; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Troop 234 - Chesapeake, VA</h1>
-    <p>We meet Mondays from 7:00–8:30 PM</p>
-    <p>Covenant United Methodist Church</p>
-    <p>
-      <a href="https://www.google.com/maps?q=2004+Dock+Landing+Blvd,+Chesapeake,+VA" target="_blank" rel="noopener">
-        2004 Dock Landing Blvd, Chesapeake, VA
-      </a>
-    </p>
-  </header>
-
-  <main>
-    <img src="ai pic.png" loading="lazy" alt="Scouts around a campfire" class="welcome-image" />
-
-    <h2>Adventure. Leadership. Service.</h2>
-
-    <p>
-      We’re so glad you’re here. Troop 234 has proudly served the Chesapeake community for over 35 years,
-      helping Scouts become leaders, adventurers, and citizens of character.
-    </p>
-
-    <p>
-      Whether you're new to Scouting or continuing your journey, we invite you to explore what makes our troop different.
-      We’re more than a group. We’re a family.
-    </p>
-
-    <!-- Podcast Link -->
-    <div class="podcast">
-      <h3>🎧 Discover Troop 234 Podcast</h3>
-      <p>
-        Curious what makes Troop 234 different? This short podcast shares what families notice right away,
-        how our troop stays youth-led, and why Scouts feel welcome from day one.
-      </p>
-
-      <a class="cta-button"
-         href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
-         target="_blank"
-         rel="noopener">
-        Listen to the Troop 234 Podcast
-      </a>
-    </div>
-
-    <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
-       target="_blank"
-       rel="noopener"
-       class="cta-button">
-      Join Now
+<header>
+  <h1>Troop 234 - Chesapeake, VA</h1>
+  <p>We meet Mondays from 7:00–8:30 PM</p>
+  <p>Covenant United Methodist Church</p>
+  <p>
+    <a href="https://www.google.com/maps?q=2004+Dock+Landing+Blvd,+Chesapeake,+VA" target="_blank" rel="noopener">
+      2004 Dock Landing Blvd, Chesapeake, VA
     </a>
+  </p>
+</header>
 
-    <div class="highlights">
-      <div class="highlight-box">
-        <h3>🧭 Scout-Led Values</h3>
-        <p>
-          Troop 234 is youth-led. Scouts plan meetings, adventures, and service projects with guidance from trained adults.
-        </p>
-      </div>
+<main>
+  <img src="ai pic.png" loading="lazy" alt="Scouts around a campfire" class="welcome-image" />
 
-      <div class="highlight-box">
-        <h3>👪 Family Involvement</h3>
-        <p>
-          We believe Scouting works best with strong family support and clear communication.
-        </p>
-      </div>
+  <h2>Adventure. Leadership. Service.</h2>
 
-      <div class="highlight-box">
-        <h3>❤️ Service & Community</h3>
-        <p>
-          Our Scouts give back through meaningful service projects that benefit the Chesapeake community.
-        </p>
-      </div>
+  <p>
+    Troop 234 has served the Chesapeake community for over 35 years.
+    We help Scouts grow into confident leaders through adventure, service, and responsibility.
+  </p>
+
+  <!-- Podcast Section -->
+  <div class="podcast">
+    <h3>🎧 Cracking the Code: A Parent’s Guide to Troop 234</h3>
+
+    <p>
+      New to Scouting and overwhelmed by the terminology?
+      This short podcast breaks down common questions parents have about Scoutmaster Conferences,
+      Boards of Review, uniforms, communication tools, and how Troop 234 operates day to day.
+    </p>
+
+    <audio controls>
+      <source src="images/NoteGPT_AI_Podcast_Cracking the Code_ A Parent's Guide to Troop 2 3 4.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <p style="margin-top: 1rem;">
+      Prefer listening on Audio.com?
+    </p>
+
+    <a class="cta-button"
+       href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
+       target="_blank"
+       rel="noopener">
+      Listen on Audio.com
+    </a>
+  </div>
+
+  <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA"
+     target="_blank"
+     rel="noopener"
+     class="cta-button">
+    Join Now
+  </a>
+
+  <div class="highlights">
+    <div class="highlight-box">
+      <h3>🧭 Scout Led</h3>
+      <p>Scouts plan meetings, campouts, and service projects with adult guidance.</p>
     </div>
-  </main>
+
+    <div class="highlight-box">
+      <h3>👪 Family Supported</h3>
+      <p>Clear communication and strong family involvement make the program work.</p>
+    </div>
+
+    <div class="highlight-box">
+      <h3>❤️ Service Focused</h3>
+      <p>Scouts give back through meaningful projects in the Chesapeake community.</p>
+    </div>
+  </div>
+</main>
 </body>
 </html>
