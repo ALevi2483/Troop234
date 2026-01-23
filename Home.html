@@ -79,14 +79,10 @@
       background-color: #003366;
       color: white;
       padding: 0.75rem 1.5rem;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       border-radius: 6px;
       text-decoration: none;
-      margin: 1rem 0;
-    }
-
-    .cta-button:hover {
-      opacity: 0.92;
+      margin: 0.4rem 0;
     }
 
     .podcast {
@@ -105,16 +101,28 @@
       font-size: 1.35rem;
     }
 
+    .episode {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .episode h4 {
+      margin: 0 0 0.5rem 0;
+      color: #003366;
+      font-size: 1.1rem;
+    }
+
     audio {
       width: 100%;
-      margin-top: 1rem;
+      margin-top: 0.75rem;
     }
 
     .button-row {
       display: flex;
-      gap: 0.75rem;
       flex-wrap: wrap;
-      margin-top: 0.75rem;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
     }
 
     .highlights {
@@ -169,38 +177,55 @@
 
   <!-- Podcast Section -->
   <div class="podcast">
-    <h3>🎧 Cracking the Code: A Parent’s Guide to Troop 234</h3>
+    <h3>🎧 Troop 234 Podcast Series</h3>
 
-    <p>
-      New to Scouting and overwhelmed by the terminology?
-      This short podcast breaks down common questions parents have about Scoutmaster Conferences,
-      Boards of Review, uniforms, communication tools, and how Troop 234 operates day to day.
-    </p>
+    <!-- Episode 1 -->
+    <div class="episode">
+      <h4>Episode 1: Cracking the Code – A Parent’s Guide to Troop 234</h4>
 
-    <audio controls>
-      <source src="images/NoteGPT_AI_Podcast_Cracking the Code_ A Parent's Guide to Troop 2 3 4.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
+      <p>
+        An introduction for new families covering common Scouting terms, expectations,
+        uniforms, conferences, boards of review, and how Troop 234 communicates.
+      </p>
 
-    <p style="margin-top: 1rem;">
-      Want the background on how this podcast was made?
-      The NoteGPT page shows the AI podcast generator link used for it.
-    </p>
+      <audio controls>
+        <source src="images/NoteGPT_AI_Podcast_Cracking the Code_ A Parent's Guide to Troop 2 3 4.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
 
-    <div class="button-row">
-      <a class="cta-button"
-         href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
-         target="_blank"
-         rel="noopener">
-        Listen on Audio.com
-      </a>
+      <div class="button-row">
+        <a class="cta-button"
+           href="https://audio.com/adam-1854807356831746/audio/notegpt-ai-podcast-discover-troop-2-3-4-youth-led-scouting-adventures"
+           target="_blank"
+           rel="noopener">
+          Episode 1 on Audio.com
+        </a>
 
-      <a class="cta-button"
-         href="https://notegpt.io/ai-podcast-generator?share=67bf03df"
-         target="_blank"
-         rel="noopener">
-        View the NoteGPT Podcast Link
-      </a>
+        <a class="cta-button"
+           href="https://notegpt.io/ai-podcast-generator?share=67bf03df"
+           target="_blank"
+           rel="noopener">
+          Episode 1 on NoteGPT
+        </a>
+      </div>
+    </div>
+
+    <!-- Episode 2 -->
+    <div class="episode">
+      <h4>Episode 2: Coming Soon</h4>
+
+      <p>
+        Episode 2 will continue the series with deeper insight into troop life,
+        leadership development, and what families can expect as Scouts grow.
+      </p>
+
+      <div class="button-row">
+        <a class="cta-button"
+           href="#"
+           title="Replace this link with Episode 2 URL">
+          Episode 2 Link (to be added)
+        </a>
+      </div>
     </div>
   </div>
 
