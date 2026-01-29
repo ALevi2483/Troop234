@@ -1,92 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7FY6X24EQ6');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Troop 234 Photo Gallery</title>
+  <title>Photos - Troop 234</title>
+
   <style>
-    body {
-      margin: 0;
+    :root{
+      --bg:#f5f5f5;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#666;
+      --brand:#003366;
+      --border:#e6e6e6;
+      --shadow:0 6px 18px rgba(0,0,0,0.08);
+      --radius:14px;
+      --max:1100px;
+    }
+
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
+      background:var(--bg);
+      color:var(--text);
     }
 
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 1.5rem 1rem;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: bold;
-      border-bottom: 4px solid #001f4d;
+    header{
+      background:var(--brand);
+      color:#fff;
+      padding:1.75rem 1rem;
+      text-align:center;
     }
 
-    main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: 2rem auto;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    header h1{
+      margin:0;
+      font-size:1.8rem;
+      letter-spacing:0.2px;
     }
 
-    h2 {
-      color: #003366;
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
+    header p{
+      margin:0.5rem 0 0;
+      opacity:0.95;
+      font-size:0.95rem;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
+    nav{
+      background:#fff;
+      border-bottom:1px solid var(--border);
     }
 
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border: 4px solid #d9e3ee;
-      border-radius: 10px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
+    nav .nav-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0.75rem 1rem;
+      display:flex;
+      gap:0.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
-      border-color: #003366;
+    nav a{
+      color:var(--brand);
+      text-decoration:none;
+      font-weight:bold;
+      padding:0.35rem 0.5rem;
+      border-radius:8px;
     }
 
-    @media (max-width: 600px) {
-      main { padding: 1.5rem; margin: 1rem; }
-      header { font-size: 1.6rem; padding: 1rem; }
-      h2 { font-size: 1.4rem; }
+    nav a:hover{
+      background:#eef3f8;
+    }
+
+    main{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:1.25rem 1rem 2.5rem;
+    }
+
+    .controls{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:1rem;
+      display:flex;
+      gap:0.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:1rem;
+    }
+
+    .controls .left,
+    .controls .right{
+      display:flex;
+      gap:0.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    label{
+      font-size:0.9rem;
+      color:var(--muted);
+      font-weight:bold;
+    }
+
+    select, input[type="search"]{
+      padding:0.55rem 0.65rem;
+      border:1px solid var(--border);
+      border-radius:10px;
+      font-size:0.95rem;
+      min-width:170px;
+      background:#fff;
+      color:var(--text);
+    }
+
+    input[type="search"]{
+      min-width:220px;
+    }
+
+    .hint{
+      font-size:0.9rem;
+      color:var(--muted);
+      margin:0.25rem 0 0;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:1rem;
+    }
+
+    @media (max-width: 900px){
+      .grid{ grid-template-columns:repeat(2, 1fr); }
+    }
+    @media (max-width: 600px){
+      .grid{ grid-template-columns:1fr; }
+      select, input[type="search"]{ min-width:100%; }
+      .controls{ justify-content:flex-start; }
+    }
+
+    .album{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+    }
+
+    .cover{
+      width:100%;
+      height:190px;
+      background:#ddd;
+      object-fit:cover;
+      display:block;
+    }
+
+    .album-body{
+      padding:0.9rem 0.95rem 1rem;
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
+      flex:1;
+    }
+
+    .album-title{
+      margin:0;
+      font-size:1.05rem;
+      color:var(--brand);
+    }
+
+    .meta{
+      margin:0;
+      color:var(--muted);
+      font-size:0.9rem;
+      line-height:1.25rem;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.4rem;
+      margin-top:0.15rem;
+    }
+
+    .tag{
+      font-size:0.78rem;
+      border:1px solid var(--border);
+      color:var(--muted);
+      padding:0.2rem 0.45rem;
+      border-radius:999px;
+      background:#fafafa;
+    }
+
+    .album-actions{
+      margin-top:auto;
+      display:flex;
+      gap:0.5rem;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      border-radius:10px;
+      padding:0.55rem 0.75rem;
+      font-weight:bold;
+      font-size:0.92rem;
+      border:1px solid var(--brand);
+      color:#fff;
+      background:var(--brand);
+    }
+
+    .btn:hover{
+      opacity:0.92;
+    }
+
+    .btn.secondary{
+      background:#fff;
+      color:var(--brand);
+    }
+
+    .empty{
+      background:var(--card);
+      border:1px dashed var(--border);
+      border-radius:var(--radius);
+      padding:1.25rem;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:1.25rem 1rem 2rem;
+      font-size:0.9rem;
+    }
+
+    .policy{
+      margin-top:0.5rem;
+      font-size:0.9rem;
+      color:var(--muted);
     }
   </style>
 </head>
 
 <body>
-  <header>Troop 234 Photo Gallery</header>
+  <header>
+    <h1>Troop 234 Photos</h1>
+    <p>Albums by event. Newest first.</p>
+  </header>
+
+  <!-- Update these links to match your site nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html">Home</a>
+      <a href="News.html">News</a>
+      <a href="photos.html">Photos</a>
+      <a href="Calendar.html">Calendar</a>
+      <a href="Leaders.html">Leaders</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+  </nav>
 
   <main>
-    <h2>Memories from Our Scouting Adventures</h2>
-    <div class="gallery">
-      <img src="images/troop-camp1.jpg" alt="Troop 234 Campout" loading="lazy">
-      <img src="images/troop-service.jpg" alt="Troop 234 Community Service Project" loading="lazy">
-      <img src="images/troop-hike.jpg" alt="Troop 234 Hiking Trip" loading="lazy">
-      <img src="images/troop-court-of-honor.jpg" alt="Troop 234 Court of Honor Ceremony" loading="lazy">
-      <img src="images/troop-meeting.jpg" alt="Troop 234 Weekly Meeting" loading="lazy">
-      <img src="images/troop-campfire.jpg" alt="Troop 234 Campfire Night" loading="lazy">
+    <div class="controls">
+      <div class="left">
+        <div>
+          <label for="yearFilter">Year</label><br/>
+          <select id="yearFilter">
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="catFilter">Category</label><br/>
+          <select id="catFilter">
+            <option value="all">All</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="right">
+        <div>
+          <label for="searchBox">Search</label><br/>
+          <input id="searchBox" type="search" placeholder="Search albums..." />
+        </div>
+      </div>
+    </div>
+
+    <p class="hint">Tip: Keep album covers resized (example: 1600px wide) so the troop website loads fast on phones.</p>
+
+    <div id="albumGrid" class="grid"></div>
+    <div id="emptyState" class="empty" style="display:none;">
+      No albums match your filters.
+    </div>
+
+    <div class="policy">
+      Photo policy: We only post photos for Scouts and families who gave permission. If you want a photo removed, contact the troop.
     </div>
   </main>
+
+  <footer>
+    © Troop 234 Chesapeake
+  </footer>
+
+  <script>
+    /*
+      HOW TO ADD AN ALBUM
+      1) Put images in a folder, example: albums/2026-02-freeze-o-ree/
+      2) Create an album page OR link to a Google Photos album.
+         - If you want a simple folder page later, I can generate it.
+      3) Add an entry below.
+
+      cover: use a single image that represents the album.
+      url: where the user goes when clicking View Album.
+    */
+
+    const albums = [
+      {
+        title: "Freeze-O-Ree",
+        date: "2026-02-21",
+        year: "2026",
+        category: "Camping",
+        location: "Tidewater Council",
+        count: 42,
+        cover: "albums/2026-02-freeze-o-ree/cover.jpg",
+        url: "albums/2026-02-freeze-o-ree/index.html"
+      },
+      {
+        title: "Oasis Social Ministry Service Day",
+        date: "2026-02-07",
+        year: "2026",
+        category: "Service",
+        location: "Portsmouth, VA",
+        count: 28,
+        cover: "albums/2026-02-oasis-service/cover.jpg",
+        url: "albums/2026-02-oasis-service/index.html"
+      },
+      {
+        title: "Court of Honor",
+        date: "2026-01-15",
+        year: "2026",
+        category: "Court of Honor",
+        location: "Chesapeake, VA",
+        count: 35,
+        cover: "albums/2026-01-coh/cover.jpg",
+        url: "albums/2026-01-coh/index.html"
+      }
+    ];
+
+    // Sort newest first by date
+    albums.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+
+    const yearFilter = document.getElementById("yearFilter");
+    const catFilter = document.getElementById("catFilter");
+    const searchBox = document.getElementById("searchBox");
+    const albumGrid = document.getElementById("albumGrid");
+    const emptyState = document.getElementById("emptyState");
+
+    function uniqueValues(key){
+      const set = new Set(albums.map(a => a[key]).filter(Boolean));
+      return Array.from(set).sort((a, b) => (b + "").localeCompare(a + ""));
+    }
+
+    function fillSelect(selectEl, values){
+      values.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        selectEl.appendChild(opt);
+      });
+    }
+
+    function matchesFilters(album){
+      const yearVal = yearFilter.value;
+      const catVal = catFilter.value;
+      const q = (searchBox.value || "").trim().toLowerCase();
+
+      if (yearVal !== "all" && album.year !== yearVal) return false;
+      if (catVal !== "all" && album.category !== catVal) return false;
+
+      if (q){
+        const hay = [
+          album.title, album.location, album.category, album.year, album.date
+        ].filter(Boolean).join(" ").toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+
+      return true;
+    }
+
+    function formatDate(iso){
+      // ISO expected: YYYY-MM-DD
+      if (!iso || iso.length < 10) return "";
+      const parts = iso.split("-");
+      if (parts.length !== 3) return iso;
+      const y = parts[0];
+      const m = Number(parts[1]);
+      const d = Number(parts[2]);
+      const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      const mm = months[m - 1] || parts[1];
+      return `${mm} ${d}, ${y}`;
+    }
+
+    function card(album){
+      const div = document.createElement("div");
+      div.className = "album";
+
+      const img = document.createElement("img");
+      img.className = "cover";
+      img.src = album.cover || "";
+      img.alt = album.title ? `${album.title} cover` : "Album cover";
+      img.loading = "lazy";
+      img.onerror = function(){
+        // fallback if cover missing
+        this.style.display = "none";
+      };
+
+      const body = document.createElement("div");
+      body.className = "album-body";
+
+      const title = document.createElement("h3");
+      title.className = "album-title";
+      title.textContent = album.title || "Album";
+
+      const meta = document.createElement("p");
+      meta.className = "meta";
+
+      const lines = [];
+      if (album.date) lines.push(formatDate(album.date));
+      if (album.location) lines.push(album.location);
+      if (album.count != null) lines.push(`${album.count} photos`);
+      meta.textContent = lines.join(" | ");
+
+      const tags = document.createElement("div");
+      tags.className = "tags";
+
+      if (album.year){
+        const t = document.createElement("span");
+        t.className = "tag";
+        t.textContent = album.year;
+        tags.appendChild(t);
+      }
+
+      if (album.category){
+        const t = document.createElement("span");
+        t.className = "tag";
+        t.textContent = album.category;
+        tags.appendChild(t);
+      }
+
+      const actions = document.createElement("div");
+      actions.className = "album-actions";
+
+      const view = document.createElement("a");
+      view.className = "btn";
+      view.href = album.url || "#";
+      view.textContent = "View Album";
+
+      actions.appendChild(view);
+
+      body.appendChild(title);
+      body.appendChild(meta);
+      body.appendChild(tags);
+      body.appendChild(actions);
+
+      div.appendChild(img);
+      div.appendChild(body);
+
+      return div;
+    }
+
+    function render(){
+      albumGrid.innerHTML = "";
+      const filtered = albums.filter(matchesFilters);
+
+      if (filtered.length === 0){
+        emptyState.style.display = "block";
+      } else {
+        emptyState.style.display = "none";
+        filtered.forEach(a => albumGrid.appendChild(card(a)));
+      }
+    }
+
+    // Init filters
+    fillSelect(yearFilter, uniqueValues("year"));
+    fillSelect(catFilter, uniqueValues("category"));
+
+    // Events
+    yearFilter.addEventListener("change", render);
+    catFilter.addEventListener("change", render);
+    searchBox.addEventListener("input", render);
+
+    // First render
+    render();
+  </script>
 </body>
 </html>
