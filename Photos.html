@@ -25,16 +25,20 @@
       color:var(--text);
     }
 
+    /* Page title banner only.
+       Your site-wide header/nav (the dark blue one with Join Troop 234, etc.)
+       should come from your standard layout on the other pages.
+       This file does NOT add a second nav. */
     header{
       background:var(--brand);
       color:#fff;
-      padding:1.75rem 1rem;
+      padding:2.25rem 1rem;
       text-align:center;
     }
 
     header h1{
       margin:0;
-      font-size:1.8rem;
+      font-size:2rem;
       letter-spacing:0.2px;
     }
 
@@ -42,34 +46,6 @@
       margin:0.5rem 0 0;
       opacity:0.95;
       font-size:0.95rem;
-    }
-
-    nav{
-      background:#fff;
-      border-bottom:1px solid var(--border);
-    }
-
-    nav .nav-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0.75rem 1rem;
-      display:flex;
-      gap:0.75rem;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:center;
-    }
-
-    nav a{
-      color:var(--brand);
-      text-decoration:none;
-      font-weight:bold;
-      padding:0.35rem 0.5rem;
-      border-radius:8px;
-    }
-
-    nav a:hover{
-      background:#eef3f8;
     }
 
     main{
@@ -87,9 +63,9 @@
       display:flex;
       gap:0.75rem;
       flex-wrap:wrap;
-      align-items:center;
+      align-items:flex-end;
       justify-content:space-between;
-      margin-bottom:1rem;
+      margin:0 auto 1rem;
     }
 
     .controls .left,
@@ -97,7 +73,7 @@
       display:flex;
       gap:0.75rem;
       flex-wrap:wrap;
-      align-items:center;
+      align-items:flex-end;
     }
 
     label{
@@ -117,13 +93,13 @@
     }
 
     input[type="search"]{
-      min-width:220px;
+      min-width:240px;
     }
 
     .hint{
       font-size:0.9rem;
       color:var(--muted);
-      margin:0.25rem 0 0;
+      margin:0.25rem 0 1rem;
     }
 
     .grid{
@@ -135,10 +111,12 @@
     @media (max-width: 900px){
       .grid{ grid-template-columns:repeat(2, 1fr); }
     }
+
     @media (max-width: 600px){
       .grid{ grid-template-columns:1fr; }
       select, input[type="search"]{ min-width:100%; }
       .controls{ justify-content:flex-start; }
+      .controls .left, .controls .right{ width:100%; }
     }
 
     .album{
@@ -220,11 +198,6 @@
       opacity:0.92;
     }
 
-    .btn.secondary{
-      background:#fff;
-      color:var(--brand);
-    }
-
     .empty{
       background:var(--card);
       border:1px dashed var(--border);
@@ -232,6 +205,13 @@
       padding:1.25rem;
       color:var(--muted);
       text-align:center;
+      display:none;
+    }
+
+    .policy{
+      margin-top:0.75rem;
+      font-size:0.9rem;
+      color:var(--muted);
     }
 
     footer{
@@ -239,12 +219,6 @@
       color:var(--muted);
       padding:1.25rem 1rem 2rem;
       font-size:0.9rem;
-    }
-
-    .policy{
-      margin-top:0.5rem;
-      font-size:0.9rem;
-      color:var(--muted);
     }
   </style>
 </head>
@@ -274,17 +248,18 @@
       </div>
 
       <div class="right">
-        <div>
+        <div style="width:100%;">
           <label for="searchBox">Search</label><br/>
           <input id="searchBox" type="search" placeholder="Search albums..." />
         </div>
       </div>
     </div>
 
-    <p class="hint">Tip: Keep album covers resized (example: 1600px wide) so the troop website loads fast on phones.</p>
+    <p class="hint">Tip: Resize cover images (example: 1600px wide) so the troop website loads fast on phones.</p>
 
     <div id="albumGrid" class="grid"></div>
-    <div id="emptyState" class="empty" style="display:none;">
+
+    <div id="emptyState" class="empty">
       No albums match your filters.
     </div>
 
@@ -301,12 +276,11 @@
     /*
       HOW TO ADD AN ALBUM
       1) Put images in a folder, example: albums/2026-02-freeze-o-ree/
-      2) Create an album page OR link to a Google Photos album.
-         - If you want a simple folder page later, I can generate it.
+      2) Make a simple album page in that folder named index.html (or link to Google Photos).
       3) Add an entry below.
 
-      cover: use a single image that represents the album.
-      url: where the user goes when clicking View Album.
+      cover: representative image for the album (recommended file name: cover.jpg)
+      url: where the View Album button should go
     */
 
     const albums = [
@@ -384,15 +358,17 @@
     }
 
     function formatDate(iso){
-      // ISO expected: YYYY-MM-DD
       if (!iso || iso.length < 10) return "";
       const parts = iso.split("-");
       if (parts.length !== 3) return iso;
+
       const y = parts[0];
       const m = Number(parts[1]);
       const d = Number(parts[2]);
+
       const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
       const mm = months[m - 1] || parts[1];
+
       return `${mm} ${d}, ${y}`;
     }
 
@@ -406,87 +382,8 @@
       img.alt = album.title ? `${album.title} cover` : "Album cover";
       img.loading = "lazy";
       img.onerror = function(){
-        // fallback if cover missing
         this.style.display = "none";
       };
 
       const body = document.createElement("div");
-      body.className = "album-body";
-
-      const title = document.createElement("h3");
-      title.className = "album-title";
-      title.textContent = album.title || "Album";
-
-      const meta = document.createElement("p");
-      meta.className = "meta";
-
-      const lines = [];
-      if (album.date) lines.push(formatDate(album.date));
-      if (album.location) lines.push(album.location);
-      if (album.count != null) lines.push(`${album.count} photos`);
-      meta.textContent = lines.join(" | ");
-
-      const tags = document.createElement("div");
-      tags.className = "tags";
-
-      if (album.year){
-        const t = document.createElement("span");
-        t.className = "tag";
-        t.textContent = album.year;
-        tags.appendChild(t);
-      }
-
-      if (album.category){
-        const t = document.createElement("span");
-        t.className = "tag";
-        t.textContent = album.category;
-        tags.appendChild(t);
-      }
-
-      const actions = document.createElement("div");
-      actions.className = "album-actions";
-
-      const view = document.createElement("a");
-      view.className = "btn";
-      view.href = album.url || "#";
-      view.textContent = "View Album";
-
-      actions.appendChild(view);
-
-      body.appendChild(title);
-      body.appendChild(meta);
-      body.appendChild(tags);
-      body.appendChild(actions);
-
-      div.appendChild(img);
-      div.appendChild(body);
-
-      return div;
-    }
-
-    function render(){
-      albumGrid.innerHTML = "";
-      const filtered = albums.filter(matchesFilters);
-
-      if (filtered.length === 0){
-        emptyState.style.display = "block";
-      } else {
-        emptyState.style.display = "none";
-        filtered.forEach(a => albumGrid.appendChild(card(a)));
-      }
-    }
-
-    // Init filters
-    fillSelect(yearFilter, uniqueValues("year"));
-    fillSelect(catFilter, uniqueValues("category"));
-
-    // Events
-    yearFilter.addEventListener("change", render);
-    catFilter.addEventListener("change", render);
-    searchBox.addEventListener("input", render);
-
-    // First render
-    render();
-  </script>
-</body>
-</html>
+      body.
