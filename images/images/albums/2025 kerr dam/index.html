@@ -1,1 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Album - Troop 234</title>
 
+  <style>
+    :root{
+      --bg:#f5f5f5;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#666;
+      --brand:#003366;
+      --border:#e6e6e6;
+      --shadow:0 6px 18px rgba(0,0,0,0.08);
+      --radius:14px;
+      --max:1100px;
+    }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    header{
+      background:var(--brand);
+      color:#fff;
+      padding:1.75rem 1rem;
+      text-align:center;
+    }
+
+    header h1{
+      margin:0;
+      font-size:1.8rem;
+      letter-spacing:0.2px;
+    }
+
+    header p{
+      margin:0.5rem 0 0;
+      opacity:0.95;
+      font-size:0.95rem;
+    }
+
+    main{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:1rem 1rem 2.5rem;
+    }
+
+    .topbar{
+      display:flex;
+      gap:0.75rem;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:0.85rem 1rem;
+      margin:0 0 1rem;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      border-radius:10px;
+      padding:0.55rem 0.75rem;
+      font-weight:bold;
+      font-size:0.92rem;
+      border:1px solid var(--brand);
+      color:#fff;
+      background:var(--brand);
+      cursor:pointer;
+    }
+
+    .btn.secondary{
+      background:#fff;
+      color:var(--brand);
+    }
+
+    .btn:hover{ opacity:0.92; }
+
+    .meta{
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:0.75rem;
+    }
+
+    @media (max-width: 1000px){
+      .grid{ grid-template-columns:repeat(3, 1fr); }
+    }
+    @media (max-width: 700px){
+      .grid{ grid-template-columns:repeat(2, 1fr); }
+    }
+    @media (max-width: 480px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    .tile{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      cursor:pointer;
+    }
+
+    .tile img{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      display:block;
+      background:#ddd;
+    }
+
+    .tile .cap{
+      padding:0.5rem 0.65rem;
+      font-size:0.9rem;
+      color:var(--muted);
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.85);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      padding:1rem;
+    }
+
+    .lightbox.open{ display:flex; }
+
+    .lightbox-inner{
+      width:min(100%, 1100px);
+      display:flex;
+      flex-direction:column;
+      gap:0.75rem;
+    }
+
+    .lightbox-controls{
+      display:flex;
+      justify-content:space-between;
+      gap:0.5rem;
+      flex-wrap:wrap;
+      align-items:center;
+      color:#fff;
+      font-size:0.95rem;
+    }
+
+    .lightbox-controls .left,
+    .lightbox-controls .right{
+      display:flex;
+      gap:0.5rem;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .lightbox-img{
+      width:100%;
+      max-height:75vh;
+      object-fit:contain;
+      border-radius:12px;
+      background:#111;
+      border:1px solid rgba(255,255,255,0.15);
+    }
+
+    .xbtn{
+      border:1px solid rgba(255,255,255,0.35);
+      background:transparent;
+      color:#fff;
+      padding:0.5rem 0.7rem;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .xbtn:hover{ opacity:0.9; }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:1.25rem 1rem 2rem;
+      font-size:0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 id="albumTitle">Album</h1>
+    <p id="albumSubtitle">Tap any photo to view larger.</p>
+  </header>
+
+  <main>
+    <div class="topbar">
+      <div class="meta" id="metaLine"></div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <a class="btn secondary" href="../../../photos.html">Back to Photos</a>
+        <button class="btn" id="scrollTopBtn" type="button">Top</button>
+      </div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <footer>
+    © Troop 234 Chesapeake
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <div class="lightbox-controls">
+        <div class="left">
+          <button class="xbtn" id="prevBtn" type="button">Prev</button>
+          <button class="xbtn" id="nextBtn" type="button">Next</button>
+          <span id="countLabel"></span>
+        </div>
+        <div class="right">
+          <a id="downloadLink" class="xbtn" href="#" download>Open</a>
+          <button class="xbtn" id="closeBtn" type="button">Close</button>
+        </div>
+      </div>
+
+      <img id="lightboxImg" class="lightbox-img" src="" alt="Photo" />
+    </div>
+  </div>
+
+  <script>
+    // =========================
+    // EDIT THESE 3 LINES ONLY
+    // =========================
+    const ALBUM_TITLE = "2025 KErr Dam";
+    const PHOTO_COUNT = 41;     // set to how many photos are in this folder
+    const START_AT = 1;         // usually 1
+
+    // If your photos are .JPG or .jpeg, change this:
+    const EXT = "jpg";
+
+    // Optional: show a date or location line
+    const SUBTITLE = "Tap any photo to view larger.";
+
+    // =========================
+    // NO CHANGES BELOW
+    // =========================
+    document.title = `${ALBUM_TITLE} - Troop 234`;
+    document.getElementById("albumTitle").textContent = ALBUM_TITLE;
+    document.getElementById("albumSubtitle").textContent = SUBTITLE;
+
+    const grid = document.getElementById("grid");
+    const metaLine = document.getElementById("metaLine");
+    metaLine.textContent = `${PHOTO_COUNT} photos`;
+
+    const photos = [];
+    for (let i = START_AT; i <= (START_AT + PHOTO_COUNT - 1); i++){
+      photos.push(`${i}.${EXT}`);
+    }
+
+    function safeUrl(path){
+      return path ? encodeURI(path) : "#";
+    }
+
+    function makeTile(src, label, index){
+      const tile = document.createElement("div");
+      tile.className = "tile";
+      tile.dataset.index = index;
+
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.src = safeUrl(src);
+      img.alt = label;
+
+      const cap = document.createElement("div");
+      cap.className = "cap";
+      cap.textContent = label;
+
+      tile.appendChild(img);
+      tile.appendChild(cap);
+
+      tile.addEventListener("click", () => openLightbox(index));
+      return tile;
+    }
+
+    photos.forEach((file, idx) => {
+      const label = file;
+      grid.appendChild(makeTile(file, label, idx));
+    });
+
+    // Scroll to top button
+    document.getElementById("scrollTopBtn").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const countLabel = document.getElementById("countLabel");
+    const downloadLink = document.getElementById("downloadLink");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const closeBtn = document.getElementById("closeBtn");
+
+    let currentIndex = 0;
+
+    function setLightbox(index){
+      currentIndex = index;
+      const file = photos[currentIndex];
+      lightboxImg.src = safeUrl(file);
+      countLabel.textContent = `${currentIndex + 1} of ${photos.length}`;
+      downloadLink.href = safeUrl(file);
+    }
+
+    function openLightbox(index){
+      setLightbox(index);
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox(){
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function prev(){
+      const nextIndex = (currentIndex - 1 + photos.length) % photos.length;
+      setLightbox(nextIndex);
+    }
+
+    function next(){
+      const nextIndex = (currentIndex + 1) % photos.length;
+      setLightbox(nextIndex);
+    }
+
+    prevBtn.addEventListener("click", prev);
+    nextBtn.addEventListener("click", next);
+    closeBtn.addEventListener("click", closeLightbox);
+
+    // Close if you click the dark area
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard controls
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    });
+  </script>
+</body>
+</html>
