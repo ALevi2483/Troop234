@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Winter Camp 2025 | Troop 234</title>
+  <title>Album - Troop 234</title>
 
   <style>
     :root{
@@ -28,13 +28,14 @@
     header{
       background:var(--brand);
       color:#fff;
-      padding:2rem 1rem;
+      padding:1.75rem 1rem;
       text-align:center;
     }
 
     header h1{
       margin:0;
-      font-size:2rem;
+      font-size:1.8rem;
+      letter-spacing:0.2px;
     }
 
     header p{
@@ -46,19 +47,24 @@
     main{
       max-width:var(--max);
       margin:0 auto;
-      padding:1.25rem 1rem 2.5rem;
+      padding:1rem 1rem 2.5rem;
     }
 
     .topbar{
       display:flex;
       gap:0.75rem;
-      flex-wrap:wrap;
       align-items:center;
       justify-content:space-between;
-      margin-bottom:1rem;
+      flex-wrap:wrap;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:0.85rem 1rem;
+      margin:0 0 1rem;
     }
 
-    .back{
+    .btn{
       display:inline-block;
       text-decoration:none;
       border-radius:10px;
@@ -68,14 +74,19 @@
       border:1px solid var(--brand);
       color:#fff;
       background:var(--brand);
+      cursor:pointer;
     }
 
-    .back:hover{ opacity:0.92; }
+    .btn.secondary{
+      background:#fff;
+      color:var(--brand);
+    }
 
-    .note{
+    .btn:hover{ opacity:0.92; }
+
+    .meta{
       color:var(--muted);
-      font-size:0.95rem;
-      margin:0;
+      font-size:0.92rem;
     }
 
     .grid{
@@ -87,16 +98,14 @@
     @media (max-width: 1000px){
       .grid{ grid-template-columns:repeat(3, 1fr); }
     }
-
     @media (max-width: 700px){
       .grid{ grid-template-columns:repeat(2, 1fr); }
     }
-
-    @media (max-width: 420px){
+    @media (max-width: 480px){
       .grid{ grid-template-columns:1fr; }
     }
 
-    .thumb{
+    .tile{
       background:var(--card);
       border:1px solid var(--border);
       border-radius:12px;
@@ -105,11 +114,18 @@
       cursor:pointer;
     }
 
-    .thumb img{
+    .tile img{
       width:100%;
-      height:220px;
+      height:190px;
       object-fit:cover;
       display:block;
+      background:#ddd;
+    }
+
+    .tile .cap{
+      padding:0.5rem 0.65rem;
+      font-size:0.9rem;
+      color:var(--muted);
     }
 
     /* Lightbox */
@@ -120,49 +136,57 @@
       display:none;
       align-items:center;
       justify-content:center;
-      padding:1rem;
       z-index:9999;
+      padding:1rem;
     }
 
     .lightbox.open{ display:flex; }
 
     .lightbox-inner{
-      max-width:1100px;
-      width:100%;
+      width:min(100%, 1100px);
       display:flex;
       flex-direction:column;
       gap:0.75rem;
-      align-items:center;
     }
 
-    .lightbox img{
-      max-width:100%;
-      max-height:80vh;
-      border-radius:12px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.35);
-      background:#111;
-    }
-
-    .lb-controls{
-      width:100%;
+    .lightbox-controls{
       display:flex;
       justify-content:space-between;
       gap:0.5rem;
       flex-wrap:wrap;
-    }
-
-    .lb-btn{
-      border:1px solid rgba(255,255,255,0.35);
-      background:rgba(255,255,255,0.12);
+      align-items:center;
       color:#fff;
-      padding:0.55rem 0.8rem;
-      border-radius:10px;
-      font-weight:bold;
-      cursor:pointer;
-      user-select:none;
+      font-size:0.95rem;
     }
 
-    .lb-btn:hover{ background:rgba(255,255,255,0.18); }
+    .lightbox-controls .left,
+    .lightbox-controls .right{
+      display:flex;
+      gap:0.5rem;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .lightbox-img{
+      width:100%;
+      max-height:75vh;
+      object-fit:contain;
+      border-radius:12px;
+      background:#111;
+      border:1px solid rgba(255,255,255,0.15);
+    }
+
+    .xbtn{
+      border:1px solid rgba(255,255,255,0.35);
+      background:transparent;
+      color:#fff;
+      padding:0.5rem 0.7rem;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .xbtn:hover{ opacity:0.9; }
 
     footer{
       text-align:center;
@@ -175,14 +199,17 @@
 
 <body>
   <header>
-    <h1>Winter Camp 2025</h1>
-    <p>Troop 234 Chesapeake</p>
+    <h1 id="albumTitle">Album</h1>
+    <p id="albumSubtitle">Tap any photo to view larger.</p>
   </header>
 
   <main>
     <div class="topbar">
-      <a class="back" href="/Photos.html">Back to Albums</a>
-      <p class="note">Click a photo to view larger. Use arrow keys to navigate.</p>
+      <div class="meta" id="metaLine"></div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <a class="btn secondary" href="../../../photos.html">Back to Photos</a>
+        <button class="btn" id="scrollTopBtn" type="button">Top</button>
+      </div>
     </div>
 
     <div id="grid" class="grid"></div>
@@ -195,78 +222,142 @@
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <div class="lightbox-inner">
-      <div class="lb-controls">
-        <button id="prevBtn" class="lb-btn" type="button">Prev</button>
-        <button id="closeBtn" class="lb-btn" type="button">Close</button>
-        <button id="nextBtn" class="lb-btn" type="button">Next</button>
+      <div class="lightbox-controls">
+        <div class="left">
+          <button class="xbtn" id="prevBtn" type="button">Prev</button>
+          <button class="xbtn" id="nextBtn" type="button">Next</button>
+          <span id="countLabel"></span>
+        </div>
+        <div class="right">
+          <a id="downloadLink" class="xbtn" href="#" download>Open</a>
+          <button class="xbtn" id="closeBtn" type="button">Close</button>
+        </div>
       </div>
-      <img id="lbImg" alt="Expanded photo"/>
+
+      <img id="lightboxImg" class="lightbox-img" src="" alt="Photo" />
     </div>
   </div>
 
   <script>
-    // Photos in this folder are named 1.jpg ... 15.jpg
-    const total = 15;
-    const images = [];
-    for (let i = 1; i <= total; i++) images.push(`${i}.jpg`);
+    // =========================
+    // EDIT THESE 3 LINES ONLY
+    // =========================
+    const ALBUM_TITLE = "2025 Winter Camp";
+    const PHOTO_COUNT = 40;     // set to how many photos are in this folder
+    const START_AT = 1;         // usually 1
+
+    // If your photos are .JPG or .jpeg, change this:
+    const EXT = "jpg";
+
+    // Optional: show a date or location line
+    const SUBTITLE = "Tap any photo to view larger.";
+
+    // =========================
+    // NO CHANGES BELOW
+    // =========================
+    document.title = `${ALBUM_TITLE} - Troop 234`;
+    document.getElementById("albumTitle").textContent = ALBUM_TITLE;
+    document.getElementById("albumSubtitle").textContent = SUBTITLE;
 
     const grid = document.getElementById("grid");
+    const metaLine = document.getElementById("metaLine");
+    metaLine.textContent = `${PHOTO_COUNT} photos`;
+
+    const photos = [];
+    for (let i = START_AT; i <= (START_AT + PHOTO_COUNT - 1); i++){
+      photos.push(`${i}.${EXT}`);
+    }
+
+    function safeUrl(path){
+      return path ? encodeURI(path) : "#";
+    }
+
+    function makeTile(src, label, index){
+      const tile = document.createElement("div");
+      tile.className = "tile";
+      tile.dataset.index = index;
+
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.src = safeUrl(src);
+      img.alt = label;
+
+      const cap = document.createElement("div");
+      cap.className = "cap";
+      cap.textContent = label;
+
+      tile.appendChild(img);
+      tile.appendChild(cap);
+
+      tile.addEventListener("click", () => openLightbox(index));
+      return tile;
+    }
+
+    photos.forEach((file, idx) => {
+      const label = file;
+      grid.appendChild(makeTile(file, label, idx));
+    });
+
+    // Scroll to top button
+    document.getElementById("scrollTopBtn").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Lightbox
     const lightbox = document.getElementById("lightbox");
-    const lbImg = document.getElementById("lbImg");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const countLabel = document.getElementById("countLabel");
+    const downloadLink = document.getElementById("downloadLink");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
     const closeBtn = document.getElementById("closeBtn");
 
-    let idx = 0;
+    let currentIndex = 0;
 
-    function openAt(i){
-      idx = i;
-      lbImg.src = images[idx];
-      lightbox.classList.add("open");
-      lightbox.setAttribute("aria-hidden", "false");
+    function setLightbox(index){
+      currentIndex = index;
+      const file = photos[currentIndex];
+      lightboxImg.src = safeUrl(file);
+      countLabel.textContent = `${currentIndex + 1} of ${photos.length}`;
+      downloadLink.href = safeUrl(file);
     }
 
-    function close(){
+    function openLightbox(index){
+      setLightbox(index);
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox(){
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
-      lbImg.src = "";
+      document.body.style.overflow = "";
     }
 
     function prev(){
-      idx = (idx - 1 + images.length) % images.length;
-      lbImg.src = images[idx];
+      const nextIndex = (currentIndex - 1 + photos.length) % photos.length;
+      setLightbox(nextIndex);
     }
 
     function next(){
-      idx = (idx + 1) % images.length;
-      lbImg.src = images[idx];
+      const nextIndex = (currentIndex + 1) % photos.length;
+      setLightbox(nextIndex);
     }
-
-    images.forEach((src, i) => {
-      const wrap = document.createElement("div");
-      wrap.className = "thumb";
-
-      const img = document.createElement("img");
-      img.src = src;
-      img.loading = "lazy";
-      img.alt = `Winter Camp photo ${i + 1}`;
-
-      wrap.addEventListener("click", () => openAt(i));
-      wrap.appendChild(img);
-      grid.appendChild(wrap);
-    });
 
     prevBtn.addEventListener("click", prev);
     nextBtn.addEventListener("click", next);
-    closeBtn.addEventListener("click", close);
+    closeBtn.addEventListener("click", closeLightbox);
 
+    // Close if you click the dark area
     lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) close();
+      if (e.target === lightbox) closeLightbox();
     });
 
+    // Keyboard controls
     document.addEventListener("keydown", (e) => {
       if (!lightbox.classList.contains("open")) return;
-      if (e.key === "Escape") close();
+      if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowLeft") prev();
       if (e.key === "ArrowRight") next();
     });
