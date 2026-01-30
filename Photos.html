@@ -25,10 +25,6 @@
       color:var(--text);
     }
 
-    /* Page title banner only.
-       Your site-wide header/nav (the dark blue one with Join Troop 234, etc.)
-       should come from your standard layout on the other pages.
-       This file does NOT add a second nav. */
     header{
       background:var(--brand);
       color:#fff;
@@ -274,16 +270,33 @@
 
   <script>
     /*
-      HOW TO ADD AN ALBUM
-      1) Put images in a folder, example: albums/2026-02-freeze-o-ree/
-      2) Make a simple album page in that folder named index.html (or link to Google Photos).
-      3) Add an entry below.
-
-      cover: representative image for the album (recommended file name: cover.jpg)
-      url: where the View Album button should go
+      ALBUM PATH RULE (IMPORTANT)
+      Your repo structure shows albums live here:
+      images/images/albums/<album-folder>/
+      So every cover + url below uses that exact base path.
     */
 
     const albums = [
+      {
+        title: "Winter Camp",
+        date: "2025-12-01",
+        year: "2025",
+        category: "Camping",
+        location: "",
+        count: 15,
+        cover: "images/images/albums/2025 winter camp/1.jpg",
+        url: "images/images/albums/2025 winter camp/index.html"
+      },
+      {
+        title: "Summer Camp - Woodruff",
+        date: "2026-07-01",
+        year: "2026",
+        category: "Camping",
+        location: "",
+        count: 1,
+        cover: "images/images/albums/2026-summer-camp-woodruff/Cover.jpg",
+        url: "images/images/albums/2026-summer-camp-woodruff/index.html"
+      },
       {
         title: "Freeze-O-Ree",
         date: "2026-02-21",
@@ -291,8 +304,8 @@
         category: "Camping",
         location: "Tidewater Council",
         count: 42,
-        cover: "albums/2026-02-freeze-o-ree/cover.jpg",
-        url: "albums/2026-02-freeze-o-ree/index.html"
+        cover: "images/images/albums/2026-02-freeze-o-ree/cover.jpg",
+        url: "images/images/albums/2026-02-freeze-o-ree/index.html"
       },
       {
         title: "Oasis Social Ministry Service Day",
@@ -301,8 +314,8 @@
         category: "Service",
         location: "Portsmouth, VA",
         count: 28,
-        cover: "albums/2026-02-oasis-service/cover.jpg",
-        url: "albums/2026-02-oasis-service/index.html"
+        cover: "images/images/albums/2026-02-oasis-service/cover.jpg",
+        url: "images/images/albums/2026-02-oasis-service/index.html"
       },
       {
         title: "Court of Honor",
@@ -311,8 +324,8 @@
         category: "Court of Honor",
         location: "Chesapeake, VA",
         count: 35,
-        cover: "albums/2026-01-coh/cover.jpg",
-        url: "albums/2026-01-coh/index.html"
+        cover: "images/images/albums/2026-01-coh/cover.jpg",
+        url: "images/images/albums/2026-01-coh/index.html"
       }
     ];
 
@@ -386,4 +399,77 @@
       };
 
       const body = document.createElement("div");
-      body.
+      body.className = "album-body";
+
+      const h = document.createElement("h3");
+      h.className = "album-title";
+      h.textContent = album.title || "Album";
+
+      const meta = document.createElement("p");
+      meta.className = "meta";
+      const dateStr = album.date ? formatDate(album.date) : "";
+      const locStr = album.location ? ` • ${album.location}` : "";
+      const countStr = album.count ? ` • ${album.count} photos` : "";
+      meta.textContent = `${dateStr}${locStr}${countStr}`.trim();
+
+      const tags = document.createElement("div");
+      tags.className = "tags";
+
+      const t1 = document.createElement("span");
+      t1.className = "tag";
+      t1.textContent = album.year || "";
+
+      const t2 = document.createElement("span");
+      t2.className = "tag";
+      t2.textContent = album.category || "";
+
+      if (album.year) tags.appendChild(t1);
+      if (album.category) tags.appendChild(t2);
+
+      const actions = document.createElement("div");
+      actions.className = "album-actions";
+
+      const a = document.createElement("a");
+      a.className = "btn";
+      a.href = album.url || "#";
+      a.textContent = "View Album";
+
+      actions.appendChild(a);
+
+      body.appendChild(h);
+      body.appendChild(meta);
+      body.appendChild(tags);
+      body.appendChild(actions);
+
+      div.appendChild(img);
+      div.appendChild(body);
+
+      return div;
+    }
+
+    function render(){
+      albumGrid.innerHTML = "";
+
+      const filtered = albums.filter(matchesFilters);
+
+      filtered.forEach(a => albumGrid.appendChild(card(a)));
+
+      if (filtered.length === 0){
+        emptyState.style.display = "block";
+      } else {
+        emptyState.style.display = "none";
+      }
+    }
+
+    // Fill filters
+    fillSelect(yearFilter, uniqueValues("year"));
+    fillSelect(catFilter, uniqueValues("category"));
+
+    yearFilter.addEventListener("change", render);
+    catFilter.addEventListener("change", render);
+    searchBox.addEventListener("input", render);
+
+    render();
+  </script>
+</body>
+</html>
