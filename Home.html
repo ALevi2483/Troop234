@@ -26,17 +26,30 @@
       background-color: #003366;
       color: white;
       padding: 2rem 1rem;
-      text-align: center;
+    }
+
+    .header-inner{
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .header-left{
+      text-align: left;
     }
 
     header h1 {
       font-size: 2.3rem;
-      margin: 0.5rem 0;
+      margin: 0.25rem 0 0.5rem;
     }
 
     header p {
       font-size: 1.05rem;
       margin: 0.3rem 0;
+      opacity: 0.95;
     }
 
     header a {
@@ -46,6 +59,58 @@
 
     header a:hover {
       text-decoration: underline;
+    }
+
+    .join-card{
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      text-align: left;
+    }
+
+    .join-card h2{
+      margin: 0 0 0.5rem 0;
+      font-size: 1.25rem;
+      color: #ffffff;
+    }
+
+    .join-card .small{
+      margin: 0 0 0.75rem 0;
+      font-size: 0.98rem;
+      opacity: 0.95;
+      line-height: 1.35;
+    }
+
+    .join-actions{
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+
+    .banner-btn{
+      display: inline-block;
+      background-color: #ffffff;
+      color: #003366;
+      padding: 0.6rem 0.85rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid rgba(255,255,255,0.65);
+    }
+
+    .banner-btn:hover{
+      opacity: 0.92;
+      text-decoration: none;
+    }
+
+    .banner-btn.secondary{
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.55);
     }
 
     main {
@@ -161,6 +226,21 @@
       gap: 0.5rem;
     }
 
+    @media (max-width: 800px) {
+      .header-inner{
+        grid-template-columns: 1fr;
+      }
+      .header-left{
+        text-align: center;
+      }
+      .join-card{
+        text-align: center;
+      }
+      .join-actions{
+        justify-content: center;
+      }
+    }
+
     @media (max-width: 600px) {
       header h1 { font-size: 1.8rem; }
       .welcome-image { max-height: 300px; }
@@ -172,25 +252,44 @@
 
 <body>
   <header>
-    <h1>Troop 234 - Chesapeake, VA</h1>
-    <p>We meet Mondays from 7:00–8:30 PM</p>
-    <p>Covenant United Methodist Church</p>
-    <p>
-      <a href="https://www.google.com/maps?q=2004+Dock+Landing+Blvd,+Chesapeake,+VA" target="_blank" rel="noopener">
-        2004 Dock Landing Blvd, Chesapeake, VA
-      </a>
-    </p>
+    <div class="header-inner">
+      <div class="header-left">
+        <h1>Troop 234 - Chesapeake, VA</h1>
+        <p><strong>We meet Mondays from 7:00 to 8:30 PM</strong></p>
+        <p>Covenant United Methodist Church</p>
+        <p>
+          <a href="https://www.google.com/maps?q=2004+Dock+Landing+Blvd,+Chesapeake,+VA" target="_blank" rel="noopener">
+            2004 Dock Landing Blvd, Chesapeake, VA
+          </a>
+        </p>
+      </div>
+
+      <div class="join-card">
+        <h2>Join Troop 234</h2>
+        <p class="small">
+          Want to check us out? Come visit a Monday meeting.
+          We will help you get started.
+        </p>
+        <div class="join-actions">
+          <a class="banner-btn" href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank" rel="noopener">
+            Join Now
+          </a>
+          <a class="banner-btn secondary" href="mailto:Troop234Scouting@gmail.com?subject=Interested%20in%20joining%20Troop%20234">
+            Email Us
+          </a>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
     <!-- Updated home page main photo -->
-   <img
-  src="images/images/albums/2025 Summer Camp/1.jpg"
-  loading="lazy"
-  alt="Troop 234 Summer Camp Woodruff cover photo"
-  class="welcome-image"
-/>
-
+    <img
+      src="images/images/albums/2025 Summer Camp/1.jpg"
+      loading="lazy"
+      alt="Troop 234 Summer Camp Woodruff cover photo"
+      class="welcome-image"
+    />
 
     <h2>Adventure. Leadership. Service.</h2>
 
