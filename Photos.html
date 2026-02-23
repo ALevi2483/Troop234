@@ -276,7 +276,8 @@
   </footer>
 
   <script>
-    const WEB_APP_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AY5xjrRCnjT53U1rGec1qTV_whL-VXVSsuzuy6-zVjUmUUkL6YxcPu2BT1MkWQHfGoUvAdFjLzZXZJbyKjLjp0Hj3UENVwYawD9tCLG0QcjW7s7GFEcrpXHTEcVASYrvK38fggTCM9MDlDpK0GcsEzo8ztu1FNNyq38-4KyP3rLeDYAe-fmkorz-vUOu_-6yliLJKxwPtopT5kfquOMNW_jhWIS195_xKlzP2fj9kyNuyqJpDRWJwEgRRT9AIsDLzrDdsjouj941d-VeFvxnfyyCLVtJb7zB0Sqq-p6ghMIYhNBYHFjcwPE&lib=MlqOadRcGyF9vy0zbFLIwT9GPxoqFZwZb";
+    // Use the stable Apps Script /exec URL
+    const WEB_APP_EXEC_URL = "https://script.google.com/macros/s/AKfycbzxPbWUAO21jCrAYvDWQnQ4_lnBm9EXXqRS0oDmQM-SDXavYu5Jv-k7x-oFkU72sryhnA/exec";
 
     const yearFilter = document.getElementById("yearFilter");
     const searchBox = document.getElementById("searchBox");
@@ -286,7 +287,6 @@
     const countText = document.getElementById("countText");
 
     let allAlbums = [];
-    let shownAlbums = [];
 
     function uniqueYearsFromFeed(feed){
       const years = Object.keys(feed.years || {});
@@ -295,7 +295,6 @@
     }
 
     function fillYears(years){
-      // Keep existing "All" then append years
       const existing = new Set(Array.from(yearFilter.options).map(o => o.value));
       years.forEach(y => {
         if (existing.has(y)) return;
@@ -328,9 +327,7 @@
       if (yearVal !== "all" && a.year !== yearVal) return false;
 
       if (q){
-        const hay = [
-          a.title, a.year
-        ].filter(Boolean).join(" ").toLowerCase();
+        const hay = [a.title, a.year].filter(Boolean).join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
 
@@ -346,6 +343,7 @@
       img.src = safeUrl(a.coverThumbUrl || "");
       img.alt = a.title ? (a.title + " cover") : "Album cover";
       img.loading = "lazy";
+      img.referrerPolicy = "no-referrer";
       img.onerror = function(){
         this.style.display = "none";
       };
@@ -367,10 +365,12 @@
       const tags = document.createElement("div");
       tags.className = "tags";
 
-      const t1 = document.createElement("span");
-      t1.className = "tag";
-      t1.textContent = a.year || "";
-      if (a.year) tags.appendChild(t1);
+      if (a.year){
+        const t1 = document.createElement("span");
+        t1.className = "tag";
+        t1.textContent = a.year;
+        tags.appendChild(t1);
+      }
 
       const actions = document.createElement("div");
       actions.className = "album-actions";
@@ -382,15 +382,7 @@
       openFolder.rel = "noopener";
       openFolder.textContent = "Open Album";
 
-      const openCover = document.createElement("a");
-      openCover.className = "btn secondary";
-      openCover.href = safeUrl(a.coverViewUrl || a.folderUrl || "#");
-      openCover.target = "_blank";
-      openCover.rel = "noopener";
-      openCover.textContent = "Open Cover";
-
       actions.appendChild(openFolder);
-      actions.appendChild(openCover);
 
       body.appendChild(h);
       body.appendChild(meta);
@@ -406,12 +398,21 @@
     function render(){
       albumGrid.innerHTML = "";
 
-      shownAlbums = allAlbums.filter(matchesFilters);
+      const filtered = allAlbums.filter(matchesFilters);
 
-      countText.textContent = shownAlbums.length + " album(s)";
-      emptyState.style.display = shownAlbums.length ? "none" : "block";
+      countText.textContent = filtered.length + " album(s)";
+      emptyState.style.display = filtered.length ? "none" : "block";
 
-      shownAlbums.forEach(a => albumGrid.appendChild(card(a)));
+      filtered.forEach(a => albumGrid.appendChild(card(a)));
+    }
+
+    function buildUrlWithCacheBuster(baseUrl, params){
+      const url = new URL(baseUrl);
+      Object.entries(params || {}).forEach(([k,v]) => {
+        if (v !== undefined && v !== null && v !== "") url.searchParams.set(k, v);
+      });
+      url.searchParams.set("v", String(Date.now()));
+      return url.toString();
     }
 
     async function loadFeed(){
@@ -421,7 +422,8 @@
       albumGrid.innerHTML = "";
 
       try{
-        const res = await fetch(WEB_APP_URL, { cache: "no-store" });
+        const feedUrl = buildUrlWithCacheBuster(WEB_APP_EXEC_URL, {});
+        const res = await fetch(feedUrl, { cache: "no-store" });
         if(!res.ok) throw new Error("Feed request failed: " + res.status);
 
         const feed = await res.json();
@@ -441,9 +443,7 @@
           }
         }
 
-        // Sort newest first
         flat.sort((a,b) => (b.updated || "").localeCompare(a.updated || ""));
-
         allAlbums = flat;
 
         statusText.textContent = (yearFilter.value === "all")
