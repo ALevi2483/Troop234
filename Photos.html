@@ -18,8 +18,6 @@
       --max:1100px;
     }
 
-    *{ box-sizing:border-box; }
-
     body{
       margin:0;
       font-family: Arial, sans-serif;
@@ -94,19 +92,13 @@
       min-width:240px;
     }
 
-    .hint{
-      font-size:0.9rem;
-      color:var(--muted);
-      margin:0.25rem 0 1rem;
-    }
-
     .statusbar{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
       justify-content:space-between;
       align-items:center;
-      margin:0.5rem 0 1rem;
+      margin:0.25rem 0 1rem;
       color:var(--muted);
       font-size:0.92rem;
     }
@@ -128,7 +120,7 @@
       .controls .left, .controls .right{ width:100%; }
     }
 
-    .photo-card{
+    .album{
       background:var(--card);
       border:1px solid var(--border);
       border-radius:var(--radius);
@@ -139,15 +131,15 @@
       min-height:100%;
     }
 
-    .photo{
+    .cover{
       width:100%;
-      height:210px;
+      height:190px;
       background:#ddd;
       object-fit:cover;
       display:block;
     }
 
-    .photo-body{
+    .album-body{
       padding:0.9rem 0.95rem 1rem;
       display:flex;
       flex-direction:column;
@@ -155,9 +147,9 @@
       flex:1;
     }
 
-    .photo-title{
+    .album-title{
       margin:0;
-      font-size:0.98rem;
+      font-size:1.05rem;
       color:var(--brand);
       white-space:nowrap;
       overflow:hidden;
@@ -187,7 +179,7 @@
       background:#fafafa;
     }
 
-    .actions{
+    .album-actions{
       margin-top:auto;
       display:flex;
       gap:0.5rem;
@@ -206,14 +198,12 @@
       background:var(--brand);
     }
 
-    .btn:hover{
-      opacity:0.92;
-    }
-
     .btn.secondary{
       background:#fff;
       color:var(--brand);
     }
+
+    .btn:hover{ opacity:0.92; }
 
     .empty{
       background:var(--card);
@@ -243,7 +233,7 @@
 <body>
   <header>
     <h1>Troop 234 Photos</h1>
-    <p>Auto loads from Google Drive. Upload photos to Drive and refresh.</p>
+    <p>Albums by event. Auto loads from Google Drive.</p>
   </header>
 
   <main>
@@ -260,7 +250,7 @@
       <div class="right">
         <div style="width:100%;">
           <label for="searchBox">Search</label><br/>
-          <input id="searchBox" type="search" placeholder="Search filenames..." />
+          <input id="searchBox" type="search" placeholder="Search albums..." />
         </div>
       </div>
     </div>
@@ -270,10 +260,10 @@
       <div id="countText"></div>
     </div>
 
-    <div id="photoGrid" class="grid"></div>
+    <div id="albumGrid" class="grid"></div>
 
     <div id="emptyState" class="empty">
-      No photos match your filters.
+      No albums match your filters.
     </div>
 
     <div class="policy">
@@ -286,41 +276,26 @@
   </footer>
 
   <script>
-    // Your Apps Script Web App URL (photo feed)
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxPbWUAO21jCrAYvDWQnQ4_lnBm9EXXqRS0oDmQM-SDXavYu5Jv-k7x-oFkU72sryhnA/exec";
 
     const yearFilter = document.getElementById("yearFilter");
     const searchBox = document.getElementById("searchBox");
-    const photoGrid = document.getElementById("photoGrid");
+    const albumGrid = document.getElementById("albumGrid");
     const emptyState = document.getElementById("emptyState");
     const statusText = document.getElementById("statusText");
     const countText = document.getElementById("countText");
 
-    let allPhotos = [];   // flattened list of all photos returned by the feed
-    let shownPhotos = []; // filtered list
+    let allAlbums = [];
+    let shownAlbums = [];
 
-    function safeText(s){
-      return (s || "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+    function uniqueYearsFromFeed(feed){
+      const years = Object.keys(feed.years || {});
+      years.sort((a,b) => (b + "").localeCompare(a + ""));
+      return years;
     }
 
-    function formatDateTime(iso){
-      if(!iso) return "";
-      try{
-        const d = new Date(iso);
-        if (isNaN(d.getTime())) return iso;
-        return d.toLocaleString();
-      }catch{
-        return iso;
-      }
-    }
-
-    function fillYearSelect(years){
-      // keep "All" then add years newest first
+    function fillYears(years){
+      // Keep existing "All" then append years
       const existing = new Set(Array.from(yearFilter.options).map(o => o.value));
       years.forEach(y => {
         if (existing.has(y)) return;
@@ -331,58 +306,30 @@
       });
     }
 
-    async function loadFromFeed(){
-      statusText.textContent = "Loading from Google Drive...";
-      countText.textContent = "";
-      photoGrid.innerHTML = "";
-      emptyState.style.display = "none";
-
+    function formatUpdated(iso){
+      if(!iso) return "";
       try{
-        const res = await fetch(WEB_APP_URL, { cache: "no-store" });
-        if(!res.ok) throw new Error("Feed request failed: " + res.status);
-
-        const data = await res.json();
-
-        const years = Object.keys(data.years || {}).sort().reverse();
-        fillYearSelect(years);
-
-        const flat = [];
-        for(const y of years){
-          for(const item of (data.years[y] || [])){
-            flat.push({ year: y, ...item });
-          }
-        }
-
-        // Sort newest first based on "updated" if present
-        flat.sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
-
-        allPhotos = flat;
-
-        // Default year selection: latest year if available, else All
-        if (years.length && yearFilter.value === "all"){
-          yearFilter.value = years[0];
-        }
-
-        applyFilters();
-
-      }catch(err){
-        console.log(err);
-        statusText.textContent = "Could not load photos.";
-        countText.textContent = "";
-        emptyState.style.display = "block";
-        emptyState.textContent = "Could not load photos. Check Drive sharing and your Apps Script deployment access (Anyone).";
+        const d = new Date(iso);
+        if (isNaN(d.getTime())) return "";
+        return d.toLocaleDateString();
+      }catch{
+        return "";
       }
     }
 
-    function matchesFilters(p){
+    function safeUrl(path){
+      return path ? encodeURI(path) : "#";
+    }
+
+    function matchesFilters(a){
       const yearVal = yearFilter.value;
       const q = (searchBox.value || "").trim().toLowerCase();
 
-      if (yearVal !== "all" && p.year !== yearVal) return false;
+      if (yearVal !== "all" && a.year !== yearVal) return false;
 
       if (q){
         const hay = [
-          p.name, p.year, p.updated
+          a.title, a.year
         ].filter(Boolean).join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
@@ -390,105 +337,138 @@
       return true;
     }
 
-    function applyFilters(){
-      shownPhotos = allPhotos.filter(matchesFilters);
+    function card(a){
+      const div = document.createElement("div");
+      div.className = "album";
 
-      const yearVal = yearFilter.value;
-      statusText.textContent = yearVal === "all"
-        ? "Showing all years"
-        : ("Showing " + yearVal);
+      const img = document.createElement("img");
+      img.className = "cover";
+      img.src = safeUrl(a.coverThumbUrl || "");
+      img.alt = a.title ? (a.title + " cover") : "Album cover";
+      img.loading = "lazy";
+      img.onerror = function(){
+        this.style.display = "none";
+      };
 
-      countText.textContent = shownPhotos.length + " photo(s)";
+      const body = document.createElement("div");
+      body.className = "album-body";
 
-      render();
+      const h = document.createElement("h3");
+      h.className = "album-title";
+      h.textContent = a.title || "Album";
+
+      const meta = document.createElement("p");
+      meta.className = "meta";
+      const updated = formatUpdated(a.updated);
+      const count = a.count ? (a.count + " photos") : "";
+      const parts = [updated ? ("Updated " + updated) : "", count].filter(Boolean);
+      meta.textContent = parts.join(" • ");
+
+      const tags = document.createElement("div");
+      tags.className = "tags";
+
+      const t1 = document.createElement("span");
+      t1.className = "tag";
+      t1.textContent = a.year || "";
+      if (a.year) tags.appendChild(t1);
+
+      const actions = document.createElement("div");
+      actions.className = "album-actions";
+
+      const openFolder = document.createElement("a");
+      openFolder.className = "btn";
+      openFolder.href = safeUrl(a.folderUrl || "#");
+      openFolder.target = "_blank";
+      openFolder.rel = "noopener";
+      openFolder.textContent = "Open Album";
+
+      const openCover = document.createElement("a");
+      openCover.className = "btn secondary";
+      openCover.href = safeUrl(a.coverViewUrl || a.folderUrl || "#");
+      openCover.target = "_blank";
+      openCover.rel = "noopener";
+      openCover.textContent = "Open Cover";
+
+      actions.appendChild(openFolder);
+      actions.appendChild(openCover);
+
+      body.appendChild(h);
+      body.appendChild(meta);
+      body.appendChild(tags);
+      body.appendChild(actions);
+
+      div.appendChild(img);
+      div.appendChild(body);
+
+      return div;
     }
 
     function render(){
-      photoGrid.innerHTML = "";
+      albumGrid.innerHTML = "";
 
-      if(!shownPhotos.length){
-        emptyState.style.display = "block";
-        return;
-      }
+      shownAlbums = allAlbums.filter(matchesFilters);
 
-      emptyState.style.display = "none";
+      countText.textContent = shownAlbums.length + " album(s)";
+      emptyState.style.display = shownAlbums.length ? "none" : "block";
 
-      shownPhotos.forEach(p => {
-        const title = safeText(p.name || "Photo");
-        const year = safeText(p.year || "");
-        const updated = formatDateTime(p.updated || "");
-        const thumb = p.thumbUrl || p.viewUrl || "";
-        const openUrl = p.viewUrl || "#";
-
-        const card = document.createElement("div");
-        card.className = "photo-card";
-
-        const img = document.createElement("img");
-        img.className = "photo";
-        img.src = thumb;
-        img.alt = title;
-        img.loading = "lazy";
-        img.onerror = function(){
-          this.style.display = "none";
-        };
-
-        const body = document.createElement("div");
-        body.className = "photo-body";
-
-        const h = document.createElement("h3");
-        h.className = "photo-title";
-        h.innerHTML = title;
-
-        const meta = document.createElement("p");
-        meta.className = "meta";
-        meta.textContent = updated ? ("Updated: " + updated) : "";
-
-        const tags = document.createElement("div");
-        tags.className = "tags";
-
-        if(year){
-          const t = document.createElement("span");
-          t.className = "tag";
-          t.textContent = year;
-          tags.appendChild(t);
-        }
-
-        const actions = document.createElement("div");
-        actions.className = "actions";
-
-        const a1 = document.createElement("a");
-        a1.className = "btn";
-        a1.href = openUrl;
-        a1.target = "_blank";
-        a1.rel = "noopener";
-        a1.textContent = "Open in Drive";
-
-        const a2 = document.createElement("a");
-        a2.className = "btn secondary";
-        a2.href = thumb || openUrl;
-        a2.target = "_blank";
-        a2.rel = "noopener";
-        a2.textContent = "Open Image";
-
-        actions.appendChild(a1);
-        actions.appendChild(a2);
-
-        body.appendChild(h);
-        if (meta.textContent) body.appendChild(meta);
-        body.appendChild(tags);
-        body.appendChild(actions);
-
-        card.appendChild(img);
-        card.appendChild(body);
-
-        photoGrid.appendChild(card);
-      });
+      shownAlbums.forEach(a => albumGrid.appendChild(card(a)));
     }
 
-    yearFilter.addEventListener("change", applyFilters);
-    searchBox.addEventListener("input", applyFilters);
+    async function loadFeed(){
+      statusText.textContent = "Loading from Google Drive...";
+      countText.textContent = "";
+      emptyState.style.display = "none";
+      albumGrid.innerHTML = "";
 
-    loadFromFeed();
+      try{
+        const res = await fetch(WEB_APP_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error("Feed request failed: " + res.status);
+
+        const feed = await res.json();
+
+        const years = uniqueYearsFromFeed(feed);
+        fillYears(years);
+
+        // Default to newest year if user has not chosen one
+        if (yearFilter.value === "all" && years.length) {
+          yearFilter.value = years[0];
+        }
+
+        const flat = [];
+        for (const y of years){
+          for (const album of (feed.years[y] || [])){
+            flat.push({ year: y, ...album });
+          }
+        }
+
+        // Sort newest first
+        flat.sort((a,b) => (b.updated || "").localeCompare(a.updated || ""));
+
+        allAlbums = flat;
+
+        statusText.textContent = (yearFilter.value === "all")
+          ? "Showing all years"
+          : ("Showing " + yearFilter.value);
+
+        render();
+      }catch(err){
+        console.log(err);
+        statusText.textContent = "Could not load albums.";
+        emptyState.style.display = "block";
+        emptyState.textContent = "Could not load albums. Check Drive sharing and Apps Script deployment access (Anyone).";
+      }
+    }
+
+    yearFilter.addEventListener("change", () => {
+      statusText.textContent = (yearFilter.value === "all")
+        ? "Showing all years"
+        : ("Showing " + yearFilter.value);
+      render();
+    });
+
+    searchBox.addEventListener("input", render);
+
+    loadFeed();
   </script>
 </body>
 </html>
