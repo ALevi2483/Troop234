@@ -18,6 +18,8 @@
       --max:1100px;
     }
 
+    *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family: Arial, sans-serif;
@@ -98,6 +100,17 @@
       margin:0.25rem 0 1rem;
     }
 
+    .statusbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      margin:0.5rem 0 1rem;
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+
     .grid{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
@@ -115,7 +128,7 @@
       .controls .left, .controls .right{ width:100%; }
     }
 
-    .album{
+    .photo-card{
       background:var(--card);
       border:1px solid var(--border);
       border-radius:var(--radius);
@@ -126,15 +139,15 @@
       min-height:100%;
     }
 
-    .cover{
+    .photo{
       width:100%;
-      height:190px;
+      height:210px;
       background:#ddd;
       object-fit:cover;
       display:block;
     }
 
-    .album-body{
+    .photo-body{
       padding:0.9rem 0.95rem 1rem;
       display:flex;
       flex-direction:column;
@@ -142,10 +155,13 @@
       flex:1;
     }
 
-    .album-title{
+    .photo-title{
       margin:0;
-      font-size:1.05rem;
+      font-size:0.98rem;
       color:var(--brand);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     .meta{
@@ -171,7 +187,7 @@
       background:#fafafa;
     }
 
-    .album-actions{
+    .actions{
       margin-top:auto;
       display:flex;
       gap:0.5rem;
@@ -192,6 +208,11 @@
 
     .btn:hover{
       opacity:0.92;
+    }
+
+    .btn.secondary{
+      background:#fff;
+      color:var(--brand);
     }
 
     .empty{
@@ -222,7 +243,7 @@
 <body>
   <header>
     <h1>Troop 234 Photos</h1>
-    <p>Albums by event. Newest first.</p>
+    <p>Auto loads from Google Drive. Upload photos to Drive and refresh.</p>
   </header>
 
   <main>
@@ -234,27 +255,25 @@
             <option value="all">All</option>
           </select>
         </div>
-
-        <div>
-          <label for="catFilter">Category</label><br/>
-          <select id="catFilter">
-            <option value="all">All</option>
-          </select>
-        </div>
       </div>
 
       <div class="right">
         <div style="width:100%;">
           <label for="searchBox">Search</label><br/>
-          <input id="searchBox" type="search" placeholder="Search albums..." />
+          <input id="searchBox" type="search" placeholder="Search filenames..." />
         </div>
       </div>
     </div>
 
-    <div id="albumGrid" class="grid"></div>
+    <div class="statusbar">
+      <div id="statusText">Loading...</div>
+      <div id="countText"></div>
+    </div>
+
+    <div id="photoGrid" class="grid"></div>
 
     <div id="emptyState" class="empty">
-      No albums match your filters.
+      No photos match your filters.
     </div>
 
     <div class="policy">
@@ -267,100 +286,103 @@
   </footer>
 
   <script>
-    /*
-      ALBUM PATH RULE (IMPORTANT)
-      Your repo structure shows albums live here:
-      images/images/albums/<album-folder>/
-      So every cover + url below uses that exact base path.
-    */
-
-    const albums = [
-      {
-        title: "Winter Camp",
-        date: "2025-01-17",
-        year: "2025",
-        category: "Camping",
-        location: "",
-        count: 15,
-        cover: "images/images/albums/2025 winter camp/1.jpg",
-        url: "images/images/albums/2025 winter camp/index.html"
-      },
-      {
-        title: "2025 Summer Camp",
-        date: "2025-06-28",
-        year: "2025",
-        category: "Camping",
-        location: "",
-        count: 1,
-        cover: "images/images/albums/2025 Summer Camp/1.jpg",
-        url: "images/images/albums/2025 Summer Camp/index.html"
-      },
-      {
-        title: "Kerr Dam",
-        date: "2025-08-01",
-        year: "2025",
-        category: "Camping",
-        location: "",
-        count: 35,
-        cover: "images/images/albums/2025 kerr dam/27.jpg",
-        url: "images/images/albums/2025 kerr dam/index.html"
-      },
-      {
-        title: "Camp-O-Ree",
-        date: "2025-10-25",
-        year: "2025",
-        category: "Camping",
-        location: "",
-        count: 35,
-        cover: "images/images/albums/2025 cor/18.jpg",
-        url: "images/images/albums/2025 cor/index.html"
-      },
-      {
-        title: "Oasis Social Ministry",
-        date: "2026-02-07",
-        year: "2026",
-        category: "Event",
-        location: "",
-        count: 20,
-        cover: "images/images/albums/2026 Oasis/18.jpg",
-        url: "images/images/albums/2026 Oasis/index.html"
-      }
-    ];
-
-    // Sort newest first by date
-    albums.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    // Your Apps Script Web App URL (photo feed)
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxPbWUAO21jCrAYvDWQnQ4_lnBm9EXXqRS0oDmQM-SDXavYu5Jv-k7x-oFkU72sryhnA/exec";
 
     const yearFilter = document.getElementById("yearFilter");
-    const catFilter = document.getElementById("catFilter");
     const searchBox = document.getElementById("searchBox");
-    const albumGrid = document.getElementById("albumGrid");
+    const photoGrid = document.getElementById("photoGrid");
     const emptyState = document.getElementById("emptyState");
+    const statusText = document.getElementById("statusText");
+    const countText = document.getElementById("countText");
 
-    function uniqueValues(key){
-      const set = new Set(albums.map(a => a[key]).filter(Boolean));
-      return Array.from(set).sort((a, b) => (b + "").localeCompare(a + ""));
+    let allPhotos = [];   // flattened list of all photos returned by the feed
+    let shownPhotos = []; // filtered list
+
+    function safeText(s){
+      return (s || "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
     }
 
-    function fillSelect(selectEl, values){
-      values.forEach(v => {
+    function formatDateTime(iso){
+      if(!iso) return "";
+      try{
+        const d = new Date(iso);
+        if (isNaN(d.getTime())) return iso;
+        return d.toLocaleString();
+      }catch{
+        return iso;
+      }
+    }
+
+    function fillYearSelect(years){
+      // keep "All" then add years newest first
+      const existing = new Set(Array.from(yearFilter.options).map(o => o.value));
+      years.forEach(y => {
+        if (existing.has(y)) return;
         const opt = document.createElement("option");
-        opt.value = v;
-        opt.textContent = v;
-        selectEl.appendChild(opt);
+        opt.value = y;
+        opt.textContent = y;
+        yearFilter.appendChild(opt);
       });
     }
 
-    function matchesFilters(album){
+    async function loadFromFeed(){
+      statusText.textContent = "Loading from Google Drive...";
+      countText.textContent = "";
+      photoGrid.innerHTML = "";
+      emptyState.style.display = "none";
+
+      try{
+        const res = await fetch(WEB_APP_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error("Feed request failed: " + res.status);
+
+        const data = await res.json();
+
+        const years = Object.keys(data.years || {}).sort().reverse();
+        fillYearSelect(years);
+
+        const flat = [];
+        for(const y of years){
+          for(const item of (data.years[y] || [])){
+            flat.push({ year: y, ...item });
+          }
+        }
+
+        // Sort newest first based on "updated" if present
+        flat.sort((a, b) => (b.updated || "").localeCompare(a.updated || ""));
+
+        allPhotos = flat;
+
+        // Default year selection: latest year if available, else All
+        if (years.length && yearFilter.value === "all"){
+          yearFilter.value = years[0];
+        }
+
+        applyFilters();
+
+      }catch(err){
+        console.log(err);
+        statusText.textContent = "Could not load photos.";
+        countText.textContent = "";
+        emptyState.style.display = "block";
+        emptyState.textContent = "Could not load photos. Check Drive sharing and your Apps Script deployment access (Anyone).";
+      }
+    }
+
+    function matchesFilters(p){
       const yearVal = yearFilter.value;
-      const catVal = catFilter.value;
       const q = (searchBox.value || "").trim().toLowerCase();
 
-      if (yearVal !== "all" && album.year !== yearVal) return false;
-      if (catVal !== "all" && album.category !== catVal) return false;
+      if (yearVal !== "all" && p.year !== yearVal) return false;
 
       if (q){
         const hay = [
-          album.title, album.location, album.category, album.year, album.date
+          p.name, p.year, p.updated
         ].filter(Boolean).join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
@@ -368,106 +390,105 @@
       return true;
     }
 
-    function formatDate(iso){
-      if (!iso || iso.length < 10) return "";
-      const parts = iso.split("-");
-      if (parts.length !== 3) return iso;
+    function applyFilters(){
+      shownPhotos = allPhotos.filter(matchesFilters);
 
-      const y = parts[0];
-      const m = Number(parts[1]);
-      const d = Number(parts[2]);
+      const yearVal = yearFilter.value;
+      statusText.textContent = yearVal === "all"
+        ? "Showing all years"
+        : ("Showing " + yearVal);
 
-      const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-      const mm = months[m - 1] || parts[1];
+      countText.textContent = shownPhotos.length + " photo(s)";
 
-      return `${mm} ${d}, ${y}`;
-    }
-
-    function safeUrl(path){
-      return path ? encodeURI(path) : "#";
-    }
-
-    function card(album){
-      const div = document.createElement("div");
-      div.className = "album";
-
-      const img = document.createElement("img");
-      img.className = "cover";
-      img.src = safeUrl(album.cover || "");
-      img.alt = album.title ? `${album.title} cover` : "Album cover";
-      img.loading = "lazy";
-      img.onerror = function(){
-        this.style.display = "none";
-      };
-
-      const body = document.createElement("div");
-      body.className = "album-body";
-
-      const h = document.createElement("h3");
-      h.className = "album-title";
-      h.textContent = album.title || "Album";
-
-      const meta = document.createElement("p");
-      meta.className = "meta";
-      const dateStr = album.date ? formatDate(album.date) : "";
-      const locStr = album.location ? ` • ${album.location}` : "";
-      const countStr = album.count ? ` • ${album.count} photos` : "";
-      meta.textContent = `${dateStr}${locStr}${countStr}`.trim();
-
-      const tags = document.createElement("div");
-      tags.className = "tags";
-
-      const t1 = document.createElement("span");
-      t1.className = "tag";
-      t1.textContent = album.year || "";
-
-      const t2 = document.createElement("span");
-      t2.className = "tag";
-      t2.textContent = album.category || "";
-
-      if (album.year) tags.appendChild(t1);
-      if (album.category) tags.appendChild(t2);
-
-      const actions = document.createElement("div");
-      actions.className = "album-actions";
-
-      const a = document.createElement("a");
-      a.className = "btn";
-      a.href = safeUrl(album.url || "#");
-      a.textContent = "View Album";
-
-      actions.appendChild(a);
-
-      body.appendChild(h);
-      body.appendChild(meta);
-      body.appendChild(tags);
-      body.appendChild(actions);
-
-      div.appendChild(img);
-      div.appendChild(body);
-
-      return div;
+      render();
     }
 
     function render(){
-      albumGrid.innerHTML = "";
+      photoGrid.innerHTML = "";
 
-      const filtered = albums.filter(matchesFilters);
+      if(!shownPhotos.length){
+        emptyState.style.display = "block";
+        return;
+      }
 
-      filtered.forEach(a => albumGrid.appendChild(card(a)));
+      emptyState.style.display = "none";
 
-      emptyState.style.display = filtered.length === 0 ? "block" : "none";
+      shownPhotos.forEach(p => {
+        const title = safeText(p.name || "Photo");
+        const year = safeText(p.year || "");
+        const updated = formatDateTime(p.updated || "");
+        const thumb = p.thumbUrl || p.viewUrl || "";
+        const openUrl = p.viewUrl || "#";
+
+        const card = document.createElement("div");
+        card.className = "photo-card";
+
+        const img = document.createElement("img");
+        img.className = "photo";
+        img.src = thumb;
+        img.alt = title;
+        img.loading = "lazy";
+        img.onerror = function(){
+          this.style.display = "none";
+        };
+
+        const body = document.createElement("div");
+        body.className = "photo-body";
+
+        const h = document.createElement("h3");
+        h.className = "photo-title";
+        h.innerHTML = title;
+
+        const meta = document.createElement("p");
+        meta.className = "meta";
+        meta.textContent = updated ? ("Updated: " + updated) : "";
+
+        const tags = document.createElement("div");
+        tags.className = "tags";
+
+        if(year){
+          const t = document.createElement("span");
+          t.className = "tag";
+          t.textContent = year;
+          tags.appendChild(t);
+        }
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        const a1 = document.createElement("a");
+        a1.className = "btn";
+        a1.href = openUrl;
+        a1.target = "_blank";
+        a1.rel = "noopener";
+        a1.textContent = "Open in Drive";
+
+        const a2 = document.createElement("a");
+        a2.className = "btn secondary";
+        a2.href = thumb || openUrl;
+        a2.target = "_blank";
+        a2.rel = "noopener";
+        a2.textContent = "Open Image";
+
+        actions.appendChild(a1);
+        actions.appendChild(a2);
+
+        body.appendChild(h);
+        if (meta.textContent) body.appendChild(meta);
+        body.appendChild(tags);
+        body.appendChild(actions);
+
+        card.appendChild(img);
+        card.appendChild(body);
+
+        photoGrid.appendChild(card);
+      });
     }
 
-    // Fill filters
-    fillSelect(yearFilter, uniqueValues("year"));
-    fillSelect(catFilter, uniqueValues("category"));
+    yearFilter.addEventListener("change", applyFilters);
+    searchBox.addEventListener("input", applyFilters);
 
-    yearFilter.addEventListener("change", render);
-    catFilter.addEventListener("change", render);
-    searchBox.addEventListener("input", render);
-
-    render();
+    loadFromFeed();
   </script>
 </body>
 </html>
