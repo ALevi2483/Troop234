@@ -67,6 +67,33 @@
       color: #003366;
     }
 
+    .events-box {
+      background: #fff8e6;
+      border: 1px solid #e0c878;
+      border-radius: 10px;
+      padding: 18px;
+      margin: 20px 0 28px;
+      text-align: center;
+    }
+
+    .events-box h2 {
+      margin-top: 0;
+      color: #5a3210;
+    }
+
+    .events-box p {
+      margin-top: 0;
+      color: #555;
+    }
+
+    .events-frame {
+      width: 100%;
+      height: 360px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+    }
+
     .grid {
       display: grid;
       gap: 16px;
@@ -101,6 +128,10 @@
         width: 100%;
         text-align: center;
       }
+
+      .events-frame {
+        height: 460px;
+      }
     }
   </style>
 </head>
@@ -120,7 +151,18 @@
 
 <main>
 
-<img src="images/images/albums/2025 Summer Camp/1.jpg" alt="Troop 234">
+<img src="images/images/albums/2025 Summer Camp/1.jpg" alt="Troop 234 Scouts at summer camp">
+
+<section class="events-box">
+  <h2>Upcoming Events</h2>
+  <p>Quick view of what is coming up next. Check the calendar for full details.</p>
+
+  <iframe 
+    class="events-frame"
+    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQcgBVp_63d5jOcYS2XaC4RQouLGsetkGg5E2j8s3RzoQlYb8szB71bWYYP8vN5lXWVEoqL0xui6One/pubhtml?widget=true&amp;headers=false"
+    loading="lazy">
+  </iframe>
+</section>
 
 <h2>Adventure. Leadership. Service.</h2>
 
