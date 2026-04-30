@@ -37,11 +37,6 @@
       font-size: 1.8rem;
     }
 
-    h3 {
-      color: #003366;
-      margin-top: 0;
-    }
-
     .subtitle {
       text-align: center;
       font-size: 1.05rem;
@@ -50,7 +45,8 @@
       color: #666;
     }
 
-    .next-events-box {
+    /* UPCOMING EVENTS BOX */
+    .events-box {
       background-color: #fff8e6;
       padding: 1.5rem;
       border-radius: 8px;
@@ -58,28 +54,28 @@
       border: 1px solid #e0c878;
     }
 
-    .next-events-box h3 {
-      text-align: center;
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: #5a3210;
-    }
-
-    .next-events-box p {
+    .events-box h3 {
       text-align: center;
       margin-top: 0;
-      color: #555;
-      line-height: 1.5;
+      color: #5a3210;
+      font-size: 1.4rem;
     }
 
-    .next-events-frame {
+    .events-box p {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .events-frame {
       width: 100%;
-      height: 230px;
+      height: 320px; /* desktop size */
       border: 1px solid #ddd;
       border-radius: 8px;
       background: white;
     }
 
+    /* SUBSCRIBE */
     .subscribe-box {
       background-color: #eef4f9;
       padding: 1.5rem;
@@ -109,23 +105,14 @@
       border-radius: 5px;
       font-weight: bold;
       font-size: 0.9rem;
-      transition: background 0.3s;
     }
 
-    .btn-google {
-      background-color: #4285F4;
-      color: white;
-    }
+    .btn-google { background-color: #4285F4; color: white; }
+    .btn-apple { background-color: #333; color: white; }
 
-    .btn-apple {
-      background-color: #333;
-      color: white;
-    }
+    .btn:hover { opacity: 0.85; }
 
-    .btn:hover {
-      opacity: 0.85;
-    }
-
+    /* CALENDAR */
     .calendar-frame {
       width: 100%;
       height: 700px;
@@ -139,9 +126,9 @@
       color: #777;
       border-top: 1px solid #eee;
       padding-top: 1rem;
-      line-height: 1.5;
     }
 
+    /* MOBILE */
     @media (max-width: 768px) {
       main {
         padding: 1rem;
@@ -152,8 +139,8 @@
         font-size: 1.4rem;
       }
 
-      .next-events-frame {
-        height: 260px;
+      .events-frame {
+        height: 420px; /* bigger on mobile so it's readable */
       }
 
       .calendar-frame {
@@ -172,42 +159,38 @@
   <main>
     <h2>Troop 234 Activity Calendar</h2>
     <p class="subtitle">
-      Never miss a meeting or a campout. Our live calendar is the source of truth for all Troop 234 events.
+      Never miss a meeting or a campout. This is the source of truth for all Troop 234 events.
     </p>
 
-    <div class="next-events-box">
-      <h3>Next 3 Events</h3>
-      <p>
-        Quick view of what is coming up next. For full details, use the calendar below.
-      </p>
+    <!-- UPCOMING EVENTS -->
+    <div class="events-box">
+      <h3>Upcoming Events</h3>
+      <p>Quick view of what is coming up next.</p>
 
       <iframe 
-        class="next-events-frame"
+        class="events-frame"
         src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQcgBVp_63d5jOcYS2XaC4RQouLGsetkGg5E2j8s3RzoQlYb8szB71bWYYP8vN5lXWVEoqL0xui6One/pubhtml?widget=true&amp;headers=false"
         loading="lazy">
       </iframe>
     </div>
 
+    <!-- SUBSCRIBE -->
     <div class="subscribe-box">
       <h3>Sync to Your Phone</h3>
-      <p>Add the Troop 234 calendar to your personal device to get automatic updates.</p>
+      <p>Add the Troop 234 calendar to your device to get automatic updates.</p>
 
       <div class="btn-container">
-        <a 
-          href="https://calendar.google.com/calendar/render?cid=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com" 
-          target="_blank" 
-          class="btn btn-google">
+        <a href="https://calendar.google.com/calendar/render?cid=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com" target="_blank" class="btn btn-google">
           Add to Google Calendar
         </a>
-        
-        <a 
-          href="https://calendar.google.com/calendar/ical/acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com/public/basic.ics" 
-          class="btn btn-apple">
+
+        <a href="https://calendar.google.com/calendar/ical/acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com/public/basic.ics" class="btn btn-apple">
           Download for Apple/Outlook
         </a>
       </div>
     </div>
 
+    <!-- FULL CALENDAR -->
     <iframe 
       class="calendar-frame"
       src="https://calendar.google.com/calendar/embed?src=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com&ctz=America/New_York"
@@ -217,7 +200,7 @@
     </iframe>
 
     <div class="calendar-footer">
-      <strong>Note for Parents:</strong> Regular Troop meetings are held every Monday from 7:00–8:30 PM at Covenant United Methodist Church unless otherwise noted on the calendar above.
+      <strong>Note for Parents:</strong> Regular Troop meetings are held every Monday from 7:00–8:30 PM at Covenant United Methodist Church unless otherwise noted above.
     </div>
   </main>
 </body>
