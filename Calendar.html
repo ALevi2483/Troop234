@@ -8,9 +8,11 @@
     gtag('js', new Date());
     gtag('config', 'G-7FY6X24EQ6');
   </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Troop 234 Calendar</title>
+
   <style>
     body {
       margin: 0;
@@ -35,6 +37,11 @@
       font-size: 1.8rem;
     }
 
+    h3 {
+      color: #003366;
+      margin-top: 0;
+    }
+
     .subtitle {
       text-align: center;
       font-size: 1.05rem;
@@ -43,7 +50,36 @@
       color: #666;
     }
 
-    /* Subscribe Section Styles */
+    .next-events-box {
+      background-color: #fff8e6;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      border: 1px solid #e0c878;
+    }
+
+    .next-events-box h3 {
+      text-align: center;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #5a3210;
+    }
+
+    .next-events-box p {
+      text-align: center;
+      margin-top: 0;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .next-events-frame {
+      width: 100%;
+      height: 230px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+    }
+
     .subscribe-box {
       background-color: #eef4f9;
       padding: 1.5rem;
@@ -76,11 +112,21 @@
       transition: background 0.3s;
     }
 
-    .btn-google { background-color: #4285F4; color: white; }
-    .btn-apple { background-color: #333; color: white; }
-    .btn:hover { opacity: 0.85; }
+    .btn-google {
+      background-color: #4285F4;
+      color: white;
+    }
 
-    iframe {
+    .btn-apple {
+      background-color: #333;
+      color: white;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .calendar-frame {
       width: 100%;
       height: 700px;
       border: 1px solid #ddd;
@@ -93,13 +139,31 @@
       color: #777;
       border-top: 1px solid #eee;
       padding-top: 1rem;
+      line-height: 1.5;
     }
 
     @media (max-width: 768px) {
-      main { padding: 1rem; margin: 1rem auto; }
-      iframe { height: 500px; }
-      h2 { font-size: 1.4rem; }
-      .btn { width: 100%; text-align: center; }
+      main {
+        padding: 1rem;
+        margin: 1rem auto;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      .next-events-frame {
+        height: 260px;
+      }
+
+      .calendar-frame {
+        height: 500px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -107,19 +171,45 @@
 <body>
   <main>
     <h2>Troop 234 Activity Calendar</h2>
-    <p class="subtitle">Never miss a meeting or a campout. Our live calendar is the "source of truth" for all Troop 234 events.</p>
+    <p class="subtitle">
+      Never miss a meeting or a campout. Our live calendar is the source of truth for all Troop 234 events.
+    </p>
+
+    <div class="next-events-box">
+      <h3>Next 3 Events</h3>
+      <p>
+        Quick view of what is coming up next. For full details, use the calendar below.
+      </p>
+
+      <iframe 
+        class="next-events-frame"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQcgBVp_63d5jOcYS2XaC4RQouLGsetkGg5E2j8s3RzoQlYb8szB71bWYYP8vN5lXWVEoqL0xui6One/pubhtml?widget=true&amp;headers=false"
+        loading="lazy">
+      </iframe>
+    </div>
 
     <div class="subscribe-box">
       <h3>Sync to Your Phone</h3>
       <p>Add the Troop 234 calendar to your personal device to get automatic updates.</p>
+
       <div class="btn-container">
-        <a href="https://calendar.google.com/calendar/render?cid=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com" target="_blank" class="btn btn-google">Add to Google Calendar</a>
+        <a 
+          href="https://calendar.google.com/calendar/render?cid=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com" 
+          target="_blank" 
+          class="btn btn-google">
+          Add to Google Calendar
+        </a>
         
-        <a href="https://calendar.google.com/calendar/ical/acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com/public/basic.ics" class="btn btn-apple">Download for Apple/Outlook</a>
+        <a 
+          href="https://calendar.google.com/calendar/ical/acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com/public/basic.ics" 
+          class="btn btn-apple">
+          Download for Apple/Outlook
+        </a>
       </div>
     </div>
 
     <iframe 
+      class="calendar-frame"
       src="https://calendar.google.com/calendar/embed?src=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com&ctz=America/New_York"
       allowfullscreen
       loading="lazy"
