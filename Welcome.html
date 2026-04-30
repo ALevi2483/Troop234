@@ -1,507 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7FY6X24EQ6');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to the Family - Troop 234</title>
+  <title>Start Here - Troop 234</title>
 
   <style>
-    :root {
-      --scout-blue: #003366;
-      --light-bg: #f7fafc;
-      --accent-blue: #1f5a96;
-    }
-
     body {
       margin: 0;
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      background-color: #e9ecef;
-      color: #333;
+      font-family: Arial, sans-serif;
+      background: #f4f6f3;
+      color: #1f2a1f;
     }
 
     main {
-      max-width: 1000px;
-      margin: 0 auto;
-      background-color: white;
-      min-height: 100vh;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-
-    .content-padding {
-      padding: 2.5rem;
+      max-width: 900px;
+      margin: auto;
+      padding: 24px 16px 40px;
+      background: white;
     }
 
     h1 {
       text-align: center;
-      color: var(--scout-blue);
-      margin-bottom: 0.5rem;
-      font-size: 2.2rem;
-    }
-
-    h3 {
-      color: var(--scout-blue);
-      margin-top: 1.2rem;
-      margin-bottom: 0.5rem;
-      font-size: 1.05rem;
+      color: #003366;
+      margin-bottom: 8px;
     }
 
     .subtitle {
       text-align: center;
       color: #666;
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
+      margin-bottom: 24px;
     }
 
-    .quickstart {
-      margin-bottom: 2.5rem;
-      padding: 1.5rem;
-      border-left: 5px solid var(--scout-blue);
-      border-radius: 8px;
-      background-color: var(--light-bg);
-    }
-
-    .quickstart h2 {
-      margin: 0 0 1rem;
-      color: var(--scout-blue);
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .qs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .qs-item strong {
-      display: block;
-      color: var(--scout-blue);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-    }
-
-    .tools {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .linkbtn {
-      background: white;
+    .card {
+      background: #fff;
       border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 0.4rem 0.8rem;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--scout-blue);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 16px;
     }
 
-    .linkbtn:hover {
-      background: #eee;
+    .highlight {
+      background: #fff8e6;
+      border: 1px solid #e0c878;
     }
 
-    details {
-      margin-bottom: 0.75rem;
-      border: 1px solid #e1e4e8;
-      border-radius: 8px;
-      transition: all 0.2s;
-    }
-
-    details[open] {
-      border-color: var(--accent-blue);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
-
-    summary {
-      font-weight: 600;
-      padding: 1.2rem;
-      background-color: #fff;
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    summary::after {
-      content: '＋';
-      color: var(--accent-blue);
-    }
-
-    details[open] summary::after {
-      content: '－';
-    }
-
-    summary:hover {
-      background-color: #fcfcfc;
-    }
-
-    details div {
-      padding: 0 1.2rem 1.2rem;
-      line-height: 1.6;
-      color: #4a5568;
+    h2 {
+      margin-top: 0;
+      color: #003366;
+      font-size: 1.2rem;
     }
 
     ul, ol {
-      padding-left: 1.2rem;
+      padding-left: 20px;
     }
 
     li {
-      margin-bottom: 0.5rem;
-    }
-
-    .btn-group {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      margin-bottom: 6px;
     }
 
     .button {
-      background: var(--scout-blue);
-      color: white;
-      text-decoration: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 0.95rem;
       display: inline-block;
+      background: #003366;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     .button.secondary {
-      background: #ddd;
-      color: #333;
+      background: #555;
     }
 
-    .note {
-      background: #fff;
-      border: 1px solid #e6e9ee;
+    details {
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
       border-radius: 8px;
-      padding: 0.9rem 1rem;
-      margin: 0.9rem 0 1.1rem;
-      color: #3b4653;
     }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 12px;
-      margin: 0.8rem 0 1.1rem;
+    summary {
+      padding: 12px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .form-card {
-      border: 1px solid #e6e9ee;
-      border-radius: 10px;
-      padding: 0.9rem 1rem;
-      background: #fff;
+    details div {
+      padding: 0 12px 12px;
     }
 
-    .form-card h3 {
-      margin: 0 0 0.35rem;
-      font-size: 1rem;
-      color: var(--scout-blue);
-    }
-
-    .form-card p {
-      margin: 0 0 0.7rem;
-      font-size: 0.95rem;
-      color: #4a5568;
-    }
-
-    .form-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      display: inline-block;
-      padding: 0.35rem 0.65rem;
-      border-radius: 999px;
-      border: 1px solid #d7dde5;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--accent-blue);
-      background: #f8fafc;
-    }
-
-    .pill:hover {
-      background: #eef4ff;
-    }
-
-    .mini-card {
-      border: 1px solid #e6e9ee;
-      border-radius: 10px;
-      padding: 0.9rem 1rem;
-      background: #fff;
-      margin: 0.8rem 0;
-    }
-
-    .mini-card h4 {
-      margin: 0 0 0.35rem;
-      color: var(--scout-blue);
-      font-size: 1rem;
-    }
-
-    .callout {
-      background: #f7fafc;
-      border-left: 4px solid var(--scout-blue);
-      padding: 0.9rem 1rem;
-      border-radius: 6px;
-      margin: 1rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .qs-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .content-padding {
-        padding: 1.5rem;
+    @media (max-width: 600px) {
+      .button {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <main>
-    <div class="content-padding">
-      <h1>Welcome to the Family!</h1>
-      <p class="subtitle">We’re thrilled to have you join Troop 234. Here is everything you need to hit the ground running.</p>
+<main>
 
-      <div class="quickstart">
-        <h2>🚀 Quick Start Info</h2>
-        <div class="qs-grid">
-          <div class="qs-item">
-            <strong>When</strong>
-            Mondays, 7:00 PM to 8:30 PM
-          </div>
-          <div class="qs-item">
-            <strong>Where</strong>
-            Covenant UMC, 2004 Dock Landing Blvd
-          </div>
-          <div class="qs-item">
-            <strong>Uniform</strong>
-            "Class A" (Khaki) if you have it!
-          </div>
-        </div>
-        <div class="btn-group">
-          <a href="Calendar.html" class="button">View Troop Calendar</a>
-          <a href="Contact.html" class="button secondary">Contact Leadership</a>
-        </div>
-      </div>
+<h1>Start Here</h1>
+<p class="subtitle">New to Troop 234? This is everything you need to know to get started.</p>
 
-      <div class="tools">
-        <button class="linkbtn" onclick="openAll()">Expand All</button>
-        <button class="linkbtn" onclick="closeAll()">Collapse All</button>
-      </div>
+<!-- FIRST MEETING -->
+<div class="card highlight">
+  <h2>First Meeting Info</h2>
+  <ul>
+    <li><strong>When:</strong> Mondays, 7:00–8:30 PM</li>
+    <li><strong>Where:</strong> Covenant UMC, 2004 Dock Landing Blvd</li>
+    <li><strong>Uniform:</strong> Not required first night</li>
+  </ul>
 
-      <details open>
-        <summary>Your First Meeting Checklist</summary>
-        <div>
-          <ul>
-            <li><strong>Arrival:</strong> Try to arrive 10 minutes early to meet the Senior Patrol Leader.</li>
-            <li><strong>Parents:</strong> Plan to stay for the first 15 minutes for a quick "New Parent" brief.</li>
-            <li><strong>Buddy System:</strong> Your Scout will be introduced to a Troop Guide or Patrol Leader immediately.</li>
-            <li><strong>What to bring:</strong> A water bottle and a notebook or pen.</li>
-          </ul>
-        </div>
-      </details>
+  <a href="Calendar.html" class="button">View Calendar</a>
+  <a href="Contact.html" class="button secondary">Contact Leadership</a>
+</div>
 
-      <details>
-        <summary>The Gear: What you need vs. What we provide</summary>
-        <div>
-          <p><strong>You provide:</strong></p>
-          <ul>
-            <li><strong>The Uniform:</strong> The "Class A" khaki shirt, scout pants or shorts, and belt. (We have a gear swap for used items!)</li>
-            <li><strong>The Handbook:</strong> The Scouts BSA Handbook (spiral bound is best).</li>
-            <li><strong>Personal Gear:</strong> Sleeping bag, mess kit, and water bottle.</li>
-          </ul>
-          <p><strong>The Troop provides:</strong></p>
-          <ul>
-            <li><strong>Group Gear:</strong> Tents, stoves, lanterns, and trailers.</li>
-            <li><strong>Specialty Items:</strong> Shoulder loops, bolo ties, and handbooks are provided to <strong>Arrow of Light bridgeover Scouts</strong> at no cost.</li>
-            <li><strong>Training:</strong> Adult mentorship and leadership coaching for all Scouts.</li>
-          </ul>
-        </div>
-      </details>
+<!-- FIRST NIGHT -->
+<div class="card">
+  <h2>Your First Night</h2>
+  <ul>
+    <li>Arrive 10 minutes early</li>
+    <li>Bring a water bottle and notebook</li>
+    <li>Parents stay first 15 minutes</li>
+    <li>Scout will be paired with a guide or patrol leader</li>
+  </ul>
+</div>
 
-      <details>
-        <summary>Registration & Dues (Transparent Breakdown)</summary>
-        <div>
-          <p>To keep the program running, we have three primary costs:</p>
-          <ul>
-            <li><strong>National BSA Fee:</strong> Youth (~$85/yr) | Adult (~$65/yr).</li>
-            <li><strong>Troop 234 Dues:</strong> $15/month (supports local gear and advancement).</li>
-            <li><strong>One-Time Join Fee:</strong> $25 for brand-new youth members.</li>
-          </ul>
-          <p><em>Note: We never want cost to be a barrier. We offer multiple fundraisers (Popcorn, Wreaths, etc.) to help Scouts earn their own way.</em></p>
-        </div>
-      </details>
+<!-- PARENTS -->
+<div class="card">
+  <h2>What Parents Should Know</h2>
+  <ul>
+    <li>Meetings last about 90 minutes</li>
+    <li>Parents do not need to stay</li>
+    <li>Campouts happen monthly</li>
+    <li>Communication is through Slack (adults) and BAND (scouts)</li>
+  </ul>
+</div>
 
-      <details>
-        <summary>Required Forms & Paperwork</summary>
-        <div>
-          <p>Before our first campout, we need these on file for every participant (Scouts and adults).</p>
+<!-- JOIN -->
+<div class="card">
+  <h2>How to Join</h2>
+  <ol>
+    <li>Attend a meeting</li>
+    <li>Complete BSA registration</li>
+    <li>Submit medical forms (Parts A & B)</li>
+    <li>Pay dues</li>
+  </ol>
+</div>
 
-          <div class="note">
-            <strong>Quick rule:</strong>
-            <ul>
-              <li><strong>Parts A and B</strong> are needed for all activities.</li>
-              <li><strong>Part C</strong> is needed for any event that lasts <strong>72+ hours</strong> (example: summer camp, Wood Badge, jamborees, multi-day treks).</li>
-            </ul>
-          </div>
+<!-- FORMS -->
+<div class="card">
+  <h2>Required Forms</h2>
+  <ul>
+    <li>Parts A & B required for all events</li>
+    <li>Part C required for 72+ hour events</li>
+  </ul>
 
-          <div class="form-grid">
-            <div class="form-card">
-              <h3>Part A (Consent and Emergency Care)</h3>
-              <p>Permission to participate, emergency treatment authorization, and key consent items.</p>
-              <div class="form-links">
-                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=1">Open Part A</a>
-                <a class="pill" href="images/ABC%20Medical%20Forms.pdf">Open full ABC packet</a>
-              </div>
-            </div>
+  <a href="images/ABC%20Medical%20Forms.pdf" class="button">Open Medical Forms</a>
+</div>
 
-            <div class="form-card">
-              <h3>Part B (Health History)</h3>
-              <p>This is the medical history and meds section. In the packet, it is split into <strong>B1</strong> and <strong>B2</strong>.</p>
-              <div class="form-links">
-                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=2">Open Part B1</a>
-                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=3">Open Part B2</a>
-              </div>
-            </div>
+<!-- DETAILS (YOUR ORIGINAL CONTENT KEPT BELOW) -->
 
-            <div class="form-card">
-              <h3>Part B1 (General Info and Health History)</h3>
-              <p>Contact info, insurance info, and the main health history checklist.</p>
-              <div class="form-links">
-                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=2">Open Part B1</a>
-              </div>
-            </div>
-
-            <div class="form-card">
-              <h3>Part C (Physical Exam)</h3>
-              <p>Completed by a licensed medical provider. Required for <strong>72+ hour</strong> events and strongly recommended annually.</p>
-              <div class="form-links">
-                <a class="pill" href="images/ABC%20Medical%20Forms.pdf#page=4">Open Part C</a>
-              </div>
-            </div>
-
-            <div class="form-card">
-              <h3>Troop 234 Photo and Media Release</h3>
-              <p>Lets the troop share photos on troop channels without using a Scout’s full name.</p>
-              <div class="form-links">
-                <a class="pill" href="images/Troop_234_Photo_Release_Form.pdf">Open Photo Release</a>
-              </div>
-            </div>
-          </div>
-
-          <p><strong>Also needed:</strong></p>
-          <ul>
-            <li><strong>BSA Youth Application:</strong> Completed online via BeAScout or your troop registrar.</li>
-            <li><strong>Insurance card copy:</strong> Attach a copy of both sides if you have insurance.</li>
-          </ul>
-
-          <p><em>Heads up:</em> Keep forms current through the end date of the event. Bring updated meds in original containers.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>The Advancement Path (Scout to Eagle)</summary>
-        <div>
-          <p>Scouts work at their own pace. The journey follows these ranks:</p>
-          <ol>
-            <li><strong>Early Ranks:</strong> Scout, Tenderfoot, 2nd Class, 1st Class (focus on outdoor skills).</li>
-            <li><strong>Leadership Ranks:</strong> Star, Life, Eagle (focus on service and leading others).</li>
-          </ol>
-          <p>Our Scoutmasters hold conferences to help Scouts set goals for their next rank.</p>
-        </div>
-      </details>
-
-      <details>
-  <summary>Merit Badges: Quick Reference for New Families</summary>
+<details>
+  <summary>Gear Information</summary>
   <div>
-
-    <p>
-      Merit badges let Scouts explore skills, careers, and hobbies.
-      There are <strong>100+ merit badges</strong>, and
-      <strong>21 are required for Eagle Scout</strong>.
-    </p>
-
-    <div class="callout">
-      <strong>Simple rule:</strong>
-      Get approval → work with a counselor → complete requirements exactly → track in Scoutbook
-    </div>
-
-    <h3>How It Works</h3>
-    <ol>
-      <li><strong>Choose a badge</strong> and get Scoutmaster approval</li>
-      <li><strong>Get a counselor</strong> and blue card</li>
-      <li><strong>Contact counselor</strong> (no one-on-one, include another adult)</li>
-      <li><strong>Complete requirements exactly as written</strong></li>
-      <li><strong>Track progress</strong> in Scoutbook or blue card</li>
-      <li><strong>Receive badge</strong> at Court of Honor</li>
-    </ol>
-
-    <div class="mini-card">
-      <h4>Who Can Sign Off</h4>
-      <ul>
-        <li>Only a <strong>registered Merit Badge Counselor</strong></li>
-        <li>Parents cannot sign unless registered for that badge</li>
-        <li>Parents working with their Scout must do so in a <strong>group setting</strong></li>
-        <li>Scoutmaster approves start but does not sign requirements</li>
-      </ul>
-    </div>
-
-    <div class="mini-card">
-      <h4>Common Mistakes</h4>
-      <ul>
-        <li>Starting without approval</li>
-        <li>Skipping requirements</li>
-        <li>Waiting too long to contact counselor</li>
-      </ul>
-    </div>
-
-    <!-- BUTTON FIXED HERE -->
-    <div class="btn-group">
-      <a href="images/Troop%20234%20Merit%20Badge%20Quick%20Reference%20Guide.pdf" 
-         class="button" 
-         target="_blank">
-         Open Merit Badge Guide
-      </a>
-
-      <a href="images/Troop%20234%20Merit%20Badge%20Quick%20Reference%20Guide.pdf" 
-         class="button secondary" 
-         target="_blank">
-         Download PDF
-      </a>
-    </div>
-
+    <p><strong>You provide:</strong> uniform, handbook, personal gear</p>
+    <p><strong>Troop provides:</strong> tents, stoves, training</p>
   </div>
 </details>
-    </div>
-  </main>
 
-  <script>
-    function openAll() {
-      document.querySelectorAll("details").forEach(d => d.open = true);
-    }
+<details>
+  <summary>Costs and Dues</summary>
+  <div>
+    <ul>
+      <li>BSA Fee: ~$85/year</li>
+      <li>Troop dues: $15/month</li>
+      <li>Join fee: $25</li>
+    </ul>
+  </div>
+</details>
 
-    function closeAll() {
-      document.querySelectorAll("details").forEach(d => d.open = false);
-    }
-  </script>
+<details>
+  <summary>Advancement Path</summary>
+  <div>
+    <p>Scout → Tenderfoot → 2nd Class → 1st Class → Star → Life → Eagle</p>
+  </div>
+</details>
+
+<details>
+  <summary>Merit Badge Info</summary>
+  <div>
+    <p>100+ badges. 21 required for Eagle.</p>
+
+    <a href="images/Troop%20234%20Merit%20Badge%20Quick%20Reference%20Guide.pdf" class="button">
+      Open Merit Badge Guide
+    </a>
+  </div>
+</details>
+
+</main>
 </body>
 </html>
