@@ -1,288 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7FY6X24EQ6');
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join the Adventure - Troop 234 Chesapeake</title>
+  <title>Join Troop 234 Chesapeake</title>
 
   <style>
-    :root {
-      --scout-blue: #003366;
-      --scout-gold: #f1c40f;
-      --light-bg: #f7fafc;
-    }
-
     body {
       margin: 0;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background-color: #e9ecef;
-      color: #333;
-    }
-
-    /* Hero Image Grid */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-      background-color: #fff;
-      padding: 5px;
-    }
-
-    .photo-grid img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
+      font-family: Arial, sans-serif;
+      background: #f4f6f3;
+      color: #1f2a1f;
     }
 
     main {
       max-width: 1000px;
-      margin: 0 auto;
-      background-color: white;
-      overflow: hidden;
+      margin: auto;
+      background: white;
     }
 
-    .content-padding {
-      padding: 2.5rem;
-    }
-
-    .hero-text {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: var(--scout-blue);
+    .hero {
+      background: #003366;
       color: white;
-    }
-
-    .hero-text h1 { margin: 0; font-size: 2.2rem; }
-    .hero-text p { font-size: 1.2rem; opacity: 0.9; margin-top: 0.5rem; }
-
-    /* Question Cards */
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .info-card {
-      background: var(--light-bg);
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      text-align: left;
-      transition: transform 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .info-card:hover { transform: translateY(-5px); }
-    
-    .info-card .card-header {
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-
-    .info-card h3 { color: var(--scout-blue); margin: 0.5rem 0; font-size: 1.2rem; }
-    
-    .info-card p, .info-card li { 
-        font-size: 0.95rem; 
-        line-height: 1.5; 
-        color: #4a5568; 
-        margin-bottom: 0.75rem;
-    }
-
-    .info-card ul {
-        padding-left: 1.2rem;
-        margin: 0;
-    }
-
-    .info-card li {
-        margin-bottom: 0.4rem;
-    }
-
-    .icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
-
-    /* Why Section */
-    .why-section {
-      background-color: #f0f4f8;
-      padding: 2rem;
-      border-radius: 12px;
-      margin-top: 3rem;
-    }
-
-    .why-section h2 { color: var(--scout-blue); text-align: center; margin-bottom: 1.5rem; }
-
-    .benefit-list {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .benefit-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 1rem;
-    }
-
-    .benefit-item strong { 
-      color: var(--scout-blue); 
-      display: block; 
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-
-    .benefit-text {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    /* Action Section */
-    .join-footer {
       text-align: center;
-      padding: 3rem 1rem;
-      background: #fff;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    .section {
+      padding: 24px 20px;
+    }
+
+    h2 {
+      color: #003366;
+      margin-top: 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: #f7fafc;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #003366;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .highlight {
+      background: #fff8e6;
+      border: 1px solid #e0c878;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 30px;
     }
 
     .button {
       display: inline-block;
-      background-color: var(--scout-blue);
+      margin-top: 12px;
+      padding: 12px 18px;
+      background: #003366;
       color: white;
       text-decoration: none;
-      padding: 1rem 2rem;
-      border-radius: 50px;
+      border-radius: 6px;
       font-weight: bold;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 15px rgba(0,51,102,0.3);
-      transition: all 0.3s;
     }
 
-    .button:hover { background-color: #1f5a96; transform: scale(1.05); }
+    .secondary {
+      background: #555;
+    }
 
-    .secondary-links { margin-top: 1.5rem; }
-    .secondary-links a { color: var(--scout-blue); margin: 0 10px; text-decoration: none; font-weight: 500; }
-
-    @media (max-width: 768px) {
-      .photo-grid { grid-template-columns: repeat(2, 1fr); }
-      .content-padding { padding: 1.5rem; }
-      .benefit-list { grid-template-columns: 1fr; }
-      .card-container { grid-template-columns: 1fr; }
+    @media (max-width: 600px) {
+      .button {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main>
-   
-    <div class="hero-text">
-      <h1>New to Scouting? Start Your Adventure Here!</h1>
-      <p>Everything Chesapeake families need to know about Troop 234</p>
+<main>
+
+<div class="hero">
+  <h1>Join Troop 234</h1>
+  <p>Adventure. Leadership. Confidence. It starts here.</p>
+</div>
+
+<div class="section">
+  <h2>Why Families Choose Troop 234</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Real Adventure</h3>
+      <p>Monthly campouts, summer camp, and high-adventure trips give Scouts real outdoor experience.</p>
     </div>
 
-    <div class="content-padding">
-      <h2 style="text-align: center;">Your Top Questions, Answered</h2>
-      <div class="card-container">
-        
-        <div class="info-card">
-          <div class="card-header">
-            <div class="icon">💰</div>
-            <h3>What does it cost?</h3>
-          </div>
-          <p>We believe in being upfront about the investment so there are no surprises:</p>
-          <ul>
-            <li><strong>National Registration:</strong> Youth ~$85/yr | Adult ~$65/yr</li>
-            <li><strong>One-Time Join Fee:</strong> $25 (New Youth members)</li>
-            <li><strong>Troop Dues:</strong> $15/month (Covers badges, gear, and program)</li>
-            <li><strong>Camping:</strong> ~$20–$30 per weekend for food and site fees</li>
-          </ul>
-          <p style="margin-top:10px; font-style: italic;">*We hold several fundraisers to help Scouts "earn their own way" and offset these costs.</p>
-        </div>
-
-        <div class="info-card">
-          <div class="card-header">
-            <div class="icon">🕒</div>
-            <h3>The Time Commitment?</h3>
-          </div>
-          <p>Scouting fits into a busy schedule more easily than most think:</p>
-          <ul>
-            <li><strong>Weekly Meetings:</strong> Mondays at 7:00 PM to work on skills and plan events.</li>
-            <li><strong>Monthly Outings:</strong> Typically one weekend campout per month.</li>
-            <li><strong>Flexibility:</strong> School and sports come first—attendance is encouraged but not mandatory for every event.</li>
-          </ul>
-        </div>
-
-        <div class="info-card">
-          <div class="card-header">
-            <div class="icon">🛡️</div>
-            <h3>Safety & Supervision?</h3>
-          </div>
-          <p>Your child's safety is our absolute priority. We follow strict BSA protocols:</p>
-          <ul>
-            <li><strong>Two-Deep Leadership:</strong> Minimum of two registered adults present at every activity.</li>
-            <li><strong>No One-on-One Contact:</strong> Strictly prohibited in person, via text, or online.</li>
-            <li><strong>Background Checks:</strong> Every adult leader undergoes comprehensive background checks and YPT training.</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="why-section">
-        <h2>Why Troop 234?</h2>
-        <div class="benefit-list">
-          <div class="benefit-item">
-            <span style="font-size: 1.5rem;">🚀</span>
-            <div class="benefit-text">
-                <strong>High-Adventure & Exploration</strong>
-                From the peaks of Woodruff in Georgia to the world-class Summit Bechtel Reserve in West Virginia, we offer bucket-list adventures that build resilience.
-            </div>
-          </div>
-          <div class="benefit-item">
-            <span style="font-size: 1.5rem;">🤝</span>
-            <div class="benefit-text">
-                <strong>A Scout-Led Legacy</strong>
-                Scouts are in the driver’s seat—planning their own meetings, menus, and activities while developing real-world confidence.
-            </div>
-          </div>
-          <div class="benefit-item">
-            <span style="font-size: 1.5rem;">🦅</span>
-            <div class="benefit-text">
-                <strong>A Tradition of Excellence</strong>
-                With a 35-year history in Chesapeake, we have proudly fostered nearly 50 Eagle Scouts through dedicated mentorship and support.
-            </div>
-          </div>
-          <div class="benefit-item">
-            <span style="font-size: 1.5rem;">❤️</span>
-            <div class="benefit-text">
-                <strong>Community-Centered Service</strong>
-                Chartered by the Chesapeake Rotary Club and partnered with Covenant United Methodist, we build character through regular, local service projects.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="join-footer">
-        <h3>Ready to visit or join the family?</h3>
-        <p>Come see us in action! No pressure, just a chance to see how we operate.</p>
-        <br>
-        <a class="button" href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank">Join Troop 234 Now</a>
-        
-        <div class="secondary-links">
-          <a href="Contact.html">Contact New Member Coordinator</a> | 
-          <a href="Calendar.html">View Our Calendar</a>
-        </div>
-        <p style="font-size: 0.8rem; color: #999; margin-top: 2rem;">Chartered by the Rotary Club of Chesapeake • Open to all backgrounds</p>
-      </div>
+    <div class="card">
+      <h3>Scout-Led Program</h3>
+      <p>Scouts lead meetings, plan trips, and make decisions. This builds real confidence and leadership.</p>
     </div>
-  </main>
+
+    <div class="card">
+      <h3>Proven Track Record</h3>
+      <p>Decades of experience and a strong history of Eagle Scouts.</p>
+    </div>
+
+    <div class="card">
+      <h3>Community Focus</h3>
+      <p>Service projects and local involvement help Scouts give back and build character.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>What to Expect</h2>
+
+  <ul>
+    <li>Weekly meetings on Mondays at 7:00 PM</li>
+    <li>Monthly weekend campouts</li>
+    <li>Opportunities for leadership and advancement</li>
+    <li>Flexible participation based on your schedule</li>
+  </ul>
+</div>
+
+<div class="section highlight">
+  <h2>Start Here</h2>
+  <p>The best first step is to come visit a meeting. No pressure.</p>
+
+  <a href="Calendar.html" class="button">View Meeting Schedule</a>
+  <a href="Welcome.html" class="button secondary">New Families Start Here</a>
+</div>
+
+<div class="section highlight">
+  <h2>Ready to Join?</h2>
+  <p>You can register online once you’ve visited or if you’re ready now.</p>
+
+  <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank" class="button">
+    Register with BSA
+  </a>
+
+  <a href="Contact.html" class="button secondary">
+    Contact Us First
+  </a>
+</div>
+
+</main>
 </body>
 </html>
