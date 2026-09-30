@@ -29,12 +29,18 @@
       margin: 6px 0;
     }
 
+    header .location-link {
+      color: white;
+      text-underline-offset: 3px;
+    }
+
     .buttons {
       margin-top: 15px;
     }
 
     .button {
       display: inline-block;
+      box-sizing: border-box;
       margin: 6px;
       padding: 10px 14px;
       background: white;
@@ -64,6 +70,29 @@
     }
 
     h2 {
+      color: #003366;
+    }
+
+    .announcement {
+      background: #fff8e6;
+      border: 1px solid #e0c878;
+      border-left: 5px solid #003366;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 0 0 24px;
+      line-height: 1.5;
+    }
+
+    .announcement h2 {
+      margin-top: 0;
+      color: #5a3210;
+    }
+
+    .announcement p:last-child {
+      margin-bottom: 0;
+    }
+
+    .announcement a {
       color: #003366;
     }
 
@@ -126,6 +155,7 @@
       .button {
         display: block;
         width: 100%;
+        margin: 8px 0;
         text-align: center;
       }
 
@@ -140,8 +170,19 @@
 
 <header>
   <h1>Troop 234 Chesapeake</h1>
-  <p>Meets Mondays 7:00–8:30 PM</p>
-  <p>Covenant United Methodist Church</p>
+  <p>Meets Mondays 7:00 to 8:30 PM</p>
+  <p><strong>Temporary Meeting Location</strong></p>
+  <p>New Creation United Methodist Church</p>
+  <p>
+    <a
+      href="https://www.google.com/maps/search/?api=1&amp;query=New+Creation+United+Methodist+Church+4320+Bruce+Road+Chesapeake+VA+23321"
+      class="location-link"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      4320 Bruce Road, Chesapeake, VA 23321
+    </a>
+  </p>
 
   <div class="buttons">
     <a href="Welcome.html" class="button">Start Here</a>
@@ -151,8 +192,40 @@
 
 <main>
 
-<img src="images/images/albums/2025 Summer Camp/1.jpg" alt="Troop 234 Scouts at summer camp">
+<section class="announcement" aria-labelledby="meeting-update">
+  <h2 id="meeting-update">Important Meeting Location Update</h2>
 
+  <p>
+    Effective immediately, Troop 234 will temporarily meet at
+    <strong>New Creation United Methodist Church,
+    4320 Bruce Road, Chesapeake, VA 23321</strong>.
+    Monday meetings remain <strong>7:00 to 8:30 PM</strong>.
+  </p>
+
+  <p>
+    Our previous meeting church has closed its doors, so we are
+    looking for a new long-term meeting location.
+  </p>
+
+  <!-- Remove this parent meeting notice after October 5, 2026. -->
+  <p>
+    <strong>Emergency Parent Meeting: Monday, October 5, 2026</strong><br>
+    We will hold an ad hoc emergency parent meeting during the troop
+    meeting at New Creation Church to brainstorm options and discuss
+    next steps. Please attend if you can and bring any ideas or contacts
+    that could help us find a new home for the troop.
+  </p>
+
+  <p>
+    <a
+      href="https://www.google.com/maps/search/?api=1&amp;query=New+Creation+United+Methodist+Church+4320+Bruce+Road+Chesapeake+VA+23321"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Get directions to our temporary meeting location</a>
+  </p>
+</section>
+
+<img src="images/images/albums/2025 Summer Camp/1.jpg" alt="Troop 234 Scouts at summer camp">
 
 <h2>Adventure. Leadership. Service.</h2>
 
@@ -185,8 +258,12 @@ confidence, and real-world skills through outdoor adventure and service.
   <a href="Welcome.html" class="button">Go to Start Here</a>
 
   <p style="margin-top:15px;">
-    Already ready? You can also 
-    <a href="https://beascout.scouting.org/list/?zip=23321&program%5B%5D=scoutsBSA" target="_blank">
+    Already ready? You can also
+    <a
+      href="https://beascout.scouting.org/list/?zip=23321&amp;program%5B%5D=scoutsBSA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       register online
     </a>
   </p>
