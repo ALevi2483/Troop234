@@ -45,6 +45,33 @@
       color: #666;
     }
 
+    /* LOCATION ANNOUNCEMENT */
+    .announcement {
+      background-color: #fff8e6;
+      padding: 1.5rem;
+      border: 1px solid #e0c878;
+      border-left: 5px solid #003366;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .announcement h3 {
+      margin-top: 0;
+      color: #5a3210;
+      font-size: 1.3rem;
+    }
+
+    .announcement p:last-child {
+      margin-bottom: 0;
+    }
+
+    .announcement a,
+    .calendar-footer a {
+      color: #003366;
+      text-underline-offset: 3px;
+    }
+
     /* UPCOMING EVENTS BOX */
     .events-box {
       background-color: #fff8e6;
@@ -69,7 +96,7 @@
 
     .events-frame {
       width: 100%;
-      height: 320px; /* desktop size */
+      height: 320px;
       border: 1px solid #ddd;
       border-radius: 8px;
       background: white;
@@ -100,6 +127,7 @@
     }
 
     .btn {
+      box-sizing: border-box;
       text-decoration: none;
       padding: 10px 20px;
       border-radius: 5px;
@@ -114,6 +142,7 @@
 
     /* CALENDAR */
     .calendar-frame {
+      box-sizing: border-box;
       width: 100%;
       height: 700px;
       border: 1px solid #ddd;
@@ -123,7 +152,8 @@
     .calendar-footer {
       margin-top: 1.5rem;
       font-size: 0.9rem;
-      color: #777;
+      line-height: 1.6;
+      color: #555;
       border-top: 1px solid #eee;
       padding-top: 1rem;
     }
@@ -140,7 +170,7 @@
       }
 
       .events-frame {
-        height: 420px; /* bigger on mobile so it's readable */
+        height: 420px;
       }
 
       .calendar-frame {
@@ -162,34 +192,81 @@
       Never miss a meeting or a campout. This is the source of truth for all Troop 234 events.
     </p>
 
-    
+    <!-- LOCATION ANNOUNCEMENT -->
+    <section class="announcement" aria-labelledby="location-update">
+      <h3 id="location-update">Temporary Meeting Location</h3>
+
+      <p>
+        Effective immediately, Troop 234 will temporarily meet at
+        <strong>New Creation United Methodist Church</strong>,
+        <a
+          href="https://www.google.com/maps/search/?api=1&amp;query=New+Creation+United+Methodist+Church+4320+Bruce+Road+Chesapeake+VA+23321"
+          target="_blank"
+          rel="noopener noreferrer"
+        >4320 Bruce Road, Chesapeake, VA 23321</a>.
+        Monday meetings remain <strong>7:00 to 8:30 PM</strong>.
+      </p>
+
+      <p>
+        Our previous meeting church has closed its doors, so we are
+        looking for a new long-term meeting location.
+      </p>
+
+      <!-- Remove this parent meeting notice after October 5, 2026. -->
+      <p>
+        <strong>Emergency Parent Meeting: Monday, October 5, 2026</strong><br>
+        We will hold an ad hoc emergency parent meeting during the
+        troop meeting at New Creation Church to brainstorm options
+        and discuss next steps. Please attend if you can and bring
+        any ideas or contacts that could help us find a new home
+        for the troop.
+      </p>
+    </section>
+
     <!-- SUBSCRIBE -->
     <div class="subscribe-box">
       <h3>Sync to Your Phone</h3>
       <p>Add the Troop 234 calendar to your device to get automatic updates.</p>
 
       <div class="btn-container">
-        <a href="https://calendar.google.com/calendar/render?cid=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com" target="_blank" class="btn btn-google">
+        <a
+          href="https://calendar.google.com/calendar/render?cid=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-google"
+        >
           Add to Google Calendar
         </a>
 
-        <a href="https://calendar.google.com/calendar/ical/acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com/public/basic.ics" class="btn btn-apple">
+        <a
+          href="https://calendar.google.com/calendar/ical/acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com/public/basic.ics"
+          class="btn btn-apple"
+        >
           Download for Apple/Outlook
         </a>
       </div>
     </div>
 
     <!-- FULL CALENDAR -->
-    <iframe 
+    <iframe
+      title="Troop 234 activity calendar"
       class="calendar-frame"
-      src="https://calendar.google.com/calendar/embed?src=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com&ctz=America/New_York"
+      src="https://calendar.google.com/calendar/embed?src=acecbd55169f63593a22f078f18399d20eb616eba6174aa06f50e185a45471f5%40group.calendar.google.com&amp;ctz=America/New_York"
       allowfullscreen
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
 
     <div class="calendar-footer">
-      <strong>Note for Parents:</strong> Regular Troop meetings are held every Monday from 7:00–8:30 PM at Covenant United Methodist Church unless otherwise noted above.
+      <strong>Note for Parents:</strong> Regular troop meetings are
+      held every Monday from <strong>7:00 to 8:30 PM</strong>,
+      temporarily at <strong>New Creation United Methodist Church</strong>,
+      <a
+        href="https://www.google.com/maps/search/?api=1&amp;query=New+Creation+United+Methodist+Church+4320+Bruce+Road+Chesapeake+VA+23321"
+        target="_blank"
+        rel="noopener noreferrer"
+      >4320 Bruce Road, Chesapeake, VA 23321</a>,
+      unless otherwise noted in the calendar.
     </div>
   </main>
 </body>
