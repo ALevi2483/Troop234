@@ -59,8 +59,14 @@
       margin-bottom: 6px;
     }
 
+    .location-link {
+      color: #003366;
+      text-underline-offset: 3px;
+    }
+
     .button {
       display: inline-block;
+      box-sizing: border-box;
       background: #003366;
       color: white;
       padding: 10px 14px;
@@ -109,10 +115,26 @@
 <div class="card highlight">
   <h2>First Meeting Info</h2>
   <ul>
-    <li><strong>When:</strong> Mondays, 7:00–8:30 PM</li>
-    <li><strong>Where:</strong> Covenant UMC, 2004 Dock Landing Blvd</li>
+    <li><strong>When:</strong> Mondays, 7:00 to 8:30 PM</li>
+    <li>
+      <strong>Temporary location:</strong>
+      New Creation United Methodist Church<br>
+      <a
+        href="https://www.google.com/maps/search/?api=1&amp;query=New+Creation+United+Methodist+Church+4320+Bruce+Road+Chesapeake+VA+23321"
+        class="location-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >4320 Bruce Road, Chesapeake, VA 23321</a>
+    </li>
     <li><strong>Uniform:</strong> Not required first night</li>
   </ul>
+
+  <p>
+    <strong>Location update:</strong> Effective immediately, we are
+    temporarily meeting at New Creation while we find a new long-term
+    meeting location. Our previous meeting church has closed its doors.
+    Check the troop calendar before your visit for any updates.
+  </p>
 
   <a href="Calendar.html" class="button">View Calendar</a>
   <a href="Contact.html" class="button secondary">Contact Leadership</a>
@@ -162,7 +184,7 @@
   <a href="images/ABC%20Medical%20Forms.pdf" class="button">Open Medical Forms</a>
 </div>
 
-<!-- DETAILS (YOUR ORIGINAL CONTENT KEPT BELOW) -->
+<!-- DETAILS -->
 
 <details>
   <summary>Gear Information</summary>
