@@ -6,6 +6,10 @@
   <title>Troop 234 | Home</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -40,7 +44,6 @@
 
     .button {
       display: inline-block;
-      box-sizing: border-box;
       margin: 6px;
       padding: 10px 14px;
       background: white;
@@ -56,6 +59,19 @@
       border: 1px solid white;
     }
 
+    .button:hover {
+      background: #e8eef5;
+    }
+
+    .button.secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    a:focus-visible {
+      outline: 3px solid #e0b84f;
+      outline-offset: 4px;
+    }
+
     main {
       max-width: 900px;
       margin: auto;
@@ -65,6 +81,7 @@
 
     img {
       width: 100%;
+      height: auto;
       border-radius: 10px;
       margin: 20px 0;
     }
@@ -96,31 +113,43 @@
       color: #003366;
     }
 
-    .events-box {
-      background: #fff8e6;
-      border: 1px solid #e0c878;
+    .summer-camp {
+      background: #eef5ef;
+      border: 1px solid #c7d9ca;
+      border-left: 5px solid #365b41;
       border-radius: 10px;
-      padding: 18px;
-      margin: 20px 0 28px;
-      text-align: center;
+      padding: 20px;
+      margin: 0 0 24px;
+      line-height: 1.5;
     }
 
-    .events-box h2 {
+    .summer-camp h2 {
       margin-top: 0;
-      color: #5a3210;
+      color: #365b41;
     }
 
-    .events-box p {
-      margin-top: 0;
-      color: #555;
+    .summer-camp ul {
+      padding-left: 22px;
     }
 
-    .events-frame {
-      width: 100%;
-      height: 360px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: white;
+    .summer-camp li {
+      margin: 6px 0;
+    }
+
+    .summer-camp .button {
+      background: #365b41;
+      color: white;
+      margin-left: 0;
+    }
+
+    .summer-camp .button:hover {
+      background: #274531;
+    }
+
+    .camp-note {
+      color: #526052;
+      font-size: 0.95rem;
+      margin-bottom: 0;
     }
 
     .grid {
@@ -151,6 +180,10 @@
       color: white;
     }
 
+    .next-step .button:hover {
+      background: #00264d;
+    }
+
     @media (max-width: 600px) {
       .button {
         display: block;
@@ -159,8 +192,8 @@
         text-align: center;
       }
 
-      .events-frame {
-        height: 460px;
+      .grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -187,87 +220,110 @@
   <div class="buttons">
     <a href="Welcome.html" class="button">Start Here</a>
     <a href="Calendar.html" class="button secondary">View Calendar</a>
+    <a href="summer-camp.html" class="button secondary">Summer Camp</a>
   </div>
 </header>
 
 <main>
 
-<section class="announcement" aria-labelledby="meeting-update">
-  <h2 id="meeting-update">Important Meeting Location Update</h2>
+  <section class="announcement" aria-labelledby="meeting-update">
+    <h2 id="meeting-update">Important Meeting Location Update</h2>
 
-  <p>
-    Effective immediately, Troop 234 will temporarily meet at
-    <strong>New Creation United Methodist Church,
-    4320 Bruce Road, Chesapeake, VA 23321</strong>.
-    Monday meetings remain <strong>7:00 to 8:30 PM</strong>.
-  </p>
+    <p>
+      Effective immediately, Troop 234 will temporarily meet at
+      <strong>New Creation United Methodist Church,
+      4320 Bruce Road, Chesapeake, VA 23321</strong>.
+      Monday meetings remain <strong>7:00 to 8:30 PM</strong>.
+    </p>
 
-  <p>
-    Our previous meeting church has closed its doors, so we are
-    looking for a new long-term meeting location.
-  </p>
+    <p>
+      Our previous meeting church has closed its doors, so we are
+      looking for a new long-term meeting location.
+    </p>
 
-  <!-- Remove this parent meeting notice after October 5, 2026. -->
-  <p>
-    <strong>Emergency Parent Meeting: Monday, October 5, 2026</strong><br>
-    We will hold an emergency parent meeting during the troop
-    meeting at New Creation Church to brainstorm options and discuss
-    next steps. Please attend if you can and bring any ideas or contacts
-    that could help us find a new home for the troop.
-  </p>
+    <p>
+      <a
+        href="https://www.google.com/maps/search/?api=1&amp;query=New+Creation+United+Methodist+Church+4320+Bruce+Road+Chesapeake+VA+23321"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get directions to our temporary meeting location
+      </a>
+    </p>
+  </section>
 
-  <p>
-    <a
-      href="https://www.google.com/maps/search/?api=1&amp;query=New+Creation+United+Methodist+Church+4320+Bruce+Road+Chesapeake+VA+23321"
-      target="_blank"
-      rel="noopener noreferrer"
-    >Get directions to our temporary meeting location</a>
-  </p>
-</section>
+  <section class="summer-camp" aria-labelledby="summer-camp-heading">
+    <h2 id="summer-camp-heading">Summer Camp Information</h2>
 
-<img src="images/images/albums/2025 Summer Camp/1.jpg" alt="Troop 234 Scouts at summer camp">
+    <p>
+      Planning for summer camp? Visit our Summer Camp page to find
+      guides, forms, program information, and maps in one place.
+    </p>
 
-<h2>Adventure. Leadership. Service.</h2>
+    <ul>
+      <li>2027 parent and leader guides</li>
+      <li>Parent release, special diet, and swim forms</li>
+      <li>Program guide, program grid, and Rampage information</li>
+      <li>Camp maps and inspection information</li>
+    </ul>
 
-<p>
-Troop 234 has served Chesapeake families for over 35 years. Scouts build leadership,
-confidence, and real-world skills through outdoor adventure and service.
-</p>
-
-<div class="grid">
-  <div class="card">
-    <h3>Scout Led</h3>
-    <p>Scouts plan meetings, trips, and activities.</p>
-  </div>
-
-  <div class="card">
-    <h3>Monthly Campouts</h3>
-    <p>Outdoor skills and adventure every month.</p>
-  </div>
-
-  <div class="card">
-    <h3>Leadership Growth</h3>
-    <p>Real responsibility builds confidence fast.</p>
-  </div>
-</div>
-
-<div class="next-step">
-  <h2>Next Step</h2>
-  <p>New families should start here to learn how everything works.</p>
-
-  <a href="Welcome.html" class="button">Go to Start Here</a>
-
-  <p style="margin-top:15px;">
-    Already ready? You can also
-    <a
-      href="https://beascout.scouting.org/list/?zip=23321&amp;program%5B%5D=scoutsBSA"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      register online
+    <a href="summer-camp.html" class="button">
+      View Summer Camp Information
     </a>
+
+    <p class="camp-note">
+      Troop camp dates, costs, deadlines, and transportation details
+      will be posted on the Summer Camp page as they are confirmed.
+    </p>
+  </section>
+
+  <img
+    src="images/images/albums/2025 Summer Camp/1.jpg"
+    alt="Troop 234 Scouts at summer camp"
+  >
+
+  <h2>Adventure. Leadership. Service.</h2>
+
+  <p>
+    Troop 234 has served Chesapeake families for over 35 years.
+    Scouts build leadership, confidence, and real-world skills
+    through outdoor adventure and service.
   </p>
-</div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Scout Led</h3>
+      <p>Scouts plan meetings, trips, and activities.</p>
+    </div>
+
+    <div class="card">
+      <h3>Monthly Campouts</h3>
+      <p>Outdoor skills and adventure every month.</p>
+    </div>
+
+    <div class="card">
+      <h3>Leadership Growth</h3>
+      <p>Real responsibility builds confidence fast.</p>
+    </div>
+  </div>
+
+  <div class="next-step">
+    <h2>Next Step</h2>
+    <p>New families should start here to learn how everything works.</p>
+
+    <a href="Welcome.html" class="button">Go to Start Here</a>
+
+    <p style="margin-top:15px;">
+      Already ready? You can also
+      <a
+        href="https://beascout.scouting.org/list/?zip=23321&amp;program%5B%5D=scoutsBSA"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        register online
+      </a>
+    </p>
+  </div>
 
 </main>
 
