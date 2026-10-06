@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-        content="Troop 234 summer camp updates, guides, medical forms, programs, and maps.">
-  <title>Summer Camp | Troop 234</title>
+        content="Troop 234 summer camp at Camp Raven Knob. Find camp details, guides, medical forms, programs, and maps.">
+  <title>Summer Camp at Raven Knob | Troop 234</title>
 
   <style>
     :root {
@@ -74,12 +74,22 @@
     }
 
     h1 {
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       font-size: clamp(2rem, 5vw, 2.8rem);
       line-height: 1.2;
     }
 
-    .hero p:last-child {
+    .camp-name {
+      margin: 0 0 6px;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .hero-address {
+      margin: 0 0 16px;
+    }
+
+    .hero-description {
       max-width: 680px;
       margin: 0 auto;
     }
@@ -127,6 +137,29 @@
     .section-description {
       color: var(--muted);
       margin: 0 0 18px;
+    }
+
+    .camp-location {
+      background: #eef4f9;
+      border: 1px solid #d1e3f0;
+      border-left: 5px solid var(--navy);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .camp-location p {
+      margin: 0 0 12px;
+    }
+
+    address {
+      font-style: normal;
+      margin-bottom: 16px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .information {
@@ -221,7 +254,6 @@
 
     .button {
       display: inline-block;
-      margin-top: auto;
       padding: 10px 14px;
       border-radius: 6px;
       background: var(--navy);
@@ -231,8 +263,22 @@
       font-size: .9rem;
     }
 
+    .card .button {
+      margin-top: auto;
+    }
+
     .button:hover {
       background: var(--navy-hover);
+    }
+
+    .button.secondary {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--navy);
+    }
+
+    .button.secondary:hover {
+      background: #e8eef5;
     }
 
     .checklist {
@@ -299,7 +345,11 @@
     <div class="hero-inner">
       <p class="eyebrow">Troop 234 Chesapeake</p>
       <h1>Summer Camp</h1>
-      <p>
+      <p class="camp-name">Camp Raven Knob</p>
+      <p class="hero-address">
+        266 Raven Knob Road, Mount Airy, NC 27030
+      </p>
+      <p class="hero-description">
         Find troop camp updates, parent and leader guides,
         forms, program information, and maps in one place.
       </p>
@@ -308,6 +358,7 @@
 
   <main id="main">
     <nav class="section-nav" aria-label="Summer camp sections">
+      <a href="#camp-location">Camp Location</a>
       <a href="#important">Important Information</a>
       <a href="#guides">Camp Guides</a>
       <a href="#forms">Forms</a>
@@ -316,23 +367,53 @@
       <a href="#before-camp">Before Camp</a>
     </nav>
 
+    <section id="camp-location" class="camp-location">
+      <h2>Camp Raven Knob</h2>
+      <p>
+        Troop 234’s summer camp location is
+        <strong>Camp Raven Knob in Mount Airy, North Carolina</strong>.
+        Visit the camp’s website for more information about the camp
+        and its programs.
+      </p>
+
+      <address>
+        <strong>Camp Address</strong><br>
+        266 Raven Knob Road<br>
+        Mount Airy, NC 27030
+      </address>
+
+      <div class="button-row">
+        <a class="button"
+           href="https://www.ravenknob.com/"
+           target="_blank" rel="noopener noreferrer">
+          Visit Camp Raven Knob Website
+        </a>
+
+        <a class="button secondary"
+           href="https://www.google.com/maps/search/?api=1&amp;query=Camp+Raven+Knob+266+Raven+Knob+Road+Mount+Airy+NC+27030"
+           target="_blank" rel="noopener noreferrer">
+          Get Directions to Camp
+        </a>
+      </div>
+    </section>
+
     <section id="important" class="information">
       <h2>Important Information</h2>
 
       <div class="planning-notice">
         <h3>Camp Dates and Cost Are Still Being Finalized</h3>
         <p>
-          Troop 234 is still reviewing summer camp dates and costs.
-          Our attendance dates and the cost to attend have not yet
-          been confirmed. We will share more information here as
-          it becomes available.
+          Our camp location is Camp Raven Knob. Troop 234 is still
+          reviewing the dates we will attend and the cost.
+          We will share more information here as it becomes available.
         </p>
       </div>
 
       <div class="registration-notice">
         <h3>We Will Register as a Troop</h3>
         <p>
-          <strong>Please do not register individually for camp.</strong>
+          <strong>Please do not register individually for camp,
+          including through the camp’s website.</strong>
           Troop 234 will register as a troop. We will share
           instructions for confirming your Scout’s participation
           when they are available.
@@ -345,11 +426,11 @@
         </p>
       </div>
 
-      <!-- Update these values when troop camp details are confirmed. -->
+      <!-- Update remaining details when troop plans are confirmed. -->
       <dl class="details">
         <div>
           <dt>Camp location</dt>
-          <dd>To be announced</dd>
+          <dd>Camp Raven Knob<br>Mount Airy, North Carolina</dd>
         </div>
         <div>
           <dt>Troop camp dates</dt>
@@ -593,7 +674,7 @@
   </main>
 
   <footer>
-    Troop 234 Chesapeake · Summer Camp Information
+    Troop 234 Chesapeake · Summer Camp at Camp Raven Knob
   </footer>
 </body>
 </html>
