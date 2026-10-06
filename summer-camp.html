@@ -1,1 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Troop 234 summer camp information, guides, forms, programs, and maps.">
+  <title>Summer Camp | Troop 234</title>
 
+  <style>
+    :root {
+      --navy: #17334a;
+      --green: #365b41;
+      --gold: #e6bc63;
+      --background: #f4f6f3;
+      --text: #24332d;
+      --muted: #59665e;
+      --border: #dce3dc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--green); }
+
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 12px;
+      padding: 10px;
+      background: white;
+      z-index: 10;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    .site-header {
+      background: var(--navy);
+      color: white;
+      padding: 16px 24px;
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      color: white;
+      font-weight: 750;
+      font-size: 1.15rem;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: .95rem;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    .hero {
+      background: var(--green);
+      color: white;
+      padding: 48px 24px;
+    }
+
+    .hero-inner, main {
+      max-width: 1080px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #f4dca8;
+      font-size: .85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .hero p:last-child {
+      max-width: 680px;
+      margin-bottom: 0;
+    }
+
+    main { padding: 28px 24px 48px; }
+
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .section-nav a {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: 650;
+      font-size: .9rem;
+    }
+
+    section {
+      margin-bottom: 32px;
+      scroll-margin-top: 20px;
+    }
+
+    h2 {
+      color: var(--navy);
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+    }
+
+    .section-description {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .information {
+      background: white;
+      border: 1px solid var(--border);
+      border-top: 5px solid var(--gold);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin: 20px 0 0;
+    }
+
+    .details dt {
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .details dd {
+      margin: 4px 0 0;
+      font-weight: 650;
+    }
+
+    .notice {
+      margin-top: 22px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: #f8f3e7;
+      font-size: .95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .tag {
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 750;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      line-height: 1.35;
+      margin: 8px 0;
+      color: var(--navy);
+    }
+
+    .card p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: auto;
+      padding: 10px 16px;
+      border-radius: 7px;
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+      font-weight: 650;
+      font-size: .9rem;
+    }
+
+    .button:hover { background: #274531; }
+
+    .checklist {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .checklist ul {
+      margin-bottom: 0;
+      padding-left: 22px;
+    }
+
+    .checklist li { margin: 10px 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 800px) {
+      .grid, .details {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .grid, .details { grid-template-columns: 1fr; }
+      .hero { padding: 34px 20px; }
+      main { padding: 24px 16px 36px; }
+      .information, .checklist { padding: 20px; }
+      nav { gap: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to camp information</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">Troop 234 Chesapeake</a>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/Calendar.html">Calendar</a>
+        <a href="/Links.html">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Plan your camp week</p>
+      <h1>Summer Camp</h1>
+      <p>
+        Your starting point for Troop 234 summer camp.
+        Find camp updates, parent and leader guides, forms,
+        program information, and maps in one place.
+      </p>
+    </div>
+  </div>
+
+  <main id="main">
+    <nav class="section-nav" aria-label="Summer camp sections">
+      <a href="#important">Important Information</a>
+      <a href="#guides">Camp Guides</a>
+      <a href="#forms">Forms</a>
+      <a href="#programs">Programs</a>
+      <a href="#maps">Maps</a>
+    </nav>
+
+    <section id="important" class="information">
+      <h2>Important Information</h2>
+      <p class="section-description">
+        Check here for troop arrangements and deadlines as plans are confirmed.
+      </p>
+
+      <!-- Replace these values when troop camp details are confirmed. -->
+      <dl class="details">
+        <div>
+          <dt>Camp location</dt>
+          <dd>To be announced</dd>
+        </div>
+        <div>
+          <dt>Camp dates</dt>
+          <dd>To be announced</dd>
+        </div>
+        <div>
+          <dt>Cost and payments</dt>
+          <dd>To be announced</dd>
+        </div>
+        <div>
+          <dt>Registration deadline</dt>
+          <dd>To be announced</dd>
+        </div>
+        <div>
+          <dt>Form submission deadline</dt>
+          <dd>To be announced</dd>
+        </div>
+        <div>
+          <dt>Departure and return</dt>
+          <dd>To be announced</dd>
+        </div>
+      </dl>
+
+      <div class="notice">
+        <strong>Before you complete paperwork:</strong>
+        Review the camp guides and confirm which forms apply to your
+        Scout. Submit completed forms through the troop’s designated
+        process. Do not upload medical or personal information to this
+        public website.
+      </div>
+    </section>
+
+    <section id="guides">
+      <h2>Camp Guides</h2>
+      <p class="section-description">
+        Start with the guide for your role. Each link opens a PDF in a new tab.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Parents · 2027</span>
+          <h3>Parent Guide</h3>
+          <p>Review the camp’s information for parents and families.</p>
+          <a class="button"
+             href="/documents/parent%20guide%202027.pdf"
+             target="_blank" rel="noopener">
+            Open Parent Guide
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Leaders · 2027</span>
+          <h3>Leader Guide</h3>
+          <p>Review the camp’s information for attending adult leaders.</p>
+          <a class="button"
+             href="/documents/leader%20guide%202027.pdf"
+             target="_blank" rel="noopener">
+            Open Leader Guide
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Campsite</span>
+          <h3>Camp Inspection</h3>
+          <p>Review the camp inspection document before camp.</p>
+          <a class="button"
+             href="/documents/camp%20inspection.pdf"
+             target="_blank" rel="noopener">
+            Open Inspection Document
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="forms">
+      <h2>Forms</h2>
+      <p class="section-description">
+        Review the instructions in each form and confirm submission
+        requirements with troop leadership.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Parent paperwork</span>
+          <h3>Outdoor Parent Release</h3>
+          <p>Open the parent release form and review its instructions.</p>
+          <a class="button"
+             href="/documents/outdoor%20parent%20release.pdf"
+             target="_blank" rel="noopener">
+            Open Release Form
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Meals</span>
+          <h3>Special Diet Form</h3>
+          <p>Review the form for reporting special dietary needs.</p>
+          <a class="button"
+             href="/documents/special%20diet.pdf"
+             target="_blank" rel="noopener">
+            Open Diet Form
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Aquatics</span>
+          <h3>Swim Form</h3>
+          <p>Review the swim form and confirm what you need to submit.</p>
+          <a class="button"
+             href="/documents/swim%20form.pdf"
+             target="_blank" rel="noopener">
+            Open Swim Form
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="programs">
+      <h2>Programs and Activities</h2>
+      <p class="section-description">
+        Review the program documents before making your activity selections.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Programs · 2027</span>
+          <h3>Program Guide</h3>
+          <p>Explore the camp’s program information.</p>
+          <a class="button"
+             href="/documents/program%20guide%202027.pdf"
+             target="_blank" rel="noopener">
+            Open Program Guide
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Planning</span>
+          <h3>Program Grid</h3>
+          <p>Use the program grid alongside the program guide to plan your week.</p>
+          <a class="button"
+             href="/documents/program%20grid.pdf"
+             target="_blank" rel="noopener">
+            Open Program Grid
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Program option</span>
+          <h3>Rampage Program</h3>
+          <p>Review the Rampage program document for details.</p>
+          <a class="button"
+             href="/documents/rampage%20program.pdf"
+             target="_blank" rel="noopener">
+            Open Rampage Document
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="maps">
+      <h2>Camp Maps</h2>
+      <p class="section-description">
+        Download a map before traveling so you have a copy available.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Map</span>
+          <h3>Camp Map</h3>
+          <p>View the camp map.</p>
+          <a class="button"
+             href="/documents/camp%20map.pdf"
+             target="_blank" rel="noopener">
+            Open Camp Map
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="tag">Map</span>
+          <h3>Scaled Camp Map</h3>
+          <p>View the scaled version of the camp map.</p>
+          <a class="button"
+             href="/documents/scaled%20camp%20map.pdf"
+             target="_blank" rel="noopener">
+            Open Scaled Map
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="checklist">
+      <h2>Before Camp</h2>
+      <ul>
+        <li>Read the parent guide and review troop camp updates.</li>
+        <li>Confirm registration, payment, and paperwork deadlines.</li>
+        <li>Review program options and any listed prerequisites.</li>
+        <li>Confirm medical paperwork requirements with troop leadership.</li>
+        <li>Review the camp’s packing instructions.</li>
+        <li>Confirm departure, transportation, and pickup arrangements.</li>
+      </ul>
+      <p>
+        <strong>Questions?</strong>
+        Contact troop leadership at a meeting or through the troop’s Slack.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Troop 234 Chesapeake · Summer Camp Information
+  </footer>
+</body>
+</html>
