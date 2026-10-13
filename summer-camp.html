@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-        content="Troop 234 summer camp at Camp Raven Knob. Find camp details, guides, medical forms, programs, and maps.">
+        content="Troop 234 summer camp at Camp Raven Knob. Find camp details, deadlines, guides, medical forms, programs, and maps.">
   <title>Summer Camp at Raven Knob | Troop 234</title>
 
   <style>
@@ -17,6 +17,12 @@
       --border: #ddd;
       --highlight: #fff8e6;
       --highlight-border: #e0c878;
+      --deadline-bg: #f7fafc;
+      --deadline-border: #d1e3f0;
+      --fishing-bg: #eef8ee;
+      --fishing-border: #5f8f5f;
+      --warning-bg: #fff3f3;
+      --warning-border: #b94a48;
     }
 
     * {
@@ -134,6 +140,10 @@
       font-size: 1.4rem;
     }
 
+    h3 {
+      line-height: 1.35;
+    }
+
     .section-description {
       color: var(--muted);
       margin: 0 0 18px;
@@ -214,6 +224,151 @@
       margin: 4px 0 0;
       font-weight: bold;
     }
+
+    /* DEADLINES */
+
+    .deadlines-section {
+      border: 1px solid var(--deadline-border);
+      border-top: 5px solid var(--navy);
+      border-radius: 10px;
+      padding: 20px;
+      background: white;
+    }
+
+    .deadline-intro {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .deadline-warning {
+      background: var(--warning-bg);
+      border: 1px solid #e2b4b4;
+      border-left: 5px solid var(--warning-border);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 0 0 22px;
+    }
+
+    .deadline-warning strong {
+      color: #7a2927;
+    }
+
+    .deadline-warning p {
+      margin: 0;
+    }
+
+    .deadline-heading {
+      color: var(--navy);
+      font-size: 1.15rem;
+      margin: 26px 0 12px;
+    }
+
+    .deadline-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .deadline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 16px;
+      background: var(--deadline-bg);
+      border: 1px solid var(--deadline-border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .deadline-date {
+      color: var(--navy);
+      font-weight: bold;
+    }
+
+    .deadline-text strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .deadline-text p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .fishing-highlight {
+      background: var(--fishing-bg);
+      border: 2px solid var(--fishing-border);
+      border-radius: 10px;
+      padding: 18px;
+      margin: 20px 0;
+    }
+
+    .fishing-highlight h3 {
+      color: #315f31;
+      margin: 0 0 6px;
+      font-size: 1.15rem;
+    }
+
+    .fishing-highlight p {
+      margin: 0;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 12px 0 22px;
+    }
+
+    .deadline-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+      font-size: .92rem;
+    }
+
+    .deadline-table th,
+    .deadline-table td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .deadline-table th {
+      background: var(--navy);
+      color: white;
+    }
+
+    .deadline-table tbody tr:nth-child(even) {
+      background: #f7fafc;
+    }
+
+    .deadline-table strong {
+      color: var(--navy);
+    }
+
+    .deadline-footnote {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: -10px;
+    }
+
+    .rampage-note {
+      background: var(--highlight);
+      border: 1px solid var(--highlight-border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+
+    .rampage-note p {
+      margin: 0;
+    }
+
+    .rampage-note p + p {
+      margin-top: 10px;
+    }
+
+    /* CARDS */
 
     .grid {
       display: grid;
@@ -313,6 +468,10 @@
       .details {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .deadline-item {
+        grid-template-columns: 145px 1fr;
+      }
     }
 
     @media (max-width: 600px) {
@@ -334,6 +493,19 @@
         flex: 1 1 140px;
         text-align: center;
       }
+
+      .deadline-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .deadline-date {
+        font-size: 1rem;
+      }
+
+      .deadlines-section {
+        padding: 16px;
+      }
     }
   </style>
 </head>
@@ -350,8 +522,9 @@
         266 Raven Knob Road, Mount Airy, NC 27030
       </p>
       <p class="hero-description">
-        Find troop camp updates, parent and leader guides,
-        forms, program information, and maps in one place.
+        Find troop camp updates, important dates and deadlines,
+        parent and leader guides, forms, program information,
+        and maps in one place.
       </p>
     </div>
   </header>
@@ -360,6 +533,7 @@
     <nav class="section-nav" aria-label="Summer camp sections">
       <a href="#camp-location">Camp Location</a>
       <a href="#important">Important Information</a>
+      <a href="#deadlines">Deadlines & Dates</a>
       <a href="#guides">Camp Guides</a>
       <a href="#forms">Forms</a>
       <a href="#programs">Programs</a>
@@ -404,7 +578,7 @@
         <h3>Camp Dates and Cost Are Still Being Finalized</h3>
         <p>
           Our camp location is Camp Raven Knob. Troop 234 is still
-          reviewing the dates we will attend and the cost.
+          reviewing the week we will attend and the final troop cost.
           We will share more information here as it becomes available.
         </p>
       </div>
@@ -426,7 +600,6 @@
         </p>
       </div>
 
-      <!-- Update remaining details when troop plans are confirmed. -->
       <dl class="details">
         <div>
           <dt>Camp location</dt>
@@ -445,7 +618,7 @@
           <dd>To be announced</dd>
         </div>
         <div>
-          <dt>Form submission deadline</dt>
+          <dt>Troop form deadline</dt>
           <dd>To be announced</dd>
         </div>
         <div>
@@ -453,6 +626,485 @@
           <dd>To be announced</dd>
         </div>
       </dl>
+    </section>
+
+    <section id="deadlines" class="deadlines-section">
+      <h2>2027 Camp Deadlines & Key Dates</h2>
+
+      <p class="deadline-intro">
+        The dates below come from Camp Raven Knob’s 2027 camp information.
+        Troop 234 may establish earlier internal deadlines so we have enough
+        time to collect forms, payments, and program selections.
+      </p>
+
+      <div class="deadline-warning">
+        <p>
+          <strong>Parents and Scouts:</strong>
+          These dates are provided for planning purposes.
+          Do not register or make individual camp payments unless
+          Troop 234 specifically instructs you to do so.
+          The troop will coordinate our unit registration.
+        </p>
+      </div>
+
+      <h3 class="deadline-heading">Registration and Planning Dates</h3>
+
+      <div class="deadline-list">
+
+        <div class="deadline-item">
+          <div class="deadline-date">September 1, 2026</div>
+          <div class="deadline-text">
+            <strong>2027 campsite assignments begin</strong>
+            <p>
+              Camp management begins assigning 2027 campsites based
+              on unit reservations and campsite preferences.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">Before February 1, 2027</div>
+          <div class="deadline-text">
+            <strong>Unit deposit withdrawal deadline</strong>
+            <p>
+              A unit withdrawing before February 1 may qualify for
+              the partial unit-deposit refund described in the Leader Guide.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">February 2027</div>
+          <div class="deadline-text">
+            <strong>Pre-camp webinars begin</strong>
+            <p>
+              Camp Raven Knob begins monthly pre-camp webinars covering
+              registration, programs, and camp preparation.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">February 15, 2027</div>
+          <div class="deadline-text">
+            <strong>Unit Count opens</strong>
+            <p>
+              Units begin submitting Scout and leader counts.
+              Camp requires the Unit Count payment before session
+              registration can be finalized.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">March 16, 2027</div>
+          <div class="deadline-text">
+            <strong>Session registration opens for Weeks 1 and 2</strong>
+            <p>
+              Merit badge and program session registration opens
+              for units attending Weeks 1 and 2.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">March 18, 2027</div>
+          <div class="deadline-text">
+            <strong>Session registration opens for Weeks 3 through 6</strong>
+            <p>
+              Merit badge and program session registration opens
+              for units attending Weeks 3, 4, 5, and 6.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">April 15, 2027</div>
+          <div class="deadline-text">
+            <strong>Unit Count locks</strong>
+            <p>
+              This is the last day units can directly change their
+              Unit Count online. Changes after this date must be
+              coordinated with camp administration.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">April or May 2027</div>
+          <div class="deadline-text">
+            <strong>Sunday arrival-time signup</strong>
+            <p>
+              Units will select a Sunday arrival appointment.
+              Normal arrival appointments are between
+              1:00 PM and 3:30 PM.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">May 15, 2027</div>
+          <div class="deadline-text">
+            <strong>Transportation request deadline</strong>
+            <p>
+              Units needing Raven Knob transportation from designated
+              airport or train locations must submit their request
+              by this date.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">May 31 / June 1, 2027</div>
+          <div class="deadline-text">
+            <strong>Camp contact location changes</strong>
+            <p>
+              Camp administrative operations transition from the
+              Old Hickory Council office to Camp Raven Knob for
+              the summer season.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">Before Arrival</div>
+          <div class="deadline-text">
+            <strong>Final camp balance</strong>
+            <p>
+              The unit balance must be paid before arrival to qualify
+              for Express Check-In. Any remaining balance will be
+              collected during camp check-in.
+            </p>
+          </div>
+        </div>
+
+        <div class="deadline-item">
+          <div class="deadline-date">Before September 1, 2027</div>
+          <div class="deadline-text">
+            <strong>2028 campsite preference</strong>
+            <p>
+              Units attending in 2027 should submit their next-year
+              deposit before September 1 to retain preference for
+              their same campsite and week for 2028.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="deadline-heading">Deadlines Based on Your Camp Week</h3>
+
+      <p class="section-description">
+        Troop 234 has not selected its final camp week yet.
+        The table below shows the applicable deadlines for all six
+        2027 Scouts BSA summer camp weeks.
+      </p>
+
+      <div class="table-wrapper">
+        <table class="deadline-table">
+          <thead>
+            <tr>
+              <th>Camp Week</th>
+              <th>Camp Dates</th>
+              <th>3-Week Refund Mark</th>
+              <th>Medical Forms for Express Check-In</th>
+              <th>Session Registration Closes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Week 1</strong></td>
+              <td>June 20 to June 26</td>
+              <td>May 30</td>
+              <td>June 6</td>
+              <td>June 13</td>
+            </tr>
+            <tr>
+              <td><strong>Week 2</strong></td>
+              <td>June 27 to July 3</td>
+              <td>June 6</td>
+              <td>June 13</td>
+              <td>June 20</td>
+            </tr>
+            <tr>
+              <td><strong>Week 3</strong></td>
+              <td>July 4 to July 10</td>
+              <td>June 13</td>
+              <td>June 20</td>
+              <td>June 27</td>
+            </tr>
+            <tr>
+              <td><strong>Week 4</strong></td>
+              <td>July 11 to July 17</td>
+              <td>June 20</td>
+              <td>June 27</td>
+              <td>July 4</td>
+            </tr>
+            <tr>
+              <td><strong>Week 5</strong></td>
+              <td>July 18 to July 24</td>
+              <td>June 27</td>
+              <td>July 4</td>
+              <td>July 11</td>
+            </tr>
+            <tr>
+              <td><strong>Week 6</strong></td>
+              <td>July 25 to July 31</td>
+              <td>July 4</td>
+              <td>July 11</td>
+              <td>July 18</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="deadline-footnote">
+        Scout schedules, T-shirt sizes, and similar registration
+        information can generally be changed until one week before
+        the unit’s arrival. Units arriving by charter or tour bus
+        should also notify camp at least one week before arrival.
+      </p>
+
+      <h3 class="deadline-heading">Important Dates and Times During Camp</h3>
+
+      <div class="fishing-highlight">
+        <h3>Monday After Lunch: Fishing Permits</h3>
+        <p>
+          Scouts and leaders who want to fish at Camp Raven Knob must
+          obtain a Raven Knob Fishing Permit.
+          <strong>Fishing permits are issued Monday after lunch</strong>
+          following a brief fishing orientation and safety session.
+          Fishing is catch-and-release.
+        </p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="deadline-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Time</th>
+              <th>Activity or Deadline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sunday</strong></td>
+              <td>1:00 PM to 3:30 PM</td>
+              <td>
+                Normal troop arrival appointments.
+                Early arrival must be coordinated with camp.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Sunday</strong></td>
+              <td>During check-in</td>
+              <td>Unit photographs are taken during the check-in process.</td>
+            </tr>
+            <tr>
+              <td><strong>Sunday</strong></td>
+              <td>About 5:50 PM</td>
+              <td>Evening assembly.</td>
+            </tr>
+            <tr>
+              <td><strong>Sunday</strong></td>
+              <td>6:00 PM</td>
+              <td>
+                Supper followed by the unit leader meeting.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Monday</strong></td>
+              <td>8:15 AM</td>
+              <td>Day Campers check in.</td>
+            </tr>
+            <tr>
+              <td><strong>Monday to Friday</strong></td>
+              <td>9:00 AM to 5:00 PM</td>
+              <td>Normal Day Camper program hours.</td>
+            </tr>
+            <tr>
+              <td><strong>Monday</strong></td>
+              <td>Breakfast</td>
+              <td>
+                Individual Scout schedules and CRK Passports are
+                placed in unit mailboxes.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Monday</strong></td>
+              <td>After lunch</td>
+              <td>
+                <strong>Fishing orientation and Raven Knob
+                Fishing Permit issuance.</strong>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Monday</strong></td>
+              <td>Begins Monday</td>
+              <td>Big Stepper competition begins for adult leaders.</td>
+            </tr>
+            <tr>
+              <td><strong>Monday</strong></td>
+              <td>Recommended mailing cutoff</td>
+              <td>
+                Camp recommends that letters or packages not be mailed
+                later than Monday of the Scout’s camp week because
+                delivery may take several days.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Wednesday</strong></td>
+              <td>5:30 PM</td>
+              <td>
+                Visitors' Night begins. Visitors may arrive beginning
+                at 5:30 PM. Units eat supper in their campsites,
+                followed by the campfire and OA ceremony.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Thursday</strong></td>
+              <td>Twilight</td>
+              <td>
+                Scouts participating in the Climbing Experience
+                must attend Open Climbing Twilight.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Thursday</strong></td>
+              <td>After supper</td>
+              <td>
+                Adult Leader Social and Scoutmaster Cook-off
+                on the parade ground.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Friday</strong></td>
+              <td>12:00 PM</td>
+              <td>Big Stepper counting period ends.</td>
+            </tr>
+            <tr>
+              <td><strong>Friday</strong></td>
+              <td>By 5:00 PM</td>
+              <td>
+                Big Stepper totals must be submitted to Administration.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Friday</strong></td>
+              <td>Evening</td>
+              <td>
+                Closing campfire. Units receive checkout materials,
+                advancement reports, and health forms afterward.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Saturday</strong></td>
+              <td>7:30 AM</td>
+              <td>Continental breakfast and flag assembly.</td>
+            </tr>
+            <tr>
+              <td><strong>Saturday</strong></td>
+              <td>8:00 AM</td>
+              <td>Cleanup, packing, and departures begin.</td>
+            </tr>
+            <tr>
+              <td><strong>Saturday</strong></td>
+              <td>By 10:30 AM</td>
+              <td><strong>All units must be out of camp.</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="deadline-heading">RAMPAGE Program Schedule</h3>
+
+      <p class="section-description">
+        Scouts participating in the RAMPAGE high-adventure program
+        follow a separate schedule during the week.
+      </p>
+
+      <div class="table-wrapper">
+        <table class="deadline-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>RAMPAGE Schedule</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sunday</strong></td>
+              <td>
+                1:00 PM to 4:00 PM gear drop-off at Scoutcraft and
+                swim check with the troop.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Sunday</strong></td>
+              <td>
+                Meet at Scoutcraft at <strong>4:00 PM</strong>
+                with all RAMPAGE gear. Participants eat supper at
+                Raven Knob and then travel to the RAMPAGE base
+                in Independence, Virginia.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Monday</strong></td>
+              <td>
+                Whitewater canoeing on the New River, lunch on the
+                river, and overnight at the RAMPAGE base.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Tuesday</strong></td>
+              <td>
+                River boarding at New River Trail State Park,
+                followed by return to Camp Raven Knob and overnight
+                with the troop.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Wednesday</strong></td>
+              <td>
+                Hike Raven Knob after breakfast, climbing at
+                Pilot Mountain, return for Visitors' Night,
+                supper and campfire, then return to Independence.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Thursday</strong></td>
+              <td>
+                Travel to Grayson Highlands State Park and begin
+                the overnight backpacking portion of the program.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Friday</strong></td>
+              <td>
+                Complete the backpacking trip, clean up at the
+                RAMPAGE base, return to Camp Raven Knob for supper,
+                and attend the closing campfire.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rampage-note">
+        <p>
+          <strong>RAMPAGE check-in note:</strong>
+          The dedicated RAMPAGE information lists the Sunday meeting
+          time as <strong>4:00 PM</strong>. The 2027 Leader Guide lists
+          RAMPAGE and Cripple Creek participants as meeting at
+          Scoutcraft by 4:30 PM.
+        </p>
+        <p>
+          Troop 234 will use <strong>4:00 PM</strong> for planning
+          unless Camp Raven Knob provides updated instructions.
+        </p>
+      </div>
+
     </section>
 
     <section id="guides">
@@ -502,7 +1154,7 @@
       <h2>Forms</h2>
       <p class="section-description">
         Review the forms below. Troop leadership will provide
-        submission instructions and deadlines.
+        submission instructions and Troop 234 deadlines.
       </p>
 
       <div class="grid">
@@ -639,17 +1291,23 @@
       <h2>Before Camp</h2>
 
       <ul>
-        <li>Read the parent guide and review troop camp updates.</li>
+        <li>
+          Read the parent guide and review the
+          <a href="#deadlines">2027 camp deadlines and key dates</a>.
+        </li>
+
         <li>
           <strong>Do not register individually.</strong>
           We will register as a troop and provide participation
           instructions when available.
         </li>
+
         <li>
           Review merit badge and event options, including any listed
           prerequisites. Our Troop Advancement Coordinator will
           coordinate all merit badge and event sign-ups.
         </li>
+
         <li>
           If you have not completed
           <strong>Medical Form Part C with your doctor</strong>,
@@ -659,9 +1317,21 @@
             Download the medical forms packet.
           </a>
         </li>
-        <li>Review the camp’s packing instructions.</li>
+
         <li>
-          Watch for troop updates on departure, transportation,
+          Review the camp’s packing instructions.
+        </li>
+
+        <li>
+          If your Scout plans to fish, remember that
+          <strong>Raven Knob Fishing Permits are issued Monday
+          after lunch</strong> following the required orientation
+          and safety session.
+        </li>
+
+        <li>
+          Watch for Troop 234 updates on our selected camp week,
+          cost, payment schedule, forms, departure, transportation,
           and pickup arrangements.
         </li>
       </ul>
