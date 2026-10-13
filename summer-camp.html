@@ -3,33 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <meta name="description"
-        content="Troop 234 summer camp at Camp Raven Knob. Find camp details, deadlines, guides, medical forms, programs, and maps.">
+        content="Troop 234 summer camp at Camp Raven Knob. Find camp costs, forms, programs, important dates, and summer camp information.">
+
   <title>Summer Camp at Raven Knob | Troop 234</title>
 
   <style>
     :root {
       --navy: #003366;
-      --navy-hover: #00264d;
+      --navy-dark: #00264d;
       --background: #f4f6f3;
       --text: #1f2a1f;
-      --muted: #555;
-      --border: #ddd;
-      --highlight: #fff8e6;
-      --highlight-border: #e0c878;
-      --deadline-bg: #f7fafc;
-      --deadline-border: #d1e3f0;
-      --fishing-bg: #eef8ee;
-      --fishing-border: #5f8f5f;
-      --warning-bg: #fff3f3;
-      --warning-border: #b94a48;
-      --urgent-red: #a61b1b;
-      --urgent-red-dark: #7d1010;
-      --urgent-bg: #fff1f1;
+      --muted: #586158;
+      --border: #d9dfd9;
+
+      --light-blue: #eef4f9;
+      --light-blue-border: #cedfea;
+
+      --cream: #fff8e6;
+      --cream-border: #dfc977;
+
+      --red: #a61b1b;
+      --red-dark: #7d1010;
+      --red-light: #fff1f1;
+      --red-border: #e4b1b1;
+
+      --green: #315f31;
+      --green-light: #eef8ee;
+      --green-border: #8bb28b;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -55,17 +65,19 @@
       left: 12px;
       padding: 10px;
       background: white;
-      z-index: 10;
+      z-index: 100;
     }
 
     .skip-link:focus {
       top: 12px;
     }
 
+    /* HERO */
+
     .hero {
       background: var(--navy);
       color: white;
-      padding: 30px 20px;
+      padding: 32px 20px;
       text-align: center;
     }
 
@@ -75,7 +87,7 @@
     }
 
     .eyebrow {
-      margin: 0 0 8px;
+      margin: 0 0 7px;
       font-size: .85rem;
       font-weight: bold;
       text-transform: uppercase;
@@ -83,25 +95,22 @@
     }
 
     h1 {
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       font-size: clamp(2rem, 5vw, 2.8rem);
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     .camp-name {
-      margin: 0 0 6px;
+      margin: 0 0 5px;
       font-size: 1.4rem;
       font-weight: bold;
     }
 
     .hero-address {
-      margin: 0 0 16px;
+      margin: 0;
     }
 
-    .hero-description {
-      max-width: 680px;
-      margin: 0 auto;
-    }
+    /* PAGE */
 
     main {
       max-width: 900px;
@@ -110,132 +119,16 @@
       background: white;
     }
 
-    .section-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .section-nav a {
-      background: #f7fafc;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 8px 14px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: .9rem;
-    }
-
-    .section-nav a:hover {
-      background: #eef4f9;
-    }
-
-    /*
-      LARGE REGISTRATION WARNING
-    */
-
-    .registration-alert {
-      background: var(--urgent-bg);
-      border: 4px solid var(--urgent-red);
-      border-radius: 12px;
-      margin: 0 0 32px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
-    }
-
-    .registration-alert-header {
-      background: var(--urgent-red);
-      color: white;
-      text-align: center;
-      padding: 16px 20px;
-    }
-
-    .registration-alert-header .alert-icon {
-      display: block;
-      font-size: 2.2rem;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .registration-alert-header h2 {
-      color: white;
-      margin: 0;
-      font-size: clamp(1.5rem, 5vw, 2rem);
-      line-height: 1.15;
-      text-transform: uppercase;
-      letter-spacing: .02em;
-    }
-
-    .registration-alert-body {
-      padding: 22px;
-      text-align: center;
-    }
-
-    .registration-alert-body .lead {
-      font-size: 1.18rem;
-      font-weight: bold;
-      margin: 0 auto 16px;
-      max-width: 720px;
-      color: #651010;
-    }
-
-    .registration-alert-body p {
-      max-width: 720px;
-      margin: 0 auto 14px;
-    }
-
-    .registration-alert-body p:last-child {
-      margin-bottom: 0;
-    }
-
-    .registration-alert-list {
-      max-width: 650px;
-      margin: 18px auto;
-      padding: 0;
-      list-style: none;
-      text-align: left;
-    }
-
-    .registration-alert-list li {
-      position: relative;
-      background: white;
-      border: 1px solid #e5b7b7;
-      border-radius: 7px;
-      padding: 11px 12px 11px 44px;
-      margin: 8px 0;
-    }
-
-    .registration-alert-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 15px;
-      top: 9px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--urgent-red);
-    }
-
-    .registration-alert-bottom {
-      background: #ffe1e1;
-      border-top: 1px solid #e5b7b7;
-      padding: 13px 20px;
-      text-align: center;
-      color: var(--urgent-red-dark);
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
     section {
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       scroll-margin-top: 20px;
     }
 
     h2 {
-      color: var(--navy);
       margin: 0 0 10px;
-      font-size: 1.4rem;
+      color: var(--navy);
+      font-size: 1.45rem;
+      line-height: 1.25;
     }
 
     h3 {
@@ -243,289 +136,234 @@
     }
 
     .section-description {
-      color: var(--muted);
       margin: 0 0 18px;
+      color: var(--muted);
     }
 
-    .camp-location {
-      background: #eef4f9;
-      border: 1px solid #d1e3f0;
-      border-left: 5px solid var(--navy);
+    /* SECTION NAVIGATION */
+
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      margin-bottom: 24px;
+    }
+
+    .section-nav a {
+      background: #f7fafc;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 13px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: .88rem;
+    }
+
+    .section-nav a:hover {
+      background: var(--light-blue);
+    }
+
+    /* LARGE REGISTRATION WARNING */
+
+    .registration-alert {
+      background: var(--red-light);
+      border: 4px solid var(--red);
+      border-radius: 12px;
+      margin: 0 0 30px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+    }
+
+    .registration-alert-header {
+      background: var(--red);
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .registration-alert-header h2 {
+      margin: 0;
+      color: white;
+      font-size: clamp(1.4rem, 5vw, 1.9rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .registration-alert-body {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .registration-alert-lead {
+      max-width: 720px;
+      margin: 0 auto 12px;
+      color: var(--red-dark);
+      font-size: 1.13rem;
+      font-weight: bold;
+    }
+
+    .registration-alert-body p {
+      max-width: 720px;
+      margin: 0 auto 12px;
+    }
+
+    .registration-alert-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .registration-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 720px;
+      margin: 18px auto;
+    }
+
+    .registration-step {
+      background: white;
+      border: 1px solid var(--red-border);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: .93rem;
+    }
+
+    .registration-step strong {
+      display: block;
+      color: var(--red-dark);
+      margin-bottom: 3px;
+    }
+
+    .registration-alert-footer {
+      background: #ffe1e1;
+      border-top: 1px solid var(--red-border);
+      padding: 12px 18px;
+      text-align: center;
+      color: var(--red-dark);
+      font-weight: bold;
+    }
+
+    /* AT A GLANCE */
+
+    .overview {
+      background: var(--cream);
+      border: 1px solid var(--cream-border);
+      border-top: 5px solid var(--navy);
       border-radius: 10px;
       padding: 20px;
     }
 
-    .camp-location p {
-      margin: 0 0 12px;
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
     }
 
-    address {
-      font-style: normal;
-      margin-bottom: 16px;
+    .overview-card {
+      background: white;
+      border: 1px solid #e2d7b4;
+      border-radius: 8px;
+      padding: 15px;
     }
+
+    .overview-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    .overview-value {
+      display: block;
+      font-size: 1.06rem;
+      font-weight: bold;
+      line-height: 1.35;
+    }
+
+    .overview-note {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.4;
+    }
+
+    /* WHAT TO DO */
+
+    .action-section {
+      border: 1px solid var(--light-blue-border);
+      border-top: 5px solid var(--navy);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .action-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .action-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      background: #f7fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .action-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .action-item h3 {
+      margin: 0 0 3px;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .action-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    /* BUTTONS */
 
     .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-    }
-
-    .information {
-      border: 1px solid var(--highlight-border);
-      border-top: 5px solid var(--navy);
-      border-radius: 10px;
-      padding: 20px;
-      background: var(--highlight);
-    }
-
-    .planning-notice,
-    .registration-notice {
-      background: white;
-      border: 1px solid var(--highlight-border);
-      border-left: 5px solid var(--navy);
-      border-radius: 8px;
-      padding: 18px;
-      margin-top: 18px;
-    }
-
-    .planning-notice h3,
-    .registration-notice h3 {
-      margin: 0 0 8px;
-      color: #5a3210;
-      font-size: 1.1rem;
-    }
-
-    .planning-notice p,
-    .registration-notice p {
-      margin: 0;
-    }
-
-    .registration-notice p + p {
-      margin-top: 12px;
-    }
-
-    .details {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-      margin: 24px 0 0;
-    }
-
-    .details dt {
-      color: var(--muted);
-      font-size: .85rem;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    .details dd {
-      margin: 4px 0 0;
-      font-weight: bold;
-    }
-
-    /*
-      DEADLINES
-    */
-
-    .deadlines-section {
-      border: 1px solid var(--deadline-border);
-      border-top: 5px solid var(--navy);
-      border-radius: 10px;
-      padding: 20px;
-      background: white;
-    }
-
-    .deadline-intro {
-      margin: 0 0 18px;
-      color: var(--muted);
-    }
-
-    .deadline-warning {
-      background: var(--warning-bg);
-      border: 1px solid #e2b4b4;
-      border-left: 5px solid var(--warning-border);
-      border-radius: 8px;
-      padding: 16px;
-      margin: 0 0 22px;
-    }
-
-    .deadline-warning strong {
-      color: #7a2927;
-    }
-
-    .deadline-warning p {
-      margin: 0;
-    }
-
-    .deadline-heading {
-      color: var(--navy);
-      font-size: 1.15rem;
-      margin: 26px 0 12px;
-    }
-
-    .deadline-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .deadline-item {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 16px;
-      background: var(--deadline-bg);
-      border: 1px solid var(--deadline-border);
-      border-radius: 8px;
-      padding: 14px 16px;
-    }
-
-    .deadline-date {
-      color: var(--navy);
-      font-weight: bold;
-    }
-
-    .deadline-text strong {
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .deadline-text p {
-      margin: 0;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .fishing-highlight {
-      background: var(--fishing-bg);
-      border: 2px solid var(--fishing-border);
-      border-radius: 10px;
-      padding: 18px;
-      margin: 20px 0;
-    }
-
-    .fishing-highlight h3 {
-      color: #315f31;
-      margin: 0 0 6px;
-      font-size: 1.15rem;
-    }
-
-    .fishing-highlight p {
-      margin: 0;
-    }
-
-    .table-wrapper {
-      width: 100%;
-      overflow-x: auto;
-      margin: 12px 0 22px;
-    }
-
-    .deadline-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 700px;
-      font-size: .92rem;
-    }
-
-    .deadline-table th,
-    .deadline-table td {
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .deadline-table th {
-      background: var(--navy);
-      color: white;
-    }
-
-    .deadline-table tbody tr:nth-child(even) {
-      background: #f7fafc;
-    }
-
-    .deadline-table strong {
-      color: var(--navy);
-    }
-
-    .deadline-footnote {
-      color: var(--muted);
-      font-size: .9rem;
-      margin-top: -10px;
-    }
-
-    .rampage-note {
-      background: var(--highlight);
-      border: 1px solid var(--highlight-border);
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 14px;
-    }
-
-    .rampage-note p {
-      margin: 0;
-    }
-
-    .rampage-note p + p {
-      margin-top: 10px;
-    }
-
-    /*
-      CARDS
-    */
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: #f7fafc;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .tag {
-      color: var(--muted);
-      font-size: .75rem;
-      font-weight: bold;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .card h3 {
-      font-size: 1.1rem;
-      line-height: 1.35;
-      margin: 8px 0;
-      color: var(--navy);
-    }
-
-    .card p {
-      margin: 0 0 20px;
-      color: var(--muted);
-      font-size: .95rem;
+      margin-top: 16px;
     }
 
     .button {
       display: inline-block;
-      padding: 10px 14px;
-      border-radius: 6px;
       background: var(--navy);
       color: white;
+      border-radius: 6px;
+      padding: 10px 14px;
       text-decoration: none;
       font-weight: bold;
       font-size: .9rem;
     }
 
-    .card .button {
-      margin-top: auto;
-    }
-
     .button:hover {
-      background: var(--navy-hover);
+      background: var(--navy-dark);
     }
 
     .button.secondary {
@@ -535,27 +373,161 @@
     }
 
     .button.secondary:hover {
-      background: #e8eef5;
+      background: var(--light-blue);
     }
 
-    .checklist {
-      background: var(--highlight);
-      border: 1px solid var(--highlight-border);
-      border-radius: 10px;
-      padding: 20px;
+    /* INFORMATION CARDS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
 
-    .checklist ul {
-      padding-left: 22px;
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background: #f7fafc;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 17px;
     }
 
-    .checklist li {
-      margin: 12px 0;
+    .tag {
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: .05em;
     }
 
-    .checklist p:last-child {
-      margin-bottom: 0;
+    .card h3 {
+      margin: 7px 0;
+      color: var(--navy);
+      font-size: 1.08rem;
     }
+
+    .card p {
+      margin: 0 0 17px;
+      color: var(--muted);
+      font-size: .91rem;
+    }
+
+    .card .button {
+      margin-top: auto;
+    }
+
+    /* KEY INFO */
+
+    .key-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .key-info {
+      border-radius: 9px;
+      padding: 17px;
+    }
+
+    .key-info h3 {
+      margin: 0 0 5px;
+      font-size: 1.06rem;
+    }
+
+    .key-info p {
+      margin: 0;
+    }
+
+    .fishing {
+      background: var(--green-light);
+      border: 2px solid var(--green-border);
+    }
+
+    .fishing h3 {
+      color: var(--green);
+    }
+
+    .visitor {
+      background: var(--light-blue);
+      border: 1px solid var(--light-blue-border);
+    }
+
+    .visitor h3 {
+      color: var(--navy);
+    }
+
+    /* FORMS NOTICE */
+
+    .medical-notice {
+      background: var(--cream);
+      border: 1px solid var(--cream-border);
+      border-left: 5px solid var(--navy);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .medical-notice p {
+      margin: 0;
+    }
+
+    /* EXPANDABLE DETAILS */
+
+    .details-box {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: white;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .details-box summary {
+      cursor: pointer;
+      padding: 15px 17px;
+      background: #f7fafc;
+      color: var(--navy);
+      font-weight: bold;
+    }
+
+    .details-box summary:hover {
+      background: var(--light-blue);
+    }
+
+    .details-content {
+      padding: 5px 18px 17px;
+    }
+
+    .details-content ul {
+      margin: 10px 0 0;
+      padding-left: 21px;
+    }
+
+    .details-content li {
+      margin: 8px 0;
+    }
+
+    .details-content p {
+      margin-bottom: 8px;
+    }
+
+    /* LOCATION */
+
+    .location-box {
+      background: var(--light-blue);
+      border: 1px solid var(--light-blue-border);
+      border-left: 5px solid var(--navy);
+      border-radius: 9px;
+      padding: 18px;
+    }
+
+    .location-box address {
+      margin: 10px 0 0;
+      font-style: normal;
+    }
+
+    /* FOOTER */
 
     footer {
       border-top: 1px solid var(--border);
@@ -565,25 +537,33 @@
       font-size: .9rem;
     }
 
-    @media (max-width: 800px) {
-      .grid,
-      .details {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+      .overview-grid,
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .deadline-item {
-        grid-template-columns: 145px 1fr;
+      .registration-steps {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 600px) {
+      main {
+        padding: 20px 16px 36px;
+      }
+
+      .overview-grid,
       .grid,
-      .details {
+      .key-info-grid {
         grid-template-columns: 1fr;
       }
 
-      main {
-        padding: 24px 16px 36px;
+      .section-nav a {
+        flex: 1 1 135px;
+        text-align: center;
       }
 
       .button {
@@ -591,153 +571,633 @@
         text-align: center;
       }
 
-      .section-nav a {
-        flex: 1 1 140px;
-        text-align: center;
-      }
-
-      .deadline-item {
-        grid-template-columns: 1fr;
-        gap: 4px;
-      }
-
-      .deadline-date {
-        font-size: 1rem;
-      }
-
-      .deadlines-section {
-        padding: 16px;
+      .action-item {
+        grid-template-columns: 38px 1fr;
       }
 
       .registration-alert-body {
-        padding: 18px 15px;
-      }
-
-      .registration-alert-list li {
-        padding-left: 40px;
+        padding: 17px 14px;
       }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to camp information</a>
+
+  <a class="skip-link" href="#main">
+    Skip to camp information
+  </a>
+
+  <!-- HERO -->
 
   <header class="hero">
     <div class="hero-inner">
-      <p class="eyebrow">Troop 234 Chesapeake</p>
-      <h1>Summer Camp</h1>
-      <p class="camp-name">Camp Raven Knob</p>
+
+      <p class="eyebrow">
+        Troop 234 Chesapeake
+      </p>
+
+      <h1>
+        Summer Camp
+      </h1>
+
+      <p class="camp-name">
+        Camp Raven Knob
+      </p>
+
       <p class="hero-address">
-        266 Raven Knob Road, Mount Airy, NC 27030
+        Mount Airy, North Carolina
       </p>
-      <p class="hero-description">
-        Find troop camp updates, important dates and deadlines,
-        parent and leader guides, forms, program information,
-        and maps in one place.
-      </p>
+
     </div>
   </header>
 
   <main id="main">
 
-    <nav class="section-nav" aria-label="Summer camp sections">
-      <a href="#camp-location">Camp Location</a>
-      <a href="#important">Important Information</a>
-      <a href="#deadlines">Deadlines & Dates</a>
-      <a href="#guides">Camp Guides</a>
-      <a href="#forms">Forms</a>
-      <a href="#programs">Programs</a>
-      <a href="#maps">Maps</a>
-      <a href="#before-camp">Before Camp</a>
+    <!-- PAGE NAVIGATION -->
+
+    <nav class="section-nav"
+         aria-label="Summer camp sections">
+
+      <a href="#overview">
+        At a Glance
+      </a>
+
+      <a href="#what-to-do">
+        What to Do
+      </a>
+
+      <a href="#programs">
+        Programs
+      </a>
+
+      <a href="#forms">
+        Forms
+      </a>
+
+      <a href="#key-info">
+        Key Information
+      </a>
+
+      <a href="#guides">
+        Guides & Maps
+      </a>
+
     </nav>
 
-    <!-- LARGE, HIGH-VISIBILITY REGISTRATION WARNING -->
+    <!-- DO NOT REGISTER WARNING -->
 
     <aside class="registration-alert"
            role="alert"
-           aria-labelledby="registration-alert-title">
+           aria-labelledby="registration-warning-title">
 
       <div class="registration-alert-header">
-        <span class="alert-icon" aria-hidden="true">⚠️</span>
-        <h2 id="registration-alert-title">
-          Do Not Register for Summer Camp Individually
+
+        <h2 id="registration-warning-title">
+          ⚠️ Do Not Register Individually
         </h2>
+
       </div>
 
       <div class="registration-alert-body">
 
-        <p class="lead">
+        <p class="registration-alert-lead">
           Please do not register your Scout directly through
-          Camp Raven Knob or sign up for merit badges and programs
-          on your own.
+          Camp Raven Knob or submit merit badge and program
+          selections on your own.
         </p>
 
         <p>
-          <strong>Troop 234’s Summer Camp Coordinator will register
-          our Scouts and leaders as a troop.</strong>
-          This includes coordinating our camp registration and
-          collecting the information needed for merit badge and
-          program selections.
+          <strong>
+            Troop 234's Summer Camp Coordinator will register
+            Scouts and leaders as a troop.
+          </strong>
         </p>
 
-        <ul class="registration-alert-list">
-          <li>
-            Review the <strong>2027 Program Guide</strong> and
-            <strong>Program Grid</strong>.
-          </li>
+        <div class="registration-steps">
 
-          <li>
-            Look through the available <strong>merit badges,
-            programs, and activities</strong>.
-          </li>
+          <div class="registration-step">
+            <strong>1. Review</strong>
+            Look through the programs and merit badges.
+          </div>
 
-          <li>
-            Decide which programs and merit badges your Scout
-            is interested in.
-          </li>
+          <div class="registration-step">
+            <strong>2. Choose</strong>
+            Decide what your Scout is interested in doing.
+          </div>
 
-          <li>
-            Keep those selections available so you are ready when
-            <strong>Troop 234 requests your Scout’s choices</strong>.
-          </li>
+          <div class="registration-step">
+            <strong>3. Wait</strong>
+            Have those choices ready when Troop 234 asks for them.
+          </div>
 
-          <li>
-            Wait for instructions from the troop before submitting
-            registrations, payments, merit badge selections, or
-            program selections.
-          </li>
-        </ul>
+        </div>
 
         <p>
-          Reviewing the Raven Knob website and program materials is
-          encouraged. We want Scouts to know what they would like to do.
-          <strong>Please use those materials for planning only and
-          do not complete an individual registration.</strong>
+          You are encouraged to review all of the Raven Knob
+          program information. Please use it for
+          <strong>planning only</strong> until Troop 234 provides
+          registration instructions.
         </p>
 
       </div>
 
-      <div class="registration-alert-bottom">
-        Troop 234 will let families know when it is time to submit
-        Scout information, program choices, merit badge selections,
-        forms, and payments.
+      <div class="registration-alert-footer">
+        Troop 234 will tell families when it is time to submit
+        selections, forms, and payments.
       </div>
 
     </aside>
 
-    <section id="camp-location" class="camp-location">
-      <h2>Camp Raven Knob</h2>
+    <!-- AT A GLANCE -->
 
-      <p>
-        Troop 234’s summer camp location is
-        <strong>Camp Raven Knob in Mount Airy, North Carolina</strong>.
-        Visit the camp’s website for more information about the camp
-        and its programs.
+    <section id="overview" class="overview">
+
+      <h2>
+        Summer Camp at a Glance
+      </h2>
+
+      <p class="section-description">
+        Here are the main details families need right now.
       </p>
 
+      <div class="overview-grid">
+
+        <div class="overview-card">
+          <span class="overview-label">
+            Location
+          </span>
+
+          <span class="overview-value">
+            Camp Raven Knob
+          </span>
+
+          <span class="overview-note">
+            Mount Airy, North Carolina
+          </span>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-label">
+            Troop 234 Camp Week
+          </span>
+
+          <span class="overview-value">
+            Under Review
+          </span>
+
+          <span class="overview-note">
+            Raven Knob operates six weeks from June 20
+            through July 31, 2027.
+          </span>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-label">
+            Base Scout Fee
+          </span>
+
+          <span class="overview-value">
+            $475
+          </span>
+
+          <span class="overview-note">
+            Some programs have additional fees.
+            Troop 234's final amount will be announced.
+          </span>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-label">
+            Registration
+          </span>
+
+          <span class="overview-value">
+            Troop 234 Handles It
+          </span>
+
+          <span class="overview-note">
+            Do not register individually.
+          </span>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-label">
+            Medical Forms
+          </span>
+
+          <span class="overview-value">
+            Parts A, B & C
+          </span>
+
+          <span class="overview-note">
+            Part C requires a physical examination.
+          </span>
+        </div>
+
+        <div class="overview-card">
+          <span class="overview-label">
+            Troop Travel
+          </span>
+
+          <span class="overview-value">
+            To Be Announced
+          </span>
+
+          <span class="overview-note">
+            Departure and return information will be posted
+            after our camp week is confirmed.
+          </span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- WHAT TO DO NOW -->
+
+    <section id="what-to-do"
+             class="action-section">
+
+      <h2>
+        What You Should Do Now
+      </h2>
+
+      <p class="section-description">
+        You do not need to register yet. Focus on these four things.
+      </p>
+
+      <div class="action-list">
+
+        <div class="action-item">
+
+          <div class="action-number">
+            1
+          </div>
+
+          <div>
+            <h3>
+              Review the Program Guide
+            </h3>
+
+            <p>
+              Look through the merit badges, special programs,
+              activities, age recommendations, prerequisites,
+              and additional program fees.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="action-item">
+
+          <div class="action-number">
+            2
+          </div>
+
+          <div>
+            <h3>
+              Make a List of Your Scout's Choices
+            </h3>
+
+            <p>
+              Have preferred merit badges and programs ready
+              when Troop 234 requests selections.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="action-item">
+
+          <div class="action-number">
+            3
+          </div>
+
+          <div>
+            <h3>
+              Complete Medical Form Part C
+            </h3>
+
+            <p>
+              If your Scout needs a physical, schedule it early.
+              Parts A, B, and C are required for camp.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="action-item">
+
+          <div class="action-number">
+            4
+          </div>
+
+          <div>
+            <h3>
+              Watch for Troop 234 Instructions
+            </h3>
+
+            <p>
+              We will provide the camp week, final cost,
+              payment schedule, form deadline, and instructions
+              for submitting program choices.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="button-row">
+
+        <a class="button"
+           href="documents/program%20guide%202027.pdf"
+           target="_blank"
+           rel="noopener noreferrer">
+          Open 2027 Program Guide
+        </a>
+
+        <a class="button secondary"
+           href="documents/program%20grid.pdf"
+           target="_blank"
+           rel="noopener noreferrer">
+          Open Program Grid
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- PROGRAMS -->
+
+    <section id="programs">
+
+      <h2>
+        Programs & Merit Badges
+      </h2>
+
+      <p class="section-description">
+        Review these resources and decide what interests your Scout.
+        Do not submit selections directly to Camp Raven Knob.
+      </p>
+
+      <div class="grid">
+
+        <article class="card">
+
+          <span class="tag">
+            2027 Programs
+          </span>
+
+          <h3>
+            Program Guide
+          </h3>
+
+          <p>
+            Merit badges, programs, prerequisites,
+            age recommendations, and program fees.
+          </p>
+
+          <a class="button"
+             href="documents/program%20guide%202027.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Open Program Guide
+          </a>
+
+        </article>
+
+        <article class="card">
+
+          <span class="tag">
+            Planning
+          </span>
+
+          <h3>
+            Program Grid
+          </h3>
+
+          <p>
+            Use the grid to compare session times and
+            build a list of preferred choices.
+          </p>
+
+          <a class="button"
+             href="documents/program%20grid.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Open Program Grid
+          </a>
+
+        </article>
+
+        <article class="card">
+
+          <span class="tag">
+            High Adventure
+          </span>
+
+          <h3>
+            RAMPAGE
+          </h3>
+
+          <p>
+            Week-long high-adventure program.
+            The additional program fee is $50.
+          </p>
+
+          <a class="button"
+             href="documents/rampage%20program.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Review RAMPAGE
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- FORMS -->
+
+    <section id="forms">
+
+      <h2>
+        Forms
+      </h2>
+
+      <div class="medical-notice">
+
+        <p>
+          <strong>Medical reminder:</strong>
+          All youth and adults attending camp need
+          Scouting America Medical Forms A, B, and C.
+          Part C must be completed by a medical professional.
+          Scouts also need a signed Outdoor Programs Parental
+          Release. Troop 234 will announce our form collection
+          deadline.
+        </p>
+
+      </div>
+
+      <div class="grid">
+
+        <article class="card">
+
+          <span class="tag">
+            Required
+          </span>
+
+          <h3>
+            Medical Forms A, B & C
+          </h3>
+
+          <p>
+            Complete all sections and include a copy
+            of the participant's insurance card.
+          </p>
+
+          <a class="button"
+             href="images/ABC%20Medical%20Forms.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Open Medical Forms
+          </a>
+
+        </article>
+
+        <article class="card">
+
+          <span class="tag">
+            Required for Youth
+          </span>
+
+          <h3>
+            Parent Release
+          </h3>
+
+          <p>
+            Scouts age 17 and younger need the signed
+            Outdoor Programs Parental Release.
+          </p>
+
+          <a class="button"
+             href="documents/outdoor%20parent%20release.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Open Release Form
+          </a>
+
+        </article>
+
+        <article class="card">
+
+          <span class="tag">
+            As Needed
+          </span>
+
+          <h3>
+            Special Diet Form
+          </h3>
+
+          <p>
+            Use this form if a participant has dietary
+            restrictions or special food needs.
+          </p>
+
+          <a class="button"
+             href="documents/special%20diet.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Open Diet Form
+          </a>
+
+        </article>
+
+        <article class="card">
+
+          <span class="tag">
+            Aquatics
+          </span>
+
+          <h3>
+            Swim Classification Form
+          </h3>
+
+          <p>
+            Review the form for documenting a swim
+            classification completed before camp.
+          </p>
+
+          <a class="button"
+             href="documents/swim%20form.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Open Swim Form
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- KEY INFORMATION -->
+
+    <section id="key-info">
+
+      <h2>
+        Good to Know
+      </h2>
+
+      <div class="key-info-grid">
+
+        <div class="key-info fishing">
+
+          <h3>
+            🎣 Planning to Fish?
+          </h3>
+
+          <p>
+            Raven Knob fishing permits are issued
+            <strong>Monday after lunch</strong>
+            following a brief orientation and safety session.
+            Fishing is catch-and-release.
+          </p>
+
+        </div>
+
+        <div class="key-info visitor">
+
+          <h3>
+            Wednesday Visitors' Night
+          </h3>
+
+          <p>
+            Parents and other visitors may arrive beginning
+            at <strong>5:30 PM Wednesday</strong>.
+            The evening includes campsite supper,
+            campfire, and the Order of the Arrow ceremony.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- LOCATION -->
+
+    <section class="location-box">
+
+      <h2>
+        Camp Location
+      </h2>
+
       <address>
-        <strong>Camp Address</strong><br>
+        <strong>Camp Raven Knob</strong><br>
         266 Raven Knob Road<br>
         Mount Airy, NC 27030
       </address>
@@ -748,708 +1208,46 @@
            href="https://www.ravenknob.com/"
            target="_blank"
            rel="noopener noreferrer">
-          Visit Camp Raven Knob Website
+          Camp Raven Knob Website
         </a>
 
         <a class="button secondary"
            href="https://www.google.com/maps/search/?api=1&amp;query=Camp+Raven+Knob+266+Raven+Knob+Road+Mount+Airy+NC+27030"
            target="_blank"
            rel="noopener noreferrer">
-          Get Directions to Camp
+          Get Directions
         </a>
 
       </div>
+
     </section>
 
-    <section id="important" class="information">
-      <h2>Important Information</h2>
-
-      <div class="planning-notice">
-        <h3>Camp Dates and Cost Are Still Being Finalized</h3>
-
-        <p>
-          Our camp location is Camp Raven Knob. Troop 234 is still
-          reviewing the week we will attend and the final troop cost.
-          We will share more information here as it becomes available.
-        </p>
-      </div>
-
-      <div class="registration-notice">
-        <h3>Troop 234 Will Handle Registration</h3>
-
-        <p>
-          <strong>Please do not register individually for camp,
-          including through Camp Raven Knob’s website.</strong>
-          Troop 234’s Summer Camp Coordinator will register Scouts
-          and leaders as a troop.
-        </p>
-
-        <p>
-          Scouts and parents should review the program information
-          now and identify the merit badges, activities, and programs
-          that interest them. Keep that information available and
-          wait for the troop to request your selections.
-        </p>
-      </div>
-
-      <dl class="details">
-
-        <div>
-          <dt>Camp location</dt>
-          <dd>
-            Camp Raven Knob<br>
-            Mount Airy, North Carolina
-          </dd>
-        </div>
-
-        <div>
-          <dt>Troop camp dates</dt>
-          <dd>Under review</dd>
-        </div>
-
-        <div>
-          <dt>Cost and payments</dt>
-          <dd>To be confirmed</dd>
-        </div>
-
-        <div>
-          <dt>Registration</dt>
-          <dd>Completed by Troop 234</dd>
-        </div>
-
-        <div>
-          <dt>Troop form deadline</dt>
-          <dd>To be announced</dd>
-        </div>
-
-        <div>
-          <dt>Departure and return</dt>
-          <dd>To be announced</dd>
-        </div>
-
-      </dl>
-    </section>
-
-    <section id="deadlines" class="deadlines-section">
-      <h2>2027 Camp Deadlines & Key Dates</h2>
-
-      <p class="deadline-intro">
-        The dates below come from Camp Raven Knob’s 2027 camp information.
-        Troop 234 may establish earlier internal deadlines so we have enough
-        time to collect forms, payments, and program selections.
-      </p>
-
-      <div class="deadline-warning">
-        <p>
-          <strong>Parents and Scouts:</strong>
-          These dates are provided for planning purposes.
-          Do not register or make individual camp payments unless
-          Troop 234 specifically instructs you to do so.
-          The troop will coordinate our unit registration.
-        </p>
-      </div>
-
-      <h3 class="deadline-heading">
-        Registration and Planning Dates
-      </h3>
-
-      <div class="deadline-list">
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            September 1, 2026
-          </div>
-
-          <div class="deadline-text">
-            <strong>2027 campsite assignments begin</strong>
-
-            <p>
-              Camp management begins assigning 2027 campsites based
-              on unit reservations and campsite preferences.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            Before February 1, 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>Unit deposit withdrawal deadline</strong>
-
-            <p>
-              A unit withdrawing before February 1 may qualify for
-              the partial unit-deposit refund described in the Leader Guide.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            February 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>Pre-camp webinars begin</strong>
-
-            <p>
-              Camp Raven Knob begins monthly pre-camp webinars covering
-              registration, programs, and camp preparation.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            February 15, 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>Unit Count opens</strong>
-
-            <p>
-              Units begin submitting Scout and leader counts.
-              Camp requires the Unit Count payment before session
-              registration can be finalized.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            March 16, 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>
-              Session registration opens for Weeks 1 and 2
-            </strong>
-
-            <p>
-              Merit badge and program session registration opens
-              for units attending Weeks 1 and 2.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            March 18, 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>
-              Session registration opens for Weeks 3 through 6
-            </strong>
-
-            <p>
-              Merit badge and program session registration opens
-              for units attending Weeks 3, 4, 5, and 6.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            April 15, 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>Unit Count locks</strong>
-
-            <p>
-              This is the last day units can directly change their
-              Unit Count online. Changes after this date must be
-              coordinated with camp administration.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            April or May 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>Sunday arrival-time signup</strong>
-
-            <p>
-              Units will select a Sunday arrival appointment.
-              Normal arrival appointments are between
-              1:00 PM and 3:30 PM.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            May 15, 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>Transportation request deadline</strong>
-
-            <p>
-              Units needing Raven Knob transportation from designated
-              airport or train locations must submit their request
-              by this date.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            May 31 / June 1, 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>Camp contact location changes</strong>
-
-            <p>
-              Camp administrative operations transition from the
-              Old Hickory Council office to Camp Raven Knob for
-              the summer season.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            Before Arrival
-          </div>
-
-          <div class="deadline-text">
-            <strong>Final camp balance</strong>
-
-            <p>
-              The unit balance must be paid before arrival to qualify
-              for Express Check-In. Any remaining balance will be
-              collected during camp check-in.
-            </p>
-          </div>
-        </div>
-
-        <div class="deadline-item">
-          <div class="deadline-date">
-            Before September 1, 2027
-          </div>
-
-          <div class="deadline-text">
-            <strong>2028 campsite preference</strong>
-
-            <p>
-              Units attending in 2027 should submit their next-year
-              deposit before September 1 to retain preference for
-              their same campsite and week for 2028.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <h3 class="deadline-heading">
-        Deadlines Based on Your Camp Week
-      </h3>
-
-      <p class="section-description">
-        Troop 234 has not selected its final camp week yet.
-        The table below shows the applicable deadlines for all six
-        2027 Scouts BSA summer camp weeks.
-      </p>
-
-      <div class="table-wrapper">
-
-        <table class="deadline-table">
-          <thead>
-            <tr>
-              <th>Camp Week</th>
-              <th>Camp Dates</th>
-              <th>3-Week Refund Mark</th>
-              <th>Medical Forms for Express Check-In</th>
-              <th>Session Registration Closes</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr>
-              <td><strong>Week 1</strong></td>
-              <td>June 20 to June 26</td>
-              <td>May 30</td>
-              <td>June 6</td>
-              <td>June 13</td>
-            </tr>
-
-            <tr>
-              <td><strong>Week 2</strong></td>
-              <td>June 27 to July 3</td>
-              <td>June 6</td>
-              <td>June 13</td>
-              <td>June 20</td>
-            </tr>
-
-            <tr>
-              <td><strong>Week 3</strong></td>
-              <td>July 4 to July 10</td>
-              <td>June 13</td>
-              <td>June 20</td>
-              <td>June 27</td>
-            </tr>
-
-            <tr>
-              <td><strong>Week 4</strong></td>
-              <td>July 11 to July 17</td>
-              <td>June 20</td>
-              <td>June 27</td>
-              <td>July 4</td>
-            </tr>
-
-            <tr>
-              <td><strong>Week 5</strong></td>
-              <td>July 18 to July 24</td>
-              <td>June 27</td>
-              <td>July 4</td>
-              <td>July 11</td>
-            </tr>
-
-            <tr>
-              <td><strong>Week 6</strong></td>
-              <td>July 25 to July 31</td>
-              <td>July 4</td>
-              <td>July 11</td>
-              <td>July 18</td>
-            </tr>
-
-          </tbody>
-        </table>
-
-      </div>
-
-      <p class="deadline-footnote">
-        Scout schedules, T-shirt sizes, and similar registration
-        information can generally be changed until one week before
-        the unit’s arrival. Units arriving by charter or tour bus
-        should also notify camp at least one week before arrival.
-      </p>
-
-      <h3 class="deadline-heading">
-        Important Dates and Times During Camp
-      </h3>
-
-      <div class="fishing-highlight">
-        <h3>
-          Monday After Lunch: Fishing Permits
-        </h3>
-
-        <p>
-          Scouts and leaders who want to fish at Camp Raven Knob must
-          obtain a Raven Knob Fishing Permit.
-          <strong>
-            Fishing permits are issued Monday after lunch
-          </strong>
-          following a brief fishing orientation and safety session.
-          Fishing is catch-and-release.
-        </p>
-      </div>
-
-      <div class="table-wrapper">
-
-        <table class="deadline-table">
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Time</th>
-              <th>Activity or Deadline</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr>
-              <td><strong>Sunday</strong></td>
-              <td>1:00 PM to 3:30 PM</td>
-              <td>
-                Normal troop arrival appointments.
-                Early arrival must be coordinated with camp.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Sunday</strong></td>
-              <td>During check-in</td>
-              <td>
-                Unit photographs are taken during the check-in process.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Sunday</strong></td>
-              <td>About 5:50 PM</td>
-              <td>Evening assembly.</td>
-            </tr>
-
-            <tr>
-              <td><strong>Sunday</strong></td>
-              <td>6:00 PM</td>
-              <td>
-                Supper followed by the unit leader meeting.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Monday</strong></td>
-              <td>8:15 AM</td>
-              <td>Day Campers check in.</td>
-            </tr>
-
-            <tr>
-              <td><strong>Monday to Friday</strong></td>
-              <td>9:00 AM to 5:00 PM</td>
-              <td>Normal Day Camper program hours.</td>
-            </tr>
-
-            <tr>
-              <td><strong>Monday</strong></td>
-              <td>Breakfast</td>
-              <td>
-                Individual Scout schedules and CRK Passports are
-                placed in unit mailboxes.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Monday</strong></td>
-              <td>After lunch</td>
-              <td>
-                <strong>
-                  Fishing orientation and Raven Knob
-                  Fishing Permit issuance.
-                </strong>
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Monday</strong></td>
-              <td>Begins Monday</td>
-              <td>
-                Big Stepper competition begins for adult leaders.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Monday</strong></td>
-              <td>Recommended mailing cutoff</td>
-              <td>
-                Camp recommends that letters or packages not be mailed
-                later than Monday of the Scout’s camp week because
-                delivery may take several days.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Wednesday</strong></td>
-              <td>5:30 PM</td>
-              <td>
-                Visitors' Night begins. Visitors may arrive beginning
-                at 5:30 PM. Units eat supper in their campsites,
-                followed by the campfire and OA ceremony.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Thursday</strong></td>
-              <td>Twilight</td>
-              <td>
-                Scouts participating in the Climbing Experience
-                must attend Open Climbing Twilight.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Thursday</strong></td>
-              <td>After supper</td>
-              <td>
-                Adult Leader Social and Scoutmaster Cook-off
-                on the parade ground.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Friday</strong></td>
-              <td>12:00 PM</td>
-              <td>
-                Big Stepper counting period ends.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Friday</strong></td>
-              <td>By 5:00 PM</td>
-              <td>
-                Big Stepper totals must be submitted to Administration.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Friday</strong></td>
-              <td>Evening</td>
-              <td>
-                Closing campfire. Units receive checkout materials,
-                advancement reports, and health forms afterward.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Saturday</strong></td>
-              <td>7:30 AM</td>
-              <td>
-                Continental breakfast and flag assembly.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Saturday</strong></td>
-              <td>8:00 AM</td>
-              <td>
-                Cleanup, packing, and departures begin.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Saturday</strong></td>
-              <td>By 10:30 AM</td>
-              <td>
-                <strong>All units must be out of camp.</strong>
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
-
-      </div>
-
-      <h3 class="deadline-heading">
-        RAMPAGE Program Schedule
-      </h3>
-
-      <p class="section-description">
-        Scouts participating in the RAMPAGE high-adventure program
-        follow a separate schedule during the week.
-      </p>
-
-      <div class="table-wrapper">
-
-        <table class="deadline-table">
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>RAMPAGE Schedule</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr>
-              <td><strong>Sunday</strong></td>
-              <td>
-                1:00 PM to 4:00 PM gear drop-off at Scoutcraft and
-                swim check with the troop.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Sunday</strong></td>
-              <td>
-                Meet at Scoutcraft at <strong>4:00 PM</strong>
-                with all RAMPAGE gear. Participants eat supper at
-                Raven Knob and then travel to the RAMPAGE base
-                in Independence, Virginia.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Monday</strong></td>
-              <td>
-                Whitewater canoeing on the New River, lunch on the
-                river, and overnight at the RAMPAGE base.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Tuesday</strong></td>
-              <td>
-                River boarding at New River Trail State Park,
-                followed by return to Camp Raven Knob and overnight
-                with the troop.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Wednesday</strong></td>
-              <td>
-                Hike Raven Knob after breakfast, climbing at
-                Pilot Mountain, return for Visitors' Night,
-                supper and campfire, then return to Independence.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Thursday</strong></td>
-              <td>
-                Travel to Grayson Highlands State Park and begin
-                the overnight backpacking portion of the program.
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>Friday</strong></td>
-              <td>
-                Complete the backpacking trip, clean up at the
-                RAMPAGE base, return to Camp Raven Knob for supper,
-                and attend the closing campfire.
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
-
-      </div>
-
-      <div class="rampage-note">
-        <p>
-          <strong>RAMPAGE check-in note:</strong>
-          The dedicated RAMPAGE information lists the Sunday meeting
-          time as <strong>4:00 PM</strong>. The 2027 Leader Guide lists
-          RAMPAGE and Cripple Creek participants as meeting at
-          Scoutcraft by 4:30 PM.
-        </p>
-
-        <p>
-          Troop 234 will use <strong>4:00 PM</strong> for planning
-          unless Camp Raven Knob provides updated instructions.
-        </p>
-      </div>
-
-    </section>
+    <!-- GUIDES AND MAPS -->
 
     <section id="guides">
-      <h2>Camp Guides</h2>
+
+      <h2>
+        Guides & Maps
+      </h2>
 
       <p class="section-description">
-        Start with the guide for your role.
-        Each document link opens a PDF in a new tab.
+        Need more detail? The full Raven Knob documents are available here.
       </p>
 
       <div class="grid">
 
         <article class="card">
-          <span class="tag">Parents · 2027</span>
 
-          <h3>Parent Guide</h3>
+          <span class="tag">
+            Parents
+          </span>
+
+          <h3>
+            2027 Parent Guide
+          </h3>
 
           <p>
-            Review the camp’s information for parents and families.
+            Camp information written for parents and families.
           </p>
 
           <a class="button"
@@ -1458,15 +1256,22 @@
              rel="noopener noreferrer">
             Open Parent Guide
           </a>
+
         </article>
 
         <article class="card">
-          <span class="tag">Leaders · 2027</span>
 
-          <h3>Leader Guide</h3>
+          <span class="tag">
+            Leaders
+          </span>
+
+          <h3>
+            2027 Leader Guide
+          </h3>
 
           <p>
-            Review the camp’s information for attending adult leaders.
+            Detailed registration, camp operations,
+            policies, and leader information.
           </p>
 
           <a class="button"
@@ -1475,194 +1280,22 @@
              rel="noopener noreferrer">
             Open Leader Guide
           </a>
+
         </article>
 
         <article class="card">
-          <span class="tag">Campsite</span>
 
-          <h3>Camp Inspection</h3>
+          <span class="tag">
+            Map
+          </span>
+
+          <h3>
+            Camp Map
+          </h3>
 
           <p>
-            Review the camp inspection document before camp.
+            View the Camp Raven Knob property and program areas.
           </p>
-
-          <a class="button"
-             href="documents/camp%20inspection.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open Inspection Document
-          </a>
-        </article>
-
-      </div>
-    </section>
-
-    <section id="forms">
-      <h2>Forms</h2>
-
-      <p class="section-description">
-        Review the forms below. Troop leadership will provide
-        submission instructions and Troop 234 deadlines.
-      </p>
-
-      <div class="grid">
-
-        <article class="card">
-          <span class="tag">Medical paperwork</span>
-
-          <h3>Medical Form Part C</h3>
-
-          <p>
-            If you have not completed Medical Form Part C with
-            your doctor, we recommend doing so sooner rather
-            than later. This is the same packet linked on our
-            Resources page and includes Parts A, B, and C.
-          </p>
-
-          <a class="button"
-             href="images/ABC%20Medical%20Forms.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open Medical Forms A, B, and C
-          </a>
-        </article>
-
-        <article class="card">
-          <span class="tag">Parent paperwork</span>
-
-          <h3>Outdoor Parent Release</h3>
-
-          <p>
-            Open the parent release form and review its instructions.
-          </p>
-
-          <a class="button"
-             href="documents/outdoor%20parent%20release.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open Release Form
-          </a>
-        </article>
-
-        <article class="card">
-          <span class="tag">Meals</span>
-
-          <h3>Special Diet Form</h3>
-
-          <p>
-            Review the form for reporting special dietary needs.
-          </p>
-
-          <a class="button"
-             href="documents/special%20diet.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open Diet Form
-          </a>
-        </article>
-
-        <article class="card">
-          <span class="tag">Aquatics</span>
-
-          <h3>Swim Form</h3>
-
-          <p>
-            Review the swim form and confirm what you need to submit.
-          </p>
-
-          <a class="button"
-             href="documents/swim%20form.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open Swim Form
-          </a>
-        </article>
-
-      </div>
-    </section>
-
-    <section id="programs">
-      <h2>Programs and Activities</h2>
-
-      <p class="section-description">
-        Explore merit badge and activity options below.
-        Do not register for them individually. Review your options
-        and keep a list of your Scout's preferred choices for when
-        Troop 234 requests that information.
-      </p>
-
-      <div class="grid">
-
-        <article class="card">
-          <span class="tag">Programs · 2027</span>
-
-          <h3>Program Guide</h3>
-
-          <p>
-            Explore the camp’s program and merit badge information.
-          </p>
-
-          <a class="button"
-             href="documents/program%20guide%202027.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open Program Guide
-          </a>
-        </article>
-
-        <article class="card">
-          <span class="tag">Planning</span>
-
-          <h3>Program Grid</h3>
-
-          <p>
-            Use the program grid alongside the program guide
-            to identify activities that interest your Scout.
-          </p>
-
-          <a class="button"
-             href="documents/program%20grid.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open Program Grid
-          </a>
-        </article>
-
-        <article class="card">
-          <span class="tag">Program option</span>
-
-          <h3>Rampage Program</h3>
-
-          <p>
-            Review the Rampage program document for details.
-          </p>
-
-          <a class="button"
-             href="documents/rampage%20program.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open Rampage Document
-          </a>
-        </article>
-
-      </div>
-    </section>
-
-    <section id="maps">
-      <h2>Camp Maps</h2>
-
-      <p class="section-description">
-        Download a map before traveling so you have a copy available.
-      </p>
-
-      <div class="grid">
-
-        <article class="card">
-          <span class="tag">Map</span>
-
-          <h3>Camp Map</h3>
-
-          <p>View the camp map.</p>
 
           <a class="button"
              href="documents/camp%20map.pdf"
@@ -1670,12 +1303,18 @@
              rel="noopener noreferrer">
             Open Camp Map
           </a>
+
         </article>
 
         <article class="card">
-          <span class="tag">Map</span>
 
-          <h3>Scaled Camp Map</h3>
+          <span class="tag">
+            Map
+          </span>
+
+          <h3>
+            Scaled Camp Map
+          </h3>
 
           <p>
             View the scaled version of the camp map.
@@ -1687,81 +1326,244 @@
              rel="noopener noreferrer">
             Open Scaled Map
           </a>
+
+        </article>
+
+        <article class="card">
+
+          <span class="tag">
+            Campsite
+          </span>
+
+          <h3>
+            Camp Inspection
+          </h3>
+
+          <p>
+            Review the Raven Knob campsite inspection document.
+          </p>
+
+          <a class="button"
+             href="documents/camp%20inspection.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
+            Open Inspection Form
+          </a>
+
         </article>
 
       </div>
+
     </section>
 
-    <section id="before-camp" class="checklist">
-      <h2>Before Camp</h2>
+    <!-- EXPANDABLE ADMIN INFORMATION -->
 
-      <ul>
+    <section id="additional-details">
 
-        <li>
-          Read the parent guide and review the
-          <a href="#deadlines">
-            2027 camp deadlines and key dates
-          </a>.
-        </li>
+      <h2>
+        Additional Camp Details
+      </h2>
 
-        <li>
-          <strong>
-            Do not register individually through Camp Raven Knob.
-          </strong>
-          Troop 234’s Summer Camp Coordinator will register
-          Scouts and leaders as a troop.
-        </li>
-
-        <li>
-          Review merit badge, program, and activity options.
-          Make a list of the choices your Scout is interested in
-          and keep that information available.
-        </li>
-
-        <li>
-          <strong>
-            Do not submit merit badge or program selections directly
-            to Camp Raven Knob.
-          </strong>
-          Wait for Troop 234 to request your Scout’s selections.
-        </li>
-
-        <li>
-          If you have not completed
-          <strong>Medical Form Part C with your doctor</strong>,
-          we recommend doing so sooner rather than later.
-
-          <a href="images/ABC%20Medical%20Forms.pdf"
-             target="_blank"
-             rel="noopener noreferrer">
-            Download the medical forms packet.
-          </a>
-        </li>
-
-        <li>
-          Review the camp’s packing instructions.
-        </li>
-
-        <li>
-          If your Scout plans to fish, remember that
-          <strong>
-            Raven Knob Fishing Permits are issued Monday after lunch
-          </strong>
-          following the required orientation and safety session.
-        </li>
-
-        <li>
-          Watch for Troop 234 updates on our selected camp week,
-          cost, payment schedule, forms, program selections,
-          departure, transportation, and pickup arrangements.
-        </li>
-
-      </ul>
-
-      <p>
-        <strong>Questions?</strong>
-        Contact troop leadership at a meeting or through the troop’s Slack.
+      <p class="section-description">
+        These details are available for anyone who wants them,
+        but most families do not need to act on them directly.
       </p>
+
+      <details class="details-box">
+
+        <summary>
+          2027 Camp Weeks
+        </summary>
+
+        <div class="details-content">
+
+          <ul>
+            <li>
+              <strong>Week 1:</strong>
+              June 20 to June 26
+            </li>
+
+            <li>
+              <strong>Week 2:</strong>
+              June 27 to July 3
+            </li>
+
+            <li>
+              <strong>Week 3:</strong>
+              July 4 to July 10
+            </li>
+
+            <li>
+              <strong>Week 4:</strong>
+              July 11 to July 17
+            </li>
+
+            <li>
+              <strong>Week 5:</strong>
+              July 18 to July 24
+            </li>
+
+            <li>
+              <strong>Week 6:</strong>
+              July 25 to July 31
+            </li>
+          </ul>
+
+        </div>
+
+      </details>
+
+      <details class="details-box">
+
+        <summary>
+          Camp Registration Dates
+        </summary>
+
+        <div class="details-content">
+
+          <p>
+            <strong>
+              These are handled by Troop 234's Summer Camp Coordinator.
+              Families should not register individually.
+            </strong>
+          </p>
+
+          <ul>
+
+            <li>
+              <strong>February 15:</strong>
+              Unit Count registration opens.
+            </li>
+
+            <li>
+              <strong>March 16:</strong>
+              Merit badge and session registration opens
+              for Weeks 1 and 2.
+            </li>
+
+            <li>
+              <strong>March 18:</strong>
+              Merit badge and session registration opens
+              for Weeks 3 through 6.
+            </li>
+
+            <li>
+              <strong>April 15:</strong>
+              Unit Count locks.
+            </li>
+
+            <li>
+              <strong>One week before arrival:</strong>
+              Raven Knob's session registration portal closes.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </details>
+
+      <details class="details-box">
+
+        <summary>
+          Camp Arrival & Departure
+        </summary>
+
+        <div class="details-content">
+
+          <ul>
+
+            <li>
+              Raven Knob Sunday check-in appointments are
+              between <strong>1:00 PM and 3:30 PM</strong>.
+            </li>
+
+            <li>
+              Troop 234's actual departure time from Chesapeake
+              will be announced separately.
+            </li>
+
+            <li>
+              Saturday continental breakfast begins at
+              <strong>7:30 AM</strong>.
+            </li>
+
+            <li>
+              Packing and departure begin around
+              <strong>8:00 AM</strong>.
+            </li>
+
+            <li>
+              All units must leave Camp Raven Knob before
+              <strong>10:30 AM Saturday</strong>.
+            </li>
+
+            <li>
+              Troop 234's estimated return time to Chesapeake
+              will be announced later.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </details>
+
+      <details class="details-box">
+
+        <summary>
+          Adult Leader Pricing
+        </summary>
+
+        <div class="details-content">
+
+          <ul>
+
+            <li>
+              <strong>Full-week adult leader:</strong>
+              $240
+            </li>
+
+            <li>
+              <strong>Half-week adult leader:</strong>
+              $150
+            </li>
+
+            <li>
+              Raven Knob waives one full-week adult leader fee
+              for every 10 Scouts attending with the unit.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </details>
+
+      <details class="details-box">
+
+        <summary>
+          Express Health Check-In
+        </summary>
+
+        <div class="details-content">
+
+          <p>
+            Raven Knob offers an expedited Sunday health check
+            when the unit sends paper copies of the required
+            medical and release forms to camp at least
+            <strong>two weeks before arrival</strong>.
+          </p>
+
+          <p>
+            Troop 234 will provide families with our own
+            form collection deadline so the troop has enough
+            time to review and submit the paperwork.
+          </p>
+
+        </div>
+
+      </details>
 
     </section>
 
