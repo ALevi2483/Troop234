@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FY6X24EQ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-7FY6X24EQ6');
-</script>
+    gtag('config', 'G-7FY6X24EQ6');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Troop 234 Eagle History</title>
+
   <style>
     :root {
       --bg: #f5f9f5;
@@ -25,18 +27,38 @@
       --thead: #eef6ee;
       --rowhover: #f8fff8;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
     }
-    header { padding: 28px 16px 12px; text-align: center; }
-    h1 { margin: 0 0 8px; color: var(--brand); font-size: clamp(1.4rem, 2.5vw, 2rem); }
-    p.sub { margin: 0; color: var(--muted); }
 
-    .wrap { max-width: 1000px; margin: 16px auto 40px; padding: 0 16px 24px; }
+    header {
+      padding: 28px 16px 12px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: var(--brand);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
+
+    p.sub {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 16px auto 40px;
+      padding: 0 16px 24px;
+    }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -52,15 +74,28 @@
       align-items: center;
       margin-bottom: 12px;
     }
-    .toolbar .stat { color: var(--muted); font-size: .95rem; }
-    .search { display: flex; gap: 8px; align-items: center; justify-content: end; flex-wrap: wrap; }
+
+    .toolbar .stat {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .search {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: end;
+      flex-wrap: wrap;
+    }
+
     input[type="search"] {
       padding: 10px 12px;
       border: 1px solid var(--border);
       border-radius: 10px;
       width: min(360px, 100%);
-      font-size: 16px; /* avoids iOS zoom */
+      font-size: 16px;
     }
+
     button {
       padding: 10px 14px;
       border: 1px solid var(--border);
@@ -69,58 +104,162 @@
       cursor: pointer;
     }
 
-    .table-wrap { overflow-x: auto; border-radius: 10px; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.98rem; }
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.98rem;
+    }
+
     thead th {
-      position: sticky; top: 0; z-index: 1;
+      position: sticky;
+      top: 0;
+      z-index: 1;
       background: var(--thead);
       color: #0b2a10;
-      text-align: left; font-weight: 600;
+      text-align: left;
+      font-weight: 600;
       border-bottom: 2px solid var(--border);
       padding: 12px;
       white-space: nowrap;
       cursor: pointer;
       user-select: none;
     }
-    thead th:focus { outline: 2px solid #8ab4ff; outline-offset: 2px; }
-    thead th.sort-asc::after   { content: " ▲"; font-size: .9em; }
-    thead th.sort-desc::after  { content: " ▼"; font-size: .9em; }
 
-    tbody td { padding: 12px; border-bottom: 1px solid var(--border); }
-    tbody tr:hover { background: var(--rowhover); }
+    thead th:focus {
+      outline: 2px solid #8ab4ff;
+      outline-offset: 2px;
+    }
 
-    .num  { width: 80px; }
-    .name { min-width: 260px; }
-    .date { min-width: 180px; }
+    thead th.sort-asc::after {
+      content: " ▲";
+      font-size: .9em;
+    }
 
-    footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size: .9rem; }
+    thead th.sort-desc::after {
+      content: " ▼";
+      font-size: .9em;
+    }
+
+    tbody td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:hover {
+      background: var(--rowhover);
+    }
+
+    .num {
+      width: 80px;
+    }
+
+    .name {
+      min-width: 260px;
+    }
+
+    .date {
+      min-width: 180px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
 
     /* Mobile polish */
     @media (max-width: 640px) {
-      header { padding: 20px 14px 8px; }
-      h1 { font-size: 1.4rem; line-height: 1.2; }
-      .wrap { margin: 8px auto 28px; padding: 0 12px 16px; }
-      .card { padding: 12px; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+      header {
+        padding: 20px 14px 8px;
+      }
 
-      .toolbar { grid-template-columns: 1fr; gap: 10px; }
-      .toolbar .stat { order: 2; font-size: .9rem; }
-      .search { order: 1; justify-content: stretch; }
-      .search input[type="search"] { width: 100%; padding: 12px; }
-      .search button { padding: 10px 12px; border-radius: 12px; }
+      h1 {
+        font-size: 1.4rem;
+        line-height: 1.2;
+      }
 
-      table { font-size: .95rem; }
-      thead th { padding: 12px 10px; box-shadow: 0 2px 0 rgba(0,0,0,.03); }
-      tbody td { padding: 12px 10px; }
-      tbody tr:nth-child(even) { background: #fbfefb; }
-      .num { width: 56px; }
-      .name { min-width: 220px; word-break: break-word; }
-      .date { min-width: 170px; }
+      .wrap {
+        margin: 8px auto 28px;
+        padding: 0 12px 16px;
+      }
 
-      footer { padding: 18px 12px; font-size: .85rem; }
+      .card {
+        padding: 12px;
+        border-radius: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .toolbar .stat {
+        order: 2;
+        font-size: .9rem;
+      }
+
+      .search {
+        order: 1;
+        justify-content: stretch;
+      }
+
+      .search input[type="search"] {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .search button {
+        padding: 10px 12px;
+        border-radius: 12px;
+      }
+
+      table {
+        font-size: .95rem;
+      }
+
+      thead th {
+        padding: 12px 10px;
+        box-shadow: 0 2px 0 rgba(0,0,0,.03);
+      }
+
+      tbody td {
+        padding: 12px 10px;
+      }
+
+      tbody tr:nth-child(even) {
+        background: #fbfefb;
+      }
+
+      .num {
+        width: 56px;
+      }
+
+      .name {
+        min-width: 220px;
+        word-break: break-word;
+      }
+
+      .date {
+        min-width: 170px;
+      }
+
+      footer {
+        padding: 18px 12px;
+        font-size: .85rem;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <header>
     <h1>Troop 234 Eagle History</h1>
     <p class="sub">All Scouts from Troop 234 who earned the rank of Eagle Scout</p>
@@ -128,38 +267,84 @@
 
   <main class="wrap">
     <section class="card">
+
       <div class="toolbar">
-        <div class="stat"><span id="showing"></span></div>
+        <div class="stat">
+          <span id="showing"></span>
+        </div>
+
         <div class="search">
-          <input id="q" type="search" placeholder="Search by name or year" aria-label="Search" />
+          <input
+            id="q"
+            type="search"
+            placeholder="Search by name or year"
+            aria-label="Search"
+          />
           <button id="clearBtn" type="button">Clear</button>
         </div>
       </div>
 
       <div class="table-wrap">
         <table id="eagleTable" aria-label="Troop 234 Eagle roster">
+
           <thead>
             <tr>
-              <th data-sort="number" class="num"  role="columnheader" tabindex="0" aria-sort="none">No.</th>
-              <th data-sort="name"   class="name" role="columnheader" tabindex="0" aria-sort="none">Name</th>
-              <th data-sort="date"   class="date" role="columnheader" tabindex="0" aria-sort="none">Date Made Eagle</th>
+              <th
+                data-sort="number"
+                class="num"
+                role="columnheader"
+                tabindex="0"
+                aria-sort="none"
+              >
+                No.
+              </th>
+
+              <th
+                data-sort="name"
+                class="name"
+                role="columnheader"
+                tabindex="0"
+                aria-sort="none"
+              >
+                Name
+              </th>
+
+              <th
+                data-sort="date"
+                class="date"
+                role="columnheader"
+                tabindex="0"
+                aria-sort="none"
+              >
+                Date Made Eagle
+              </th>
             </tr>
           </thead>
+
           <tbody>
             <!-- Rows injected by JS -->
           </tbody>
+
         </table>
       </div>
+
     </section>
   </main>
 
   <footer>
-    Questions or updates: <a href="mailto:Troop234Scouting@gmail.com">Troop234Scouting@gmail.com</a>
+    Questions or updates:
+    <a href="mailto:Troop234Scouting@gmail.com">
+      Troop234Scouting@gmail.com
+    </a>
   </footer>
 
   <script>
-    // Data: earliest to latest. "no" is sequential order within Troop 234 history.
+
+    // Data: earliest to latest.
+    // "no" is sequential order within Troop 234 history.
+
     const EAGLES = [
+
       { no: 1,  name: 'Joseph D. Klos',                 date: 'August 11, 1994' },
       { no: 2,  name: 'Robert Alan Small',              date: 'July 31, 1996' },
       { no: 3,  name: 'Andrew Justin Tempel',           date: 'February 16, 1998' },
@@ -207,7 +392,9 @@
       { no: 45, name: 'Dylan Thomas Leonard',           date: 'October 2, 2023' },
       { no: 46, name: 'Richard Michael Sklat, Jr.',     date: 'July 13, 2024' },
       { no: 47, name: 'Brandon Lee Bryant',             date: 'September 23, 2025' },
-      { no: 48, name: 'Ronald J. Willis',               date: 'August 3, 2026' }
+      { no: 48, name: 'Ronald J. Willis',               date: 'August 3, 2026' },
+      { no: 49, name: 'Jackson M. Crowl',                date: 'August 24, 2026' }
+
     ];
 
     const tbody = document.querySelector('#eagleTable tbody');
@@ -218,13 +405,17 @@
     const TOTAL = EAGLES.length;
 
     function render(rows) {
+
       tbody.innerHTML = rows.map(r => `
         <tr>
           <td class="num">${r.no}</td>
           <td class="name">${r.name}</td>
           <td class="date">${r.date}</td>
-        </tr>`).join('');
-      showingEl.textContent = `Showing ${rows.length} of ${TOTAL} total Eagles`;
+        </tr>
+      `).join('');
+
+      showingEl.textContent =
+        `Showing ${rows.length} of ${TOTAL} total Eagles`;
     }
 
     // Initial render
@@ -232,91 +423,206 @@
 
     // Search (matches name or year)
     q.addEventListener('input', () => {
+
       const term = q.value.trim().toLowerCase();
+
       const filtered = !term
         ? EAGLES
         : EAGLES.filter(r => {
-            const year = new Date(r.date).getFullYear().toString();
-            return r.name.toLowerCase().includes(term) ||
-                   r.date.toLowerCase().includes(term) ||
-                   year.includes(term);
+
+            const year =
+              new Date(r.date).getFullYear().toString();
+
+            return (
+              r.name.toLowerCase().includes(term) ||
+              r.date.toLowerCase().includes(term) ||
+              year.includes(term)
+            );
+
           });
+
       render(filtered);
       resetSortIndicators();
+
     });
 
     clearBtn.addEventListener('click', () => {
+
       q.value = '';
+
       render(EAGLES);
+
       q.focus();
+
       resetSortIndicators();
+
     });
 
     // Sorting with aria + visual indicators
-    const ths = document.querySelectorAll('thead th');
-    let sortState = { key: 'number', asc: true };
+
+    const ths =
+      document.querySelectorAll('thead th');
+
+    let sortState = {
+      key: 'number',
+      asc: true
+    };
 
     function resetSortIndicators() {
+
       ths.forEach(th => {
-        th.classList.remove('sort-asc', 'sort-desc');
-        th.setAttribute('aria-sort', 'none');
+
+        th.classList.remove(
+          'sort-asc',
+          'sort-desc'
+        );
+
+        th.setAttribute(
+          'aria-sort',
+          'none'
+        );
+
       });
+
     }
 
     function applySortIndicator(th, asc) {
+
       resetSortIndicators();
-      th.classList.add(asc ? 'sort-asc' : 'sort-desc');
-      th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+
+      th.classList.add(
+        asc
+          ? 'sort-asc'
+          : 'sort-desc'
+      );
+
+      th.setAttribute(
+        'aria-sort',
+        asc
+          ? 'ascending'
+          : 'descending'
+      );
+
     }
 
     function sortData(key, asc) {
-      const rows = Array.from(tbody.querySelectorAll('tr')).map(tr => {
-        const [no, name, date] = Array.from(tr.children).map(td => td.textContent);
-        return { no: Number(no), name, date };
-      });
+
+      const rows =
+        Array.from(
+          tbody.querySelectorAll('tr')
+        ).map(tr => {
+
+          const [no, name, date] =
+            Array.from(tr.children)
+              .map(td => td.textContent);
+
+          return {
+            no: Number(no),
+            name,
+            date
+          };
+
+        });
 
       rows.sort((a, b) => {
-        let av, bv;
+
+        let av;
+        let bv;
+
         if (key === 'name') {
+
           av = a.name.toLowerCase();
           bv = b.name.toLowerCase();
+
         } else if (key === 'date') {
+
           av = new Date(a.date);
           bv = new Date(b.date);
+
         } else {
+
           av = a.no;
           bv = b.no;
+
         }
-        if (av < bv) return asc ? -1 : 1;
-        if (av > bv) return asc ? 1 : -1;
+
+        if (av < bv)
+          return asc ? -1 : 1;
+
+        if (av > bv)
+          return asc ? 1 : -1;
+
         return 0;
+
       });
 
       render(rows);
+
     }
 
     function handleSort(th) {
-      const key = th.dataset.sort;
-      if (!key) return;
+
+      const key =
+        th.dataset.sort;
+
+      if (!key)
+        return;
+
       if (sortState.key === key) {
-        sortState.asc = !sortState.asc;
+
+        sortState.asc =
+          !sortState.asc;
+
       } else {
-        sortState.key = key;
-        sortState.asc = true;
+
+        sortState.key =
+          key;
+
+        sortState.asc =
+          true;
+
       }
-      sortData(sortState.key, sortState.asc);
-      applySortIndicator(th, sortState.asc);
+
+      sortData(
+        sortState.key,
+        sortState.asc
+      );
+
+      applySortIndicator(
+        th,
+        sortState.asc
+      );
+
     }
 
     ths.forEach(th => {
-      th.addEventListener('click', () => handleSort(th));
-      th.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleSort(th);
+
+      th.addEventListener(
+        'click',
+        () => handleSort(th)
+      );
+
+      th.addEventListener(
+        'keydown',
+        (e) => {
+
+          if (
+            e.key === 'Enter' ||
+            e.key === ' '
+          ) {
+
+            e.preventDefault();
+
+            handleSort(th);
+
+          }
+
         }
-      });
+      );
+
     });
+
   </script>
+
 </body>
 </html>
